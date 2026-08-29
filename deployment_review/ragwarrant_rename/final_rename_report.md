@@ -4,7 +4,7 @@
 - CLI: `ragwarrant`
 - Environment prefix: `RAGWARRANT_`
 - Repository: `https://github.com/RAGWarrant/ragwarrant-governance`
-- Legacy exceptions: 26831
+- Legacy exceptions: 26834
 - Unclassified old-name hits: 0
 
 Verification gates:

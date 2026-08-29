@@ -1,7 +1,7 @@
-path,line,former_token,classification,reason
+path,line,former_token,classification,reason_retained
 README.md,13,AIM-RAGTune,legacy_redirect_documentation,legacy redirect documentation
 README.md,13,rag-tuning-governance,legacy_redirect_documentation,legacy redirect documentation
-README.md,20,ragtune,historical_run_identifier,historical run identifier
+README.md,19,ragtune,historical_run_identifier,historical run identifier
 artifacts/aim_hardware_characterization/hardware_manifest.json,19,ragtune,immutable_historical_evidence,hash-bound historical artifact
 artifacts/aim_hardware_matrix/hardware_matrix_manifest.json,18,ragtune,immutable_historical_evidence,hash-bound historical artifact
 artifacts/audit/publication_export_manifest.json,50,ragtune,immutable_historical_evidence,hash-bound historical artifact
@@ -26830,3 +26830,6 @@ artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20
 artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170600-8621179ce7,path,ragtune,historical_run_identifier,historical run identifier
 artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7,path,ragtune,historical_run_identifier,historical run identifier
 src/ragwarrant/behavioral_governance.py,21,ragtune_no_fork,legacy_source_policy_identifier,historical parent artifact policy id used by POLICY_SOURCE_MAP
+README.md,13,RAGTune,former_name_documentation,explicit former-name note requested for the RAGWarrant repository
+docs/public_repository_note.md,3,RAGTune,former_name_documentation,explicit former-name note for the canonical public repository
+docs/public_repository_note.md,13,RAGTune,former_name_documentation,historical identifier policy note

@@ -34,9 +34,8 @@ RAGWarrant is a promotion-governance controller that decides whether measured ev
 Canonical repository:
 https://github.com/RAGWarrant/ragwarrant-governance
 
-Legacy public name:
-https://github.com/AIM-RAGTune/rag-tuning-governance-public
-(legacy name, redirects to the canonical repository)
+Former project name:
+RAGWarrant was formerly known as RAGTune. The former GitHub URLs, including `https://github.com/AIM-RAGTune/rag-tuning-governance` and `https://github.com/AIM-RAGTune/rag-tuning-governance-public`, now redirect to the canonical repository above.
 
 ## Current Strongest Result
 
@@ -221,7 +220,7 @@ This repository does not include raw CRAG datasets, raw CRAG question text, raw 
 
 ## Testing Status
 
-Latest packaged status from the source repository:
+Latest validated status from the RAGWarrant repository:
 
 - Focused CRAG tests: 151 passed
 - Full repository tests: 530 passed, 1 skipped, 4 warnings
@@ -239,13 +238,9 @@ Workflow definitions:
 
 Docker decision reproduction supported the parent CRAG mock-API validation decision. It was not an exact numeric match; it preserved the decision, winners, rows, failure rate, and win/tie/loss while some floating metrics differed. See `docs/docker_reproduction.md` and `docs/crag_mock_api_validation.md`.
 
-## Publication-Governance Gate
+## Repository Migration Status
 
-This bundle was created locally because external GitHub upload was blocked by tenant governance controls. No bypass was attempted. The repository has no remote configured in the approval package.
-
-## Public Repository Status
-
-This public repository was created as a fresh one-commit sanitized tree with no prior private Git history. See `docs/public_repository_note.md`.
+This repository was transferred from `AIM-RAGTune/rag-tuning-governance` and renamed to `RAGWarrant/ragwarrant-governance` through GitHub's native transfer and rename flow. The active project name, package, CLI, environment prefix, deployment examples, and documentation now use RAGWarrant naming. Historical run IDs, release artifacts, old URLs, and hash-bound evidence may retain RAGTune identifiers where changing them would break provenance. See `docs/migration/RAGTUNE_TO_RAGWARRANT.md`.
 
 ## Planned: v0.2
 

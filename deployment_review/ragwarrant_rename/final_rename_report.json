@@ -8,7 +8,7 @@
   "docker_references_updated": true,
   "environment_variables_updated": true,
   "files_renamed": "see git status for tracked renames",
-  "legacy_exceptions": 26831,
+  "legacy_exceptions": 26834,
   "package_imports_updated": true,
   "text_replacements": "active code, docs, configs, deployment, package metadata, and workflow surfaces renamed",
   "unclassified_old_name_hits": 0,

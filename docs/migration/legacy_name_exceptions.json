@@ -20,7 +20,7 @@
       "classification": "historical_run_identifier",
       "former_token": "ragtune",
       "integrity_or_provenance_impact_if_changed": "Changing timestamped run IDs would sever links to existing evidence records.",
-      "line": 20,
+      "line": 19,
       "path": "README.md",
       "reason_retained": "historical run identifier"
     },
@@ -214647,8 +214647,32 @@
       "line": 21,
       "path": "src/ragwarrant/behavioral_governance.py",
       "reason_retained": "historical parent artifact policy id used by POLICY_SOURCE_MAP"
+    },
+    {
+      "classification": "former_name_documentation",
+      "former_token": "RAGTune",
+      "integrity_or_provenance_impact_if_changed": "Removing this would hide the project rename history from readers.",
+      "line": 13,
+      "path": "README.md",
+      "reason_retained": "explicit former-name note requested for the RAGWarrant repository"
+    },
+    {
+      "classification": "former_name_documentation",
+      "former_token": "RAGTune",
+      "integrity_or_provenance_impact_if_changed": "Removing this would hide the project rename history from readers.",
+      "line": 3,
+      "path": "docs/public_repository_note.md",
+      "reason_retained": "explicit former-name note for the canonical public repository"
+    },
+    {
+      "classification": "former_name_documentation",
+      "former_token": "RAGTune",
+      "integrity_or_provenance_impact_if_changed": "Removing this would hide why historical identifiers retain the former project name.",
+      "line": 13,
+      "path": "docs/public_repository_note.md",
+      "reason_retained": "historical identifier policy note"
     }
   ],
   "generated_from_tree": true,
-  "legacy_exception_count": 26831
+  "legacy_exception_count": 26834
 }

@@ -4,13 +4,12 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_REPO = "<source-validation-workspace>"
-SOURCE_HEAD = "fefdd51b0158963c5deb63a9e113ec6322601a19"
-SOURCE_BRANCH = "codex/crag-mock-api-hardening-package"
+DEFAULT_REPOSITORY = "https://github.com/RAGWarrant/ragwarrant-governance"
 
 EXCLUDED = [
     ".git/",
@@ -58,6 +57,11 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+def git_value(*args: str, fallback: str) -> str:
+    result = subprocess.run(["git", *args], cwd=ROOT, text=True, capture_output=True, check=False)
+    return result.stdout.strip() if result.returncode == 0 and result.stdout.strip() else fallback
+
+
 def files() -> list[Path]:
     excluded_parts = {".git", ".venv", "__pycache__", ".pytest_cache", ".ruff_cache"}
     return sorted(
@@ -103,13 +107,16 @@ def main() -> None:
     }
 
     now = datetime.now(timezone.utc).isoformat()
+    repository = git_value("config", "--get", "remote.origin.url", fallback=DEFAULT_REPOSITORY)
+    branch = git_value("branch", "--show-current", fallback="unknown")
+    head = git_value("rev-parse", "HEAD", fallback="unknown")
     export_manifest = {
         "export_timestamp": now,
         "export_script_version": 1,
-        "source_repository_path": SOURCE_REPO,
-        "source_branch": SOURCE_BRANCH,
-        "source_git_head": SOURCE_HEAD,
-        "source_working_tree_status": "clean at time of export check",
+        "repository_path": repository,
+        "repository_branch": branch,
+        "repository_git_head": head,
+        "working_tree_status": "clean at time of export check",
         "publication_repository_path": str(ROOT),
         "file_count": len(all_files),
         "files_included": [str(p.relative_to(ROOT)) for p in all_files],
@@ -122,9 +129,9 @@ def main() -> None:
     )
     (audit_dir / "publication_export_manifest.md").write_text(
         "# Publication Export Manifest\n\n"
-        f"- Source repository: `{SOURCE_REPO}`\n"
-        f"- Source branch: `{SOURCE_BRANCH}`\n"
-        f"- Source Git HEAD: `{SOURCE_HEAD}`\n"
+        f"- Repository: `{repository}`\n"
+        f"- Branch: `{branch}`\n"
+        f"- Git HEAD: `{head}`\n"
         f"- Export timestamp: `{now}`\n"
         f"- Files included: {len(all_files)}\n\n"
         "Excluded classes include raw licensed datasets, credentials, caches, virtualenvs, logs, model weights, and private human-eval answer keys.\n",

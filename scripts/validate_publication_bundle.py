@@ -251,12 +251,12 @@ def normalize_remote_line(line: str) -> str:
 
 
 def public_repository_remote_allowed(remotes: str) -> bool:
-    """Allow the approved public clean-history repository in deployed mode.
+    """Allow the approved public RAGWarrant repository in deployed mode.
 
     Local unpublished export packages still reject external remotes. The
-    public repository is intentionally different: it is already deployed, has
-    a fresh one-commit history, and carries a public repository note. GitHub
-    Actions mode is allowed only for the expected public repository slug.
+    public repository is intentionally different: it is already deployed and
+    carries a public repository note. GitHub Actions mode is allowed only for
+    the expected public repository slug.
     """
 
     mode = publication_remote_mode()

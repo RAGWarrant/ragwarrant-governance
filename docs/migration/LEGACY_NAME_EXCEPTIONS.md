@@ -2,13 +2,16 @@
 
 These retained legacy-name occurrences are intentional provenance boundaries for the RAGWarrant migration.
 
-Total exceptions: 26831
+Total exceptions: 26834
 
 | Path | Location | Former token | Classification | Reason retained | Impact if changed |
 |---|---:|---|---|---|---|
 | `README.md` | 13 | `AIM-RAGTune` | `legacy_redirect_documentation` | legacy redirect documentation | Changing this would hide the provenance of GitHub redirects and prior URLs. |
 | `README.md` | 13 | `rag-tuning-governance` | `legacy_redirect_documentation` | legacy redirect documentation | Changing this would hide the provenance of GitHub redirects and prior URLs. |
-| `README.md` | 20 | `ragtune` | `historical_run_identifier` | historical run identifier | Changing timestamped run IDs would sever links to existing evidence records. |
+| `README.md` | 13 | `RAGTune` | `former_name_documentation` | explicit former-name note requested for the RAGWarrant repository | Removing this would hide the project rename history from readers. |
+| `README.md` | 19 | `ragtune` | `historical_run_identifier` | historical run identifier | Changing timestamped run IDs would sever links to existing evidence records. |
+| `docs/public_repository_note.md` | 3 | `RAGTune` | `former_name_documentation` | explicit former-name note for the canonical public repository | Removing this would hide the project rename history from readers. |
+| `docs/public_repository_note.md` | 13 | `RAGTune` | `former_name_documentation` | historical identifier policy note | Removing this would hide why historical identifiers retain the former project name. |
 | `artifacts/aim_hardware_characterization/hardware_manifest.json` | 19 | `ragtune` | `immutable_historical_evidence` | hash-bound historical artifact | Changing this retained artifact or prior review record could invalidate recorded hashes or provenance. |
 | `artifacts/aim_hardware_matrix/hardware_matrix_manifest.json` | 18 | `ragtune` | `immutable_historical_evidence` | hash-bound historical artifact | Changing this retained artifact or prior review record could invalidate recorded hashes or provenance. |
 | `artifacts/audit/publication_export_manifest.json` | 50 | `ragtune` | `immutable_historical_evidence` | hash-bound historical artifact | Changing this retained artifact or prior review record could invalidate recorded hashes or provenance. |
@@ -1007,4 +1010,4 @@ Total exceptions: 26831
 | `artifacts/behavioral_governance/per_query_policy_results.csv` | 4530 | `ragtune` | `immutable_historical_evidence` | hash-bound historical artifact | Changing this retained artifact or prior review record could invalidate recorded hashes or provenance. |
 | `artifacts/behavioral_governance/per_query_policy_results.csv` | 4537 | `ragtune` | `immutable_historical_evidence` | hash-bound historical artifact | Changing this retained artifact or prior review record could invalidate recorded hashes or provenance. |
 | `src/ragwarrant/behavioral_governance.py` | 21 | `ragtune_no_fork` | `legacy_source_policy_identifier` | historical parent artifact policy id used by POLICY_SOURCE_MAP | Changing this source policy identifier would break replay of the frozen parent evidence table. |
-| `legacy_name_exceptions.json` | full manifest | `see JSON` | `migration_documentation` | migration documentation | Markdown is truncated for readability; JSON contains all 26831 entries. |
+| `legacy_name_exceptions.json` | full manifest | `see JSON` | `migration_documentation` | migration documentation | Markdown is truncated for readability; JSON contains all 26834 entries. |

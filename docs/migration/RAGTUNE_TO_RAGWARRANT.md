@@ -23,7 +23,7 @@ RAGWarrant was previously released as RAGTune at `v0.1.0-rc1`; the historical ta
 - CLI: `ragwarrant`
 - Environment prefix: `RAGWARRANT_`
 - Repository slug: `ragwarrant-governance`
-- Future GHCR image: `ghcr.io/RAGWarrant/ragwarrant-governance`
+- Future GHCR image: `ghcr.io/ragwarrant/ragwarrant-governance`
 
 ## Breaking Changes
 
