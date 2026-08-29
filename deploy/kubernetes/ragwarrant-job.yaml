@@ -1,0 +1,54 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ragwarrant-governance-job
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: ragwarrant
+          image: RAGWARRANT_IMAGE_REFERENCE_PLACEHOLDER
+          imagePullPolicy: Always
+          args:
+            - run-governance-job
+            - --config
+            - /inputs/public_mini_governance_job.yaml
+            - --output-root
+            - /outputs
+            - --decision-out
+            - /outputs/promotion_decision.json
+          env:
+            - name: RAGWARRANT_STORAGE_MODE
+              value: local
+            - name: RAGWARRANT_INPUT_DIR
+              value: /inputs
+            - name: RAGWARRANT_OUTPUT_DIR
+              value: /outputs
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            capabilities:
+              drop:
+                - ALL
+          volumeMounts:
+            - name: ragwarrant-config
+              mountPath: /inputs
+              readOnly: true
+            - name: ragwarrant-outputs
+              mountPath: /outputs
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: ragwarrant-config
+          configMap:
+            name: ragwarrant-job-config
+        - name: ragwarrant-outputs
+          persistentVolumeClaim:
+            claimName: ragwarrant-outputs
+        - name: tmp
+          emptyDir: {}

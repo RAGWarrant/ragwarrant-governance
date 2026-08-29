@@ -1,0 +1,15 @@
+suite: ragwarrant_generative_llm_regime_v1
+suite_version: 1
+seed: 20260808
+generators:
+  deterministic_grounded_extractive: true
+  generative_llm:
+    local_model: null
+    hosted_credential_env_var: null
+certificate:
+  supported_enabled: false
+  max_class: Candidate external signal
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

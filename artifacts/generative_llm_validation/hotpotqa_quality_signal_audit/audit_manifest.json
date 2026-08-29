@@ -18,6 +18,6 @@
   "result_class": "HOTPOTQA_GEN_LLM_QUALITY_SIGNAL_CONFIRMED",
   "sample_size": 12,
   "secrets_committed": false,
-  "suite": "ragtune_hotpotqa_generative_quality_signal_audit_v1",
+  "suite": "ragwarrant_hotpotqa_generative_quality_signal_audit_v1",
   "unique_answer_hash_count": 39
 }

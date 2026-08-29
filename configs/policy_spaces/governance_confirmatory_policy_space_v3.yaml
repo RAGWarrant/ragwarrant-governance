@@ -1,4 +1,4 @@
 version: 3
 inherits: configs/policy_spaces/governance_confirmatory_policy_space_v2.yaml
 naming:
-  ragtune_no_fork_display_name: RAG Compass
+  ragwarrant_no_fork_display_name: RAG Compass

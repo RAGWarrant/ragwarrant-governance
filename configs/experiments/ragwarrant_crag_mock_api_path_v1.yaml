@@ -1,0 +1,17 @@
+suite: ragwarrant_crag_mock_api_path_v1
+suite_version: 1
+seed: 20260808
+
+crag_mock_api:
+  source_identifier: facebookresearch/CRAG
+  source_revision: ad1518887dd4d9ebcd7de95388c7a62751e7705c
+  source_checkout_path: <approved-data-root>/source-validation-workspace/artifacts/datasets/raw/crag/source/ad1518887dd4d9ebcd7de95388c7a62751e7705c
+  allow_source_download: true
+  run_server_smoke: false
+  require_manual_approval: true
+  claim_policy: no_mock_api_governance_claim_without_server_smoke
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

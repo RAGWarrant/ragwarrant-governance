@@ -8,12 +8,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from ragtune.external_evaluator_adapter_demo import run_external_evaluator_adapter_demo
+from ragwarrant.external_evaluator_adapter_demo import run_external_evaluator_adapter_demo
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="configs/experiments/ragtune_external_evaluator_adapter_demo_v1.yaml")
+    parser.add_argument("--config", default="configs/experiments/ragwarrant_external_evaluator_adapter_demo_v1.yaml")
     parser.add_argument("--output-root", default="artifacts/external_evaluator_adapters")
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()

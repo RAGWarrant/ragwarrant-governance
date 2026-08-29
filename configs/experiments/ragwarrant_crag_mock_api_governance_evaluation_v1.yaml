@@ -1,0 +1,16 @@
+suite: ragwarrant_crag_mock_api_governance_evaluation_v1
+suite_version: 1
+seed: 20260809
+gate:
+  require_mock_api_server_smoke_result: MOCK_API_SERVER_SMOKE_PASSED
+evaluation:
+  compare_web_document_path: true
+  compare_mock_api_path: true
+  compare_hybrid_path: false
+mock_api:
+  compat_python: <compat-runtime>/python
+  governance_port: 18084
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

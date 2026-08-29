@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from ragtune.rc1_maturity import run_crag_evaluator_mapping_v2
+from ragwarrant.rc1_maturity import run_crag_evaluator_mapping_v2
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="configs/experiments/ragtune_crag_evaluator_mapping_diagnostic_v2.yaml")
+    parser.add_argument("--config", default="configs/experiments/ragwarrant_crag_evaluator_mapping_diagnostic_v2.yaml")
     parser.add_argument("--output-root", default="artifacts/crag_evaluator_mapping_v2")
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--dry-run", action="store_true")

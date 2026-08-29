@@ -1,0 +1,23 @@
+suite: ragwarrant_end_to_end_v1
+seed: 12345
+dataset:
+  name: fixture_end_to_end_mini_corpus
+policy_space:
+  top_k: [3, 5, 8]
+  reranker_enabled: [false, true]
+  citation_required: [false, true]
+  abstention_threshold: [0.2, 0.5, 0.8]
+objectives:
+  cost_weight: 0.25
+  latency_weight: 0.1
+  protected_regression_threshold: -0.03
+baselines:
+  - static_default_rag_policy
+  - best_single_policy_on_validation
+  - retrieval_confidence_gating
+  - ragwarrant_no_fork
+certificate:
+  bootstrap_samples: 100
+output:
+  append_only: true
+

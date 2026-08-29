@@ -1,4 +1,4 @@
-name: Build RAGTune Container
+name: Build RAGWarrant Container
 on:
   workflow_dispatch:
 jobs:
@@ -7,4 +7,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build image
-        run: docker build -t ragtune-governance:ci .
+        run: docker build -t ragwarrant-governance:ci .

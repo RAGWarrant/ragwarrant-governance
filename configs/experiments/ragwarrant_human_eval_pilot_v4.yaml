@@ -1,0 +1,15 @@
+suite: ragwarrant_human_eval_pilot_v4
+suite_version: 4
+seed: 20260809
+human_eval:
+  annotation_mode: local_csv
+  run_mode: prepare_only
+  blinding_method: policy_labels_redacted
+  randomization_seed: 20260809
+  answer_key_protection_path: human_eval_answer_key_private.json
+  inter_rater_agreement_plan: report_if_multiple_annotators
+  privacy_statement: no private or secret data should be included
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

@@ -1,6 +1,6 @@
 # Container Supply Chain
 
-RAGTune uses a finite-job container image for public-mini governance execution.
+RAGWarrant uses a finite-job container image for public-mini governance execution.
 The image reports job success through process exit status and the schema-valid
 `promotion_decision.json` artifact. It intentionally has no Docker
 `HEALTHCHECK`; health checks are more appropriate for long-running services and
@@ -33,13 +33,13 @@ Development and publication-test dependencies are installed from
 python3 -m piptools compile --extra dev --generate-hashes --resolver=backtracking --output-file requirements-dev.lock pyproject.toml
 ```
 
-The runtime image installs the RAGTune wheel with `--no-deps` after the hashed
+The runtime image installs the RAGWarrant wheel with `--no-deps` after the hashed
 runtime lock is installed. Test dependencies are not installed in the runtime
 image.
 
 ## Runtime Contents
 
-The runtime image includes the installed RAGTune package, `configs/`, `schemas/`,
+The runtime image includes the installed RAGWarrant package, `configs/`, `schemas/`,
 and license/citation metadata. It does not copy `tests/`, `paper/`, `docs/`,
 `results/`, `artifacts/`, `deployment_review/`, `.git/`, local data caches, or
 Docker caches into `/app`.
@@ -49,7 +49,7 @@ Docker caches into `/app`.
 The publication workflow publishes same-repository candidate images to:
 
 ```text
-ghcr.io/aim-ragtune/rag-tuning-governance
+ghcr.io/ragwarrant/ragwarrant-governance
 ```
 
 GitHub packages may require a one-time visibility change to make anonymous cloud

@@ -17,7 +17,7 @@ def test_publish_container_workflow_has_supply_chain_controls() -> None:
     assert "provenance: mode=max" in text
     assert "sbom: true" in text
     assert "cosign sign --yes" in text
-    assert "ghcr.io/aim-ragtune/rag-tuning-governance" in text
+    assert "ghcr.io/ragwarrant/ragwarrant-governance" in text
     assert ":latest" not in text
     assert "push:" in text
     assert "tags:" in text
@@ -31,7 +31,7 @@ def test_publish_container_workflow_has_supply_chain_controls() -> None:
 def test_image_digest_file_is_pending_or_real_digest() -> None:
     text = (ROOT / "deploy" / "IMAGE_DIGEST").read_text(encoding="utf-8")
     fields = dict(line.split("=", 1) for line in text.splitlines() if "=" in line)
-    assert fields["IMAGE"] == "ghcr.io/aim-ragtune/rag-tuning-governance"
+    assert fields["IMAGE"] == "ghcr.io/ragwarrant/ragwarrant-governance"
     assert fields["REAL_CLOUD_DEPLOYMENT_PERFORMED"] == "false"
     digest = fields["DIGEST"]
     assert digest == "PENDING_FIRST_WORKFLOW_RUN" or re.fullmatch(r"sha256:[0-9a-f]{64}", digest)
@@ -69,7 +69,7 @@ def test_record_image_digest_rejects_non_digest(tmp_path: Path) -> None:
 def test_resolve_deploy_image_blocks_pending_sentinel(tmp_path: Path) -> None:
     digest_file = tmp_path / "IMAGE_DIGEST"
     digest_file.write_text(
-        "IMAGE=ghcr.io/aim-ragtune/rag-tuning-governance\n"
+        "IMAGE=ghcr.io/ragwarrant/ragwarrant-governance\n"
         "REFERENCE=PENDING_FIRST_WORKFLOW_RUN\n"
         "DIGEST=PENDING_FIRST_WORKFLOW_RUN\n",
         encoding="utf-8",
@@ -91,8 +91,8 @@ def test_resolve_deploy_image_accepts_valid_digest_fixture(tmp_path: Path) -> No
     digest = "sha256:" + "a" * 64
     digest_file = tmp_path / "IMAGE_DIGEST"
     digest_file.write_text(
-        "IMAGE=ghcr.io/aim-ragtune/rag-tuning-governance\n"
-        f"REFERENCE=ghcr.io/aim-ragtune/rag-tuning-governance@{digest}\n"
+        "IMAGE=ghcr.io/ragwarrant/ragwarrant-governance\n"
+        f"REFERENCE=ghcr.io/ragwarrant/ragwarrant-governance@{digest}\n"
         f"DIGEST={digest}\n"
         "PLATFORMS=linux/amd64,linux/arm64\n",
         encoding="utf-8",
@@ -105,16 +105,16 @@ def test_resolve_deploy_image_accepts_valid_digest_fixture(tmp_path: Path) -> No
         check=False,
     )
     assert result.returncode == 0
-    assert result.stdout.strip() == f"ghcr.io/aim-ragtune/rag-tuning-governance@{digest}"
+    assert result.stdout.strip() == f"ghcr.io/ragwarrant/ragwarrant-governance@{digest}"
 
 
 @pytest.mark.parametrize(
     "reference",
     [
-        "ghcr.io/aim-ragtune/rag-tuning-governance:latest",
-        "ghcr.io/aim-ragtune/rag-tuning-governance:main",
+        "ghcr.io/ragwarrant/ragwarrant-governance:latest",
+        "ghcr.io/ragwarrant/ragwarrant-governance:main",
         "",
-        "ghcr.io/aim-ragtune/rag-tuning-governance@sha256:nothex",
+        "ghcr.io/ragwarrant/ragwarrant-governance@sha256:nothex",
     ],
 )
 def test_resolve_deploy_image_rejects_malformed_or_floating_overrides(reference: str) -> None:

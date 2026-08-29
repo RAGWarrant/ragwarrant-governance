@@ -1,0 +1,7 @@
+legacy_identifier,new_identifier,category,breaking_change,notes
+RAGTune,RAGWarrant,display_name,yes,Active product name changed; historical evidence retains legacy name.
+ragtune,ragwarrant,python_package_and_cli,yes,Legacy package and console script are intentionally not retained as aliases.
+RAGTUNE_,RAGWARRANT_,environment_prefix,yes,Active environment variables use the RAGWarrant prefix.
+ragtune_,ragwarrant_,suite_and_artifact_prefix,yes,Active suite IDs and new artifact families use the RAGWarrant prefix; timestamped historical run IDs are retained.
+rag-tuning-governance,ragwarrant-governance,repository_slug,yes,Canonical GitHub repository slug after native transfer and rename.
+ghcr.io/aim-ragtune/rag-tuning-governance,ghcr.io/RAGWarrant/ragwarrant-governance,container_image,yes,Future image publication path; old digest record is retained as historical until a new image is built.

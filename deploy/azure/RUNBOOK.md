@@ -1,6 +1,6 @@
 # Azure Zero-to-First-Run Runbook
 
-This runbook describes how an operator can run the finite RAGTune governance job as an Azure Container Apps job. It is a deployment guide only. It does not report live Azure validation, production readiness, official benchmarking, or platform certification.
+This runbook describes how an operator can run the finite RAGWarrant governance job as an Azure Container Apps job. It is a deployment guide only. It does not report live Azure validation, production readiness, official benchmarking, or platform certification.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ If the image reference is pending, run the GHCR publish workflow first and updat
 ## Deploy
 
 ```bash
-export RAGTUNE_AZURE_RESOURCE_GROUP="<resource-group-name>"
+export RAGWARRANT_AZURE_RESOURCE_GROUP="<resource-group-name>"
 
 bash deploy/azure/deploy-aca-job.sh
 ```
@@ -30,8 +30,8 @@ bash deploy/azure/deploy-aca-job.sh
 ## Run
 
 ```bash
-export RAGTUNE_AZURE_RESOURCE_GROUP="<resource-group-name>"
-export RAGTUNE_AZURE_JOB_NAME="ragtune-governance-job"
+export RAGWARRANT_AZURE_RESOURCE_GROUP="<resource-group-name>"
+export RAGWARRANT_AZURE_JOB_NAME="ragwarrant-governance-job"
 
 bash deploy/azure/run-aca-job.sh
 ```

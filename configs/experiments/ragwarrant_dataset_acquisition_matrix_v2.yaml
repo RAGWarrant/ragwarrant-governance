@@ -1,0 +1,10 @@
+suite: ragwarrant_dataset_acquisition_matrix_v2
+suite_version: 2
+seed: 20260808
+
+dataset_config: configs/datasets/dataset_acquisition_matrix_v2.yaml
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

@@ -160,7 +160,7 @@ def main() -> None:
         )
 
     summary = {
-        "suite": "ragtune_crag_generative_stability_comparison_v1",
+        "suite": "ragwarrant_crag_generative_stability_comparison_v1",
         "result_class": result_class,
         "interpretation": interpretation,
         "run_count": len(payloads),

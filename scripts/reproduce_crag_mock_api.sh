@@ -12,4 +12,4 @@ fi
 
 echo "CRAG raw data directory found: $CRAG_RAW_DIR"
 echo "Run the source-suite command appropriate for your checkout:"
-echo "python -m ragtune.cli run-suite --suite ragtune_crag_mock_api_validation_v1 --config configs/experiments/ragtune_crag_mock_api_validation_v1.yaml --output-dir artifacts/ragtune/runs --run-id auto"
+echo "python -m ragwarrant.cli run-suite --suite ragwarrant_crag_mock_api_validation_v1 --config configs/experiments/ragwarrant_crag_mock_api_validation_v1.yaml --output-dir artifacts/ragwarrant/runs --run-id auto"

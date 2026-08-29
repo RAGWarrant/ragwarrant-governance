@@ -1,0 +1,72 @@
+suite: ragwarrant_confirmatory_readiness_gate_v1
+suite_version: 1
+seed: 20260807
+
+provenance:
+  required_mode: strict_git
+  confirmatory_without_git_allowed: false
+  allow_candidate_signal_without_git: false
+  require_docker_digest: false
+  require_clean_working_tree: true
+
+fresh_data:
+  minimum_confirmatory_queries: 300
+  preferred_confirmatory_queries: 1000
+  require_uninspected_examples: true
+  require_license_approval: true
+  require_zero_leakage: true
+
+dataset:
+  dataset_id: multihop_rag
+  expected_revision: 71ac0d0bd1f951d2d6b70311f7d2ae404e1ffa82
+  expected_corpus_hash: a38d025db8a37f9947299f0368b9233206fd77720f4e72bfff38cf9011271911
+  expected_query_hash: 477ccbd9e89275e9b9d540b5cd41f823adf5ab5a695112ddec4b3ecfa13c0378
+  require_license_approval: true
+  require_zero_leakage: true
+  require_confirmatory_test_sealed: true
+
+policy_space_file: configs/policy_spaces/governance_confirmatory_policy_space_v2.yaml
+
+generators:
+  regimes:
+    - deterministic_grounded_extractive
+    - local_open_weight_or_hosted_pinned_optional
+  analyze_regimes_separately: true
+
+baselines:
+  required:
+    - static_default_rag_policy
+    - best_single_policy_on_validation
+    - uniform_random_search
+    - greedy_coordinate_search
+    - greedy_regression_aware_search
+    - optuna_tpe
+    - ragwarrant_no_fork
+    - governed_selection
+    - quality_only_selection
+
+budget:
+  primary_mode: normalized_cost
+  parity_tolerance: 0.01
+
+hypotheses:
+  governance_superiority_margin: 0.0
+  governance_noninferiority_margin: 0.01
+  nofork_secondary_noninferiority_margin: 0.01
+
+statistics:
+  confidence_level: 0.95
+  bootstrap_samples: 5000
+  grouped_bootstrap: true
+
+security:
+  hard_constraints: true
+
+certificate:
+  supported_enabled: false
+  max_class: Candidate external signal
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

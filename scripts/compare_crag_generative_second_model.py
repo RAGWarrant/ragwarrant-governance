@@ -77,7 +77,7 @@ def main() -> None:
         },
     ]
     payload = {
-        "suite": "ragtune_crag_generative_second_model_comparison_v1",
+        "suite": "ragwarrant_crag_generative_second_model_comparison_v1",
         "result_class": result_class,
         "interpretation": interpretation,
         "primary_model_stability_result": primary.get("result_class", ""),

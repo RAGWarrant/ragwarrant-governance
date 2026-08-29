@@ -83,7 +83,7 @@ def resolve_image(digest_file: Path, *, image_override: str | None = None, verif
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Resolve the digest-pinned RAGTune deployment image.")
+    parser = argparse.ArgumentParser(description="Resolve the digest-pinned RAGWarrant deployment image.")
     parser.add_argument("--digest-file", default=str(ROOT / "deploy" / "IMAGE_DIGEST"))
     parser.add_argument("--image-override", default=None)
     parser.add_argument("--verify-registry", action="store_true")

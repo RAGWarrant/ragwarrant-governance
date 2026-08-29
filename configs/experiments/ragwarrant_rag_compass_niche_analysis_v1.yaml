@@ -1,0 +1,20 @@
+suite: ragwarrant_rag_compass_niche_analysis_v1
+suite_version: 1
+seed: 20260809
+optimizer:
+  canonical_display_name: RAG Compass
+  legacy_id: ragwarrant_no_fork
+niches:
+  - tuning_cost_efficiency
+  - inference_cost_efficiency
+  - latency_efficiency
+  - stability
+  - overfit_resistance
+  - regression_avoidance
+  - security_eligibility
+  - small_validation_set_robustness
+  - simplicity_deployability
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

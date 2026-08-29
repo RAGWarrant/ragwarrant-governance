@@ -1,0 +1,33 @@
+suite: ragwarrant_hotpotqa_generative_llm_validation_v1
+suite_version: 1
+seed: 20260810
+
+dataset:
+  source: hotpotqa
+  preferred_loader: huggingface
+  hf_dataset: hotpotqa/hotpot_qa
+  hf_config: distractor
+  export_raw_question_text: false
+  export_raw_context_text: false
+  export_raw_supporting_fact_text: false
+
+sample:
+  development_rows: 50
+  validation_rows: 100
+  confirmatory_rows: 100
+  max_total_rows: 250
+
+generator:
+  provider_env: RAGWARRANT_GENERATOR_PROVIDER
+  model_env: RAGWARRANT_GENERATOR_MODEL
+  prompt_text_exported: false
+  raw_generated_answer_exported: false
+
+quality:
+  metric_config: configs/experiments/ragwarrant_generated_answer_quality_v1.yaml
+  generated_quality_noninferiority_margin: 0.01
+  block_constant_zero_signal: true
+
+output:
+  sanitize_raw_text: true
+  append_only: true

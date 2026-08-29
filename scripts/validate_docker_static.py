@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from ragtune.docker_static_validation import validate_docker_static
+from ragwarrant.docker_static_validation import validate_docker_static
 
 
 def main() -> int:

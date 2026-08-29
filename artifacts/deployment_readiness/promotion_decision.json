@@ -24,10 +24,10 @@
   "quality_delta": 0.0,
   "result_class": "DEPLOYMENT_READINESS_SUPPORTED_WITH_BOUNDARIES",
   "risk_flags": [],
-  "run_id": "ragtune_deployment_readiness_v1_20260811-public",
+  "run_id": "ragwarrant_deployment_readiness_v1_20260811-public",
   "schema_version": "1.0",
   "selected_policy": "deployment_templates",
-  "suite": "ragtune_deployment_readiness_v1",
-  "timestamp_utc": "2026-08-12T01:50:30+00:00",
+  "suite": "ragwarrant_deployment_readiness_v1",
+  "timestamp_utc": "2026-08-29T18:16:04+00:00",
   "validator_status": "pending_publication_validator"
 }

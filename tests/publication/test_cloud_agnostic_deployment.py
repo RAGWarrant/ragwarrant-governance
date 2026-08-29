@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from ragtune.deployment_readiness import DEPLOYMENT_TARGETS, validate_deployment_readiness
+from ragwarrant.deployment_readiness import DEPLOYMENT_TARGETS, validate_deployment_readiness
 
 
 ROOT = Path(__file__).resolve().parents[2]

@@ -1,0 +1,6 @@
+suite: ragwarrant_governance_ablation_confirmatory_v1
+suite_version: 1
+seed: 20260806
+
+certificate:
+  supported_enabled: false

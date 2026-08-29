@@ -17,10 +17,10 @@ RUN python -m pip install --upgrade pip build wheel \
 
 FROM ${PYTHON_BASE} AS runtime
 
-LABEL org.opencontainers.image.title="RAGTune Governance" \
+LABEL org.opencontainers.image.title="RAGWarrant Governance" \
       org.opencontainers.image.description="Finite publication-safe RAG policy governance job" \
       org.opencontainers.image.licenses="Apache-2.0" \
-      org.opencontainers.image.source="https://github.com/AIM-RAGTune/rag-tuning-governance"
+      org.opencontainers.image.source="https://github.com/RAGWarrant/ragwarrant-governance"
 
 WORKDIR /app
 
@@ -28,11 +28,11 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_NO_CACHE_DIR=1 \
-    RAGTUNE_CONTAINER=1 \
-    RAGTUNE_REPO_ROOT=/app \
-    RAGTUNE_INPUT_DIR=/inputs \
-    RAGTUNE_OUTPUT_DIR=/outputs \
-    RAGTUNE_OUTPUT_ROOT=/outputs
+    RAGWARRANT_CONTAINER=1 \
+    RAGWARRANT_REPO_ROOT=/app \
+    RAGWARRANT_INPUT_DIR=/inputs \
+    RAGWARRANT_OUTPUT_DIR=/outputs \
+    RAGWARRANT_OUTPUT_ROOT=/outputs
 
 COPY requirements-runtime.lock ./
 RUN python -m pip install --upgrade pip \
@@ -43,18 +43,20 @@ RUN python -m pip install --no-deps /tmp/wheelhouse/*.whl \
     && rm -rf /tmp/wheelhouse
 
 COPY configs ./configs
+COPY deploy ./deploy
+COPY docker ./docker
 COPY schemas ./schemas
-COPY README.md LICENSE CITATION.cff ./
+COPY .gitattributes .dockerignore Dockerfile docker-compose.yml README.md LICENSE CITATION.cff ./
 
-RUN groupadd --system --gid 10001 ragtune \
-    && useradd --system --uid 10001 --gid ragtune --create-home --home-dir /home/ragtune --shell /usr/sbin/nologin ragtune \
+RUN groupadd --system --gid 10001 ragwarrant \
+    && useradd --system --uid 10001 --gid ragwarrant --create-home --home-dir /home/ragwarrant --shell /usr/sbin/nologin ragwarrant \
     && mkdir -p /inputs /outputs \
-    && chown -R ragtune:ragtune /outputs /home/ragtune
+    && chown -R ragwarrant:ragwarrant /outputs /home/ragwarrant
 
-# The named USER ragtune is represented by the fixed numeric UID:GID below.
+# The named USER ragwarrant is represented by the fixed numeric UID:GID below.
 USER 10001:10001
 
 STOPSIGNAL SIGTERM
 
-ENTRYPOINT ["ragtune"]
+ENTRYPOINT ["ragwarrant"]
 CMD ["--help"]

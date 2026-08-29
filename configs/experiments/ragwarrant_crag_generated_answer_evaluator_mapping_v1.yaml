@@ -1,0 +1,11 @@
+suite: ragwarrant_crag_generated_answer_evaluator_mapping_v1
+suite_version: 1
+input:
+  sanitized_crag_generation_metrics: artifacts/generative_llm_validation/crag/per_query_generation_metrics.csv
+  local_evaluator_inputs_gitignored: true
+publication:
+  export_raw_crag_questions: false
+  export_raw_source_text: false
+  export_raw_api_responses: false
+  export_raw_generated_answers: false
+  export_private_paths: false

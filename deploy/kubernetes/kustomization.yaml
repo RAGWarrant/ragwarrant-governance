@@ -1,5 +1,5 @@
 resources:
-  - ragtune-configmap.example.yaml
-  - ragtune-pvc.example.yaml
-  - ragtune-job.yaml
-  - ragtune-cronjob.yaml
+  - ragwarrant-configmap.example.yaml
+  - ragwarrant-pvc.example.yaml
+  - ragwarrant-job.yaml
+  - ragwarrant-cronjob.yaml

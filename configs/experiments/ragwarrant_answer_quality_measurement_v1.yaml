@@ -1,0 +1,22 @@
+suite: ragwarrant_answer_quality_measurement_v1
+suite_version: 1
+quality:
+  result_class: QUALITY_MEASURE_PROXY_PLUS_EVIDENCE
+  components:
+    answer_correctness_score_from_parent_raw_quality: true
+    evidence_support_score: true
+    abstention_score: true
+    answerability_score: true
+  weights:
+    answer_correctness_score_from_parent_raw_quality: 0.70
+    evidence_support_score: 0.20
+    abstention_score: 0.10
+    optional_judge_score: 0.0
+  llm_judge:
+    enabled: false
+  human_calibration:
+    enabled: false
+output:
+  append_only: true
+  sanitize_raw_text: true
+  validate_schemas: true

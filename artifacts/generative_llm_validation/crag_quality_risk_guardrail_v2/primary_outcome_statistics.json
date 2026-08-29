@@ -112,5 +112,5 @@
   "result_class": "CRAG_GEN_LLM_QUALITY_RISK_GUARDRAIL_V2_BLOCKED_HELDOUT_QUALITY_LOSS",
   "secrets_committed": false,
   "strict_quality_loss_blocking": true,
-  "suite": "ragtune_crag_generative_quality_risk_guardrail_v2"
+  "suite": "ragwarrant_crag_generative_quality_risk_guardrail_v2"
 }

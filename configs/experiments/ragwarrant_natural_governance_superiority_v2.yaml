@@ -1,0 +1,13 @@
+suite: ragwarrant_natural_governance_superiority_v2
+suite_version: 2
+seed: 20260808
+
+case_discovery:
+  require_real_public_output: true
+  synthetic_cases_do_not_count: true
+  public_perturbations_do_not_count_as_unperturbed_natural: true
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

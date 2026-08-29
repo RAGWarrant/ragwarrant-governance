@@ -2,9 +2,9 @@ defaults:
   linux_nas_mount: "<approved-data-root>"
   macos_nas_mount: "<approved-data-root>"
   project_subdir: "<project-subdir>"
-  gpu_hot_scratch: "/srv/aim/ragtune/hot"
-  gpu_warm_scratch: "/srv/aim/ragtune/warm"
-  processing_scratch: "/srv/aim/ragtune/processing"
+  gpu_hot_scratch: "/srv/aim/ragwarrant/hot"
+  gpu_warm_scratch: "/srv/aim/ragwarrant/warm"
+  processing_scratch: "/srv/aim/ragwarrant/processing"
 
 layout:
   - datasets/raw/kaggle

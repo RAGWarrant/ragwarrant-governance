@@ -1,6 +1,6 @@
 # Container Security Scans
 
-RAGTune records optional container scanner availability for local hardening.
+RAGWarrant records optional container scanner availability for local hardening.
 
 Optional tools:
 

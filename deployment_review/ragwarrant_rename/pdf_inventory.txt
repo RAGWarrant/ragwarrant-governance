@@ -1,0 +1,6 @@
+./paper/figures/figure_01_governance_loop.pdf
+./paper/figures/figure_02_decision_geometry.pdf
+./paper/figures/figure_03_evidence_ladder.pdf
+./paper/figures/figure_04_cloud_job_contract.pdf
+./paper/figures/figure_05_evidence_map.pdf
+./paper/figures/figure_06_selector_stress_test.pdf

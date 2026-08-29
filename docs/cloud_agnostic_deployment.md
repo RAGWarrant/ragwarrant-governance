@@ -1,6 +1,6 @@
 # Cloud-Agnostic Deployment
 
-RAGTune is packaged as a cloud-agnostic governance job. The repository includes templates for:
+RAGWarrant is packaged as a cloud-agnostic governance job. The repository includes templates for:
 
 - local Docker
 - Docker Compose
@@ -15,7 +15,7 @@ RAGTune is packaged as a cloud-agnostic governance job. The repository includes 
 Each template runs the same finite command:
 
 ```bash
-ragtune run-governance-job --config /configs/job.yaml --output-root /outputs --decision-out /outputs/promotion_decision.json
+ragwarrant run-governance-job --config /configs/job.yaml --output-root /outputs --decision-out /outputs/promotion_decision.json
 ```
 
 Cloud-specific templates are examples for operator adaptation. They intentionally use placeholders for image names, storage buckets, registries, service accounts, identities, and regions. No cloud credentials are committed, and live cloud execution is not claimed by this repository.

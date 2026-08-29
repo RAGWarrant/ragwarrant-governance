@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build local image
-        run: docker build -t ragtune-governance:ci .
+        run: docker build -t ragwarrant-governance:ci .
       - name: Run publication check
-        run: docker run --rm ragtune-governance:ci validate-bundle
+        run: docker run --rm ragwarrant-governance:ci validate-bundle

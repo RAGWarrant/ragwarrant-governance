@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def test_public_mini_reproduction_config_exists() -> None:
-    assert (ROOT / "configs/experiments/ragtune_public_mini_reproduction_v1.yaml").exists()
+    assert (ROOT / "configs/experiments/ragwarrant_public_mini_reproduction_v1.yaml").exists()
 
 
 def test_public_mini_reproduction_script_exists() -> None:

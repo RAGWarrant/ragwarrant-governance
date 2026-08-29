@@ -1,9 +1,9 @@
 services:
-  ragtune-public-mini:
+  ragwarrant-public-mini:
     build:
       context: ..
       dockerfile: Dockerfile
-    image: ragtune:local
+    image: ragwarrant:local
     command:
       - run-governance-job
       - --config
@@ -13,9 +13,9 @@ services:
       - --decision-out
       - /outputs/promotion_decision.json
     environment:
-      RAGTUNE_CONTAINER: "1"
-      RAGTUNE_STORAGE_MODE: local
-      RAGTUNE_OUTPUT_ROOT: /outputs
+      RAGWARRANT_CONTAINER: "1"
+      RAGWARRANT_STORAGE_MODE: local
+      RAGWARRANT_OUTPUT_ROOT: /outputs
     volumes:
       - ../docker_outputs:/outputs
     network_mode: "none"

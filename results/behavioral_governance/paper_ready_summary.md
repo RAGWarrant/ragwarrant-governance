@@ -2,7 +2,7 @@
 
 ## Experiment purpose
 
-This experiment tests whether RAGTune governance can make a materially useful promotion decision when candidate policies differ in actual endpoint routing, API calls, measured cost, and measured latency.
+This experiment tests whether RAGWarrant governance can make a materially useful promotion decision when candidate policies differ in actual endpoint routing, API calls, measured cost, and measured latency.
 
 ## Why the prior CRAG result was insufficient
 
@@ -52,9 +52,9 @@ The quality measure remains proxy-plus-evidence, RAG Compass ranked behind the g
 
 This supports a bounded governance claim on sanitized frozen CRAG mock-API source/retrieval observations. It does not support RAG Compass superiority, broad governance superiority, production readiness, human validation, generative validation, or official benchmark status.
 
-## Implication for RAGTune
+## Implication for RAGWarrant
 
-The result strengthens RAGTune as a governance framework by replacing a weighted-utility-only framing with a predeclared quality-floor and measured operating-cost endpoint.
+The result strengthens RAGWarrant as a governance framework by replacing a weighted-utility-only framing with a predeclared quality-floor and measured operating-cost endpoint.
 
 ## Implication for RAG Compass
 

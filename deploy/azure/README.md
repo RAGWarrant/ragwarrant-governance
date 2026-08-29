@@ -1,6 +1,6 @@
 # Azure Container Apps Job
 
-The Azure examples define a Container Apps Job that runs the same RAGTune finite governance command. They use placeholders and do not include Azure credentials.
+The Azure examples define a Container Apps Job that runs the same RAGWarrant finite governance command. They use placeholders and do not include Azure credentials.
 
 ```bash
 bash deploy/azure/deploy-aca-job.sh

@@ -1,0 +1,29 @@
+{
+  "expected_differences": [
+    "package namespace changed from ragtune to ragwarrant",
+    "CLI entry point changed from ragtune to ragwarrant",
+    "repository URL changed to https://github.com/RAGWarrant/ragwarrant-governance",
+    "GHCR image namespace changed to ghcr.io/ragwarrant/ragwarrant-governance",
+    "version and distribution metadata now use RAGWarrant names"
+  ],
+  "public_mini_result": {
+    "governed_winner": "risk_guarded_governance",
+    "quality_only_winner": "expanded_quality_policy",
+    "result_class": "PUBLIC_MINI_REPRODUCTION_FAIL_CLOSED",
+    "suite": "ragwarrant_public_mini_reproduction_v1"
+  },
+  "status": "verified_for_rename_relevant_gates",
+  "verification": {
+    "clean_editable_install_import_ragwarrant": "passed",
+    "clean_editable_install_legacy_ragtune_absent": "passed",
+    "compileall_src_scripts": "passed",
+    "docker_static_validation": "DOCKER_STATIC_VALIDATION_PASSED",
+    "git_diff_check": "passed",
+    "make_validate_deployment_readiness": "DEPLOYMENT_READINESS_SUPPORTED_WITH_BOUNDARIES",
+    "make_validate_publication": "passed",
+    "pytest_publication": "267 passed, 6 skipped",
+    "pytest_publication_cli_entrypoints": "5 passed",
+    "ragwarrant_help": "passed",
+    "ragwarrant_public_mini": "passed"
+  }
+}

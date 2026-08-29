@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def test_hotpotqa_quality_signal_audit_manifest_exists_new() -> None:
     manifest = json.loads((ROOT / "artifacts/generative_llm_validation/hotpotqa_quality_signal_audit/audit_manifest.json").read_text(encoding="utf-8"))
-    assert manifest["suite"] == "ragtune_hotpotqa_generative_quality_signal_audit_v1"
+    assert manifest["suite"] == "ragwarrant_hotpotqa_generative_quality_signal_audit_v1"
     assert "configured_larger_sample_target" in manifest
 
 

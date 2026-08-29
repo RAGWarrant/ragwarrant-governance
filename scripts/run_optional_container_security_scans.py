@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from ragtune.container_security_scans import run_optional_container_security_scans
+from ragwarrant.container_security_scans import run_optional_container_security_scans
 
 
 def main() -> int:

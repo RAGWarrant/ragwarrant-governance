@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from ragtune.rc1_maturity import HOTPOTQA_AUDIT_V2_RESULT_CLASSES
+from ragwarrant.rc1_maturity import HOTPOTQA_AUDIT_V2_RESULT_CLASSES
 
 
 ROOT = Path(__file__).resolve().parents[2]

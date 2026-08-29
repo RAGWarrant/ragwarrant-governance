@@ -76,7 +76,7 @@ def main() -> None:
     else:
         result_class = "CRAG_GEN_LLM_ANSWER_EMISSION_NOT_REPAIRED"
     payload = {
-        "suite": "ragtune_crag_answer_emission_model_comparison_v1",
+        "suite": "ragwarrant_crag_answer_emission_model_comparison_v1",
         "result_class": result_class,
         "baseline": baseline,
         "candidate": candidate,

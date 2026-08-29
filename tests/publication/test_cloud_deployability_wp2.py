@@ -6,7 +6,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from ragtune.mounted_job_contract import check_mounted_job_contract, exercise_storage_mode
+from ragwarrant.mounted_job_contract import check_mounted_job_contract, exercise_storage_mode
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -32,8 +32,8 @@ def test_contract_check_uses_sanitized_path_labels(tmp_path: Path, monkeypatch) 
     input_dir = tmp_path / "inputs"
     output_dir = tmp_path / "outputs"
     input_dir.mkdir()
-    monkeypatch.setenv("RAGTUNE_INPUT_DIR", str(input_dir))
-    monkeypatch.setenv("RAGTUNE_OUTPUT_DIR", str(output_dir))
+    monkeypatch.setenv("RAGWARRANT_INPUT_DIR", str(input_dir))
+    monkeypatch.setenv("RAGWARRANT_OUTPUT_DIR", str(output_dir))
     status, report = check_mounted_job_contract(output_root=output_dir)
     assert status == 0
     assert report["input_mount"] == "<configured-mounted-path>"
@@ -60,7 +60,7 @@ def test_cli_missing_config_writes_block_decision(tmp_path: Path) -> None:
         [
             sys.executable,
             "-m",
-            "ragtune.cli",
+            "ragwarrant.cli",
             "run-governance-job",
             "--config",
             str(tmp_path / "missing.yaml"),
@@ -82,12 +82,12 @@ def test_cli_missing_config_writes_block_decision(tmp_path: Path) -> None:
 def test_cli_output_env_and_flag_precedence(tmp_path: Path, monkeypatch) -> None:
     env_out = tmp_path / "env_out"
     flag_out = tmp_path / "flag_out"
-    monkeypatch.setenv("RAGTUNE_OUTPUT_DIR", str(env_out))
+    monkeypatch.setenv("RAGWARRANT_OUTPUT_DIR", str(env_out))
     result = subprocess.run(
         [
             sys.executable,
             "-m",
-            "ragtune.cli",
+            "ragwarrant.cli",
             "check-mounted-contract",
             "--output-root",
             str(flag_out),

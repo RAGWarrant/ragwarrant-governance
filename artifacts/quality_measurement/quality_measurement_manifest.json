@@ -2,7 +2,7 @@
   "human_calibration": "not_run",
   "llm_judge": "not_configured",
   "result_class": "QUALITY_MEASURE_PROXY_PLUS_EVIDENCE",
-  "suite": "ragtune_answer_quality_measurement_v1",
+  "suite": "ragwarrant_answer_quality_measurement_v1",
   "weights": {
     "abstention_score": 0.1,
     "answer_correctness_score_from_parent_raw_quality": 0.7,

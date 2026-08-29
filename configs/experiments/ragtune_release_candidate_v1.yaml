@@ -1,6 +1,0 @@
-suite: ragtune_release_candidate_v1
-version: v0.1.0-rc1
-create_large_archive: false
-require_public_mini: true
-require_docker_hardening: true
-sanitize_outputs: true

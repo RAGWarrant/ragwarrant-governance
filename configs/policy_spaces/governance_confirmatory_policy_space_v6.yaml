@@ -2,7 +2,7 @@ policy_space_id: governance_confirmatory_policy_space_v6
 description: Governance-first policy space for corpus expansion v4.
 stable_internal_ids: true
 display_names:
-  ragtune_no_fork: RAG Compass
+  ragwarrant_no_fork: RAG Compass
 required_optimizers:
   - static_default_rag_policy
   - best_single_policy_on_validation
@@ -10,7 +10,7 @@ required_optimizers:
   - greedy_coordinate_search
   - greedy_regression_aware_search
   - optuna_tpe
-  - ragtune_no_fork
+  - ragwarrant_no_fork
   - governed_selection
   - quality_only_selection
 claim_boundary:
