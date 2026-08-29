@@ -1,0 +1,46 @@
+suite: ragwarrant_end_to_end_public_v1
+suite_version: 1
+profile: smoke
+evidence_mode: end_to_end_smoke
+seed: 12345
+
+dataset:
+  name: ragwarrant_mini_corpus_v1
+  fixture: true
+
+dataset_capability:
+  has_corpus: true
+  has_queries: true
+  has_reference_answers: false
+  has_supporting_documents: true
+  redistribution_permitted: true
+  end_to_end_eligible: false
+
+policy_space:
+  chunk_size: [48, 80]
+  top_k: [2, 3, 4, 5]
+  reranker_enabled: [false, true]
+  citation_required: [false, true]
+  abstention_threshold: [0.4, 0.6]
+
+objectives:
+  primary: cost_adjusted_utility
+  cost_weight: 0.25
+  latency_weight: 0.10
+  protected_regression_threshold: -0.03
+
+baselines:
+  - static_default_rag_policy
+  - best_single_policy_on_validation
+  - uniform_random_search
+  - greedy_regression_aware_search
+  - ragwarrant_no_fork
+
+certificate:
+  supported_enabled: false
+  max_class: Inconclusive
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

@@ -1,4 +1,0 @@
-suite: ragtune_selector_ablation_stress_v2
-version: 2
-preserve_unsafe_selector_cases: true
-claim_universal_superiority: false

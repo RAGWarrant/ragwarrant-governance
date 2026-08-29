@@ -1,0 +1,15 @@
+suite: ragwarrant_beneficial_governance_divergence_search_v1
+suite_version: 1
+seed: 20260809
+inputs:
+  include_natural_governance_v3_cases: true
+  include_crag_web_document_outputs: true
+  include_crag_mock_api_outputs_if_available: true
+classification:
+  require_natural_case: true
+  require_governance_reason: true
+  require_heldout_or_adjudicated_support: true
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

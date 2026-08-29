@@ -1,7 +1,7 @@
 {
   "primary_result_class": "GOVERNANCE_REDUCES_COST_AT_EQUIVALENT_QUALITY",
   "quality_measure_result_class": "QUALITY_MEASURE_PROXY_PLUS_EVIDENCE",
-  "supported_claim": "RAGTune governance reduced measured cost at equivalent proxy-plus-evidence quality on sanitized frozen CRAG mock-API observations.",
+  "supported_claim": "RAGWarrant governance reduced measured cost at equivalent proxy-plus-evidence quality on sanitized frozen CRAG mock-API observations.",
   "unsupported_claims": [
     "RAG Compass superiority",
     "human-eval validation",

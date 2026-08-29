@@ -1,4 +1,4 @@
-suite: ragtune_answer_quality_measurement_v1
+suite: ragwarrant_answer_quality_measurement_v1
 result_class: QUALITY_MEASURE_PROXY_PLUS_EVIDENCE
 weights:
   answer_correctness_score_from_parent_raw_quality: 0.70

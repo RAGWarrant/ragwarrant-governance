@@ -1,21 +1,21 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: Example RAGTune ECS Fargate task definition
+Description: Example RAGWarrant ECS Fargate task definition
 Parameters:
   ContainerImage:
     Type: String
-    Default: RAGTUNE_IMAGE_REFERENCE_PLACEHOLDER
+    Default: RAGWARRANT_IMAGE_REFERENCE_PLACEHOLDER
 Resources:
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
     Properties:
-      Family: ragtune-governance-task
+      Family: ragwarrant-governance-task
       NetworkMode: awsvpc
       RequiresCompatibilities:
         - FARGATE
       Cpu: "1024"
       Memory: "2048"
       ContainerDefinitions:
-        - Name: ragtune
+        - Name: ragwarrant
           Image: !Ref ContainerImage
           Command:
             - run-governance-job
@@ -26,10 +26,10 @@ Resources:
             - --decision-out
             - /outputs/promotion_decision.json
           Environment:
-            - Name: RAGTUNE_STORAGE_MODE
+            - Name: RAGWARRANT_STORAGE_MODE
               Value: local
-            - Name: RAGTUNE_INPUT_DIR
+            - Name: RAGWARRANT_INPUT_DIR
               Value: /inputs
-            - Name: RAGTUNE_OUTPUT_DIR
+            - Name: RAGWARRANT_OUTPUT_DIR
               Value: /outputs
           ReadonlyRootFilesystem: true

@@ -57,7 +57,7 @@ def main() -> None:
         interpretation = "Neither deterministic CRAG slice supports cost reduction with usable generated-answer quality."
 
     payload = {
-        "suite": "ragtune_crag_generative_repeat_comparison_v1",
+        "suite": "ragwarrant_crag_generative_repeat_comparison_v1",
         "result_class": result_class,
         "interpretation": interpretation,
         "primary_result_class": primary.get("result_class", ""),

@@ -1,9 +1,9 @@
 {
-  "jobDefinitionName": "ragtune-governance-batch",
+  "jobDefinitionName": "ragwarrant-governance-batch",
   "type": "container",
   "platformCapabilities": ["FARGATE"],
   "containerProperties": {
-    "image": "RAGTUNE_IMAGE_REFERENCE_PLACEHOLDER",
+    "image": "RAGWARRANT_IMAGE_REFERENCE_PLACEHOLDER",
     "command": [
       "run-governance-job",
       "--config",
@@ -19,9 +19,9 @@
     ],
     "executionRoleArn": "<batch-execution-role-arn>",
     "environment": [
-      {"name": "RAGTUNE_STORAGE_MODE", "value": "local"},
-      {"name": "RAGTUNE_INPUT_DIR", "value": "/inputs"},
-      {"name": "RAGTUNE_OUTPUT_DIR", "value": "/outputs"}
+      {"name": "RAGWARRANT_STORAGE_MODE", "value": "local"},
+      {"name": "RAGWARRANT_INPUT_DIR", "value": "/inputs"},
+      {"name": "RAGWARRANT_OUTPUT_DIR", "value": "/outputs"}
     ],
     "readonlyRootFilesystem": true
   }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regenerate the RAGTune arXiv vector figure PDFs.
+"""Regenerate the RAGWarrant arXiv vector figure PDFs.
 
 The figures use only sanitized labels and aggregate rates from figure_data.json.
 They do not read raw datasets, prompts, source documents, API responses, or

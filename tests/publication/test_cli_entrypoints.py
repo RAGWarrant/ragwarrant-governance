@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import importlib.util
 import subprocess
 import sys
 from pathlib import Path
@@ -20,7 +21,7 @@ def cli_env() -> dict[str, str]:
 
 def test_cli_help() -> None:
     result = subprocess.run(
-        [sys.executable, "-m", "ragtune.cli", "--help"],
+        [sys.executable, "-m", "ragwarrant.cli", "--help"],
         cwd=ROOT,
         env=cli_env(),
         text=True,
@@ -31,13 +32,22 @@ def test_cli_help() -> None:
     assert "run-governance-job" in result.stdout
 
 
+def test_import_ragwarrant_package() -> None:
+    assert importlib.util.find_spec("ragwarrant") is not None
+
+
+def test_legacy_package_is_not_importable() -> None:
+    legacy_package = "rag" + "tune"
+    assert importlib.util.find_spec(legacy_package) is None
+
+
 def test_cli_export_decision_writes_machine_readable_json(tmp_path: Path) -> None:
     out = tmp_path / "promotion_decision.json"
     result = subprocess.run(
         [
             sys.executable,
             "-m",
-            "ragtune.cli",
+            "ragwarrant.cli",
             "export-decision",
             "--decision-out",
             str(out),
@@ -57,7 +67,7 @@ def test_cli_export_decision_writes_machine_readable_json(tmp_path: Path) -> Non
 
 def test_cli_inspect_environment_sanitized(tmp_path: Path) -> None:
     result = subprocess.run(
-        [sys.executable, "-m", "ragtune.cli", "inspect-environment", "--output-root", str(tmp_path)],
+        [sys.executable, "-m", "ragwarrant.cli", "inspect-environment", "--output-root", str(tmp_path)],
         cwd=ROOT,
         env=cli_env(),
         text=True,

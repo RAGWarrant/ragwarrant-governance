@@ -1,8 +1,8 @@
 # Product Contract
 
-RAGTune is an open-source RAG governance and promotion-control engine. It evaluates proposed RAG policies against quality, evidence, cost, latency, risk, and claim-boundary constraints, then returns an auditable decision: promote, block, reject, or inconclusive.
+RAGWarrant is an open-source RAG governance and promotion-control engine. It evaluates proposed RAG policies against quality, evidence, cost, latency, risk, and claim-boundary constraints, then returns an auditable decision: promote, block, reject, or inconclusive.
 
-RAGTune is not the chatbot. RAGTune is not a model. RAGTune is not a replacement for Ragas, DeepEval, LangSmith, Phoenix, Azure AI Foundry, AWS Bedrock, Vertex AI, or other evaluators. It can consume evaluator outputs as governance inputs, but evaluator tools remain the source of their own metrics and platform-native records.
+RAGWarrant is not the chatbot. RAGWarrant is not a model. RAGWarrant is not a replacement for Ragas, DeepEval, LangSmith, Phoenix, Azure AI Foundry, AWS Bedrock, Vertex AI, or other evaluators. It can consume evaluator outputs as governance inputs, but evaluator tools remain the source of their own metrics and platform-native records.
 
 ## Workflow
 

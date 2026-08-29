@@ -64,7 +64,7 @@ def inspect_image(image: str) -> dict[str, object]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Inspect the minimized RAGTune runtime image.")
+    parser = argparse.ArgumentParser(description="Inspect the minimized RAGWarrant runtime image.")
     parser.add_argument("image")
     parser.add_argument("--json-out")
     args = parser.parse_args()

@@ -14,7 +14,7 @@ def load_json(path: str) -> dict[str, object]:
 
 def test_hotpotqa_quality_signal_audit_manifest_exists() -> None:
     manifest = load_json("artifacts/generative_llm_validation/hotpotqa_quality_signal_audit/audit_manifest.json")
-    assert manifest["suite"] == "ragtune_hotpotqa_generative_quality_signal_audit_v1"
+    assert manifest["suite"] == "ragwarrant_hotpotqa_generative_quality_signal_audit_v1"
     assert "result_class" in manifest
 
 
@@ -53,27 +53,27 @@ def test_generator_access_diagnosis_artifacts_sanitized() -> None:
 
 
 def test_crag_generator_uses_shared_generator_factory() -> None:
-    source = (ROOT / "src/ragtune/crag_generative_validation.py").read_text(encoding="utf-8")
+    source = (ROOT / "src/ragwarrant/crag_generative_validation.py").read_text(encoding="utf-8")
     assert "discover_generator" in source
-    assert "from ragtune.generators.factory import discover_generator" in source
+    assert "from ragwarrant.generators.factory import discover_generator" in source
 
 
 def test_qwen3_ollama_disables_thinking_by_default() -> None:
-    source = (ROOT / "src/ragtune/generators/ollama.py").read_text(encoding="utf-8")
-    assert "RAGTUNE_OLLAMA_THINK" in source
+    source = (ROOT / "src/ragwarrant/generators/ollama.py").read_text(encoding="utf-8")
+    assert "RAGWARRANT_OLLAMA_THINK" in source
     assert 'model.lower().startswith(("qwen3", "gpt-oss"))' in source
     assert 'payload["think"] = think' in source
 
 
 def test_gpt_oss_ollama_uses_chat_endpoint_by_default() -> None:
-    source = (ROOT / "src/ragtune/generators/ollama.py").read_text(encoding="utf-8")
-    assert "RAGTUNE_OLLAMA_ENDPOINT" in source
+    source = (ROOT / "src/ragwarrant/generators/ollama.py").read_text(encoding="utf-8")
+    assert "RAGWARRANT_OLLAMA_ENDPOINT" in source
     assert 'model.lower().startswith("gpt-oss")' in source
     assert "api/{'chat' if use_chat else 'generate'}" in source
 
 
 def test_crag_prompt_forbids_blank_answers() -> None:
-    source = (ROOT / "src/ragtune/generative_prompts.py").read_text(encoding="utf-8")
+    source = (ROOT / "src/ragwarrant/generative_prompts.py").read_text(encoding="utf-8")
     assert "Never return a blank response" in source
     assert "build_answer_emission_repair_prompt" in source
 
@@ -268,7 +268,7 @@ def test_crag_learned_risk_predictor_comparison_is_mixed() -> None:
 
 def test_crag_quality_risk_guardrail_v2_uses_pooled_heldout_protocol() -> None:
     comparison = load_json("results/generative_llm_validation/crag_quality_risk_guardrail_v2_comparison.json")
-    assert comparison["suite"] == "ragtune_crag_generative_quality_risk_guardrail_v2"
+    assert comparison["suite"] == "ragwarrant_crag_generative_quality_risk_guardrail_v2"
     assert comparison["pooled_cross_offset_validation"] is True
     assert comparison["heldout_offset_testing"] is True
     assert comparison["strict_quality_loss_blocking"] is True
@@ -312,20 +312,20 @@ def test_generative_synthesis_includes_guardrail_v2_conservatively() -> None:
 
 
 def test_crag_generative_selector_uses_deployable_validation_candidates() -> None:
-    source = (ROOT / "src/ragtune/crag_generative_validation.py").read_text(encoding="utf-8")
+    source = (ROOT / "src/ragwarrant/crag_generative_validation.py").read_text(encoding="utf-8")
     assert "DEPLOYABLE_CRAG_GENERATIVE_POLICIES" in source
     assert "QUALITY_ONLY_CRAG_GENERATIVE_POLICIES" in source
     assert "validation_split_quality_only_high_evidence_vs_governed_latency_feasible_confirmatory_eval" in source
-    assert "RAGTUNE_CRAG_GEN_PRIMARY_ENDPOINT" in source
+    assert "RAGWARRANT_CRAG_GEN_PRIMARY_ENDPOINT" in source
 
 
 def test_crag_generative_latency_guardrail_is_predeclared() -> None:
-    source = (ROOT / "src/ragtune/crag_generative_validation.py").read_text(encoding="utf-8")
+    source = (ROOT / "src/ragwarrant/crag_generative_validation.py").read_text(encoding="utf-8")
     assert "QUALITY_GUARDED_LATENCY_POLICY" in source
     assert "LEARNED_QUALITY_RISK_LATENCY_POLICY" in source
     assert "quality_guarded_latency_adaptive_expansion" in source
     assert "learned_quality_risk_latency_adaptive_expansion" in source
-    assert "RAGTUNE_CRAG_GEN_LATENCY_GUARDRAIL" in source
+    assert "RAGWARRANT_CRAG_GEN_LATENCY_GUARDRAIL" in source
     assert "validation_split_quality_only_high_evidence_vs_quality_guarded_latency_confirmatory_eval" in source
     assert "validation_learned_deployable_quality_risk_predictor_vs_quality_only_high_evidence_confirmatory_eval" in source
     assert "expand to five" in source

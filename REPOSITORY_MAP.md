@@ -20,7 +20,7 @@ This map points publication readers to the major repository areas without changi
 - `scenarios/`: Scenario fixtures or examples where present.
 - `schemas/`: Machine-readable schemas for promotion decisions, run manifests, deployment readiness, and artifact manifests.
 - `scripts/`: Reproduction, validation, deployment-readiness, container, storage-emulator, and digest-resolution scripts.
-- `src/`: RAGTune source code.
+- `src/`: RAGWarrant source code.
 - `tests/`: Publication, reproducibility, deployment, storage, and validator tests.
 
 Key root files:

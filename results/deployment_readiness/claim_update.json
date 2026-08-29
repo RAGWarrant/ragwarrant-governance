@@ -34,5 +34,5 @@
   "result_class": "DEPLOYMENT_READINESS_SUPPORTED_WITH_BOUNDARIES",
   "schema_version": "1.0",
   "secrets_committed": false,
-  "suite": "ragtune_deployment_readiness_v1"
+  "suite": "ragwarrant_deployment_readiness_v1"
 }

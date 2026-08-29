@@ -1,0 +1,26 @@
+suite: ragwarrant_governance_ablation_confirmatory_v2
+suite_version: 2
+seed: 20260807
+
+source:
+  use_frozen_confirmatory_outputs: true
+  rerun_generation: false
+
+stages:
+  - quality_only_selection
+  - quality_plus_cost
+  - quality_plus_cost_plus_latency
+  - plus_protected_regression
+  - plus_security_hard_constraints
+  - plus_budget_parity
+  - plus_refusal_gate
+  - plus_certificate_and_audit_requirements
+
+certificate:
+  supported_enabled: false
+  max_class: Candidate external signal
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

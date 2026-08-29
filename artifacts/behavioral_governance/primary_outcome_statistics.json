@@ -58,5 +58,5 @@
   },
   "rag_compass_rank": 6,
   "repeat_result_class": "BEHAVIORAL_GOVERNANCE_DIRECTIONAL_REPEAT",
-  "suite": "ragtune_behavioral_governance_primary_outcome_v1"
+  "suite": "ragwarrant_behavioral_governance_primary_outcome_v1"
 }

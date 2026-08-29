@@ -10,8 +10,8 @@ permissions:
 env:
   KIND_VERSION: v0.24.0
   KUBECTL_VERSION: v1.31.0
-  KIND_CLUSTER_NAME: ragtune-validate
-  RAGTUNE_KIND_REPORT_DIR: artifacts/k8s-kind-validation
+  KIND_CLUSTER_NAME: ragwarrant-validate
+  RAGWARRANT_KIND_REPORT_DIR: artifacts/k8s-kind-validation
 
 jobs:
   execute-kind-job:

@@ -1,0 +1,11 @@
+suite: ragwarrant_generator_path_enablement_v4
+suite_version: 4
+seed: 20260809
+model_download:
+  allow_model_download: false
+hosted_model:
+  credential_env: RAGWARRANT_HOSTED_GENERATOR_API_KEY
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

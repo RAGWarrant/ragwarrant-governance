@@ -16,8 +16,8 @@ def test_docker_assets_exist_and_exclude_local_data() -> None:
 
 def test_cloud_deployment_templates_exist() -> None:
     required = [
-        "deploy/kubernetes/ragtune-job.yaml",
-        "deploy/kubernetes/ragtune-cronjob.yaml",
+        "deploy/kubernetes/ragwarrant-job.yaml",
+        "deploy/kubernetes/ragwarrant-cronjob.yaml",
         "deploy/azure/container-apps-job.bicep",
         "deploy/aws/ecs-fargate-task.json",
         "deploy/aws/batch-job-definition.json",

@@ -1,10 +1,10 @@
 # Docker Runtime Validation
 
-RAGTune can run as a local containerized governance job. RAGTune is not the chatbot; it is the governance job that checks whether a proposed RAG policy is safe to promote, should be blocked, should be rejected, or remains inconclusive.
+RAGWarrant can run as a local containerized governance job. RAGWarrant is not the chatbot; it is the governance job that checks whether a proposed RAG policy is safe to promote, should be blocked, should be rejected, or remains inconclusive.
 
 ## What The Container Does
 
-- starts a finite RAGTune job;
+- starts a finite RAGWarrant job;
 - loads a governance config;
 - runs or imports sanitized policy metrics;
 - writes audit artifacts under `/outputs`;
@@ -24,7 +24,7 @@ RAGTune can run as a local containerized governance job. RAGTune is not the chat
 ## Local Docker Commands
 
 ```bash
-docker build -t ragtune:local .
+docker build -t ragwarrant:local .
 mkdir -p docker_outputs
 docker run --rm \
   --network none \
@@ -36,7 +36,7 @@ docker run --rm \
   --memory 1g \
   --cpus 2 \
   -v "$(pwd)/docker_outputs:/outputs" \
-  ragtune:local run-governance-job --config configs/jobs/public_mini_governance_job.yaml --output-root /outputs --decision-out /outputs/promotion_decision.json
+  ragwarrant:local run-governance-job --config configs/jobs/public_mini_governance_job.yaml --output-root /outputs --decision-out /outputs/promotion_decision.json
 ```
 
 The smoke-test runner validates the same hardened runtime posture: no container network, read-only root filesystem, writable `/outputs` mount only, tmpfs `/tmp`, `no-new-privileges`, all Linux capabilities dropped, and bounded CPU, memory, and process counts.
@@ -45,7 +45,7 @@ The smoke-test runner validates the same hardened runtime posture: no container 
 
 ```bash
 mkdir -p docker_outputs
-docker compose -f docker/compose.public-mini.yml up --build --abort-on-container-exit --exit-code-from ragtune-public-mini
+docker compose -f docker/compose.public-mini.yml up --build --abort-on-container-exit --exit-code-from ragwarrant-public-mini
 ```
 
 ## Podman
@@ -53,9 +53,9 @@ docker compose -f docker/compose.public-mini.yml up --build --abort-on-container
 If Docker is unavailable and Podman is configured:
 
 ```bash
-podman build -t ragtune:local .
+podman build -t ragwarrant:local .
 mkdir -p docker_outputs
-podman run --rm -v "$(pwd)/docker_outputs:/outputs" ragtune:local run-governance-job --config configs/jobs/public_mini_governance_job.yaml --output-root /outputs --decision-out /outputs/promotion_decision.json
+podman run --rm -v "$(pwd)/docker_outputs:/outputs" ragwarrant:local run-governance-job --config configs/jobs/public_mini_governance_job.yaml --output-root /outputs --decision-out /outputs/promotion_decision.json
 ```
 
 ## Mounts
@@ -82,7 +82,7 @@ Start Docker Desktop, Colima, or another local container engine, then rerun:
 
 ```bash
 python3 scripts/diagnose_container_runtime.py --output-root artifacts/docker_hardening --force
-python3 scripts/run_container_smoke_tests.py --config configs/experiments/ragtune_container_smoke_tests_v1.yaml --output-root artifacts/docker_hardening --force
+python3 scripts/run_container_smoke_tests.py --config configs/experiments/ragwarrant_container_smoke_tests_v1.yaml --output-root artifacts/docker_hardening --force
 ```
 
 Cloud templates can later use the same image in Azure, AWS, or GCP, but those are deployment examples unless an approved environment runs and preserves separate evidence.

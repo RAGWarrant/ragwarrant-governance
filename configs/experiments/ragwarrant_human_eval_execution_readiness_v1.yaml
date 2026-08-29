@@ -1,0 +1,10 @@
+suite: ragwarrant_human_eval_execution_readiness_v1
+suite_version: 1
+seed: 20260807
+
+minimum_sample_size: 40
+run_human_evaluation: false
+
+output:
+  append_only: true
+  write_markdown_report: true

@@ -1,0 +1,14 @@
+suite: ragwarrant_behavioral_governance_paper_summary_v1
+suite_version: 1
+requires:
+  - artifacts/behavioral_governance/primary_outcome_statistics.json
+  - artifacts/behavioral_policies/behavioral_distinction_matrix.csv
+  - artifacts/quality_measurement/quality_measurement_result.json
+claim_boundaries:
+  no_rag_compass_superiority: true
+  no_human_eval_claim_without_annotations: true
+  no_generative_claim_without_pinned_generator: true
+  no_official_platform_claim_without_integration: true
+output:
+  append_only: true
+  sanitize_raw_text: true

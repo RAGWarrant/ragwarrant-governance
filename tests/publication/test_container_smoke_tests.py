@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from ragtune.container_smoke_tests import DOCKER_HARDENED_RUN_FLAGS, SMOKE_RESULT_CLASSES
+from ragwarrant.container_smoke_tests import DOCKER_HARDENED_RUN_FLAGS, SMOKE_RESULT_CLASSES
 
 
 ROOT = Path(__file__).resolve().parents[2]

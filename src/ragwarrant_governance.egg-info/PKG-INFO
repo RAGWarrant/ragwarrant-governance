@@ -1,0 +1,265 @@
+Metadata-Version: 2.4
+Name: ragwarrant-governance
+Version: 0.1.0
+Summary: Scientific-review bundle for the RAGWarrant governance validation harness.
+License: Apache-2.0
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: pyyaml
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Provides-Extra: s3
+Requires-Dist: boto3==1.35.99; extra == "s3"
+Provides-Extra: azure
+Requires-Dist: azure-storage-blob==12.24.0; extra == "azure"
+Provides-Extra: gcs
+Requires-Dist: google-cloud-storage==2.19.0; extra == "gcs"
+Provides-Extra: storage-emulators
+Requires-Dist: boto3==1.35.99; extra == "storage-emulators"
+Requires-Dist: azure-storage-blob==12.24.0; extra == "storage-emulators"
+Requires-Dist: google-cloud-storage==2.19.0; extra == "storage-emulators"
+Dynamic: license-file
+
+# RAGWarrant Governance
+
+RAGWarrant is a governance framework for RAG policy promotion. RAG Compass is a candidate optimizer within the framework. Current evidence supports RAGWarrant governance value more strongly than RAG Compass optimizer superiority.
+
+## What RAGWarrant is — and is not
+
+RAGWarrant is a promotion-governance controller that decides whether measured evidence justifies promoting a change to a RAG policy. It is not a hyperparameter tuner, an optimizer, or an evaluation library. It sits behind existing tuning and evaluation tools and adjudicates their outputs through explicit quality, risk, cost, latency, and evidence gates.
+
+Canonical repository:
+https://github.com/RAGWarrant/ragwarrant-governance
+
+Former project name:
+RAGWarrant was formerly known as RAGTune. The former GitHub URLs, including `https://github.com/AIM-RAGTune/rag-tuning-governance` and `https://github.com/AIM-RAGTune/rag-tuning-governance-public`, now redirect to the canonical repository above.
+
+## Current Strongest Result
+
+The strongest current result is a CRAG mock-API validation run:
+
+- Run ID: `ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4`
+- Result: `MOCK_API_VALIDATION_GOVERNANCE_SUPERIOR`
+- Governed winner: `top_k_low`
+- Quality-only winner: `greedy_regression_aware_search`
+- RAG Compass rank: 5th
+- Confirmatory rows: 571 / 571
+- API calls: 14,172
+- Failure rate: 0.0
+- Governance delta: +0.0010025405
+- Bootstrap CI: [0.0010022708, 0.0010028250]
+- Win/tie/loss: 571 / 0 / 0
+- Sensitivity: governance superior in 14 / 15 cost-latency settings
+
+The hardening package reports that this result was decision-reproduced in Docker, explained by cost/latency ablation, illustrated with cases, and replicated under frozen-observation resplits.
+
+## Behaviorally Distinct Policy Experiment
+
+A follow-up experiment reanalyzes the sanitized CRAG mock-API frozen observations with behaviorally distinct candidate policies: low retrieval, expanded retrieval, adaptive routing, cost-aware selection, latency-aware selection, quality-only selection, constrained optimization, and Pareto selection.
+
+Primary result: `GOVERNANCE_REDUCES_COST_AT_EQUIVALENT_QUALITY`. Governed selection chose `low_retrieval_single_endpoint`; quality-only selection chose `optuna_tpe` under the proxy-plus-evidence quality metric. Governed selection was within the predeclared 0.01 quality noninferiority margin while reducing measured cost and latency. This result is not a small weighted-utility-only claim, but it remains derived from sanitized frozen observations and uses `QUALITY_MEASURE_PROXY_PLUS_EVIDENCE`, not human-calibrated or generative LLM validation.
+
+See `results/behavioral_governance/paper_ready_summary.md` and `docs/behaviorally_distinct_policy_experiment_plan.md`.
+
+## Fresh Live CRAG And HotpotQA Behaviorally Distinct Governance Experiment
+
+The next validation phase adds a harness for fresh live CRAG mock-API collection and HotpotQA alternate-corpus validation. The goal is to test whether the behaviorally distinct governance result holds beyond frozen observations and whether HotpotQA answer labels/supporting facts support a stronger answer-quality endpoint.
+
+Current execution status in this public repository environment: approved local CRAG data and the mock-API KG/runtime were restored, and a 50-example sanitized live CRAG sample ran. The result was `FRESH_CRAG_BLOCKED_QUALITY_MEASURE_PROXY_ONLY`: endpoint behavior and costs were measured, but the live sample did not produce a usable answer/evidence quality signal, so no fresh-CRAG governance success claim is made. HotpotQA ran from a local Hugging Face cache on a sanitized 1,000-example validation sample using answer-label and supporting-fact evidence metrics. The HotpotQA result was `HOTPOTQA_GOVERNANCE_OPERATIONAL_GAIN_QUALITY_LOSS`: governance selected a lower-cost policy, but the confirmatory quality loss exceeded the predeclared 0.01 noninferiority margin, so this does not replicate the prior frozen-observation claim.
+
+Raw CRAG data are not redistributed. CRAG remains noncommercial research-only. HotpotQA raw data are not committed to this repository. See `docs/fresh_live_crag_hotpotqa_behavioral_governance_plan.md`, `docs/dataset_acquisition.md`, and `results/multi_dataset_behavioral_governance/paper_ready_summary.md`.
+
+## Generative LLM Validation
+
+RAGWarrant Generative LLM Validation v1 adds a pinned-generator path for policy-specific generated answers. The v1.1 quality-signal audit reran HotpotQA with a bounded 12-example local Ollama `qwen3:8b` sample and confirmed that generated-answer quality scores were nonconstant, but the governed and quality-only selectors chose the same policy, so the HotpotQA generated-governance result is `GEN_LLM_GOVERNANCE_INCONCLUSIVE`. CRAG qwen3 answer emission was repaired by disabling Ollama thinking output for `qwen3:8b`; the larger bounded 12-example CRAG primary slice produced 132 nonempty generated answers, active evaluator mapping, and `GEN_LLM_GOVERNANCE_REDUCES_COST_AT_EQUIVALENT_GENERATED_QUALITY_CRAG`. Three independent deterministic 12-example CRAG repeats at offsets 24, 36, and 60 all produced usable generated-answer quality but did not reproduce the cost result.
+
+The CRAG stability comparison is now `CRAG_GEN_LLM_LATENCY_RESULT_MIXED_ACROSS_REPEATS` after testing validation-trained deployable quality-risk predictors. A second pinned local generator, Ollama `gpt-oss:20b`, was also run on offsets 0, 24, 36, and 60; it produced usable generated-quality signals but no positive cost-at-equivalent-generated-quality slices and had high blank-answer rates. A faster non-thinking instruct model, Ollama `llama3.2:3b`, repaired answer emission on slightly larger 16-example fixed-offset slices. The unguarded latency selector separated governed and quality-only winners and produced one latency-positive slice plus three quality-loss slices. A label-aware diagnostic guardrail avoided quality-loss labels but did not produce a latency-reduction CI below zero on any slice. The first learned deployable predictor reduced validation expansion rates on all four fixed offsets and produced one latency-positive slice, but two confirmatory slices still had generated-quality loss. CRAG Generative Quality-Risk Guardrail v2 then used pooled cross-offset validation and held-out-offset testing; it failed closed as `CRAG_GEN_LLM_QUALITY_RISK_GUARDRAIL_V2_BLOCKED_HELDOUT_QUALITY_LOSS` because strict held-out quality-loss blocking fired on three offsets. The synthesis remains `GEN_LLM_SYNTHESIS_MIXED`. Raw prompts, raw generated answers, raw dataset questions, raw contexts, raw evidence, raw API responses, and secrets are not committed. See `docs/generative_llm_validation.md`, `docs/generator_configuration.md`, and `results/generative_llm_validation/synthesis_report.md`.
+
+## What This Repository Contains
+
+- `src/ragwarrant/`: RAGWarrant implementation code.
+- `configs/`: experiment, dataset, optimizer, and policy-space configuration.
+- `tests/`: unit, integration, and reproducibility tests from the validation harness.
+- `artifacts/selected_run_summaries/`: selected small manifests and run outputs needed for review.
+- `results/`: processed summary tables and claim-status records.
+- `data/`: dataset availability, license notes, checksums, and fixtures. Raw licensed datasets and raw CRAG question text are not redistributed.
+- `reproduction/`: Docker and command documentation for reproducing allowed runs.
+- `paper/`: a paper scaffold with explicit limitations.
+
+## Installation
+
+```bash
+git clone https://github.com/RAGWarrant/ragwarrant-governance.git
+cd ragwarrant-governance
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e .
+```
+
+## Quickstart
+
+```bash
+make reproduce-public-mini
+make validate-publication
+make test
+```
+
+Full CRAG reproduction requires externally obtained CRAG data mounted according to `data/DATA_AVAILABILITY.md` and `reproduction/docker/README.md`. CRAG query wording is redacted from publication artifacts; reviewers with approved CRAG access can match local data through query IDs and `query_text_hash` values.
+
+## What RAGWarrant Is
+
+RAGWarrant is an open-source RAG governance and promotion-control framework. It consumes quality, evidence, cost, latency, and risk metrics and converts them into auditable promotion, rejection, blocked, or inconclusive decisions.
+
+## What RAGWarrant Is Not
+
+RAGWarrant does not replace RAG evaluation, observability, or platform benchmarking tools. It does not claim RAG Compass superiority, human validation, official platform benchmarking, production readiness, hallucination elimination, or broad universal generative governance superiority.
+
+## Public Mini Reproduction
+
+`make reproduce-public-mini` runs a tiny deterministic synthetic example that requires no CRAG data, HotpotQA raw data, local generator, hosted credentials, or cloud services. The current mini result is `PUBLIC_MINI_REPRODUCTION_FAIL_CLOSED`, demonstrating that a lower-cost selector is blocked when it crosses the quality-risk boundary.
+
+## External Evaluator Adapters
+
+The adapter demo normalizes synthetic Ragas-like and DeepEval-like exports into the RAGWarrant canonical metric schema. This shows interoperability: RAGWarrant can consume evaluator outputs as promotion-control inputs without claiming to replace those evaluators.
+
+## Selector Ablation Matrix
+
+The selector ablation matrix compares naive quality-only, cost-only, latency-only, random, static, RAG Compass optional, governed, risk-guarded, and oracle-ceiling selectors over sanitized summary artifacts. The result is `SELECTOR_ABLATION_GOVERNANCE_BLOCKS_UNSAFE_SELECTORS`.
+
+## AIM Hardware Characterization
+
+The local AIM hardware characterization records sanitized runtime and artifact-size checks. It is not official platform benchmarking.
+
+## Open-Source And arXiv Readiness
+
+The readiness synthesis is `OPEN_SOURCE_ARXIV_READINESS_SUPPORTED_WITH_BOUNDARIES`: the repo has a public mini reproduction path, strict validator checks, external evaluator adapters, selector ablations, sanitized local hardware characterization, and preserved negative/mixed generative evidence. See `docs/open_source_arxiv_readiness.md`.
+
+## RC1 Reproducibility And arXiv Package
+
+RAGWarrant is an open-source RAG governance and promotion-control framework. It does not replace RAG evaluation or observability tools; it consumes evaluation metrics and operational telemetry, then emits auditable promotion, rejection, blocked, or inconclusive decisions.
+
+The `v0.1.0-rc1` readiness package adds:
+
+- Fresh clone reproduction: `docs/fresh_clone_reproducibility.md`
+- Docker public-mini run: `docs/docker_runtime_validation.md`
+- Release candidate status: `docs/release_process.md`
+- Verify-run command: `docs/artifact_integrity.md`
+- External evaluator adapters: `docs/external_evaluator_adapters.md`
+- Selector ablation stress test: `docs/selector_ablation_stress_v2.md`
+- AIM hardware matrix: `docs/aim_hardware_matrix.md`
+- arXiv paper draft status: `docs/arxiv_paper_plan.md`
+
+Example integrity check:
+
+```bash
+ragwarrant verify-run --run-dir artifacts/public_mini_reproduction
+```
+
+The RC1 package preserves unsupported claims explicitly: RAG Compass superiority, stable generative cost/latency superiority, broad generative governance superiority, human validation, official platform benchmarking, production readiness, and hallucination elimination remain unsupported.
+
+## Cloud-Agnostic Deployment Readiness
+
+RAGWarrant now has a deployable open-source governance-job contract. The CLI can run a finite job that starts, evaluates or imports policy metrics, writes audit artifacts, emits `promotion_decision.json`, validates publication claim boundaries, and exits.
+
+Quick local command:
+
+```bash
+python3 -m ragwarrant.cli run-governance-job \
+  --config configs/jobs/public_mini_governance_job.yaml \
+  --output-root artifacts/public_mini_governance_job \
+  --decision-out artifacts/public_mini_governance_job/promotion_decision.json
+```
+
+Docker command:
+
+```bash
+docker build -t ragwarrant-governance:local .
+docker run --rm -v "$(pwd)/docker_outputs:/outputs" ragwarrant-governance:local run-governance-job --config configs/jobs/public_mini_governance_job.yaml --output-root /outputs --decision-out /outputs/promotion_decision.json
+```
+
+Deployment examples are included for Docker Compose, GitHub Actions, Kubernetes Job, Kubernetes CronJob, Azure Container Apps Job, AWS ECS/Fargate, AWS Batch, and Google Cloud Run Job. See `docs/product_contract.md`, `docs/deployment_architecture.md`, `docs/operator_workflow.md`, `docs/cloud_agnostic_deployment.md`, `docs/artifact_storage.md`, and `docs/promotion_decision_schema.md`.
+
+Deployment-readiness result: `DEPLOYMENT_READINESS_SUPPORTED_WITH_BOUNDARIES`. Live cloud execution is marked `NOT_RUN_NO_CREDENTIALS`; the examples do not claim official cloud platform benchmarking or production operation.
+
+Docker runtime hardening adds static Docker validation and a smoke-test runner for the public-mini governance job. If Docker daemon access is unavailable, the smoke-test result is explicitly skipped rather than fabricated. See `docs/docker_runtime_validation.md`.
+
+## Key Results
+
+See `results/run_index.csv`, `results/evidence_summary.json`, and `results/claim_status/claim_status_table.csv`.
+
+## Historical Validation Record
+
+The historical ledger is intentionally included to reduce cherry-picking and preserve negative, blocked, refused, and inconclusive evidence. Reviewers should start with:
+
+- `results/historical/historical_evidence_timeline.md`
+- `results/historical/historical_run_index.csv`
+- `results/historical/historical_negative_results.md`
+- `results/historical/historical_blocked_results.md`
+- `docs/historical_validation_summary.md`
+
+The ledger contains sanitized summaries only. It does not include raw datasets, raw CRAG question text, raw source documents, or raw API responses.
+
+## Claim Boundaries
+
+This repository does not claim:
+
+- RAG Compass superiority.
+- Broad generative LLM governance validation beyond the current mixed bounded local CRAG/HotpotQA evidence.
+- Human-evaluation validation.
+- Official LangSmith, Ragas, DeepEval, or RAGChecker benchmarking.
+- Production readiness.
+- Hallucination elimination.
+
+## Dataset Availability
+
+This repository does not include raw CRAG datasets, raw CRAG question text, raw source documents, or raw API responses. It includes processed metrics, IDs, hashes, configuration files, and sanitized summaries. See `docs/crag_query_text_sanitization.md`.
+
+## Testing Status
+
+Latest validated status from the RAGWarrant repository:
+
+- Focused CRAG tests: 151 passed
+- Full repository tests: 530 passed, 1 skipped, 4 warnings
+- Lint: passed
+- Strict Git provenance: passed
+
+Workflow definitions:
+
+- CI: `.github/workflows/ci.yml`
+- Publication Check: `.github/workflows/publication-check.yml`
+- k8s-kind-validation: `.github/workflows/k8s-kind-validation.yml`
+- storage-staging-validation: `.github/workflows/storage-staging-validation.yml`
+
+## Docker Status
+
+Docker decision reproduction supported the parent CRAG mock-API validation decision. It was not an exact numeric match; it preserved the decision, winners, rows, failure rate, and win/tie/loss while some floating metrics differed. See `docs/docker_reproduction.md` and `docs/crag_mock_api_validation.md`.
+
+## Repository Migration Status
+
+This repository was transferred from `AIM-RAGTune/rag-tuning-governance` and renamed to `RAGWarrant/ragwarrant-governance` through GitHub's native transfer and rename flow. The active project name, package, CLI, environment prefix, deployment examples, and documentation now use RAGWarrant naming. Historical run IDs, release artifacts, old URLs, and hash-bound evidence may retain RAGTune identifiers where changing them would break provenance. See `docs/migration/RAGTUNE_TO_RAGWARRANT.md`.
+
+## Planned: v0.2
+
+- Native evidence-ingestion adapters for LangChain, LlamaIndex, and Haystack.
+- Direct ingestion of evaluator-platform exports, replacing the current synthetic-shaped adapter demonstrations with real exported evidence.
+- PyPI publication and installation through a versioned package release.
+- Group-sequential and adaptive noninferiority-margin designs with prespecified spending functions.
+- A completed blinded human-adjudication study, prioritized as the highest-leverage next validation for healthcare and other high-consequence settings.
+
+These items are planned work, not capabilities or evidence claimed by the current release.
+
+## Citation
+
+See `CITATION.cff`.
+
+## License
+
+Code in this repository is released under Apache-2.0 unless otherwise noted. Dataset licenses remain governed by their original providers.
+
+## Maintainer
+
+Maintainer placeholder: RAGWarrant.

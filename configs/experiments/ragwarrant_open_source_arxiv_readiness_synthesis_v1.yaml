@@ -1,0 +1,13 @@
+suite: ragwarrant_open_source_arxiv_readiness_synthesis_v1
+suite_version: 1
+readiness:
+  require_public_mini_reproduction: true
+  require_external_evaluator_adapters: true
+  require_selector_ablation_matrix: true
+  require_hardware_characterization: true
+  require_strict_claim_boundaries: true
+claim_boundaries:
+  rag_compass_superiority: unsupported
+  human_validation: unsupported
+  official_platform_benchmarking: unsupported
+  production_readiness: unsupported

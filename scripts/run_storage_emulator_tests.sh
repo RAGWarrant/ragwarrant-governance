@@ -2,18 +2,18 @@
 set -euo pipefail
 
 ROOT="$(cd "$(/usr/bin/dirname "${BASH_SOURCE[0]}")/.." && /bin/pwd)"
-REPORT_DIR="${RAGTUNE_STORAGE_EMULATOR_REPORT_DIR:-$ROOT/artifacts/storage-emulator-validation}"
+REPORT_DIR="${RAGWARRANT_STORAGE_EMULATOR_REPORT_DIR:-$ROOT/artifacts/storage-emulator-validation}"
 MINIO_IMAGE="minio/minio@sha256:a1a8bd4ac40ad7881a245bab97323e18f971e4d4cba2c2007ec1bedd21cbaba2"
 AZURITE_IMAGE="mcr.microsoft.com/azure-storage/azurite@sha256:3ba0e7a70bdcc3ab1004d0d5b2cd25534a81b2785a2d0394e993dc1758512c40"
 FAKE_GCS_IMAGE="fsouza/fake-gcs-server@sha256:dacee68e65c2a52cb8c4244eb2c497e956953f4981bddc5898752963d62cde35"
-EMULATOR_PLATFORM="${RAGTUNE_STORAGE_EMULATOR_PLATFORM:-linux/amd64}"
+EMULATOR_PLATFORM="${RAGWARRANT_STORAGE_EMULATOR_PLATFORM:-linux/amd64}"
 
-MINIO_NAME="ragtune-minio-test"
-AZURITE_NAME="ragtune-azurite-test"
-FAKE_GCS_NAME="ragtune-fake-gcs-test"
-MINIO_PORT="${RAGTUNE_MINIO_PORT:-19000}"
-AZURITE_PORT="${RAGTUNE_AZURITE_PORT:-10000}"
-FAKE_GCS_PORT="${RAGTUNE_FAKE_GCS_PORT:-4443}"
+MINIO_NAME="ragwarrant-minio-test"
+AZURITE_NAME="ragwarrant-azurite-test"
+FAKE_GCS_NAME="ragwarrant-fake-gcs-test"
+MINIO_PORT="${RAGWARRANT_MINIO_PORT:-19000}"
+AZURITE_PORT="${RAGWARRANT_AZURITE_PORT:-10000}"
+FAKE_GCS_PORT="${RAGWARRANT_FAKE_GCS_PORT:-4443}"
 AZURITE_TEST_KEY="ZmFrZUF6dXJpdGVLZXlGb3JUZXN0T25seUZha2VBenVyaXRlS2V5Rm9yVGVzdE9ubHk="
 
 mkdir -p "$REPORT_DIR/logs"
@@ -74,18 +74,18 @@ for _ in $(seq 1 60); do
   sleep 1
 done
 
-export RAGTUNE_RUN_STORAGE_EMULATOR_TESTS=1
-export RAGTUNE_S3_ENDPOINT_URL="http://127.0.0.1:${MINIO_PORT}"
-export RAGTUNE_S3_BUCKET="ragtune-publication-test"
-export RAGTUNE_S3_PREFIX="public-mini"
+export RAGWARRANT_RUN_STORAGE_EMULATOR_TESTS=1
+export RAGWARRANT_S3_ENDPOINT_URL="http://127.0.0.1:${MINIO_PORT}"
+export RAGWARRANT_S3_BUCKET="ragwarrant-publication-test"
+export RAGWARRANT_S3_PREFIX="public-mini"
 export AWS_ACCESS_KEY_ID="emulator-access-key"
 export AWS_SECRET_ACCESS_KEY="emulator-secret-key"
 export AWS_DEFAULT_REGION="us-east-1"
-export RAGTUNE_AZURE_BLOB_CONTAINER="ragtune-publication-test"
-export RAGTUNE_AZURE_BLOB_PREFIX="public-mini"
-export RAGTUNE_AZURE_BLOB_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=${AZURITE_TEST_KEY};BlobEndpoint=http://127.0.0.1:${AZURITE_PORT}/devstoreaccount1;"
-export RAGTUNE_GCS_BUCKET="ragtune-publication-test"
-export RAGTUNE_GCS_PREFIX="public-mini"
+export RAGWARRANT_AZURE_BLOB_CONTAINER="ragwarrant-publication-test"
+export RAGWARRANT_AZURE_BLOB_PREFIX="public-mini"
+export RAGWARRANT_AZURE_BLOB_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=${AZURITE_TEST_KEY};BlobEndpoint=http://127.0.0.1:${AZURITE_PORT}/devstoreaccount1;"
+export RAGWARRANT_GCS_BUCKET="ragwarrant-publication-test"
+export RAGWARRANT_GCS_PREFIX="public-mini"
 export STORAGE_EMULATOR_HOST="http://127.0.0.1:${FAKE_GCS_PORT}"
 
 set +e

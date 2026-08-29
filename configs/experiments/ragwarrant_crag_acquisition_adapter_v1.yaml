@@ -1,0 +1,34 @@
+suite: ragwarrant_crag_acquisition_adapter_v1
+suite_version: 1
+seed: 20260808
+
+crag_acquisition:
+  source_identifier: facebookresearch/CRAG
+  canonical_url_or_hf_id: https://github.com/facebookresearch/CRAG
+  revision: ad1518887dd4d9ebcd7de95388c7a62751e7705c
+  license_identifier: cc-by-nc-4.0
+  use_scope: noncommercial_research_only
+  require_manual_approval: true
+  allow_large_download: true
+  target_file: crag_task_1_and_2_dev_v5.jsonl.bz2
+  expected_lfs_sha256: d4c14897d8ea2f450a24e098b595d8247c6575f996f9869d6f27a020fe020618
+  expected_size_bytes: 739310088
+  normalization_record_cap: null
+  stream_all_rows: true
+  max_page_result_chars: 4000
+  smoke_max_queries: 80
+  raw_dir: artifacts/datasets/raw/crag
+  normalized_dir: artifacts/datasets/normalized/crag
+
+eligibility:
+  require_full_html_pages: true
+  require_page_urls: true
+  require_policy_dependent_retrieval: true
+  require_policy_dependent_context: true
+  require_zero_query_leakage: true
+  require_hash_verification: true
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

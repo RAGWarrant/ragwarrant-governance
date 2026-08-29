@@ -1,0 +1,14 @@
+suite: ragwarrant_multi_dataset_behavioral_governance_synthesis_v1
+suite_version: 1
+inputs:
+  fresh_live_crag: artifacts/fresh_live_crag_behavioral_governance/primary_outcome_statistics.json
+  hotpotqa: artifacts/hotpotqa_behavioral_governance/primary_outcome_statistics.json
+  prior_frozen_crag: artifacts/behavioral_governance/primary_outcome_statistics.json
+rules:
+  replicated_requires_fresh_or_alternate_success: true
+  frozen_only_cannot_replicate: true
+  crag_hotpotqa_disagreement_class: MULTI_DATASET_BEHAVIORAL_GOVERNANCE_MIXED
+output:
+  append_only: true
+  sanitize_raw_text: true
+  validate_schemas: true

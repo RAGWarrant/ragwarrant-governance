@@ -13,7 +13,7 @@ permissions:
   pull-requests: write
 
 env:
-  IMAGE_NAME: ghcr.io/aim-ragtune/rag-tuning-governance
+  IMAGE_NAME: ghcr.io/ragwarrant/ragwarrant-governance
 
 jobs:
   publish:
@@ -46,7 +46,7 @@ jobs:
           tags: |
             ${{ env.IMAGE_NAME }}:${{ github.sha }}
           labels: |
-            org.opencontainers.image.source=https://github.com/AIM-RAGTune/rag-tuning-governance
+            org.opencontainers.image.source=https://github.com/RAGWarrant/ragwarrant-governance
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.licenses=Apache-2.0
           provenance: mode=max
@@ -82,7 +82,7 @@ jobs:
       - name: Upload digest record
         uses: actions/upload-artifact@v4
         with:
-          name: ragtune-image-digest
+          name: ragwarrant-image-digest
           path: |
             deploy/IMAGE_DIGEST
             manifest-inspect.txt
@@ -103,10 +103,10 @@ jobs:
           git checkout -B "$branch"
           git add deploy/IMAGE_DIGEST
           git diff --cached --quiet && exit 0
-          git commit -m "Record published RAGTune image digest"
+          git commit -m "Record published RAGWarrant image digest"
           git push -u origin "$branch"
           gh pr create \
             --base "$base" \
             --head "$branch" \
-            --title "Record published RAGTune image digest" \
+            --title "Record published RAGWarrant image digest" \
             --body "Records the GHCR multi-architecture image digest produced by workflow run ${GITHUB_RUN_ID}. A human should review this PR before merge."

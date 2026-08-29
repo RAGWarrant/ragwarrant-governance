@@ -1,6 +1,6 @@
 # Kubernetes
 
-These examples run RAGTune as a finite Kubernetes Job or CronJob. Replace placeholder image and storage values before use.
+These examples run RAGWarrant as a finite Kubernetes Job or CronJob. Replace placeholder image and storage values before use.
 
 ```bash
 kubectl apply -k deploy/kubernetes
@@ -16,7 +16,7 @@ Static validation renders the validation overlay and checks the shipped Job secu
 scripts/validate_k8s_kind.sh --dry-run
 ```
 
-Executed validation requires Docker, kind, and kubectl. It builds the local runtime image, creates a disposable kind cluster, loads the image, runs the shipped `ragtune-governance-job`, retrieves `promotion_decision.json`, validates the fail-closed public-mini result, and deletes the cluster through a trap:
+Executed validation requires Docker, kind, and kubectl. It builds the local runtime image, creates a disposable kind cluster, loads the image, runs the shipped `ragwarrant-governance-job`, retrieves `promotion_decision.json`, validates the fail-closed public-mini result, and deletes the cluster through a trap:
 
 ```bash
 scripts/validate_k8s_kind.sh --full

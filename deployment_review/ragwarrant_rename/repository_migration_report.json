@@ -1,0 +1,34 @@
+{
+  "backup_root": "/Users/aimipfactory/RAGWarrant-migration-backup-20260829T173726Z",
+  "branch_count_comparison": {
+    "matched": true,
+    "source": 3,
+    "target": 3
+  },
+  "ghcr_status": "active pointer reset to ghcr.io/ragwarrant/ragwarrant-governance with PENDING_FIRST_WORKFLOW_RUN; old digest record retained in history and migration backup",
+  "git_lfs_status": "no LFS files detected by git lfs ls-files",
+  "immutable_tag_target": "ff529005bf7d00a0c3f79ba991563f3923d63205",
+  "issue_preservation_status": "no issues listed before or after transfer",
+  "migration_strategy": "native_github_transfer_then_rename",
+  "pull_request_preservation_status": "preserved by native transfer; 26 merged PRs visible under the new repository",
+  "redirect_status": "old canonical and legacy public URLs return HTTP 301 to the new canonical repository",
+  "release_comparison": {
+    "matched": true,
+    "source_releases": 0,
+    "target_releases": 0
+  },
+  "source_main_commit": "85b319c6cbb923578ab9ac3c58a20e9e42cd284f",
+  "source_owner": "AIM-RAGTune",
+  "source_repository": "AIM-RAGTune/rag-tuning-governance",
+  "tag_count_comparison": {
+    "matched": true,
+    "source_named_tags": 1,
+    "target_named_tags": 1
+  },
+  "target_main_commit_before_rename": "85b319c6cbb923578ab9ac3c58a20e9e42cd284f",
+  "target_owner": "RAGWarrant",
+  "target_repository": "RAGWarrant/ragwarrant-governance",
+  "target_visibility": "public",
+  "wiki_status": "not separately migrated; no wiki activity detected during this pass",
+  "workflow_status": "workflow files transferred; new CI execution pending rename PR"
+}

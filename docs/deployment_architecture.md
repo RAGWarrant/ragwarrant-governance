@@ -1,9 +1,9 @@
 # Deployment Architecture
 
-RAGTune runs as a finite job:
+RAGWarrant runs as a finite job:
 
 ```text
-configs + sanitized inputs -> ragtune CLI -> audit artifacts + promotion_decision.json
+configs + sanitized inputs -> ragwarrant CLI -> audit artifacts + promotion_decision.json
 ```
 
 The same entrypoint is intended for local terminal runs, Docker, Docker Compose, Kubernetes Jobs and CronJobs, Azure Container Apps Jobs, AWS ECS/Fargate tasks, AWS Batch jobs, Google Cloud Run Jobs, and GitHub Actions.
@@ -15,7 +15,7 @@ Input mount: /inputs
 Config mount: /configs
 Output mount: /outputs
 Optional local data mount: /data
-Runtime command: ragtune run-governance-job --config /configs/job.yaml --output-root /outputs --decision-out /outputs/promotion_decision.json
+Runtime command: ragwarrant run-governance-job --config /configs/job.yaml --output-root /outputs --decision-out /outputs/promotion_decision.json
 ```
 
 Exit behavior:

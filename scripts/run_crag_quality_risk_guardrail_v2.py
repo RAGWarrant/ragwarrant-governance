@@ -351,7 +351,7 @@ def main() -> None:
         result_class = "CRAG_GEN_LLM_QUALITY_RISK_GUARDRAIL_V2_INCONCLUSIVE"
         interpretation = "Held-out offsets did not produce a stable latency endpoint and no stronger claim is promoted."
     summary = {
-        "suite": "ragtune_crag_generative_quality_risk_guardrail_v2",
+        "suite": "ragwarrant_crag_generative_quality_risk_guardrail_v2",
         "result_class": result_class,
         "interpretation": interpretation,
         "input_artifact_count": len(args.input_roots),

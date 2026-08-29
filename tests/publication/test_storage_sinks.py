@@ -4,8 +4,8 @@ from pathlib import Path
 
 import pytest
 
-from ragtune.storage.base import StorageUnavailable
-from ragtune.storage.factory import build_storage_sink
+from ragwarrant.storage.base import StorageUnavailable
+from ragwarrant.storage.factory import build_storage_sink
 
 
 def test_local_storage_sink_writes_artifacts(tmp_path: Path) -> None:
@@ -18,25 +18,25 @@ def test_local_storage_sink_writes_artifacts(tmp_path: Path) -> None:
 
 
 def test_storage_factory_defaults_to_local(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
-    monkeypatch.delenv("RAGTUNE_STORAGE_MODE", raising=False)
+    monkeypatch.delenv("RAGWARRANT_STORAGE_MODE", raising=False)
     sink = build_storage_sink(output_root=tmp_path)
     assert sink.mode == "local"
 
 
 def test_azure_blob_sink_blocks_without_dependency_or_config(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.delenv("RAGTUNE_AZURE_BLOB_CONTAINER", raising=False)
+    monkeypatch.delenv("RAGWARRANT_AZURE_BLOB_CONTAINER", raising=False)
     with pytest.raises(StorageUnavailable):
         build_storage_sink("azure_blob")
 
 
 def test_s3_sink_blocks_without_dependency_or_config(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.delenv("RAGTUNE_S3_BUCKET", raising=False)
+    monkeypatch.delenv("RAGWARRANT_S3_BUCKET", raising=False)
     with pytest.raises(StorageUnavailable):
         build_storage_sink("s3")
 
 
 def test_gcs_sink_blocks_without_dependency_or_config(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.delenv("RAGTUNE_GCS_BUCKET", raising=False)
+    monkeypatch.delenv("RAGWARRANT_GCS_BUCKET", raising=False)
     with pytest.raises(StorageUnavailable):
         build_storage_sink("gcs")
 

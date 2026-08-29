@@ -1,4 +1,4 @@
-# RAGTune v0.1.0-rc1
+# RAGWarrant v0.1.0-rc1
 
 Release-candidate status: `RELEASE_CANDIDATE_READY`.
 

@@ -20,7 +20,7 @@ def test_deploy_templates_do_not_use_latest_or_example_registries() -> None:
         text = path.read_text(encoding="utf-8", errors="ignore")
         if "ubuntu-latest" in text:
             continue
-        for token in ("ghcr.io/example", "ragtune-governance:latest", "rag-tuning-governance:latest", "dkr.ecr", "us-docker.pkg.dev"):
+        for token in ("ghcr.io/example", "ragwarrant-governance:latest", "ragwarrant-governance:latest", "dkr.ecr", "us-docker.pkg.dev"):
             if token in text:
                 offenders.append(f"{path.relative_to(ROOT)}:{token}")
     assert offenders == []
@@ -29,14 +29,14 @@ def test_deploy_templates_do_not_use_latest_or_example_registries() -> None:
 def test_digest_helper_fails_closed_when_digest_pending(tmp_path: Path) -> None:
     pending_digest = tmp_path / "IMAGE_DIGEST"
     pending_digest.write_text(
-        "IMAGE=ghcr.io/aim-ragtune/rag-tuning-governance\n"
+        "IMAGE=ghcr.io/aim-ragwarrant/ragwarrant-governance\n"
         "REFERENCE=PENDING_FIRST_WORKFLOW_RUN\n"
         "DIGEST=PENDING_FIRST_WORKFLOW_RUN\n"
         "PLATFORMS=linux/amd64,linux/arm64\n",
         encoding="utf-8",
     )
     env = os.environ.copy()
-    env["RAGTUNE_IMAGE_DIGEST_FILE"] = str(pending_digest)
+    env["RAGWARRANT_IMAGE_DIGEST_FILE"] = str(pending_digest)
     result = subprocess.run(
         ["bash", "deploy/load-image-reference.sh"],
         cwd=ROOT,
@@ -65,7 +65,7 @@ def test_cloud_scripts_preflight_with_digest_helper() -> None:
 
 
 def test_kubernetes_manifests_are_non_root_and_read_only() -> None:
-    for name in ("ragtune-job.yaml", "ragtune-cronjob.yaml"):
+    for name in ("ragwarrant-job.yaml", "ragwarrant-cronjob.yaml"):
         text = (ROOT / "deploy" / "kubernetes" / name).read_text(encoding="utf-8")
         assert "runAsNonRoot: true" in text
         assert "runAsUser: 10001" in text
@@ -117,7 +117,7 @@ def test_k8s_kind_validator_has_full_and_dry_run_modes() -> None:
     text = (ROOT / "scripts" / "validate_k8s_kind.sh").read_text(encoding="utf-8")
     assert "--full" in text
     assert "--dry-run" in text
-    assert "RAGTUNE_K8S_VALIDATION_MODE" in text
+    assert "RAGWARRANT_K8S_VALIDATION_MODE" in text
     assert "K8S_KIND_STATIC_DRY_RUN_PASSED" in text
     assert "K8S_KIND_EXECUTION_PASSED" in text
 
@@ -145,7 +145,7 @@ def test_k8s_kind_validator_uses_cleanup_trap() -> None:
 def test_kind_validation_overlay_uses_public_mini_config_and_local_image() -> None:
     text = (ROOT / "deploy" / "kubernetes-kind-validation" / "kustomization.yaml").read_text(encoding="utf-8")
     assert "public_mini_governance_job.yaml" in text
-    assert "ragtune-governance" in text
+    assert "ragwarrant-governance" in text
     assert "kind-validation" in text
     assert (ROOT / "deploy" / "kubernetes-kind-validation" / "public_mini_governance_job.yaml").read_text(encoding="utf-8") == (
         ROOT / "configs" / "jobs" / "public_mini_governance_job.yaml"

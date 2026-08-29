@@ -1,6 +1,6 @@
 # AWS Zero-to-First-Run Runbook
 
-This runbook describes how an operator can run the finite RAGTune governance job on AWS ECS Fargate or AWS Batch. It is a deployment guide only. It does not report live cloud validation, production readiness, official benchmarking, or platform certification.
+This runbook describes how an operator can run the finite RAGWarrant governance job on AWS ECS Fargate or AWS Batch. It is a deployment guide only. It does not report live cloud validation, production readiness, official benchmarking, or platform certification.
 
 ## Prerequisites
 
@@ -24,9 +24,9 @@ If `deploy/load-image-reference.sh` reports that no verified published digest is
 ### ECS Fargate
 
 ```bash
-export RAGTUNE_AWS_CLUSTER="<ecs-cluster-name>"
-export RAGTUNE_AWS_SUBNET="<subnet-id>"
-export RAGTUNE_AWS_SECURITY_GROUP="<security-group-id>"
+export RAGWARRANT_AWS_CLUSTER="<ecs-cluster-name>"
+export RAGWARRANT_AWS_SUBNET="<subnet-id>"
+export RAGWARRANT_AWS_SECURITY_GROUP="<security-group-id>"
 
 bash deploy/aws/deploy-ecs-fargate.sh
 bash deploy/aws/run-ecs-task.sh
@@ -35,7 +35,7 @@ bash deploy/aws/run-ecs-task.sh
 ### AWS Batch
 
 ```bash
-export RAGTUNE_AWS_BATCH_QUEUE="<batch-queue-name>"
+export RAGWARRANT_AWS_BATCH_QUEUE="<batch-queue-name>"
 
 aws batch register-job-definition --cli-input-json file://deploy/aws/batch-job-definition.json
 bash deploy/aws/submit-batch-job.sh

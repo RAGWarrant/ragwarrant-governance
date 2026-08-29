@@ -1,0 +1,28 @@
+{
+  "cli_references_updated": true,
+  "deployment_references_updated": true,
+  "directories_renamed": [
+    "src/ragtune -> src/ragwarrant",
+    "src/rag_tuning_governance.egg-info -> src/ragwarrant_governance.egg-info"
+  ],
+  "docker_references_updated": true,
+  "environment_variables_updated": true,
+  "files_renamed": "see git status for tracked renames",
+  "legacy_exceptions": 26834,
+  "package_imports_updated": true,
+  "text_replacements": "active code, docs, configs, deployment, package metadata, and workflow surfaces renamed",
+  "unclassified_old_name_hits": 0,
+  "verification": {
+    "clean_editable_install_import_ragwarrant": "passed",
+    "clean_editable_install_legacy_ragtune_absent": "passed",
+    "compileall_src_scripts": "passed",
+    "docker_static_validation": "DOCKER_STATIC_VALIDATION_PASSED",
+    "git_diff_check": "passed",
+    "make_validate_deployment_readiness": "DEPLOYMENT_READINESS_SUPPORTED_WITH_BOUNDARIES",
+    "make_validate_publication": "passed",
+    "pytest_publication": "267 passed, 6 skipped",
+    "pytest_publication_cli_entrypoints": "5 passed",
+    "ragwarrant_help": "passed",
+    "ragwarrant_public_mini": "passed"
+  }
+}

@@ -1,9 +1,0 @@
-suite: ragtune_aim_hardware_characterization_v1
-suite_version: 1
-publication:
-  export_hostnames: false
-  export_usernames: false
-  export_private_paths: false
-  export_ip_addresses: false
-  export_mac_addresses: false
-  official_platform_benchmark: false

@@ -1,0 +1,14 @@
+suite: ragwarrant_natural_governance_superiority_v3
+suite_version: 3
+seed: 20260808
+
+case_labeling:
+  count_only_natural_public_case: true
+  exclude_public_perturbation_from_natural_claim: true
+  exclude_synthetic_from_natural_claim: true
+  low_divergence_threshold: 3
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

@@ -1,0 +1,18 @@
+suite: ragwarrant_challenge_unlock_v1
+suite_version: 1
+seed: 20260805
+profile: freeze_check
+allow_dirty_challenge_unlock: false
+statistical_audit_result: audit_passed_zero_width_legitimate_but_low_information
+primary_baseline: best_single_policy_on_validation
+parent_run:
+  run_id: ragtune_real_rag_reproduction_v1_20260805-125017-f5a8e06009
+  run_dir: <approved-data-root>/source-validation-workspace/artifacts/ragtune/runs/ragtune_real_rag_reproduction_v1_20260805-125017-f5a8e06009
+dataset: {}
+policy_space: {}
+objectives: {}
+baselines: []
+certificate:
+  supported_enabled: false
+output:
+  append_only: true

@@ -1,4 +1,4 @@
-suite: ragtune_cloud_agnostic_governance_job_v1
+suite: ragwarrant_cloud_agnostic_governance_job_v1
 run_id: public_mini_governance_job
 steps:
   - public_mini_reproduction

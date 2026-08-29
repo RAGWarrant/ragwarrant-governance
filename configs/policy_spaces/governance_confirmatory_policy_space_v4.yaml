@@ -2,7 +2,7 @@ policy_space_version: 4
 inherits: configs/policy_spaces/governance_confirmatory_policy_space_v3.yaml
 
 optimizer_display_names:
-  ragtune_no_fork: RAG Compass
+  ragwarrant_no_fork: RAG Compass
 
 dataset_modes:
   end_to_end_corpus_backed:
