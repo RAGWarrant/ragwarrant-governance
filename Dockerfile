@@ -46,7 +46,6 @@ COPY configs ./configs
 COPY schemas ./schemas
 COPY docker ./docker
 COPY deploy ./deploy
-COPY deployment_review ./deployment_review
 COPY README.md LICENSE CITATION.cff .dockerignore .gitattributes Dockerfile docker-compose.yml ./
 
 RUN groupadd --system --gid 10001 ragwarrant \

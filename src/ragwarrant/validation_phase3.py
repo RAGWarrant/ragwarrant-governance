@@ -35,7 +35,7 @@ from ragwarrant.phase2 import aggregate_unit_deltas, paired_bootstrap, parent_ru
 from ragwarrant.utils.files import read_json, write_json, write_text
 from ragwarrant.utils.hashing import sha256_file, stable_hash
 
-PRIMARY_CONTENDER = "ragwarrant_no_fork"
+PRIMARY_CONTENDER = "ragtune_no_fork"
 PRIMARY_BASELINE = "best_single_policy_on_validation"
 RUN_ROOT = Path("<approved-data-root>/source-validation-workspace/artifacts/ragwarrant/runs")
 NAS_ARTIFACT_ROOT = Path("<approved-data-root>/source-validation-workspace/artifacts")
@@ -698,7 +698,7 @@ def public_policies() -> dict[str, RAGPolicy]:
         "greedy_coordinate_search": RAGPolicy(chunk_size=256, chunk_overlap=64, top_k=5, citation_required=True, abstention_threshold=0.5),
         "greedy_regression_aware_search": RAGPolicy(chunk_size=512, chunk_overlap=128, top_k=5, reranker_enabled=True, citation_required=True, abstention_threshold=0.6),
         "optuna_tpe": RAGPolicy(chunk_size=256, chunk_overlap=0, top_k=4, reranker_enabled=True, citation_required=True, abstention_threshold=0.4),
-        "ragwarrant_no_fork": RAGPolicy(chunk_size=512, chunk_overlap=64, top_k=5, reranker_enabled=True, citation_required=True, abstention_threshold=0.6),
+        "ragtune_no_fork": RAGPolicy(chunk_size=512, chunk_overlap=64, top_k=5, reranker_enabled=True, citation_required=True, abstention_threshold=0.6),
     }
 
 
@@ -856,7 +856,7 @@ def q2_answer(per_query: pd.DataFrame, candidates: pd.DataFrame, primary_baselin
         "reason": reason,
         "primary_difference": diff,
         "query_bootstrap": boot,
-        "ragwarrant_no_fork_test_utility": float(nf["test_utility"]),
+        "ragtune_no_fork_test_utility": float(nf["test_utility"]),
         "primary_baseline_test_utility": float(pb["test_utility"]),
         "primary_baseline": primary_baseline,
     }
@@ -1625,7 +1625,7 @@ def run_human_eval_sample_v2(
         raise ValueError("No development run available for human eval sample v2.")
     per_query = pd.read_csv(parent / "per_query_pipeline_results.csv")
     test = per_query[per_query["split"] == "test"]
-    policies = ["ragwarrant_no_fork", read_json(parent / "primary_baseline_selection.json").get("primary_baseline"), "static_default_rag_policy"]
+    policies = ["ragtune_no_fork", read_json(parent / "primary_baseline_selection.json").get("primary_baseline"), "static_default_rag_policy"]
     rows = []
     key = []
     examples = sorted(test["example_id"].unique())[: int(cfg.raw.get("sample_size", 40))]
@@ -2751,10 +2751,10 @@ def run_governed_selection_confirmatory_v2(
     formal_result = governance_formal_result(primary, margin=margin)
     non_governed = candidates[~candidates["policy_id"].isin(["governed_selection", "quality_only_selection"]) & ~candidates["policy_id"].str.startswith("ragwarrant_")]
     primary_non_governed = str(non_governed.sort_values(["validation_utility", "policy_id"], ascending=[False, True]).iloc[0]["policy_id"])
-    nofork_analysis = paired_policy_analysis(per_query, "ragwarrant_no_fork", primary_non_governed, noninferiority_margin=nofork_margin, samples=int(cfg.raw.get("statistics", {}).get("bootstrap_samples", 1000)))
+    nofork_analysis = paired_policy_analysis(per_query, "ragtune_no_fork", primary_non_governed, noninferiority_margin=nofork_margin, samples=int(cfg.raw.get("statistics", {}).get("bootstrap_samples", 1000)))
     nofork_result = nofork_secondary_result(nofork_analysis, margin=nofork_margin)
     ranking = candidates.sort_values(["confirmatory_utility", "policy_id"], ascending=[False, True]).reset_index(drop=True)
-    nofork_rank = int(ranking.index[ranking["policy_id"] == "ragwarrant_no_fork"][0] + 1) if "ragwarrant_no_fork" in set(ranking["policy_id"]) else None
+    nofork_rank = int(ranking.index[ranking["policy_id"] == "ragtune_no_fork"][0] + 1) if "ragtune_no_fork" in set(ranking["policy_id"]) else None
     certificate_status = "Candidate external signal" if formal_result in {"GOVERNANCE_SUPERIOR", "GOVERNANCE_NONINFERIOR_NOT_SUPERIOR"} else "Inconclusive"
     certificate_reason = "Strict Git readiness passed and the frozen confirmatory held-out evaluation supports the formal governance result." if certificate_status == "Candidate external signal" else "Confirmatory execution completed but formal governance evidence did not support a promotable external signal."
     per_query.to_csv(run_dir / "per_query_pipeline_results.csv", index=False)
@@ -3100,10 +3100,10 @@ def latest_multihop_verification() -> dict[str, Any] | None:
     return None
 
 
-RAG_COMPASS_ID = "ragwarrant_no_fork"
+RAG_COMPASS_ID = "ragtune_no_fork"
 RAG_COMPASS_DISPLAY = "RAG Compass"
-RAG_COMPASS_LABEL = "RAG Compass (legacy id: ragwarrant_no_fork)"
-RAG_COMPASS_DEPRECATED_NAMES = ["No-Fork", "RAGWarrant-No-Fork", "ragwarrant_no_fork"]
+RAG_COMPASS_LABEL = "RAG Compass (legacy id: ragtune_no_fork)"
+RAG_COMPASS_DEPRECATED_NAMES = ["No-Fork", "RAGTune-No-Fork", "ragtune_no_fork"]
 
 
 def optimizer_display_name(optimizer_id: str) -> str:
@@ -6744,7 +6744,7 @@ def run_crag_mock_api_validation_v1(cfg: SuiteConfig, config_path: Path, output_
     return {"suite": cfg.suite, "run_id": resolved, "run_dir": str(run_dir), **payload}
 
 
-CRAG_MOCK_API_PARENT_RUN_ID = "ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4"
+CRAG_MOCK_API_PARENT_RUN_ID = "ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4"
 
 
 def crag_mock_api_parent_run_dir(cfg: SuiteConfig | None = None) -> Path | None:

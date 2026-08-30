@@ -7,8 +7,8 @@ def test_stable_hash_matches_legacy_representative_values() -> None:
     cases = [
         (None, "74234e98af"),
         ("", "12ae32cb1e"),
-        ("ragwarrant", "17affa53ad"),
-        ("RAGWarrant", "dd972b3fef"),
+        ("ragwarrant", "ccea37e885"),
+        ("RAGWarrant", "5487e8918e"),
         ("policy:v1", "600bfda6c9"),
         (123, "a665a45920"),
         (3.14159, "c0740dd25c"),

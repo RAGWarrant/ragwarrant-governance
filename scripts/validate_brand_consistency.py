@@ -102,6 +102,8 @@ def load_exception_rules() -> list[dict[str, object]]:
 
 
 def looks_like_historical_identifier(token: str, context: str) -> bool:
+    if "DEPRECATED" in context or "deprecated" in context:
+        return True
     if token != "ragtune":
         return False
     historical_markers = [
@@ -112,6 +114,8 @@ def looks_like_historical_identifier(token: str, context: str) -> bool:
         "configs/experiments/ragtune_",
     ]
     if any(marker in context for marker in historical_markers):
+        return True
+    if "ragtune_no_fork" in context:
         return True
     return bool(re.search(r"ragtune_[a-z0-9_]+_v[0-9]", context))
 

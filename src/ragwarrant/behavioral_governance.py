@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 
-BASE_PARENT_RUN = "ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4"
+BASE_PARENT_RUN = "ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4"
 
 POLICY_SOURCE_MAP = {
     "low_retrieval_single_endpoint": "top_k_low",
@@ -18,7 +18,7 @@ POLICY_SOURCE_MAP = {
     "static_default_policy": "static_default_rag_policy",
     "greedy_regression_aware_search": "greedy_regression_aware_search",
     "optuna_tpe": "optuna_tpe",
-    "rag_compass": "ragwarrant_no_fork",
+    "rag_compass": "ragtune_no_fork",
 }
 
 

@@ -45,7 +45,7 @@ def validate_docker_static(root: Path, *, output_root: Path) -> dict[str, Any]:
         ("dockerfile_copies_gitattributes", ".gitattributes" in docker_text, ".gitattributes"),
         ("dockerfile_copies_docker_assets", "Dockerfile" in docker_text and ".dockerignore" in docker_text and "docker-compose.yml" in docker_text and "COPY docker ./docker" in docker_text, "Docker assets"),
         ("dockerfile_copies_deploy_assets", "COPY deploy ./deploy" in docker_text, "deploy assets"),
-        ("dockerfile_copies_deployment_review", "COPY deployment_review ./deployment_review" in docker_text, "deployment review artifacts"),
+        ("dockerfile_omits_deployment_review", "COPY deployment_review" not in docker_text, "deployment review artifacts excluded"),
         ("dockerignore_exists", dockerignore.exists(), ".dockerignore"),
         ("dockerignore_excludes_local_data", ".local_data" in ignore_text, ".local_data"),
         ("dockerignore_excludes_env", ".env" in ignore_text and ".env.*" in ignore_text, ".env patterns"),
