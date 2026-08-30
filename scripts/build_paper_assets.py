@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from ragtune.rc1_maturity import build_paper_assets
+from ragwarrant.rc1_maturity import build_paper_assets
 
 
 ROOT = Path(__file__).resolve().parents[1]

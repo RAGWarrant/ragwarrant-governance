@@ -8,12 +8,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from ragtune.generative_validation_synthesis import synthesize_generative_validation
+from ragwarrant.generative_validation_synthesis import synthesize_generative_validation
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="configs/experiments/ragtune_generative_llm_validation_synthesis_v1.yaml")
+    parser.add_argument("--config", default="configs/experiments/ragwarrant_generative_llm_validation_synthesis_v1.yaml")
     parser.add_argument("--output-root", default="results/generative_llm_validation")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--force", action="store_true")

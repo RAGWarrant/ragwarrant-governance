@@ -7,7 +7,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from ragtune.behavioral_governance import run_experiment
+from ragwarrant.behavioral_governance import run_experiment
 
 
 def main() -> None:

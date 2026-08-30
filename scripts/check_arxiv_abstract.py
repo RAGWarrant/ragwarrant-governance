@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check arXiv abstract length for the RAGTune preprint package."""
+"""Check arXiv abstract length for the RAGWarrant preprint package."""
 from pathlib import Path
 import re
 import sys

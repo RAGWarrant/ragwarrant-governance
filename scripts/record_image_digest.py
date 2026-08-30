@@ -19,8 +19,8 @@ def _validate_digest(value: str) -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Record the published RAGTune image digest.")
-    parser.add_argument("--image", default="ghcr.io/aim-ragtune/rag-tuning-governance")
+    parser = argparse.ArgumentParser(description="Record the published RAGWarrant image digest.")
+    parser.add_argument("--image", default="ghcr.io/ragwarrant/ragwarrant-governance")
     parser.add_argument("--digest", required=True)
     parser.add_argument("--candidate-tag", default=PENDING)
     parser.add_argument("--source-commit", default=PENDING)
