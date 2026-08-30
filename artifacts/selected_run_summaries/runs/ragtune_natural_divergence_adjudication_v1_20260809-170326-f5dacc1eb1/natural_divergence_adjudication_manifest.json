@@ -1,7 +1,0 @@
-{
-  "case_count": 5,
-  "parent_case_count": 4,
-  "parent_run_dir": "<approved-data-root>/source-validation-workspace/artifacts/ragtune/runs/ragtune_natural_governance_superiority_v3_20260808-150713-27faa5ac56",
-  "result": "NATURAL_DIVERGENCE_MIXED_SIGNAL",
-  "supplemental_mock_api_case_included": true
-}

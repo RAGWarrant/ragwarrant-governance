@@ -1,4 +1,0 @@
-{
-  "mock_api_server_required": true,
-  "rerun_validation_artifact": "<approved-data-root>/source-validation-workspace/artifacts/ragtune/runs/ragtune_crag_mock_api_validation_v1_20260809-175211-7cf1da20ed"
-}
