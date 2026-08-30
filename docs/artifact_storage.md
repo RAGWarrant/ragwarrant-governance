@@ -1,6 +1,6 @@
 # Artifact Storage
 
-RAGTune supports a small artifact-sink abstraction so the governance engine can write local artifacts and optionally hand them to cloud storage.
+RAGWarrant supports a small artifact-sink abstraction so the governance engine can write local artifacts and optionally hand them to cloud storage.
 
 Supported modes:
 
@@ -15,17 +15,17 @@ disabled
 Environment variables:
 
 ```text
-RAGTUNE_STORAGE_MODE=local|azure_blob|s3|gcs|disabled
-RAGTUNE_OUTPUT_ROOT=/outputs
-RAGTUNE_AZURE_BLOB_CONTAINER=<container>
-RAGTUNE_AZURE_BLOB_PREFIX=<prefix>
-RAGTUNE_S3_BUCKET=<bucket>
-RAGTUNE_S3_PREFIX=<prefix>
-RAGTUNE_GCS_BUCKET=<bucket>
-RAGTUNE_GCS_PREFIX=<prefix>
+RAGWARRANT_STORAGE_MODE=local|azure_blob|s3|gcs|disabled
+RAGWARRANT_OUTPUT_ROOT=/outputs
+RAGWARRANT_AZURE_BLOB_CONTAINER=<container>
+RAGWARRANT_AZURE_BLOB_PREFIX=<prefix>
+RAGWARRANT_S3_BUCKET=<bucket>
+RAGWARRANT_S3_PREFIX=<prefix>
+RAGWARRANT_GCS_BUCKET=<bucket>
+RAGWARRANT_GCS_PREFIX=<prefix>
 ```
 
-`local` mode works without cloud SDKs or credentials. Cloud modes fail closed if optional SDKs or required configuration are unavailable. RAGTune writes a local copy of `promotion_decision.json` before any optional upload attempt.
+`local` mode works without cloud SDKs or credentials. Cloud modes fail closed if optional SDKs or required configuration are unavailable. RAGWarrant writes a local copy of `promotion_decision.json` before any optional upload attempt.
 
 ## Emulator Validation
 

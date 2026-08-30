@@ -1,6 +1,6 @@
 # Public Mini Reproduction
 
-The public mini reproduction demonstrates RAGTune governance on a tiny synthetic RAG policy-promotion task.
+The public mini reproduction demonstrates RAGWarrant governance on a tiny synthetic RAG policy-promotion task.
 
 It shows the mechanics of policy metrics, noninferiority gating, lower-cost selection, and fail-closed blocking when a naive low-cost selector crosses the quality-loss threshold.
 

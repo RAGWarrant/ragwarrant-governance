@@ -5,13 +5,13 @@ The hardening phase reports Docker decision reproduction for the CRAG mock-API r
 Build:
 
 ```bash
-docker build -t rag-tuning-governance:latest .
+docker build -t ragwarrant-governance:latest .
 ```
 
 Publication validation:
 
 ```bash
-docker run --rm rag-tuning-governance:latest make validate-publication
+docker run --rm ragwarrant-governance:latest make validate-publication
 ```
 
 CRAG reproduction requires an external CRAG data mount:
@@ -20,7 +20,7 @@ CRAG reproduction requires an external CRAG data mount:
 docker run --rm \
   -v "/path/to/crag/raw:/data/crag/raw:ro" \
   -v "$PWD/results:/app/results" \
-  rag-tuning-governance:latest \
+  ragwarrant-governance:latest \
   make reproduce-crag
 ```
 

@@ -18,7 +18,7 @@ make test
 Run the deployment-friendly governance job:
 
 ```bash
-python3 -m ragtune.cli run-governance-job \
+python3 -m ragwarrant.cli run-governance-job \
   --config configs/jobs/public_mini_governance_job.yaml \
   --output-root artifacts/public_mini_governance_job \
   --decision-out artifacts/public_mini_governance_job/promotion_decision.json

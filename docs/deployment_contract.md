@@ -1,23 +1,23 @@
 # Mounted Governance-Job I/O Contract
 
-RAGTune cloud jobs are finite batch jobs. They read sanitized configuration from a mounted input directory, write sanitized artifacts to a mounted output directory, emit `promotion_decision.json`, and exit with a machine-readable status.
+RAGWarrant cloud jobs are finite batch jobs. They read sanitized configuration from a mounted input directory, write sanitized artifacts to a mounted output directory, emit `promotion_decision.json`, and exit with a machine-readable status.
 
 ## Runtime mounts
 
 - Input mount: `/inputs`
 - Output mount: `/outputs`
-- Optional config override: `--config <path>` or `RAGTUNE_INPUT_DIR/<path>`
-- Optional output override: `--output-root <path>` or `RAGTUNE_OUTPUT_DIR`
+- Optional config override: `--config <path>` or `RAGWARRANT_INPUT_DIR/<path>`
+- Optional output override: `--output-root <path>` or `RAGWARRANT_OUTPUT_DIR`
 - Optional decision override: `--decision-out <path>`
 
 The default runtime image sets:
 
 ```text
-RAGTUNE_CONTAINER=1
-RAGTUNE_REPO_ROOT=/app
-RAGTUNE_INPUT_DIR=/inputs
-RAGTUNE_OUTPUT_DIR=/outputs
-RAGTUNE_OUTPUT_ROOT=/outputs
+RAGWARRANT_CONTAINER=1
+RAGWARRANT_REPO_ROOT=/app
+RAGWARRANT_INPUT_DIR=/inputs
+RAGWARRANT_OUTPUT_DIR=/outputs
+RAGWARRANT_OUTPUT_ROOT=/outputs
 ```
 
 ## Exit codes
@@ -53,7 +53,7 @@ No real cloud deployment is performed by the repository tests or runbooks. Cloud
 Run the contract check locally:
 
 ```bash
-python3 scripts/check_mounted_job_contract.py --output-root /tmp/ragtune-contract-check
+python3 scripts/check_mounted_job_contract.py --output-root /tmp/ragwarrant-contract-check
 ```
 
 Run the contract check inside the container:
@@ -62,7 +62,7 @@ Run the contract check inside the container:
 docker run --rm \
   -v "$PWD/configs/jobs:/inputs:ro" \
   -v "$PWD/.local_outputs:/outputs" \
-  ragtune:wp1 run-governance-job
+  ragwarrant-governance:wp1 run-governance-job
 ```
 
 The container command writes sanitized outputs under the mounted `/outputs` directory.

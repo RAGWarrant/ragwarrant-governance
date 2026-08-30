@@ -32,17 +32,17 @@ RAGWarrant is a governance framework for RAG policy promotion. RAG Compass is a 
 RAGWarrant is a promotion-governance controller that decides whether measured evidence justifies promoting a change to a RAG policy. It is not a hyperparameter tuner, an optimizer, or an evaluation library. It sits behind existing tuning and evaluation tools and adjudicates their outputs through explicit quality, risk, cost, latency, and evidence gates.
 
 Canonical repository:
-https://github.com/AIM-RAGWarrant/ragwarrant-governance
+https://github.com/RAGWarrant/ragwarrant-governance
 
-Legacy public name:
-https://github.com/AIM-RAGWarrant/ragwarrant-governance
-(legacy name, redirects to the canonical repository)
+Former repository path:
+https://github.com/AIM-RAGTune/rag-tuning-governance
+(former RAGTune path; GitHub should redirect to the canonical RAGWarrant repository)
 
 ## Current Strongest Result
 
 The strongest current result is a CRAG mock-API validation run:
 
-- Run ID: `ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4`
+- Run ID: `ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4`
 - Result: `MOCK_API_VALIDATION_GOVERNANCE_SUPERIOR`
 - Governed winner: `top_k_low`
 - Quality-only winner: `greedy_regression_aware_search`
@@ -93,7 +93,7 @@ The CRAG stability comparison is now `CRAG_GEN_LLM_LATENCY_RESULT_MIXED_ACROSS_R
 ## Installation
 
 ```bash
-git clone https://github.com/AIM-RAGWarrant/ragwarrant-governance.git
+git clone https://github.com/RAGWarrant/ragwarrant-governance.git
 cd ragwarrant-governance
 python3 -m venv .venv
 . .venv/bin/activate
@@ -267,4 +267,4 @@ Code in this repository is released under Apache-2.0 unless otherwise noted. Dat
 
 ## Maintainer
 
-Maintainer placeholder: AIM-RAGWarrant.
+Maintainer placeholder: RAGWarrant.

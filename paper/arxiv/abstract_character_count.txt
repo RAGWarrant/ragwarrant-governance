@@ -1,4 +1,4 @@
-characters_including_spaces: 1278
-characters_excluding_line_ending_normalization: 1278
+characters_including_spaces: 1284
+characters_excluding_line_ending_normalization: 1284
 word_count: 164
 limit: 1920
