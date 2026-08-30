@@ -10,7 +10,7 @@ import yaml
 import ragwarrant.validation_phase3 as vp
 from ragwarrant.experiments.runner import run_suite
 
-PARENT_ID = "ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4"
+PARENT_ID = "ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4"
 
 
 @pytest.fixture(autouse=True)
@@ -68,7 +68,7 @@ def _fake_parent(root: Path, run_id: str = PARENT_ID) -> Path:
         for policy, raw, budget, latency, calls in [
             ("top_k_low", 0.80, 0.50, 1.0, 1),
             ("greedy_regression_aware_search", 0.81, 2.00, 10.0, 2),
-            ("ragtune_no_fork", 0.79, 0.60, 2.0, 1),
+            ("rag_compass", 0.79, 0.60, 2.0, 1),
         ]:
             rows.append(
                 {

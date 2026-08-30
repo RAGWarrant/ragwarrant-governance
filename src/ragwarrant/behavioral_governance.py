@@ -9,7 +9,8 @@ from pathlib import Path
 from typing import Any
 
 
-BASE_PARENT_RUN = "ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4"
+BASE_PARENT_RUN = "ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4"
+BASE_PARENT_RUN_ROOT = Path("artifacts/current_ragwarrant_evidence")
 
 POLICY_SOURCE_MAP = {
     "low_retrieval_single_endpoint": "top_k_low",
@@ -18,7 +19,7 @@ POLICY_SOURCE_MAP = {
     "static_default_policy": "static_default_rag_policy",
     "greedy_regression_aware_search": "greedy_regression_aware_search",
     "optuna_tpe": "optuna_tpe",
-    "rag_compass": "ragtune_no_fork",
+    "rag_compass": "rag_compass",
 }
 
 
@@ -498,7 +499,7 @@ def win_tie_loss(deltas: list[float], tolerance: float = 1e-12) -> dict[str, int
 
 
 def run_experiment(root: Path) -> dict[str, Any]:
-    parent_dir = root / "artifacts" / "selected_run_summaries" / "runs" / BASE_PARENT_RUN
+    parent_dir = root / BASE_PARENT_RUN_ROOT / BASE_PARENT_RUN
     parent_csv = parent_dir / "crag_mock_api_per_query_results.csv"
     if not parent_csv.exists():
         raise FileNotFoundError(parent_csv)

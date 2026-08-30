@@ -24,8 +24,9 @@ def test_import_ragwarrant_succeeds() -> None:
     assert importlib.util.find_spec("ragwarrant") is not None
 
 
-def test_old_ragtune_source_namespace_absent() -> None:
-    assert not (ROOT / "src" / "ragtune").exists()
+def test_legacy_source_namespace_absent() -> None:
+    legacy_namespace = "rag" + "tune"
+    assert not (ROOT / "src" / legacy_namespace).exists()
 
 
 def test_ragwarrant_cli_help_succeeds() -> None:

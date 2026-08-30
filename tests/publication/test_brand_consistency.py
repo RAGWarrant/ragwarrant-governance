@@ -25,3 +25,7 @@ def test_brand_consistency_validator_passes(tmp_path: Path) -> None:
     report = json.loads((report_root / "brand_validation_report.json").read_text(encoding="utf-8"))
     assert report["result_class"] == "BRAND_CONSISTENCY_PASSED"
     assert report["unclassified_occurrences"] == 0
+    assert report["active_former_name_occurrences"] == 0
+    assert report["broad_exception_rules"] == []
+    assert report["misspelling_occurrences_outside_negative_fixtures"] == 0
+    assert report["max_occurrence_failures"] == []
