@@ -1,3 +1,0 @@
-adaptive_escalation
-claim_faithfulness
-ragwarrant
