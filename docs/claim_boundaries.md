@@ -1,6 +1,6 @@
 # Claim Boundaries
 
-RAGWarrant is a governance framework for RAG policy promotion. RAG Compass is one optimizer candidate inside RAGWarrant and keeps the machine-readable legacy id `ragtune_no_fork`.
+RAGWarrant is a governance framework for RAG policy promotion. RAG Compass is one optimizer candidate inside RAGWarrant and uses the machine-readable id `rag_compass`.
 
 Supported or partially supported:
 

@@ -4,7 +4,7 @@ RAGWarrant is a governance-first RAG policy promotion and validation framework. 
 
 RAGWarrant governance is the main evidence-backed contribution. It evaluates candidate policies and optimizers under declared quality, cost, latency, regression, safety, provenance, reproducibility, and statistical constraints.
 
-RAG Compass is a candidate optimizer inside RAGWarrant. Its legacy machine-readable ID is `ragtune_no_fork`. Historical evidence does not support RAG Compass optimizer superiority. In the strongest CRAG mock-API validation run, RAG Compass ranked 5th.
+RAG Compass is a candidate optimizer inside RAGWarrant. Its current machine-readable ID is `rag_compass`. Historical evidence does not support RAG Compass optimizer superiority. In the strongest CRAG mock-API validation run, RAG Compass ranked 5th.
 
 Negative, blocked, refused, and inconclusive results are intentionally preserved in `results/historical/`. They reduce cherry-picking and explain why the current claim boundary is narrow.
 

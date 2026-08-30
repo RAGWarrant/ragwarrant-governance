@@ -9,15 +9,11 @@ RAGWarrant is a promotion-governance controller that decides whether measured ev
 Canonical repository:
 https://github.com/RAGWarrant/ragwarrant-governance
 
-Former repository path:
-https://github.com/AIM-RAGTune/rag-tuning-governance
-(former RAGTune path; GitHub should redirect to the canonical RAGWarrant repository)
-
 ## Current Strongest Result
 
 The strongest current result is a CRAG mock-API validation run:
 
-- Run ID: `ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4`
+- Run ID: `ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4`
 - Result: `MOCK_API_VALIDATION_GOVERNANCE_SUPERIOR`
 - Governed winner: `top_k_low`
 - Quality-only winner: `greedy_regression_aware_search`
@@ -59,7 +55,7 @@ The CRAG stability comparison is now `CRAG_GEN_LLM_LATENCY_RESULT_MIXED_ACROSS_R
 - `src/ragwarrant/`: RAGWarrant implementation code.
 - `configs/`: experiment, dataset, optimizer, and policy-space configuration.
 - `tests/`: unit, integration, and reproducibility tests from the validation harness.
-- `artifacts/selected_run_summaries/`: selected small manifests and run outputs needed for review.
+- `artifacts/current_ragwarrant_evidence/`: current RAGWarrant-branded evidence aliases used by the reproducible review harness.
 - `results/`: processed summary tables and claim-status records.
 - `data/`: dataset availability, license notes, checksums, and fixtures. Raw licensed datasets and raw CRAG question text are not redistributed.
 - `reproduction/`: Docker and command documentation for reproducing allowed runs.
