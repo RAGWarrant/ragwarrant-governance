@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ragwarrant.org/schemas/research/promotion_warrant_v1.schema.json",
+  "title": "RAGWarrant research promotion warrant v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "method",
+    "method_id",
+    "status",
+    "decision",
+    "decision_reason",
+    "familywise_error_level",
+    "multiplicity_method",
+    "candidate_family_frozen",
+    "family_hash",
+    "incumbent_policy_id",
+    "confirmatory_unit_count",
+    "certified_policy_ids",
+    "selected_policy_id",
+    "selection_objective",
+    "risk_tests",
+    "enabled_risks",
+    "operational_selection_objective",
+    "diagnostics",
+    "deployable",
+    "uses_population_truth",
+    "benchmark_freeze_digest",
+    "seed_schedule_version",
+    "full_profile_used",
+    "population_truth_accessed",
+    "research_only",
+    "production_integrated"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "method": {"const": "fixed_sample_multi_risk_warrant_v1"},
+    "method_id": {"const": "fixed_sample_multi_risk_warrant_v1"},
+    "status": {"const": "COMPLETED"},
+    "decision": {
+      "enum": ["PROMOTE", "INCONCLUSIVE", "BLOCKED_INVALID_EVIDENCE"]
+    },
+    "decision_reason": {"type": "string", "minLength": 1},
+    "familywise_error_level": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+    "multiplicity_method": {"enum": ["holm", "bonferroni"]},
+    "candidate_family_frozen": {"const": true},
+    "family_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "incumbent_policy_id": {"type": "string", "minLength": 1},
+    "confirmatory_unit_count": {"type": "integer", "minimum": 0},
+    "certified_policy_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "selected_policy_id": {
+      "oneOf": [
+        {"type": "string", "minLength": 1},
+        {"type": "null"}
+      ]
+    },
+    "selection_objective": {"enum": ["minimize_cost", "minimize_latency"]},
+    "risk_tests": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/risk_test"}
+    },
+    "enabled_risks": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "overall_quality",
+          "group_quality",
+          "safety_violation_probability",
+          "execution_failure_probability",
+          "insufficient_evidence_probability"
+        ]
+      }
+    },
+    "operational_selection_objective": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "secondary", "tertiary", "selected_value"],
+      "properties": {
+        "primary": {"enum": ["mean_cost", "mean_latency"]},
+        "secondary": {"enum": ["mean_cost", "mean_latency"]},
+        "tertiary": {"const": "lexical_policy_id"},
+        "selected_value": {"type": ["number", "null"]}
+      }
+    },
+    "diagnostics": {"type": "object"},
+    "deployable": {"const": true},
+    "uses_population_truth": {"const": false},
+    "benchmark_freeze_digest": {
+      "const": "c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e"
+    },
+    "seed_schedule_version": {"const": 2},
+    "full_profile_used": {"const": false},
+    "population_truth_accessed": {"const": false},
+    "research_only": {"const": true},
+    "production_integrated": {"const": false}
+  },
+  "$defs": {
+    "risk_test": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hypothesis_id",
+        "policy_id",
+        "risk_id",
+        "group_id",
+        "null_hypothesis",
+        "alternative_hypothesis",
+        "null_boundary",
+        "support_bounds",
+        "sample_count",
+        "observed_statistic",
+        "raw_p_value",
+        "adjusted_p_value",
+        "rejection_threshold",
+        "rejected",
+        "failure_reason"
+      ],
+      "properties": {
+        "hypothesis_id": {"type": "string", "minLength": 1},
+        "policy_id": {"type": "string", "minLength": 1},
+        "risk_id": {"type": "string", "minLength": 1},
+        "group_id": {"type": ["string", "null"]},
+        "null_hypothesis": {"type": "string", "minLength": 1},
+        "alternative_hypothesis": {"type": "string", "minLength": 1},
+        "null_boundary": {"type": "number"},
+        "support_bounds": {
+          "oneOf": [
+            {
+              "type": "array",
+              "prefixItems": [{"type": "number"}, {"type": "number"}],
+              "minItems": 2,
+              "maxItems": 2
+            },
+            {"type": "null"}
+          ]
+        },
+        "sample_count": {"type": "integer", "minimum": 0},
+        "observed_statistic": {"type": ["number", "null"]},
+        "raw_p_value": {"type": "number", "minimum": 0, "maximum": 1},
+        "adjusted_p_value": {"type": "number", "minimum": 0, "maximum": 1},
+        "rejection_threshold": {"type": "number", "minimum": 0, "maximum": 1},
+        "rejected": {"type": "boolean"},
+        "failure_reason": {"type": ["string", "null"]}
+      }
+    }
+  }
+}
