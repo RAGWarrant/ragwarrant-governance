@@ -2,11 +2,11 @@
   "result_class": "BRAND_CONSISTENCY_PASSED",
   "canonical_product": "RAGWarrant",
   "canonical_repository": "https://github.com/RAGWarrant/ragwarrant-governance",
-  "total_occurrences": 27228,
-  "classified_occurrences": 27228,
+  "total_occurrences": 27229,
+  "classified_occurrences": 27229,
   "unclassified_occurrences": 0,
   "by_classification": {
-    "historical_run_identifier": 22897,
+    "historical_run_identifier": 22898,
     "immutable_historical_artifact": 998,
     "legacy_redirect_reference": 4,
     "migration_documentation": 3327,
@@ -22,7 +22,7 @@
     "rag-tuning-governance": 203,
     "rag-tuning-governance-public": 20,
     "rag_tuning_governance": 85,
-    "ragtune": 25937,
+    "ragtune": 25938,
     "ragwarrent": 3
   },
   "unclassified": [],

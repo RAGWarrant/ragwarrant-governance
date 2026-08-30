@@ -2,13 +2,13 @@
 
 - Result: `BRAND_CONSISTENCY_PASSED`
 - Canonical repository: `https://github.com/RAGWarrant/ragwarrant-governance`
-- Total former-name occurrences: 27228
-- Classified occurrences: 27228
+- Total former-name occurrences: 27229
+- Classified occurrences: 27229
 - Unclassified occurrences: 0
 
 ## Classifications
 
-- `historical_run_identifier`: 22897
+- `historical_run_identifier`: 22898
 - `immutable_historical_artifact`: 998
 - `legacy_redirect_reference`: 4
 - `migration_documentation`: 3327
