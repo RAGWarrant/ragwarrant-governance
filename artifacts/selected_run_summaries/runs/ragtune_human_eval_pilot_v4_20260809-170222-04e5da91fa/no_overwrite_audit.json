@@ -1,8 +1,0 @@
-{
-  "append_only": true,
-  "attempted_overwrites_blocked": 0,
-  "completed_manifest_present": false,
-  "run_dir": "artifacts/ragtune/runs/ragtune_human_eval_pilot_v4_20260809-170222-04e5da91fa",
-  "run_id": "ragtune_human_eval_pilot_v4_20260809-170222-04e5da91fa",
-  "status": "append_only_confirmed"
-}

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "RAGTune artifact manifest",
+  "title": "RAGWarrant artifact manifest",
   "type": "object",
   "required": ["run_dir", "artifact_count", "artifacts"],
   "properties": {

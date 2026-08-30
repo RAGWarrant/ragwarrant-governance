@@ -4,7 +4,7 @@ claim_boundary:
   maximum_certificate: Candidate external signal
   supported_enabled: false
   rag_compass_display_name: RAG Compass
-  rag_compass_legacy_id: ragtune_no_fork
+  rag_compass_legacy_id: ragwarrant_no_fork
 rules:
   preserve_prior_artifacts: true
   no_post_result_threshold_changes: true

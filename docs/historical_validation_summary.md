@@ -1,10 +1,10 @@
 # Historical Validation Summary
 
-RAGTune is a governance-first RAG policy promotion and validation framework. The historical validation record shows an evidence arc from synthetic simulations and refusal discipline through public end-to-end development, public confirmatory noninferiority, CRAG full corpus-backed acquisition, and CRAG mock-API governance superiority.
+RAGWarrant is a governance-first RAG policy promotion and validation framework. The historical validation record shows an evidence arc from synthetic simulations and refusal discipline through public end-to-end development, public confirmatory noninferiority, CRAG full corpus-backed acquisition, and CRAG mock-API governance superiority.
 
-RAGTune governance is the main evidence-backed contribution. It evaluates candidate policies and optimizers under declared quality, cost, latency, regression, safety, provenance, reproducibility, and statistical constraints.
+RAGWarrant governance is the main evidence-backed contribution. It evaluates candidate policies and optimizers under declared quality, cost, latency, regression, safety, provenance, reproducibility, and statistical constraints.
 
-RAG Compass is a candidate optimizer inside RAGTune. Its legacy machine-readable ID is `ragtune_no_fork`. Historical evidence does not support RAG Compass optimizer superiority. In the strongest CRAG mock-API validation run, RAG Compass ranked 5th.
+RAG Compass is a candidate optimizer inside RAGWarrant. Its current machine-readable ID is `rag_compass`. Historical evidence does not support RAG Compass optimizer superiority. In the strongest CRAG mock-API validation run, RAG Compass ranked 5th.
 
 Negative, blocked, refused, and inconclusive results are intentionally preserved in `results/historical/`. They reduce cherry-picking and explain why the current claim boundary is narrow.
 
@@ -21,8 +21,8 @@ Unsupported areas remain: RAG Compass superiority, broad generative LLM governan
 No raw datasets, raw CRAG query wording, raw source documents, raw API responses, or private paths are included in the historical ledger.
 ## Open-Source And arXiv Readiness Update
 
-The latest readiness package preserves the historical negative and mixed results while adding a deterministic public mini reproduction, external evaluator adapter demo, selector ablation matrix, CRAG evaluator-mapping diagnostics, and sanitized AIM hardware characterization. The package supports presenting RAGTune as a governance and promotion-control framework, not as a universal optimizer.
+The latest readiness package preserves the historical negative and mixed results while adding a deterministic public mini reproduction, external evaluator adapter demo, selector ablation matrix, CRAG evaluator-mapping diagnostics, and sanitized AIM hardware characterization. The package supports presenting RAGWarrant as a governance and promotion-control framework, not as a universal optimizer.
 
 ## Cloud-Agnostic Deployment Update
 
-The deployment-hardening pass adds a CLI job contract, Docker support, Docker Compose and cloud deployment examples, storage-sink abstractions, promotion-decision schemas, and deployment-readiness validation. This strengthens RAGTune as open-source governance infrastructure. It does not change the scientific evidence ladder and does not claim live cloud benchmarking or production operation.
+The deployment-hardening pass adds a CLI job contract, Docker support, Docker Compose and cloud deployment examples, storage-sink abstractions, promotion-decision schemas, and deployment-readiness validation. This strengthens RAGWarrant as open-source governance infrastructure. It does not change the scientific evidence ladder and does not claim live cloud benchmarking or production operation.

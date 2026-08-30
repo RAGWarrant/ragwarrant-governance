@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def test_aim_hardware_characterization_config_exists() -> None:
-    assert (ROOT / "configs/experiments/ragtune_aim_hardware_characterization_v1.yaml").exists()
+    assert (ROOT / "configs/experiments/ragwarrant_aim_hardware_characterization_v1.yaml").exists()
 
 
 def test_aim_hardware_characterization_script_exists() -> None:

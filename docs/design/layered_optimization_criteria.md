@@ -31,4 +31,4 @@ Cost, latency, and capacity constraints
 Available models, retrievers, and tools
 
         ↓
-Validated RAGTune promotion decision
+Validated RAGWarrant promotion decision

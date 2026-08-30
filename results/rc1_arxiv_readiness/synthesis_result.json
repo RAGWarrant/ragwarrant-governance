@@ -19,5 +19,5 @@
   },
   "paper_draft_status": "assembled_scaffold",
   "result_class": "RC1_ARXIV_READINESS_SUPPORTED_WITH_BOUNDARIES",
-  "suite": "ragtune_rc1_arxiv_readiness_synthesis_v1"
+  "suite": "ragwarrant_rc1_arxiv_readiness_synthesis_v1"
 }

@@ -1,5 +1,5 @@
 metric,value
-suite,ragtune_crag_generated_answer_evaluator_mapping_v1
+suite,ragwarrant_crag_generated_answer_evaluator_mapping_v1
 mapping_result_class,CRAG_GENERATED_QUALITY_LOCAL_EVALUATOR_ACTIVE
 local_evaluator_available,True
 generated_answers_scored_locally,True

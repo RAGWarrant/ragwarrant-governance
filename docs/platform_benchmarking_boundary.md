@@ -17,4 +17,4 @@ The AIM hardware characterization is local runtime documentation only. It is not
 
 ## Cloud Deployment Templates
 
-The Docker, Kubernetes, Azure, AWS, GCP, and GitHub Actions files in `deploy/` are portability templates for the finite RAGTune governance job. They are not platform-native benchmark artifacts and do not imply live cloud validation.
+The Docker, Kubernetes, Azure, AWS, GCP, and GitHub Actions files in `deploy/` are portability templates for the finite RAGWarrant governance job. They are not platform-native benchmark artifacts and do not imply live cloud validation.

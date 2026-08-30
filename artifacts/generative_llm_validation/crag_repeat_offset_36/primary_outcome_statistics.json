@@ -56,7 +56,7 @@
   "sample_offset": 36,
   "sample_strategy": "deterministic_contiguous_offset",
   "secrets_committed": false,
-  "suite": "ragtune_crag_generative_llm_validation_v1",
+  "suite": "ragwarrant_crag_generative_llm_validation_v1",
   "unique_answer_hash_count": 47,
   "usable_quality_signal": true
 }

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ragwarrant-job-config
+data:
+  job.yaml: |
+    suite: ragwarrant_cloud_agnostic_governance_job_v1
+    run_id: kubernetes_public_mini_job
+    steps:
+      - public_mini_reproduction
+    run_publication_validator: true

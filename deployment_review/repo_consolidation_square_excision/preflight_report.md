@@ -3,7 +3,7 @@
 - Public repo path: `<local-public-repo>`
 - Public starting commit: `ff529005bf7d00a0c3f79ba991563f3923d63205`
 - Branch: `<requested-work-branch>`
-- Remote: `https://github.com/AIM-RAGTune/rag-tuning-governance.git`
+- Remote: `https://github.com/RAGWarrant/ragwarrant-governance.git`
 - origin/main: `ff529005bf7d00a0c3f79ba991563f3923d63205`
 - v0.1.0-rc1 target: `ff529005bf7d00a0c3f79ba991563f3923d63205`
 - Private repo path: `<local-private-source-repo>`

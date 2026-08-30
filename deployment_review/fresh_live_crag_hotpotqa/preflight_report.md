@@ -2,7 +2,7 @@
 
 - Starting commit: `03d5b93b5efc75bf94967ff1eac7f42bbdf6720a`
 - Branch: `fresh-live-crag-hotpotqa-behavioral-governance`
-- Remote: `https://github.com/AIM-RAGTune/rag-tuning-governance.git`
+- Remote: `https://github.com/RAGWarrant/ragwarrant-governance.git`
 - Initial working tree: clean
 
 ## Baseline Validation
@@ -19,7 +19,7 @@ Raw-text, secret, private-path, and overclaim scans were run. Findings were expe
 
 ## Dataset Availability
 
-Fresh CRAG could not run because `RAGTUNE_CRAG_APPROVED_NONCOMMERCIAL_RESEARCH_ONLY`, `RAGTUNE_CRAG_ROOT`, and `RAGTUNE_CRAG_DATA` were not configured. HotpotQA could not run because the `datasets` package was unavailable and no local HotpotQA raw data were found.
+Fresh CRAG could not run because `RAGWARRANT_CRAG_APPROVED_NONCOMMERCIAL_RESEARCH_ONLY`, `RAGWARRANT_CRAG_ROOT`, and `RAGWARRANT_CRAG_DATA` were not configured. HotpotQA could not run because the `datasets` package was unavailable and no local HotpotQA raw data were found.
 
 ## Decision
 

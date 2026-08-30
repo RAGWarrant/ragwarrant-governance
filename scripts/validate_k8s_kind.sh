@@ -3,12 +3,12 @@ set -euo pipefail
 
 ROOT="$(cd "$(/usr/bin/dirname "${BASH_SOURCE[0]}")/.." && /bin/pwd)"
 PYTHON_BIN="${PYTHON:-python3}"
-MODE="${RAGTUNE_K8S_VALIDATION_MODE:-auto}"
-REPORT_DIR="${RAGTUNE_KIND_REPORT_DIR:-/tmp/ragtune-k8s-kind-validation}"
-CLUSTER_NAME="${KIND_CLUSTER_NAME:-ragtune-validate}"
-NODE_IMAGE="${RAGTUNE_KIND_NODE_IMAGE:-}"
-TIMEOUT="${RAGTUNE_KIND_TIMEOUT:-180s}"
-IMAGE_NAME="ragtune-governance:kind-validation"
+MODE="${RAGWARRANT_K8S_VALIDATION_MODE:-auto}"
+REPORT_DIR="${RAGWARRANT_KIND_REPORT_DIR:-/tmp/ragwarrant-k8s-kind-validation}"
+CLUSTER_NAME="${KIND_CLUSTER_NAME:-ragwarrant-validate}"
+NODE_IMAGE="${RAGWARRANT_KIND_NODE_IMAGE:-}"
+TIMEOUT="${RAGWARRANT_KIND_TIMEOUT:-180s}"
+IMAGE_NAME="ragwarrant-governance:kind-validation"
 OVERLAY="$ROOT/deploy/kubernetes-kind-validation"
 REPORT_JSON="$REPORT_DIR/k8s_kind_validation_report.json"
 REPORT_MD="$REPORT_DIR/k8s_kind_validation_report.md"
@@ -28,11 +28,11 @@ Modes:
   --dry-run  render and statically validate Kubernetes manifests without scheduler execution.
 
 Environment:
-  RAGTUNE_K8S_VALIDATION_MODE=full|dry-run
+  RAGWARRANT_K8S_VALIDATION_MODE=full|dry-run
   KIND_CLUSTER_NAME
-  RAGTUNE_KIND_NODE_IMAGE
-  RAGTUNE_KIND_TIMEOUT
-  RAGTUNE_KIND_REPORT_DIR
+  RAGWARRANT_KIND_NODE_IMAGE
+  RAGWARRANT_KIND_TIMEOUT
+  RAGWARRANT_KIND_REPORT_DIR
 EOF
 }
 
@@ -124,9 +124,9 @@ import yaml
 manifest = Path(sys.argv[1])
 pod_spec_out = Path(sys.argv[2])
 docs = [doc for doc in yaml.safe_load_all(manifest.read_text(encoding="utf-8")) if doc]
-jobs = [doc for doc in docs if doc.get("kind") == "Job" and doc.get("metadata", {}).get("name") == "ragtune-governance-job"]
+jobs = [doc for doc in docs if doc.get("kind") == "Job" and doc.get("metadata", {}).get("name") == "ragwarrant-governance-job"]
 if len(jobs) != 1:
-    raise SystemExit("expected exactly one ragtune-governance-job")
+    raise SystemExit("expected exactly one ragwarrant-governance-job")
 spec = jobs[0]["spec"]["template"]["spec"]
 container = spec["containers"][0]
 security = container.get("securityContext", {})
@@ -178,7 +178,7 @@ kind: Pod
 metadata:
   name: ${COPY_POD_NAME}
   labels:
-    app.kubernetes.io/name: ragtune
+    app.kubernetes.io/name: ragwarrant
     app.kubernetes.io/component: output-copy
 spec:
   restartPolicy: Never
@@ -193,7 +193,7 @@ spec:
   volumes:
     - name: outputs
       persistentVolumeClaim:
-        claimName: ragtune-outputs
+        claimName: ragwarrant-outputs
 YAML
   kubectl wait --for=condition=Ready "pod/$COPY_POD_NAME" --timeout="$TIMEOUT"
   kubectl cp "${COPY_POD_NAME}:/outputs/." "$OUTPUT_COPY"
@@ -248,8 +248,8 @@ kind "${kind_args[@]}"
 CLUSTER_CREATED=1
 kind load docker-image "$IMAGE_NAME" --name "$CLUSTER_NAME"
 kubectl apply -k "$OVERLAY"
-kubectl wait --for=condition=complete "job/ragtune-governance-job" --timeout="$TIMEOUT"
-pod_name="$(kubectl get pods -l job-name=ragtune-governance-job -o jsonpath='{.items[0].metadata.name}')"
+kubectl wait --for=condition=complete "job/ragwarrant-governance-job" --timeout="$TIMEOUT"
+pod_name="$(kubectl get pods -l job-name=ragwarrant-governance-job -o jsonpath='{.items[0].metadata.name}')"
 kubectl get pod "$pod_name" -o json > "$JOB_STATUS_JSON"
 "$PYTHON_BIN" - "$JOB_STATUS_JSON" <<'PY'
 import json
@@ -270,7 +270,7 @@ copy_job_outputs_from_pvc
 test -f "$OUTPUT_COPY/promotion_decision.json"
 validate_decision
 if [[ -d "$OUTPUT_COPY/public_mini_reproduction" ]]; then
-  PYTHONPATH="$ROOT/src" "$PYTHON_BIN" "$ROOT/scripts/verify_ragtune_run.py" \
+  PYTHONPATH="$ROOT/src" "$PYTHON_BIN" "$ROOT/scripts/verify_ragwarrant_run.py" \
     --run-dir "$OUTPUT_COPY/public_mini_reproduction" \
     --output-root "$REPORT_DIR/verify_run" >/dev/null
 fi

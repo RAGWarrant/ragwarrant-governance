@@ -1,0 +1,14 @@
+suite: ragwarrant_human_eval_validation_v1
+suite_version: 1
+seed: 20260808
+
+human_eval:
+  require_annotation_workflow: true
+  do_not_fake_annotations: true
+  pilot_sample_min: 40
+  pilot_sample_max: 100
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

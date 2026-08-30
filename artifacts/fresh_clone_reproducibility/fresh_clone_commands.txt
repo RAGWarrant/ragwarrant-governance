@@ -1,7 +1,7 @@
-git clone --depth 1 https://github.com/AIM-RAGTune/rag-tuning-governance.git <temporary-fresh-clone-dir>/rag-tuning-governance
+git clone --depth 1 https://github.com/RAGWarrant/ragwarrant-governance.git <temporary-fresh-clone-dir>/ragwarrant-governance
 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m pip install -e .
-/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragtune.cli --help
-/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragtune.cli validate-bundle
-/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragtune.cli run-public-mini
-/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragtune.cli run-governance-job --config configs/jobs/public_mini_governance_job.yaml --output-root fresh_clone_outputs --decision-out fresh_clone_outputs/promotion_decision.json
+/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragwarrant.cli --help
+/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragwarrant.cli validate-bundle
+/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragwarrant.cli run-public-mini
+/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragwarrant.cli run-governance-job --config configs/jobs/public_mini_governance_job.yaml --output-root fresh_clone_outputs --decision-out fresh_clone_outputs/promotion_decision.json
 /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 scripts/validate_publication_bundle.py

@@ -1,0 +1,7 @@
+{
+  "result_class": "DIFF_SECURITY_SCAN_PASSED",
+  "diff_base": "origin/main...HEAD",
+  "secret_like_hit_count": 0,
+  "private_marker_hits": [],
+  "secret_like_samples": []
+}

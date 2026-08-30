@@ -15,5 +15,5 @@
   "python_version": "3.13.5",
   "result_class": "AIM_HARDWARE_MATRIX_COMPLETED",
   "serial_numbers_exported": false,
-  "suite": "ragtune_aim_hardware_matrix_v1"
+  "suite": "ragwarrant_aim_hardware_matrix_v1"
 }

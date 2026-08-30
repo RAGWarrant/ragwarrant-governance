@@ -8,12 +8,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from ragtune.hotpotqa_generative_quality_signal_audit import audit_hotpotqa_quality_signal
+from ragwarrant.hotpotqa_generative_quality_signal_audit import audit_hotpotqa_quality_signal
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="configs/experiments/ragtune_hotpotqa_generative_quality_signal_audit_v1.yaml")
+    parser.add_argument("--config", default="configs/experiments/ragwarrant_hotpotqa_generative_quality_signal_audit_v1.yaml")
     parser.add_argument("--output-root", default="artifacts/generative_llm_validation/hotpotqa_quality_signal_audit")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--force", action="store_true")

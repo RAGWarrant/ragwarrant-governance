@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from ragtune.rc1_maturity import FRESH_CLONE_RESULT_CLASSES
+from ragwarrant.rc1_maturity import FRESH_CLONE_RESULT_CLASSES
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -14,7 +14,7 @@ def test_fresh_clone_reproducibility_script_exists() -> None:
 
 
 def test_fresh_clone_reproducibility_config_exists() -> None:
-    assert (ROOT / "configs/experiments/ragtune_fresh_clone_reproducibility_v1.yaml").exists()
+    assert (ROOT / "configs/experiments/ragwarrant_fresh_clone_reproducibility_v1.yaml").exists()
 
 
 def test_fresh_clone_result_class_machine_readable() -> None:

@@ -1,5 +1,5 @@
 {
-  "repository_path": "<public-ragtune-repository>",
+  "repository_path": "<public-ragwarrant-repository>",
   "branch": "codex/cloud-agnostic-deployable-tool-hardening",
   "cli_help": "pass_with_pythonpath_source",
   "cli_inspect_environment": "pass_sanitized",

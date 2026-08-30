@@ -4,7 +4,7 @@
 
 Early SPECTRA / Quantum Fighter-style simulations completed 204 / 204 runs while producing no simulation-supported advantage. Classical baselines dominated, and unsupported advantage claims were refused or marked inconclusive.
 
-## 2. Synthetic RAGTune Mechanism Exploration
+## 2. Synthetic RAGWarrant Mechanism Exploration
 
 The synthetic mechanism matrix and calibration passes exercised mechanism logic, refusal controls, regression awareness, cost awareness, and budget parity. This strengthened engineering discipline but did not provide external proof.
 
@@ -54,4 +54,4 @@ RAG Compass superiority, generative LLM validation, human evaluation, official e
 
 ## 14. Current Best Claim
 
-RAGTune has its strongest evidence as a governance framework, not as proof of RAG Compass optimizer superiority. The strongest current result is CRAG mock-API governance superiority under source/retrieval governance evaluation, with RAG Compass remaining a secondary candidate optimizer.
+RAGWarrant has its strongest evidence as a governance framework, not as proof of RAG Compass optimizer superiority. The strongest current result is CRAG mock-API governance superiority under source/retrieval governance evaluation, with RAG Compass remaining a secondary candidate optimizer.

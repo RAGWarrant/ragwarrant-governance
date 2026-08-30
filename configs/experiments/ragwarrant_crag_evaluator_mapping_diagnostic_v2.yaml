@@ -1,0 +1,4 @@
+suite: ragwarrant_crag_evaluator_mapping_diagnostic_v2
+version: 2
+require_raw_text_local_only: true
+public_artifacts_hashes_and_scores_only: true

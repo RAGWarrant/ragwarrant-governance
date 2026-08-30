@@ -1,9 +1,9 @@
 {
-  "repository_path": "<public-ragtune-repository>",
+  "repository_path": "<public-ragwarrant-repository>",
   "starting_commit": "4b86f6e19b77f0de822cc37c4569d083fff56976",
   "starting_branch": "main",
   "working_branch": "codex/cloud-agnostic-deployable-tool-hardening",
-  "origin_remote": "https://github.com/AIM-RAGTune/rag-tuning-governance.git",
+  "origin_remote": "https://github.com/RAGWarrant/ragwarrant-governance.git",
   "working_tree_status_at_branch_creation": "clean",
   "recent_local_results_promoted": false,
   "recent_local_results_note": "No uncommitted recent validation results were present before deployment hardening began.",

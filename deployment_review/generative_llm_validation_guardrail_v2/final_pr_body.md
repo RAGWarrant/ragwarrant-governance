@@ -2,7 +2,7 @@
 
 Adds CRAG Generative Quality-Risk Guardrail v2, a conservative held-out-offset validation of deployable quality-risk gating for generative RAG policy selection.
 
-This experiment tested whether RAGTune can reduce retrieval expansion, latency, or cost while preserving generated-answer quality across held-out CRAG generative validation offsets.
+This experiment tested whether RAGWarrant can reduce retrieval expansion, latency, or cost while preserving generated-answer quality across held-out CRAG generative validation offsets.
 
 ## Result
 
@@ -24,7 +24,7 @@ The guardrail failed closed correctly. Although the predictor passed validation 
 This PR adds:
 
 - `scripts/run_crag_quality_risk_guardrail_v2.py`
-- `configs/experiments/ragtune_crag_generative_quality_risk_guardrail_v2.yaml`
+- `configs/experiments/ragwarrant_crag_generative_quality_risk_guardrail_v2.yaml`
 - `artifacts/generative_llm_validation/crag_quality_risk_guardrail_v2/`
 - `results/generative_llm_validation/crag_quality_risk_guardrail_v2_comparison.*`
 
@@ -34,7 +34,7 @@ It also updates the synthesis, validator, tests, README/docs, paper scaffold, cl
 
 This is not a positive governance win.
 
-The experiment shows that deployable-only quality-risk prediction is not yet sufficient to safely reduce latency or cost across held-out CRAG generative offsets. RAGTune correctly blocks promotion when generated-answer quality loss appears under held-out evaluation.
+The experiment shows that deployable-only quality-risk prediction is not yet sufficient to safely reduce latency or cost across held-out CRAG generative offsets. RAGWarrant correctly blocks promotion when generated-answer quality loss appears under held-out evaluation.
 
 This strengthens the governance story by demonstrating refusal discipline under harder generative validation.
 

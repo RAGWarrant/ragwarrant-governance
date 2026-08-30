@@ -1,0 +1,38 @@
+suite: ragwarrant_ragbench_subset_expansion_v1
+suite_version: 1
+seed: 20260808
+
+dataset:
+  source_identifier: galileo-ai/ragbench
+  fallback_source_identifier: rungalileo/ragbench
+  revision: 573c88a47741c2717d04aba211a0e246ccef8981
+  expected_license: cc-by-4.0
+  raw_dir: artifacts/datasets/raw/ragbench
+  normalized_dir: artifacts/datasets/normalized/ragbench
+
+subsets_priority:
+  - emanual
+  - techqa
+  - finqa
+  - tatqa
+  - cuad
+  - hagrid
+  - expertqa
+
+eligibility:
+  allow_context_as_document_reconstruction: true
+  attempt_full_source_reconstruction: true
+  require_policy_dependent_retrieval: true
+  require_policy_dependent_context: true
+  require_zero_leakage: true
+  require_seen_example_exclusion: true
+
+stop_after_context_eligible: 2
+
+smoke:
+  max_queries: 60
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

@@ -1,13 +1,13 @@
 ## Summary
 
-Adds cloud-agnostic deployment hardening for RAGTune as a finite open-source governance and promotion-control job.
+Adds cloud-agnostic deployment hardening for RAGWarrant as a finite open-source governance and promotion-control job.
 
 This PR adds a CLI job contract, Docker image contract, Docker Compose example, Kubernetes Job/CronJob examples, Azure Container Apps Job example, AWS ECS/Fargate and Batch examples, Google Cloud Run Job example, GitHub Actions examples, storage-sink abstractions, promotion-decision schemas, deployment-readiness validation, and publication tests.
 
 ## Product contract
 
-- RAGTune is the governance engine, not the chatbot or model.
-- Default job: `ragtune run-governance-job --config /configs/job.yaml --output-root /outputs --decision-out /outputs/promotion_decision.json`
+- RAGWarrant is the governance engine, not the chatbot or model.
+- Default job: `ragwarrant run-governance-job --config /configs/job.yaml --output-root /outputs --decision-out /outputs/promotion_decision.json`
 - Machine-readable decision: `promotion_decision.json`
 - Decisions: `PROMOTE`, `BLOCK`, `REJECT`, `INCONCLUSIVE`, `ERROR`
 - Default public mini job requires no raw datasets, generator, cloud credentials, or private data.

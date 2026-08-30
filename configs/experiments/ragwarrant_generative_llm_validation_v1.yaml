@@ -1,0 +1,14 @@
+suite: ragwarrant_generative_llm_validation_v1
+suite_version: 1
+seed: 20260808
+
+generator:
+  allow_large_model_download: false
+  hosted_credentials_required: true
+  no_secret_artifacts: true
+  analyze_regimes_separately: true
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

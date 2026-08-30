@@ -3,14 +3,14 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from ragtune.rc1_maturity import VERIFY_RUN_RESULT_CLASSES, verify_run
+from ragwarrant.rc1_maturity import VERIFY_RUN_RESULT_CLASSES, verify_run
 
 
 ROOT = Path(__file__).resolve().parents[2]
 
 
 def test_verify_run_script_exists() -> None:
-    assert (ROOT / "scripts/verify_ragtune_run.py").exists()
+    assert (ROOT / "scripts/verify_ragwarrant_run.py").exists()
 
 
 def test_verify_run_cli_documented() -> None:

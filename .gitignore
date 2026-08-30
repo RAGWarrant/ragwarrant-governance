@@ -2,6 +2,7 @@
 __pycache__/
 .pytest_cache/
 .ruff_cache/
+*.egg-info/
 .local_data/
 .DS_Store
 *.env

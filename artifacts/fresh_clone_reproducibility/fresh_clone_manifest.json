@@ -9,5 +9,5 @@
   "requires_hotpotqa_cache": false,
   "requires_private_data": false,
   "result_class": "FRESH_CLONE_REPRODUCTION_PASSED_GIT_CLONE",
-  "suite": "ragtune_fresh_clone_reproducibility_v1"
+  "suite": "ragwarrant_fresh_clone_reproducibility_v1"
 }

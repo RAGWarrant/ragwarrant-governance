@@ -1,0 +1,9 @@
+legacy_identifier,current_identifier,scope,current_location,notes
+RAGTune,RAGWarrant,product_name,repository-wide,current active product name
+AIM-RAGTune,RAGWarrant,github_owner,https://github.com/RAGWarrant,current GitHub organization
+rag-tuning-governance,ragwarrant-governance,repository_slug,https://github.com/RAGWarrant/ragwarrant-governance,current canonical repository slug
+rag-tuning-governance-public,ragwarrant-governance,repository_slug,https://github.com/RAGWarrant/ragwarrant-governance,current public repository slug
+rag_tuning_governance,ragwarrant_governance,python_distribution,pyproject.toml,current Python distribution identifier
+ragtune_no_fork,rag_compass,optimizer_id,src/ragwarrant/validation_phase3.py,current RAG Compass optimizer id
+RAGTune-No-Fork,RAG Compass,optimizer_display_name,src/ragwarrant/validation_phase3.py,current RAG Compass display name
+ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4,ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4,run_id,artifacts/current_ragwarrant_evidence/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4,current-branded evidence alias

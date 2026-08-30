@@ -1,0 +1,139 @@
+{
+  "schema_version": 2,
+  "canonical": {
+    "product": "RAGWarrant",
+    "package": "ragwarrant",
+    "environment_prefix": "RAGWARRANT_",
+    "repository_slug": "ragwarrant-governance",
+    "repository_url": "https://github.com/RAGWarrant/ragwarrant-governance",
+    "container_image": "ghcr.io/ragwarrant/ragwarrant-governance"
+  },
+  "classifications": [
+    {
+      "id": "migration-brand-note",
+      "classification": "migration_documentation",
+      "path": "docs/migration/BRAND_MIGRATION.md",
+      "location_type": "content",
+      "token_regex": "RAGTune|ragtune|RAGTUNE|AIM-RAGTune|rag-tuning-governance-public|rag-tuning-governance|rag_tuning_governance|aim-ragtune",
+      "max_occurrences": 20,
+      "rationale": "Human-readable migration note that names the former brand and repository identifiers."
+    },
+    {
+      "id": "migration-active-identifier-map",
+      "classification": "migration_documentation",
+      "path": "docs/migration/active_identifier_map.csv",
+      "location_type": "content",
+      "token_regex": "RAGTune|ragtune|RAGTUNE|AIM-RAGTune|rag-tuning-governance-public|rag-tuning-governance|rag_tuning_governance|aim-ragtune",
+      "max_occurrences": 400,
+      "rationale": "Identifier map from the rename work package; retained only under migration documentation."
+    },
+    {
+      "id": "migration-pre-rename-archive",
+      "classification": "pre_rename_archive_manifest",
+      "path": "docs/migration/PRE_RENAME_ARCHIVE.md",
+      "location_type": "content",
+      "token_regex": "RAGTune|ragtune|RAGTUNE|AIM-RAGTune|rag-tuning-governance-public|rag-tuning-governance|rag_tuning_governance|aim-ragtune",
+      "max_occurrences": 30,
+      "rationale": "Archive manifest explaining where exact pre-rename repository objects remain retrievable."
+    },
+    {
+      "id": "migration-run-id-crosswalk",
+      "classification": "migration_documentation",
+      "path": "docs/migration/legacy_run_id_crosswalk.csv",
+      "location_type": "content",
+      "token_regex": "RAGTune|ragtune|RAGTUNE|AIM-RAGTune|rag-tuning-governance-public|rag-tuning-governance|rag_tuning_governance|aim-ragtune",
+      "max_occurrences": 80,
+      "rationale": "Exact crosswalk from former evidence identifiers to current RAGWarrant aliases."
+    },
+    {
+      "id": "migration-exceptions-guide",
+      "classification": "migration_documentation",
+      "path": "docs/migration/LEGACY_BRAND_EXCEPTIONS.md",
+      "location_type": "content",
+      "token_regex": "RAGTune|ragtune|RAGTUNE|AIM-RAGTune|rag-tuning-governance-public|rag-tuning-governance|rag_tuning_governance|aim-ragtune",
+      "max_occurrences": 60,
+      "rationale": "Human-readable guide to the strict exception classes."
+    },
+    {
+      "id": "migration-exceptions-json",
+      "classification": "migration_documentation",
+      "path": "docs/migration/legacy_brand_exceptions.json",
+      "location_type": "content",
+      "token_regex": "RAGTune|ragtune|RAGTUNE|AIM-RAGTune|rag-tuning-governance-public|rag-tuning-governance|rag_tuning_governance|aim-ragtune",
+      "max_occurrences": 160,
+      "rationale": "Machine-readable exact exception registry; token regexes necessarily spell the blocked forms."
+    },
+    {
+      "id": "validator-source-negative-fixture",
+      "classification": "validator_negative_fixture",
+      "path": "scripts/validate_brand_consistency.py",
+      "location_type": "content",
+      "token_regex": ".+",
+      "max_occurrences": 40,
+      "rationale": "Validator source enumerates blocked former-name and misspelling patterns so it can reject them everywhere else."
+    },
+    {
+      "id": "completion-file-disposition-csv",
+      "classification": "migration_documentation",
+      "path": "deployment_review/ragwarrant_brand_completion/former_name_file_disposition.csv",
+      "location_type": "content",
+      "token_regex": "RAGTune|ragtune|RAGTUNE|AIM-RAGTune|rag-tuning-governance-public|rag-tuning-governance|rag_tuning_governance|aim-ragtune",
+      "max_occurrences": 1000,
+      "rationale": "Disposition report names former paths so reviewers can verify removal, replacement, or migration placement."
+    },
+    {
+      "id": "completion-file-disposition-json",
+      "classification": "migration_documentation",
+      "path": "deployment_review/ragwarrant_brand_completion/former_name_file_disposition.json",
+      "location_type": "content",
+      "token_regex": "RAGTune|ragtune|RAGTUNE|AIM-RAGTune|rag-tuning-governance-public|rag-tuning-governance|rag_tuning_governance|aim-ragtune",
+      "max_occurrences": 1000,
+      "rationale": "Structured disposition report names former paths for audit traceability."
+    },
+    {
+      "id": "completion-file-disposition-md",
+      "classification": "migration_documentation",
+      "path": "deployment_review/ragwarrant_brand_completion/former_name_file_disposition.md",
+      "location_type": "content",
+      "token_regex": "RAGTune|ragtune|RAGTUNE|AIM-RAGTune|rag-tuning-governance-public|rag-tuning-governance|rag_tuning_governance|aim-ragtune",
+      "max_occurrences": 1000,
+      "rationale": "Readable disposition report names former paths for audit traceability."
+    },
+    {
+      "id": "completion-strict-exception-audit-json",
+      "classification": "migration_documentation",
+      "path": "deployment_review/ragwarrant_brand_completion/strict_exception_audit.json",
+      "location_type": "content",
+      "token_regex": "RAGTune|ragtune|RAGTUNE|AIM-RAGTune|rag-tuning-governance-public|rag-tuning-governance|rag_tuning_governance|aim-ragtune",
+      "max_occurrences": 400,
+      "rationale": "Structured strict-exception audit echoes exact blocked token regexes and file-specific exception rules."
+    },
+    {
+      "id": "completion-strict-exception-audit-md",
+      "classification": "migration_documentation",
+      "path": "deployment_review/ragwarrant_brand_completion/strict_exception_audit.md",
+      "location_type": "content",
+      "token_regex": "RAGTune|ragtune|RAGTUNE|AIM-RAGTune|rag-tuning-governance-public|rag-tuning-governance|rag_tuning_governance|aim-ragtune",
+      "max_occurrences": 400,
+      "rationale": "Readable strict-exception audit echoes exact blocked token regexes and file-specific exception rules."
+    },
+    {
+      "id": "completion-claim-diff-json",
+      "classification": "migration_documentation",
+      "path": "deployment_review/ragwarrant_brand_completion/claim_table_brand_only_diff.json",
+      "location_type": "content",
+      "token_regex": "RAGTune|ragtune|RAGTUNE|AIM-RAGTune|rag-tuning-governance-public|rag-tuning-governance|rag_tuning_governance|aim-ragtune",
+      "max_occurrences": 100,
+      "rationale": "Brand-only diff may quote former strings while proving claim table semantics are unchanged."
+    },
+    {
+      "id": "completion-claim-diff-md",
+      "classification": "migration_documentation",
+      "path": "deployment_review/ragwarrant_brand_completion/claim_table_brand_only_diff.md",
+      "location_type": "content",
+      "token_regex": "RAGTune|ragtune|RAGTUNE|AIM-RAGTune|rag-tuning-governance-public|rag-tuning-governance|rag_tuning_governance|aim-ragtune",
+      "max_occurrences": 100,
+      "rationale": "Brand-only diff may quote former strings while proving claim table semantics are unchanged."
+    }
+  ]
+}

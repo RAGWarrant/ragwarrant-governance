@@ -1,14 +1,14 @@
 apiVersion: run.googleapis.com/v1
 kind: Job
 metadata:
-  name: ragtune-governance-job
+  name: ragwarrant-governance-job
 spec:
   template:
     spec:
       template:
         spec:
           containers:
-            - image: RAGTUNE_IMAGE_REFERENCE_PLACEHOLDER
+            - image: RAGWARRANT_IMAGE_REFERENCE_PLACEHOLDER
               args:
                 - run-governance-job
                 - --config
@@ -18,10 +18,10 @@ spec:
                 - --decision-out
                 - /outputs/promotion_decision.json
               env:
-                - name: RAGTUNE_STORAGE_MODE
+                - name: RAGWARRANT_STORAGE_MODE
                   value: local
-                - name: RAGTUNE_INPUT_DIR
+                - name: RAGWARRANT_INPUT_DIR
                   value: /inputs
-                - name: RAGTUNE_OUTPUT_DIR
+                - name: RAGWARRANT_OUTPUT_DIR
                   value: /outputs
           maxRetries: 0

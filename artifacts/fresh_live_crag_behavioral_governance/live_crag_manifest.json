@@ -76,6 +76,6 @@
   "rag_compass_rank": 10,
   "result_class": "FRESH_CRAG_BLOCKED_QUALITY_MEASURE_PROXY_ONLY",
   "source_documents_exported": false,
-  "suite": "ragtune_fresh_live_crag_mock_api_behavioral_governance_v1",
+  "suite": "ragwarrant_fresh_live_crag_mock_api_behavioral_governance_v1",
   "validation_rows": 16
 }

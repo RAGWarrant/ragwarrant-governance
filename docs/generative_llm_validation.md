@@ -1,6 +1,6 @@
 # Generative LLM Validation
 
-RAGTune Generative LLM Validation v1 adds a pinned-generator path for policy-specific answer generation and sanitized generated-answer scoring.
+RAGWarrant Generative LLM Validation v1 adds a pinned-generator path for policy-specific answer generation and sanitized generated-answer scoring.
 
 ## Current Status
 

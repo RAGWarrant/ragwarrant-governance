@@ -1,8 +1,0 @@
-{
-  "annotation_count": 0,
-  "annotation_schema_valid": true,
-  "annotations_run": false,
-  "prioritizes_crag_mock_api_divergence": true,
-  "prioritizes_natural_divergence_cases": true,
-  "result": "HUMAN_EVAL_READY_NOT_RUN"
-}

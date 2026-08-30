@@ -1,0 +1,43 @@
+{
+  "baseline_results": {
+    "compileall_src_scripts": "passed",
+    "git_diff_check": "passed",
+    "make_reproduce_public_mini": "public mini generated PUBLIC_MINI_REPRODUCTION_FAIL_CLOSED; make target failed at old publication validator",
+    "make_test": "failed through publication validator: 1 failed, 264 passed, 6 skipped",
+    "make_validate_publication": "failed: external git remote configured in publication bundle",
+    "pytest_publication": "1 failed, 264 passed, 6 skipped",
+    "semantic_baseline_path": "/tmp/ragwarrant-pre-rename-semantic-baseline.json",
+    "validate_publication_bundle": "failed: external git remote configured in publication bundle",
+    "verify_run": "VERIFY_RUN_PASSED",
+    "verify_run_output_path": "/tmp/ragwarrant-pre-rename-verify-run.txt"
+  },
+  "current_cli_entrypoint": "ragwarrant = ragwarrant.cli:main",
+  "current_docker_image_names": [
+    "ragwarrant-governance:local",
+    "ragwarrant-governance:ci"
+  ],
+  "current_ghcr_paths": [
+    "ghcr.io/ragwarrant/ragwarrant-governance"
+  ],
+  "current_head": "85b319c6cbb923578ab9ac3c58a20e9e42cd284f",
+  "current_import_package": "ragwarrant",
+  "current_package_name": "ragwarrant-governance",
+  "current_repository_urls": [
+    "https://github.com/RAGWarrant/ragwarrant-governance",
+    "https://github.com/RAGWarrant/ragwarrant-governance"
+  ],
+  "immutable_commit_type": "commit",
+  "inventory_counts": {
+    "figure_inventory": 6,
+    "former_name_path_inventory": 175,
+    "former_name_text_inventory": 10246,
+    "former_name_tracked_paths": 438,
+    "office_document_inventory": 2,
+    "pdf_inventory": 6
+  },
+  "remote": "https://github.com/RAGWarrant/ragwarrant-governance.git",
+  "repository_path": "<local workspace>/ragwarrant-governance",
+  "starting_branch": "holistic-ragwarrant-content-rename",
+  "starting_main_commit": "85b319c6cbb923578ab9ac3c58a20e9e42cd284f",
+  "tag_target": "ff529005bf7d00a0c3f79ba991563f3923d63205"
+}

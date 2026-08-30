@@ -1,6 +1,6 @@
 {
   "strongest_result": {
-    "run_id": "ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4",
+    "run_id": "ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4",
     "result_class": "MOCK_API_VALIDATION_GOVERNANCE_SUPERIOR",
     "governed_winner": "top_k_low",
     "quality_only_winner": "greedy_regression_aware_search",
@@ -17,11 +17,11 @@
     ]
   },
   "supported_claims": [
-    "RAGTune governance produced a CRAG mock-API governance superiority signal on full held-out validation.",
+    "RAGWarrant governance produced a CRAG mock-API governance superiority signal on full held-out validation.",
     "A behaviorally distinct follow-up over sanitized frozen CRAG mock-API observations found governed selection reduced measured cost at equivalent proxy-plus-evidence quality.",
     "The CRAG v1.1 local generative primary slice found reduced measured cost at equivalent generated-answer quality under sanitized metrics, but repeats did not reproduce the cost result; a second pinned local model produced no positive cost-result slices; a faster non-thinking instruct model repaired answer emission; unguarded latency selection was mixed; a label-aware guardrail was inconclusive; a learned deployable quality-risk predictor reduced validation expansions but produced mixed confirmatory latency evidence with two quality-loss slices; guardrail v2 pooled validation across offsets and blocked promotion after held-out quality loss; HotpotQA confirmed a nonconstant quality signal but remained inconclusive.",
-    "The open-source/arXiv readiness package supports RAGTune as a governance and promotion-control framework with a public mini reproduction, external evaluator input adapters, selector ablation matrix, CRAG evaluator-mapping diagnostics, and sanitized AIM hardware characterization.",
-    "The cloud-agnostic deployment-readiness package supports RAGTune as a finite open-source governance job with CLI, Docker, Docker Compose, GitHub Actions, Kubernetes, Azure, AWS, GCP, artifact-sink, and promotion-decision schema assets.",
+    "The open-source/arXiv readiness package supports RAGWarrant as a governance and promotion-control framework with a public mini reproduction, external evaluator input adapters, selector ablation matrix, CRAG evaluator-mapping diagnostics, and sanitized AIM hardware characterization.",
+    "The cloud-agnostic deployment-readiness package supports RAGWarrant as a finite open-source governance job with CLI, Docker, Docker Compose, GitHub Actions, Kubernetes, Azure, AWS, GCP, artifact-sink, and promotion-decision schema assets.",
         "Docker static validation passed and the hardened container runtime smoke-test path completed the public-mini governance job locally.",
         "The RC1 reproducibility package adds fresh-clone reproduction, release-candidate manifests and checksums, verify-run artifact integrity, selector stress testing, external evaluator adapter v2 demos, CRAG evaluator mapping v2 diagnostics, HotpotQA quality-signal audit v2, sanitized AIM hardware matrix, and an arXiv systems/methods scaffold.",
     "The strongest CRAG mock-API decision was decision-reproduced in Docker and replicated under frozen-observation resplits according to packaged artifacts.",

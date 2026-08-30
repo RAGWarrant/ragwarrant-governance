@@ -1,6 +1,6 @@
 ## Summary
 
-Hardens the local Docker/container runtime path for the public RAGTune repository. This adds safe runtime diagnostics, static Docker validation, a public-mini container smoke-test runner, optional security-scan reporting, Docker Compose documentation, and deployment-readiness integration.
+Hardens the local Docker/container runtime path for the public RAGWarrant repository. This adds safe runtime diagnostics, static Docker validation, a public-mini container smoke-test runner, optional security-scan reporting, Docker Compose documentation, and deployment-readiness integration.
 
 Docker Desktop was started locally and the daemon became readable from the validation shell. The PR records a completed public-mini Docker runtime validation after hardening the runtime posture and repairing the image copy/output contract needed for in-container publication validation.
 
@@ -31,8 +31,8 @@ Docker Desktop was started locally and the daemon became readable from the valid
 - Result class: `DOCKER_RUNTIME_VALIDATED_PUBLIC_MINI`
 - Skip reason: none
 - Docker build: passed
-- `ragtune --help` in container: passed
-- `ragtune validate-bundle` in container: passed
+- `ragwarrant --help` in container: passed
+- `ragwarrant validate-bundle` in container: passed
 - Public-mini governance job in container: passed
 - Compose public-mini: passed
 - Hardened runtime flags: passed

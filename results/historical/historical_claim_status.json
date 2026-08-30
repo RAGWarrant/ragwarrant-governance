@@ -7,7 +7,7 @@
   "partially_supported": [
     "multi-corpus governance evaluation in mixed evidence classes",
     "natural beneficial governance divergence: 1 beneficial out of 5",
-    "RAGTune governance framework value in bounded public settings"
+    "RAGWarrant governance framework value in bounded public settings"
   ],
   "unsupported": [
     "RAG Compass superiority",
@@ -32,9 +32,9 @@
     "RAG Compass niche analysis found no clear niche"
   ],
   "strongest_current_result": {
-    "run_id": "ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4",
+    "run_id": "ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4",
     "result_class": "MOCK_API_VALIDATION_GOVERNANCE_SUPERIOR",
     "boundary": "source/retrieval governance evidence, not generative answer-quality validation"
   },
-  "current_recommended_positioning": "Center RAGTune governance as the contribution; keep RAG Compass as a candidate optimizer with unsupported superiority."
+  "current_recommended_positioning": "Center RAGWarrant governance as the contribution; keep RAG Compass as a candidate optimizer with unsupported superiority."
 }

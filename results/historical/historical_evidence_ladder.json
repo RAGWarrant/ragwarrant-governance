@@ -61,7 +61,7 @@
     }
   ],
   "current_position": {
-    "ragtune_governance": "Level 6 in a bounded CRAG mock-API source/retrieval governance setting",
+    "ragwarrant_governance": "Level 6 in a bounded CRAG mock-API source/retrieval governance setting",
     "rag_compass": "No optimizer-superiority support",
     "not_reached": "Level 7: no human-eval, generative LLM, or official platform validation"
   }

@@ -8,7 +8,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from ragtune.fresh_live_behavioral_governance import write_hotpotqa_acquisition_report
+from ragwarrant.fresh_live_behavioral_governance import write_hotpotqa_acquisition_report
 
 
 def main() -> None:

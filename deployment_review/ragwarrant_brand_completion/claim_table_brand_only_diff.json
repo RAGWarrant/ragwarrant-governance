@@ -1,0 +1,18 @@
+{
+  "created_at_utc": "2026-08-30T23:04:11.326853+00:00",
+  "result": "CLAIM_TABLE_CHANGES_BRAND_ONLY",
+  "rows": [
+    {
+      "after_bytes": 14089,
+      "before_bytes": 14089,
+      "brand_only_after_normalization": true,
+      "path": "results/tables/claim_status_table.csv"
+    },
+    {
+      "after_bytes": 14089,
+      "before_bytes": 14089,
+      "brand_only_after_normalization": true,
+      "path": "results/claim_status/claim_status_table.csv"
+    }
+  ]
+}

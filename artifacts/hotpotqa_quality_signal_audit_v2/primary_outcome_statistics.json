@@ -22,7 +22,7 @@
   "result_class": "HOTPOTQA_GEN_QUALITY_AUDIT_V2_CONFIRMED_NONCONSTANT_SIGNAL",
   "sample_size": 12,
   "sample_tier": "small",
-  "suite": "ragtune_hotpotqa_generative_quality_signal_audit_v2",
+  "suite": "ragwarrant_hotpotqa_generative_quality_signal_audit_v2",
   "supporting_fact_sentence_recall_mean": 0.41753472222222227,
   "supporting_fact_title_recall_mean": 0.41753472222222227,
   "target_large_bounded_examples": 500,

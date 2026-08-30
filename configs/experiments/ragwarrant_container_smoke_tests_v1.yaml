@@ -1,0 +1,20 @@
+suite: ragwarrant_container_smoke_tests_v1
+suite_version: 1
+seed: 20260811
+
+runtime:
+  preferred_order:
+    - docker
+    - podman
+    - colima
+  require_cloud_credentials: false
+
+job:
+  config: configs/jobs/public_mini_governance_job.yaml
+  output_root: /outputs
+  decision_out: /outputs/promotion_decision.json
+
+claim_boundaries:
+  live_cloud_validation_claimed: false
+  official_platform_benchmarking_claimed: false
+  production_readiness_claimed: false

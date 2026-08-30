@@ -9,12 +9,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from ragtune.generative_validation_common import write_json, write_md
-from ragtune.mounted_job_contract import check_mounted_job_contract, exercise_storage_mode
+from ragwarrant.generative_validation_common import write_json, write_md
+from ragwarrant.mounted_job_contract import check_mounted_job_contract, exercise_storage_mode
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Validate the RAGTune mounted governance-job I/O contract.")
+    parser = argparse.ArgumentParser(description="Validate the RAGWarrant mounted governance-job I/O contract.")
     parser.add_argument("--output-root", default=None)
     parser.add_argument("--write-probe", action="store_true")
     parser.add_argument("--storage-mode", action="append", default=["local", "s3", "azure_blob", "gcs"])

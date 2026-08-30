@@ -1,7 +1,7 @@
 {
   "starting_commit": "07b4ee089d7cec6468092b0038f23e422f6b6c28",
   "branch": "fresh-live-crag-unblock-validation",
-  "remote": "https://github.com/AIM-RAGTune/rag-tuning-governance.git",
+  "remote": "https://github.com/RAGWarrant/ragwarrant-governance.git",
   "baseline_validation": {
     "publication_validator": "passed",
     "pytest_publication": "34 passed",

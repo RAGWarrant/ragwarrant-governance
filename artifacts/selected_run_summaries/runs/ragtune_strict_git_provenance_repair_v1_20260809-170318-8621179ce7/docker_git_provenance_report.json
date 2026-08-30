@@ -1,9 +1,0 @@
-{
-  "docker_image_digest": null,
-  "docker_image_tag": "ragtune-strict-git-confirmatory-v1",
-  "git_available_inside_runtime": true,
-  "git_head_inside_runtime": "9b7aea69f5fa6d6875092567160bfa9e130f3fc7",
-  "host_container_head_match": null,
-  "host_git_head": null,
-  "recommended_mount": "-v $REPO/.git:/app/.git:ro"
-}

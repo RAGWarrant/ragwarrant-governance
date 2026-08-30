@@ -8,7 +8,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from ragtune.storage import build_storage_sink
+from ragwarrant.storage import build_storage_sink
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,7 +45,7 @@ def main() -> int:
     output_root = Path(args.output_root)
     output_root.mkdir(parents=True, exist_ok=True)
     env = os.environ.copy()
-    env["RAGTUNE_OUTPUT_DIR"] = str(output_root)
+    env["RAGWARRANT_OUTPUT_DIR"] = str(output_root)
     result = subprocess.run(command, cwd=ROOT, env=env, text=True, check=False)
     staged = stage_outputs(args.mode, output_root)
     report = {

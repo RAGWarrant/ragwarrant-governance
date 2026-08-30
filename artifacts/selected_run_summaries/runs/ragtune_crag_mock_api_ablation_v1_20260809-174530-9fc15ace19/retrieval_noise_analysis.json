@@ -1,5 +1,0 @@
-{
-  "interpretation": "Lower top-k/API exposure reduced budget and latency; retrieved route plans usually remained semantically close.",
-  "result_count_delta_mean": 0.0,
-  "route_plan_difference_rate": 0.0
-}

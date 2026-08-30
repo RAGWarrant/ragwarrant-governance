@@ -1,4 +1,4 @@
-name: Validate RAGTune Docker Image
+name: Validate RAGWarrant Docker Image
 on:
   workflow_dispatch:
 jobs:
@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build image
-        run: docker build -t ragtune-governance:ci .
+        run: docker build -t ragwarrant-governance:ci .
       - name: Validate publication bundle
-        run: docker run --rm ragtune-governance:ci validate-bundle
+        run: docker run --rm ragwarrant-governance:ci validate-bundle

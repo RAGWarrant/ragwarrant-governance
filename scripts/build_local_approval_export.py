@@ -186,8 +186,8 @@ def write_approval_files(export_root: Path, now: str, findings: list[dict[str, s
     ]
 
     summary = {
-        "purpose": "Local approval-ready scientific publication package for RAGTune governance validation.",
-        "proposed_repository_name": "rag-tuning-governance",
+        "purpose": "Local approval-ready scientific publication package for RAGWarrant governance validation.",
+        "proposed_repository_name": "ragwarrant-governance",
         "destination_options": [
             "approved internal Git destination",
             "GitHub Enterprise",
@@ -209,8 +209,8 @@ def write_approval_files(export_root: Path, now: str, findings: list[dict[str, s
     write_json(approval / "approval_request_summary.json", summary)
     (approval / "approval_request_summary.md").write_text(
         "# Approval Request Summary\n\n"
-        "Purpose: local scientific-review package for RAGTune governance validation.\n\n"
-        "- Proposed repository name: `rag-tuning-governance`\n"
+        "Purpose: local scientific-review package for RAGWarrant governance validation.\n\n"
+        "- Proposed repository name: `ragwarrant-governance`\n"
         f"- Current tenant blocker: {BLOCKER}\n"
         "- No bypass attempted: yes\n"
         f"- Included files: {len(included)}\n"
@@ -259,7 +259,7 @@ def write_approval_files(export_root: Path, now: str, findings: list[dict[str, s
         "These commands were not run because GitHub is not currently an approved trusted destination in this tenant.\n\n"
         "```bash\n"
         "gh auth status\n"
-        "gh repo create rag-tuning-governance --public --source=. --remote=origin\n"
+        "gh repo create ragwarrant-governance --public --source=. --remote=origin\n"
         "git push -u origin main\n"
         "\n"
         "# Approved internal destination alternative:\n"
@@ -324,7 +324,7 @@ def write_approval_files(export_root: Path, now: str, findings: list[dict[str, s
         encoding="utf-8",
     )
     (export_root / "README_EXPORT.md").write_text(
-        "# RAGTune Governance Local Export\n\n"
+        "# RAGWarrant Governance Local Export\n\n"
         f"- Created: `{now}`\n"
         f"- Source validation path: `{SOURCE_VALIDATION_PATH}`\n"
         f"- Source validation HEAD: `{SOURCE_VALIDATION_HEAD}`\n"
@@ -396,7 +396,7 @@ def write_validation_reports(export_root: Path, repo: Path) -> tuple[int, str]:
 def git_commit_repo(repo: Path) -> str:
     sh(["git", "init", "-b", "main"], cwd=repo)
     sh(["git", "add", "."], cwd=repo)
-    sh(["git", "commit", "-m", "Initial local scientific publication bundle for RAGTune governance validation"], cwd=repo)
+    sh(["git", "commit", "-m", "Initial local scientific publication bundle for RAGWarrant governance validation"], cwd=repo)
     commit = sh(["git", "rev-parse", "HEAD"], cwd=repo)
     remotes = sh(["git", "remote", "-v"], cwd=repo)
     if remotes:
@@ -414,7 +414,7 @@ def main() -> None:
     stamp = sys.argv[1] if len(sys.argv) > 1 else datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
     preferred = Path("<approved-data-root>/publication_bundle_output")
     base = preferred if preferred.exists() and os.access(preferred, os.W_OK) else ROOT.parent / "publication_bundle_output"
-    export_root = base / f"rag-tuning-governance_{stamp}"
+    export_root = base / f"ragwarrant-governance_{stamp}"
     if export_root.exists():
         shutil.rmtree(export_root)
     for sub in ["repository_bundle", "approval_package", "validation_reports", "manifests", "excluded", "checksums", "archives"]:
@@ -438,8 +438,8 @@ def main() -> None:
     commit = git_commit_repo(repo)
     (export_root / "manifests" / "local_git_commit.txt").write_text(commit + "\n", encoding="utf-8")
 
-    pub_archive = export_root / "archives" / f"rag-tuning-governance_publication_bundle_{stamp}.tar.gz"
-    approval_archive = export_root / "archives" / f"rag-tuning-governance_approval_package_{stamp}.tar.gz"
+    pub_archive = export_root / "archives" / f"ragwarrant-governance_publication_bundle_{stamp}.tar.gz"
+    approval_archive = export_root / "archives" / f"ragwarrant-governance_approval_package_{stamp}.tar.gz"
     make_archive(pub_archive, [repo], export_root)
     make_archive(
         approval_archive,

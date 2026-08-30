@@ -2,7 +2,7 @@
 
 ## Scientific Motivation
 
-The prior behaviorally distinct result showed that RAGTune governance reduced measured operating cost at equivalent proxy-plus-evidence quality, but it was derived from sanitized frozen CRAG mock-API observations. This phase tests whether that result can move beyond frozen observations.
+The prior behaviorally distinct result showed that RAGWarrant governance reduced measured operating cost at equivalent proxy-plus-evidence quality, but it was derived from sanitized frozen CRAG mock-API observations. This phase tests whether that result can move beyond frozen observations.
 
 ## Prior Frozen-Observation Limitation
 
@@ -15,7 +15,7 @@ Frozen observations are useful for audit and publication hygiene, but they do no
 
 ## Acquisition Plan
 
-CRAG requires `RAGTUNE_CRAG_APPROVED_NONCOMMERCIAL_RESEARCH_ONLY=true`, `RAGTUNE_CRAG_ROOT`, and `RAGTUNE_CRAG_DATA`. HotpotQA should be acquired locally through Hugging Face `datasets` or the official HotpotQA repository. Raw data stay outside Git.
+CRAG requires `RAGWARRANT_CRAG_APPROVED_NONCOMMERCIAL_RESEARCH_ONLY=true`, `RAGWARRANT_CRAG_ROOT`, and `RAGWARRANT_CRAG_DATA`. HotpotQA should be acquired locally through Hugging Face `datasets` or the official HotpotQA repository. Raw data stay outside Git.
 
 ## License And Redistribution Boundaries
 

@@ -1,8 +1,0 @@
-{
-  "append_only": true,
-  "attempted_overwrites_blocked": 0,
-  "completed_manifest_present": false,
-  "run_dir": "artifacts/ragtune/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7",
-  "run_id": "ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7",
-  "status": "append_only_confirmed"
-}

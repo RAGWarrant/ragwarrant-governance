@@ -13,3 +13,4 @@ jobs:
         with:
           python-version: "3.11"
       - run: python scripts/validate_publication_bundle.py
+      - run: python scripts/validate_brand_consistency.py

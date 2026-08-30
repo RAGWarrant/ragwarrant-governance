@@ -8,4 +8,4 @@ ragbench_context_retrieval:
   replay_only_disallowed_for_end_to_end_claims: true
 
 optimizer_display_names:
-  ragtune_no_fork: RAG Compass
+  ragwarrant_no_fork: RAG Compass

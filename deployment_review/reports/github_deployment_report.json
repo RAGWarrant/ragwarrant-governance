@@ -2,18 +2,18 @@
     "deployment_status": "DEPLOYED",
     "github_auth": "PASS",
     "environment_allows_github": "PASS_AFTER_EXPLICIT_USER_APPROVAL",
-    "repository_url": "https://github.com/AIM-RAGTune/rag-tuning-governance",
+    "repository_url": "https://github.com/RAGWarrant/ragwarrant-governance",
     "repository_visibility": "PRIVATE",
-    "remote_url": "https://github.com/AIM-RAGTune/rag-tuning-governance.git",
+    "remote_url": "https://github.com/RAGWarrant/ragwarrant-governance.git",
     "default_branch": "main",
     "initial_pushed_commit": "223953b84295ae073457610b7a5f9b904189628c",
     "upload_scope": "repository_bundle only; approval_package and raw data were not uploaded",
     "prior_blocker": "Rejected: This would create an external GitHub repository and push a large bundle of private workspace/source data; GitHub is not an approved trusted destination in this tenant.",
     "commands_run_after_explicit_user_approval": [
-        "gh repo create rag-tuning-governance --public --source=. --remote=origin --description \"RAGTune governance validation framework for evidence-aware RAG policy promotion and reproducibility.\"",
+        "gh repo create ragwarrant-governance --public --source=. --remote=origin --description \"RAGWarrant governance validation framework for evidence-aware RAG policy promotion and reproducibility.\"",
         "gh auth setup-git",
         "git push -u origin main",
-        "gh repo edit AIM-RAGTune/rag-tuning-governance --add-topic rag,retrieval-augmented-generation,governance,evaluation,reproducibility,crag,rag-tuning,ai-governance"
+        "gh repo edit RAGWarrant/ragwarrant-governance --add-topic rag,retrieval-augmented-generation,governance,evaluation,reproducibility,crag,rag-tuning,ai-governance"
     ],
     "workflow_scope_note": "The first push was rejected because the OAuth session lacked GitHub's workflow scope. Scope was refreshed through the standard GitHub CLI device flow. No token was printed, copied, or read from a password manager.",
     "commands_not_run": [

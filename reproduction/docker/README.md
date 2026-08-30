@@ -3,13 +3,13 @@
 Build:
 
 ```bash
-docker build -t rag-tuning-governance:latest .
+docker build -t ragwarrant-governance:latest .
 ```
 
 Validate the publication bundle:
 
 ```bash
-docker run --rm rag-tuning-governance:latest make validate-publication
+docker run --rm ragwarrant-governance:latest make validate-publication
 ```
 
 Run CRAG reproduction with raw data mounted:
@@ -18,7 +18,7 @@ Run CRAG reproduction with raw data mounted:
 docker run --rm \
   -v "/path/to/crag/raw:/data/crag/raw:ro" \
   -v "$PWD/results:/app/results" \
-  rag-tuning-governance:latest \
+  ragwarrant-governance:latest \
   make reproduce-crag
 ```
 

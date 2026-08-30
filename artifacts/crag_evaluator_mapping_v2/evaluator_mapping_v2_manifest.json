@@ -15,5 +15,5 @@
   "raw_crag_text_committed": false,
   "raw_generated_answers_committed": false,
   "result_class": "CRAG_EVALUATOR_MAPPING_V2_ACTIVE_NONCONSTANT_SIGNAL",
-  "suite": "ragtune_crag_evaluator_mapping_diagnostic_v2"
+  "suite": "ragwarrant_crag_evaluator_mapping_diagnostic_v2"
 }

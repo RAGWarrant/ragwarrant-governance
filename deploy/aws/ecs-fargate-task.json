@@ -1,5 +1,5 @@
 {
-  "family": "ragtune-governance-task",
+  "family": "ragwarrant-governance-task",
   "networkMode": "awsvpc",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "1024",
@@ -7,8 +7,8 @@
   "executionRoleArn": "<ecs-task-execution-role-arn>",
   "containerDefinitions": [
     {
-      "name": "ragtune",
-      "image": "RAGTUNE_IMAGE_REFERENCE_PLACEHOLDER",
+      "name": "ragwarrant",
+      "image": "RAGWARRANT_IMAGE_REFERENCE_PLACEHOLDER",
       "essential": true,
       "command": [
         "run-governance-job",
@@ -21,15 +21,15 @@
       ],
       "environment": [
         {
-          "name": "RAGTUNE_STORAGE_MODE",
+          "name": "RAGWARRANT_STORAGE_MODE",
           "value": "local"
         },
         {
-          "name": "RAGTUNE_INPUT_DIR",
+          "name": "RAGWARRANT_INPUT_DIR",
           "value": "/inputs"
         },
         {
-          "name": "RAGTUNE_OUTPUT_DIR",
+          "name": "RAGWARRANT_OUTPUT_DIR",
           "value": "/outputs"
         }
       ],

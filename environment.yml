@@ -1,4 +1,4 @@
-name: rag-tuning-governance
+name: ragwarrant-governance
 channels:
   - conda-forge
 dependencies:

@@ -2,7 +2,7 @@
   "public_repo_path": "<local-public-repo>",
   "public_starting_commit": "ff529005bf7d00a0c3f79ba991563f3923d63205",
   "public_branch": "<requested-work-branch>",
-  "public_remote": "https://github.com/AIM-RAGTune/rag-tuning-governance.git",
+  "public_remote": "https://github.com/RAGWarrant/ragwarrant-governance.git",
   "origin_main": "ff529005bf7d00a0c3f79ba991563f3923d63205",
   "release_tag": "v0.1.0-rc1",
   "release_tag_target": "ff529005bf7d00a0c3f79ba991563f3923d63205",

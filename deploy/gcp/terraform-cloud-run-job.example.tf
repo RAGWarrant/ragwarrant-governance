@@ -10,11 +10,11 @@ variable "region" {
 
 variable "image" {
   type    = string
-  default = "RAGTUNE_IMAGE_REFERENCE_PLACEHOLDER"
+  default = "RAGWARRANT_IMAGE_REFERENCE_PLACEHOLDER"
 }
 
-resource "google_cloud_run_v2_job" "ragtune" {
-  name     = "ragtune-governance-job"
+resource "google_cloud_run_v2_job" "ragwarrant" {
+  name     = "ragwarrant-governance-job"
   location = var.region
   project  = var.project_id
 
@@ -32,15 +32,15 @@ resource "google_cloud_run_v2_job" "ragtune" {
           "/outputs/promotion_decision.json",
         ]
         env {
-          name  = "RAGTUNE_STORAGE_MODE"
+          name  = "RAGWARRANT_STORAGE_MODE"
           value = "local"
         }
         env {
-          name  = "RAGTUNE_INPUT_DIR"
+          name  = "RAGWARRANT_INPUT_DIR"
           value = "/inputs"
         }
         env {
-          name  = "RAGTUNE_OUTPUT_DIR"
+          name  = "RAGWARRANT_OUTPUT_DIR"
           value = "/outputs"
         }
       }

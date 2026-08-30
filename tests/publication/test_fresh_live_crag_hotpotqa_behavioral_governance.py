@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from ragtune.fresh_live_behavioral_governance import (
+from ragwarrant.fresh_live_behavioral_governance import (
     FRESH_CRAG_RESULT_CLASSES,
     HOTPOTQA_RESULT_CLASSES,
     SYNTHESIS_RESULT_CLASSES,
@@ -15,7 +15,7 @@ from ragtune.fresh_live_behavioral_governance import (
     write_hotpotqa_acquisition_report,
     write_multi_dataset_synthesis,
 )
-from ragtune.quality_metrics import exact_match, final_hotpotqa_quality, token_f1
+from ragwarrant.quality_metrics import exact_match, final_hotpotqa_quality, token_f1
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -36,7 +36,7 @@ def load_json(path: str):
 
 
 def test_crag_acquisition_requires_approval_env_var(monkeypatch) -> None:
-    monkeypatch.delenv("RAGTUNE_CRAG_APPROVED_NONCOMMERCIAL_RESEARCH_ONLY", raising=False)
+    monkeypatch.delenv("RAGWARRANT_CRAG_APPROVED_NONCOMMERCIAL_RESEARCH_ONLY", raising=False)
     env = inspect_crag_environment()
     assert env["approved_noncommercial_research_only"] is False
 
@@ -84,7 +84,7 @@ def test_hotpotqa_quality_metric_has_supporting_fact_evidence() -> None:
 
 
 def test_behaviorally_distinct_policy_suite_reused() -> None:
-    config = (ROOT / "configs/experiments/ragtune_fresh_live_crag_mock_api_behavioral_governance_v1.yaml").read_text(encoding="utf-8")
+    config = (ROOT / "configs/experiments/ragwarrant_fresh_live_crag_mock_api_behavioral_governance_v1.yaml").read_text(encoding="utf-8")
     assert "low_retrieval_single_endpoint" in config
     assert "expanded_retrieval_multi_endpoint" in config
     assert "adaptive_routing_on_insufficient_evidence" in config

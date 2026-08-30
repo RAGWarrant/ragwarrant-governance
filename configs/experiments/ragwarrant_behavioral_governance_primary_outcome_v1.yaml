@@ -1,0 +1,49 @@
+suite: ragwarrant_behavioral_governance_primary_outcome_v1
+suite_version: 1
+seed: 20260809
+dataset:
+  preferred: crag_mock_api
+  source: sanitized_crag_mock_api_frozen_observations
+  parent_run_id: ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4
+  evidence_class: public_full_corpus_mock_api_validation_derived_frozen_observation
+  require_raw_hash_match: false
+  require_zero_leakage: true
+  export_raw_query_text: false
+  export_raw_api_response: false
+quality:
+  metric_config: configs/experiments/ragwarrant_answer_quality_measurement_v1.yaml
+  require_correctness_component: true
+  require_evidence_support_component: true
+  require_abstention_component: true
+  quality_noninferiority_margin: 0.01
+cost_latency:
+  use_measured_api_calls: true
+  use_measured_latency: true
+  use_measured_or_declared_token_cost: true
+  deployment_horizons:
+    - 1000
+    - 10000
+    - 100000
+    - 1000000
+constraints:
+  max_mean_cost_units: 1.5
+  max_p95_latency_ms: 4000
+  max_api_calls_per_query: 3
+  max_failure_rate: 0.05
+  min_evidence_support_score: 0.5
+policies:
+  required:
+    - low_retrieval_single_endpoint
+    - expanded_retrieval_multi_endpoint
+    - adaptive_routing_on_insufficient_evidence
+    - measured_cost_minimizer_at_quality_floor
+    - measured_latency_minimizer_at_quality_floor
+    - quality_only_best_on_validation
+    - constrained_quality_optimizer
+    - pareto_frontier_selector
+    - governed_selection
+output:
+  append_only: true
+  sanitize_raw_text: true
+  validate_schemas: true
+  write_markdown_report: true

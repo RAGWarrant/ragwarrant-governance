@@ -1,0 +1,9 @@
+suite: ragwarrant_hotpotqa_generative_quality_signal_audit_v2
+version: 2
+target_sample_tiers:
+  - small
+  - medium
+  - large_bounded
+export_raw_question_text: false
+export_raw_context_text: false
+export_raw_generated_answers: false

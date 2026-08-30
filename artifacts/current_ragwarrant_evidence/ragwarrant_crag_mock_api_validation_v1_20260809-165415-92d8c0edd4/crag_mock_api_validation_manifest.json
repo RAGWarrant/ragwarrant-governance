@@ -1,0 +1,16 @@
+{
+  "api_call_count": 14172,
+  "certificate": "Candidate external signal",
+  "claim_limit": "mock_api_source_validation_not_generative_confirmatory",
+  "confirmatory_query_count": 571,
+  "governed_winner": "top_k_low",
+  "noncommercial_research_only": true,
+  "python_executable": "<compat-runtime>/python",
+  "quality_only_winner": "greedy_regression_aware_search",
+  "rag_compass_rank": 5,
+  "result": "MOCK_API_VALIDATION_GOVERNANCE_SUPERIOR",
+  "smoke_run_dir": "<approved-data-root>/source-validation-workspace/artifacts/ragwarrant/runs/ragwarrant_crag_mock_api_server_smoke_v1_20260809-153135-ef5064c274",
+  "source_dir": "<approved-data-root>/source-validation-workspace/artifacts/datasets/raw/crag/source/ad1518887dd4d9ebcd7de95388c7a62751e7705c",
+  "started": true,
+  "validation_query_count": 431
+}

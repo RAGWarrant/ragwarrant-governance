@@ -3,9 +3,9 @@
   "missing_required_artifacts": [],
   "raw_data_included": false,
   "result_class": "RELEASE_CANDIDATE_READY",
-  "suite": "ragtune_release_candidate_v1",
+  "suite": "ragwarrant_release_candidate_v1",
   "tag_created": false,
   "tag_pushed": false,
-  "tracked_file_count": 1671,
+  "tracked_file_count": 1205,
   "version": "v0.1.0-rc1"
 }

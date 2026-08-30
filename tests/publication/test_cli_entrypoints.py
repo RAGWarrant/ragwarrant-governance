@@ -20,7 +20,7 @@ def cli_env() -> dict[str, str]:
 
 def test_cli_help() -> None:
     result = subprocess.run(
-        [sys.executable, "-m", "ragtune.cli", "--help"],
+        [sys.executable, "-m", "ragwarrant.cli", "--help"],
         cwd=ROOT,
         env=cli_env(),
         text=True,
@@ -37,7 +37,7 @@ def test_cli_export_decision_writes_machine_readable_json(tmp_path: Path) -> Non
         [
             sys.executable,
             "-m",
-            "ragtune.cli",
+            "ragwarrant.cli",
             "export-decision",
             "--decision-out",
             str(out),
@@ -57,7 +57,7 @@ def test_cli_export_decision_writes_machine_readable_json(tmp_path: Path) -> Non
 
 def test_cli_inspect_environment_sanitized(tmp_path: Path) -> None:
     result = subprocess.run(
-        [sys.executable, "-m", "ragtune.cli", "inspect-environment", "--output-root", str(tmp_path)],
+        [sys.executable, "-m", "ragwarrant.cli", "inspect-environment", "--output-root", str(tmp_path)],
         cwd=ROOT,
         env=cli_env(),
         text=True,

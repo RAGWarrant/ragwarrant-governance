@@ -1,7 +1,7 @@
 param location string = resourceGroup().location
-param containerAppEnvironmentName string = 'ragtune-env'
-param jobName string = 'ragtune-governance-job'
-param image string = 'RAGTUNE_IMAGE_REFERENCE_PLACEHOLDER'
+param containerAppEnvironmentName string = 'ragwarrant-env'
+param jobName string = 'ragwarrant-governance-job'
+param image string = 'RAGWARRANT_IMAGE_REFERENCE_PLACEHOLDER'
 
 resource env 'Microsoft.App/managedEnvironments@2023-05-01' = {
   name: containerAppEnvironmentName
@@ -21,7 +21,7 @@ resource job 'Microsoft.App/jobs@2023-05-01' = {
     template: {
       containers: [
         {
-          name: 'ragtune'
+          name: 'ragwarrant'
           image: image
           args: [
             'run-governance-job'
@@ -34,15 +34,15 @@ resource job 'Microsoft.App/jobs@2023-05-01' = {
           ]
           env: [
             {
-              name: 'RAGTUNE_STORAGE_MODE'
+              name: 'RAGWARRANT_STORAGE_MODE'
               value: 'local'
             }
             {
-              name: 'RAGTUNE_INPUT_DIR'
+              name: 'RAGWARRANT_INPUT_DIR'
               value: '/inputs'
             }
             {
-              name: 'RAGTUNE_OUTPUT_DIR'
+              name: 'RAGWARRANT_OUTPUT_DIR'
               value: '/outputs'
             }
           ]

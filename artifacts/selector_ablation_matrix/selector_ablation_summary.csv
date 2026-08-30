@@ -1,5 +1,5 @@
 metric,value
-suite,ragtune_selector_ablation_matrix_v1
+suite,ragwarrant_selector_ablation_matrix_v1
 result_class,SELECTOR_ABLATION_GOVERNANCE_BLOCKS_UNSAFE_SELECTORS
 selectors_compared,"['quality_only', 'cost_only', 'latency_only', 'random_eligible', 'static_default', 'rag_compass_optional', 'governed_noninferiority_selector', 'risk_guarded_selector', 'oracle_ceiling']"
 input_availability,"{'public_mini_reproduction': True, 'crag_generative_primary': True, 'crag_guardrail_v2': True, 'hotpotqa_quality_signal_audit': True}"

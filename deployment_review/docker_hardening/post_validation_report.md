@@ -1,6 +1,6 @@
 # Docker Hardening Post-Validation Report
 
-Repository path: `<public-ragtune-repository>`
+Repository path: `<public-ragwarrant-repository>`
 
 Branch: `codex/docker-runtime-hardening`
 
@@ -34,8 +34,8 @@ Additional hardening checks cover OCI image labels, fixed non-root UID, explicit
 - Result class: `DOCKER_RUNTIME_VALIDATED_PUBLIC_MINI`
 - Skip reason: none
 - Docker build: passed
-- `ragtune --help` in container: passed
-- `ragtune validate-bundle` in container: passed
+- `ragwarrant --help` in container: passed
+- `ragwarrant validate-bundle` in container: passed
 - Public-mini governance job in container: passed
 - Docker Compose public-mini: passed
 

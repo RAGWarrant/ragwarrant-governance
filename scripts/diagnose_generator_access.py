@@ -10,20 +10,20 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from ragtune.generative_validation_common import write_json, write_md
-from ragtune.generators.base import GeneratorUnavailable
-from ragtune.generators.factory import discover_generator
+from ragwarrant.generative_validation_common import write_json, write_md
+from ragwarrant.generators.base import GeneratorUnavailable
+from ragwarrant.generators.factory import discover_generator
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--provider", default=os.environ.get("RAGTUNE_GENERATOR_PROVIDER", "ollama"))
-    parser.add_argument("--model", default=os.environ.get("RAGTUNE_GENERATOR_MODEL", "qwen3:8b"))
+    parser.add_argument("--provider", default=os.environ.get("RAGWARRANT_GENERATOR_PROVIDER", "ollama"))
+    parser.add_argument("--model", default=os.environ.get("RAGWARRANT_GENERATOR_MODEL", "qwen3:8b"))
     parser.add_argument("--output-root", default="deployment_review/generative_llm_validation_quality_signal_audit")
     parser.add_argument("--timeout-s", type=float, default=60.0)
     args = parser.parse_args()
-    os.environ["RAGTUNE_GENERATOR_PROVIDER"] = args.provider
-    os.environ["RAGTUNE_GENERATOR_MODEL"] = args.model
+    os.environ["RAGWARRANT_GENERATOR_PROVIDER"] = args.provider
+    os.environ["RAGWARRANT_GENERATOR_MODEL"] = args.model
     discovery = discover_generator(dry_run=False)
     started = time.perf_counter()
     payload: dict[str, object] = {
@@ -33,8 +33,8 @@ def main() -> None:
         "status": discovery.status,
         "local_or_hosted": discovery.local_or_hosted,
         "instructions": discovery.instructions,
-        "ollama_base_url_configured": bool(os.environ.get("RAGTUNE_OLLAMA_BASE_URL", "http://localhost:11434")),
-        "local_openai_base_url_configured": bool(os.environ.get("RAGTUNE_LOCAL_OPENAI_BASE_URL", "")),
+        "ollama_base_url_configured": bool(os.environ.get("RAGWARRANT_OLLAMA_BASE_URL", "http://localhost:11434")),
+        "local_openai_base_url_configured": bool(os.environ.get("RAGWARRANT_LOCAL_OPENAI_BASE_URL", "")),
         "test_prompt_hash_only": True,
         "raw_test_response_committed": False,
     }

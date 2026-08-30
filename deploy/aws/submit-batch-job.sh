@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 "$(dirname "$0")/../load-image-reference.sh" >/dev/null
-: "${RAGTUNE_AWS_BATCH_QUEUE:?set RAGTUNE_AWS_BATCH_QUEUE}"
+: "${RAGWARRANT_AWS_BATCH_QUEUE:?set RAGWARRANT_AWS_BATCH_QUEUE}"
 aws batch submit-job \
-  --job-name ragtune-governance-job \
-  --job-queue "$RAGTUNE_AWS_BATCH_QUEUE" \
-  --job-definition ragtune-governance-batch
+  --job-name ragwarrant-governance-job \
+  --job-queue "$RAGWARRANT_AWS_BATCH_QUEUE" \
+  --job-definition ragwarrant-governance-batch

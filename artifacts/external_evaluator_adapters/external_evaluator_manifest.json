@@ -20,7 +20,7 @@
   "raw_traces_used": false,
   "result_class": "EXTERNAL_EVALUATOR_ADAPTER_PROMOTION_DECISION_GENERATED",
   "selected_policy": "quality_policy",
-  "suite": "ragtune_external_evaluator_adapters_v1",
+  "suite": "ragwarrant_external_evaluator_adapters_v1",
   "supported_inputs": [
     "generic_jsonl",
     "generic_csv",

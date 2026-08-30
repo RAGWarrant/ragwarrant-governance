@@ -27,7 +27,7 @@ def test_storage_emulator_runner_uses_pinned_images_and_cleanup() -> None:
     assert "mcr.microsoft.com/azure-storage/azurite@sha256:" in text
     assert "fsouza/fake-gcs-server@sha256:" in text
     assert "--platform \"$EMULATOR_PLATFORM\"" in text
-    assert "RAGTUNE_STORAGE_EMULATOR_PLATFORM:-linux/amd64" in text
+    assert "RAGWARRANT_STORAGE_EMULATOR_PLATFORM:-linux/amd64" in text
     assert ":latest" not in text
     assert "trap cleanup EXIT INT TERM" in text
     assert "pytest -q -m storage_emulator" in text

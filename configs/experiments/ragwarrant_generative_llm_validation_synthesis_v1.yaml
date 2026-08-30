@@ -1,0 +1,14 @@
+suite: ragwarrant_generative_llm_validation_synthesis_v1
+suite_version: 1
+
+inputs:
+  crag: artifacts/generative_llm_validation/crag/primary_outcome_statistics.json
+  hotpotqa: artifacts/generative_llm_validation/hotpotqa/primary_outcome_statistics.json
+  prior_frozen_crag: artifacts/behavioral_governance/primary_outcome_statistics.json
+  fresh_live_crag_proxy: artifacts/fresh_live_crag_behavioral_governance/primary_outcome_statistics.json
+  hotpotqa_non_generative: artifacts/hotpotqa_behavioral_governance/primary_outcome_statistics.json
+
+claim_boundaries:
+  local_generator_is_not_official_platform_benchmarking: true
+  no_human_validation_claim_without_annotations: true
+  no_rag_compass_superiority_claim: true

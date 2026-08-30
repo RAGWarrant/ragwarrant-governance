@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from ragtune.container_security_scans import SECURITY_SCAN_RESULT_CLASSES
+from ragwarrant.container_security_scans import SECURITY_SCAN_RESULT_CLASSES
 
 
 ROOT = Path(__file__).resolve().parents[2]

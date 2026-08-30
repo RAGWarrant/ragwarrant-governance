@@ -1,0 +1,17 @@
+suite: ragwarrant_crag_mock_api_server_smoke_v1
+suite_version: 1
+seed: 20260809
+mock_api:
+  source_run_id: ragwarrant_crag_mock_api_path_v1_20260808-150421-a4353f15ce
+  server_path: mock_api/server.py
+  compat_python: <compat-runtime>/python
+  host: 127.0.0.1
+  port: 18082
+  require_health_check: true
+  require_repeat_query_determinism: true
+  sanitize_logs: true
+  allow_external_network: false
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

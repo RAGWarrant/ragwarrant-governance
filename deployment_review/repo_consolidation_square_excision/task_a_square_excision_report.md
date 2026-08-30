@@ -2,7 +2,7 @@
 
 - Files deleted: 0
 - Files modified: 74
-- Vendored helper path: `src/ragtune/utils/hashing.py`
+- Vendored helper path: `src/ragwarrant/utils/hashing.py`
 - Stable hash regression: passed; representative nested output `8236bd6928`.
 - Publication validator: passed.
 - Deployment readiness: DEPLOYMENT_READINESS_SUPPORTED_WITH_BOUNDARIES.

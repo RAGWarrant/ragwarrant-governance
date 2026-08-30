@@ -1,5 +1,5 @@
 {
-  "canonical_word_manuscript_path": "paper/preprints/RAGTune_ArXiv_Preprint_v0.1.1-rc1.docx",
+  "canonical_word_manuscript_path": "paper/preprints/RAGWarrant_ArXiv_Preprint_v0.1.1-rc1.docx",
   "before_sha256": "cefb97cb538b0e1d8ef6e8c09cb85d06173cd5c29cfce9a969259c2d80a1d7b3",
   "after_sha256": "da3c6ddd4eebf049afc27ee15c9cdee6b3a5e635e9e874ddb97a6d0a72a82ab8",
   "requested_change_items": [
@@ -31,10 +31,10 @@
     "+++ ",
     "@@ -6,7 +6,7 @@",
     " Abstract",
-    " Retrieval-augmented generation systems are extensively instrumented with metrics, benchmarks, traces, and automated judges, but these tools do not decide whether a proposed policy change is safe to release. We present RAGTune, an open-source promotion-control framework that treats deployment as a constrained evidence decision rather than a leaderboard choice. RAGTune normalizes evaluator outputs and operational telemetry, applies predeclared quality and hard-risk gates, assigns evidence-class claim ceilings, preserves negative outcomes, and emits auditable PROMOTE, BLOCK, REJECT, or INCONCLUSIVE decisions. We evaluate the framework across T2-RAGBench, MultiHop-RAG, CRAG, HotpotQA, synthetic reproduction, and bounded local generative experiments. On HotpotQA, operational savings were blocked because answer quality fell beyond the declared margin. A bounded CRAG study selected a lower-cost quality-tied policy, but related generative gains were unstable and a held-out guardrail failed closed. We claim an auditable promotion-control abstraction, not optimizer superiority, human validation, or production readiness. The tagged artifact reproduces from a fresh clone, runs as a hardened Docker job, accepts external evaluator exports, and verifies artifact integrity.",
+    " Retrieval-augmented generation systems are extensively instrumented with metrics, benchmarks, traces, and automated judges, but these tools do not decide whether a proposed policy change is safe to release. We present RAGWarrant, an open-source promotion-control framework that treats deployment as a constrained evidence decision rather than a leaderboard choice. RAGWarrant normalizes evaluator outputs and operational telemetry, applies predeclared quality and hard-risk gates, assigns evidence-class claim ceilings, preserves negative outcomes, and emits auditable PROMOTE, BLOCK, REJECT, or INCONCLUSIVE decisions. We evaluate the framework across T2-RAGBench, MultiHop-RAG, CRAG, HotpotQA, synthetic reproduction, and bounded local generative experiments. On HotpotQA, operational savings were blocked because answer quality fell beyond the declared margin. A bounded CRAG study selected a lower-cost quality-tied policy, but related generative gains were unstable and a held-out guardrail failed closed. We claim an auditable promotion-control abstraction, not optimizer superiority, human validation, or production readiness. The tagged artifact reproduces from a fresh clone, runs as a hardened Docker job, accepts external evaluator exports, and verifies artifact integrity.",
     " Keywords: retrieval-augmented generation; RAG evaluation; AI governance; promotion control; noninferiority; LLMOps; reproducibility",
-    "-Code and artifacts: github.com/AIM-RAGTune/rag-tuning-governance-public",
-    "+Code and artifacts: github.com/AIM-RAGTune/rag-tuning-governance (legacy /rag-tuning-governance-public URL redirects)",
+    "-Code and artifacts: github.com/RAGWarrant/ragwarrant-governance",
+    "+Code and artifacts: github.com/RAGWarrant/ragwarrant-governance (legacy /ragwarrant-governance URL redirects)",
     " Release candidate: v0.1.0-rc1  |  Commit: ff529005bf7d00a0c3f79ba991563f3923d63205",
     " ",
     " 1. Introduction",
@@ -62,8 +62,8 @@
     " [17] G. Piaggio, D. R. Elbourne, S. J. Pocock, S. J. W. Evans, and D. G. Altman, 'Reporting of Noninferiority and Equivalence Randomized Trials: Extension of the CONSORT 2010 Statement,' JAMA, vol. 308, no. 24, pp. 2594-2604, 2012. doi:10.1001/jama.2012.87802.",
     " [18] LangChain, 'LangSmith Evaluation Concepts,' documentation, accessed August 2026. https://docs.langchain.com/langsmith/evaluation-concepts.",
     " [19] Arize AI, 'Phoenix: AI Observability and Evaluation,' open-source documentation, accessed August 2026. https://arize.com/docs/phoenix/.",
-    "-[20] AIM-RAGTune Contributors, RAGTune Governance, version 0.1.0-rc1, 2026. https://github.com/AIM-RAGTune/rag-tuning-governance-public.",
-    "+[20] AIM-RAGTune Contributors, RAGTune Governance, version 0.1.0-rc1, 2026. https://github.com/AIM-RAGTune/rag-tuning-governance.",
+    "-[20] RAGWarrant Contributors, RAGWarrant Governance, version 0.1.0-rc1, 2026. https://github.com/RAGWarrant/ragwarrant-governance.",
+    "+[20] RAGWarrant Contributors, RAGWarrant Governance, version 0.1.0-rc1, 2026. https://github.com/RAGWarrant/ragwarrant-governance.",
     " End of preprint draft"
   ]
 }

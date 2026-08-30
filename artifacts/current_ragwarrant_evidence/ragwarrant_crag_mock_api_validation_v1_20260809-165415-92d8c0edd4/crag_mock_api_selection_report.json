@@ -1,0 +1,66 @@
+{
+  "divergence_cases": [
+    {
+      "case_label": "natural_public_mock_api_validation",
+      "governance_reason": "frozen_budget_latency_adjusted_utility",
+      "governed_winner": "top_k_low",
+      "heldout_support": {
+        "document_family_bootstrap_ci": [
+          0.001002270839103757,
+          0.001002825032239709
+        ],
+        "duplicate_cluster_bootstrap_ci": [
+          0.001002270839103757,
+          0.001002825032239709
+        ],
+        "effect_size": 286.4390133446677,
+        "left_policy": "top_k_low",
+        "median_delta": 0.0010000751959159948,
+        "paired_examples": 571,
+        "point_estimate": 0.0010025405091496173,
+        "probability_of_noninferiority": 1.0,
+        "probability_of_superiority": 1.0,
+        "query_bootstrap": {
+          "bootstrap_samples": 1000,
+          "ci_high": 0.001002825032239709,
+          "ci_low": 0.001002270839103757,
+          "mean_delta": 0.0010025405091496173,
+          "unit_count": 571
+        },
+        "query_bootstrap_ci": [
+          0.001002270839103757,
+          0.001002825032239709
+        ],
+        "query_win_tie_loss": {
+          "loss": 0,
+          "tie": 0,
+          "win": 571
+        },
+        "right_policy": "greedy_regression_aware_search",
+        "seed_level_bootstrap_ci": [
+          0.001002270839103757,
+          0.001002825032239709
+        ],
+        "status": "ok",
+        "std_delta": 3.500013833462258e-06
+      },
+      "quality_only_winner": "greedy_regression_aware_search"
+    }
+  ],
+  "eligibility": [
+    "best_single_policy_on_validation",
+    "greedy_coordinate_search",
+    "greedy_regression_aware_search",
+    "rag_compass",
+    "retrieval_confidence_gating",
+    "static_default_rag_policy",
+    "top_k_high",
+    "top_k_low"
+  ],
+  "eligible_policy_count": 8,
+  "evaluation_split": "confirmatory_test",
+  "governed_winner": "top_k_low",
+  "quality_only_winner": "greedy_regression_aware_search",
+  "result": "MOCK_API_VALIDATION_GOVERNANCE_SUPERIOR",
+  "selection_split": "validation"
+}

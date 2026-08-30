@@ -1,0 +1,49 @@
+{
+  "active_former_name_occurrences": 0,
+  "broad_exception_rules": [],
+  "by_classification": {
+    "migration_documentation": 610,
+    "pre_rename_archive_manifest": 6,
+    "validator_negative_fixture": 14
+  },
+  "by_token_id": {
+    "legacy_misspelling_01": 1,
+    "legacy_misspelling_02": 1,
+    "legacy_misspelling_03": 1,
+    "legacy_token_01": 30,
+    "legacy_token_02": 62,
+    "legacy_token_03": 28,
+    "legacy_token_04": 360,
+    "legacy_token_05": 30,
+    "legacy_token_06": 60,
+    "legacy_token_07": 29,
+    "legacy_token_08": 28
+  },
+  "canonical_product": "RAGWarrant",
+  "canonical_repository": "https://github.com/RAGWarrant/ragwarrant-governance",
+  "classified_occurrences": 630,
+  "exception_actual_counts": {
+    "completion-claim-diff-json": 0,
+    "completion-claim-diff-md": 0,
+    "completion-file-disposition-csv": 0,
+    "completion-file-disposition-json": 0,
+    "completion-file-disposition-md": 0,
+    "completion-strict-exception-audit-json": 143,
+    "completion-strict-exception-audit-md": 0,
+    "migration-active-identifier-map": 302,
+    "migration-brand-note": 1,
+    "migration-exceptions-guide": 11,
+    "migration-exceptions-json": 143,
+    "migration-pre-rename-archive": 6,
+    "migration-run-id-crosswalk": 10,
+    "validator-source-negative-fixture": 14
+  },
+  "max_occurrence_failures": [],
+  "misspelling_occurrences_outside_negative_fixtures": 0,
+  "result_class": "BRAND_CONSISTENCY_PASSED",
+  "schema_version": 2,
+  "sha256_failures": [],
+  "total_occurrences": 630,
+  "unclassified": [],
+  "unclassified_occurrences": 0
+}

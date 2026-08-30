@@ -21,7 +21,7 @@ def load_csv(path: str):
 
 @pytest.fixture(scope="module", autouse=True)
 def generate_behavioral_artifacts() -> None:
-    from ragtune.behavioral_governance import run_experiment
+    from ragwarrant.behavioral_governance import run_experiment
 
     run_experiment(ROOT)
 

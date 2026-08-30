@@ -14,10 +14,10 @@
     "public_mini": "PUBLIC_MINI_REPRODUCTION_FAIL_CLOSED",
     "selector_ablation": "SELECTOR_ABLATION_GOVERNANCE_BLOCKS_UNSAFE_SELECTORS"
   },
-  "interpretation": "RAGTune is ready to present as an open-source governance and promotion-control framework with strict boundaries, public mini reproduction, fail-closed guardrail evidence, external evaluator input adapters, selector ablations, and sanitized local hardware characterization.",
+  "interpretation": "RAGWarrant is ready to present as an open-source governance and promotion-control framework with strict boundaries, public mini reproduction, fail-closed guardrail evidence, external evaluator input adapters, selector ablations, and sanitized local hardware characterization.",
   "raw_data_committed": false,
   "raw_generated_answers_committed": false,
   "raw_prompts_committed": false,
   "result_class": "OPEN_SOURCE_ARXIV_READINESS_SUPPORTED_WITH_BOUNDARIES",
-  "suite": "ragtune_open_source_arxiv_readiness_synthesis_v1"
+  "suite": "ragwarrant_open_source_arxiv_readiness_synthesis_v1"
 }

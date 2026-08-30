@@ -8,12 +8,12 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from ragtune.fresh_live_behavioral_governance import run_hotpotqa_behavioral_governance
+from ragwarrant.fresh_live_behavioral_governance import run_hotpotqa_behavioral_governance
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="configs/experiments/ragtune_hotpotqa_behavioral_governance_v1.yaml")
+    parser.add_argument("--config", default="configs/experiments/ragwarrant_hotpotqa_behavioral_governance_v1.yaml")
     parser.add_argument("--output-root", default="artifacts/hotpotqa_behavioral_governance")
     parser.add_argument("--max-examples", type=int, default=1000)
     parser.add_argument("--dry-run", action="store_true")

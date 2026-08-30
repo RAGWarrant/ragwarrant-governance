@@ -1,0 +1,15 @@
+suite: ragwarrant_crag_mock_api_case_explanation_pack_v1
+seed: 20260809
+
+parent_run:
+  run_id: ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4
+
+case_pack:
+  technical_cases: 10
+  executive_cases: 5
+  sanitize_source_text: true
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

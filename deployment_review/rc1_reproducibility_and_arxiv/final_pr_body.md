@@ -1,8 +1,8 @@
 ## Summary
 
-Adds the RC1 reproducibility and arXiv readiness package for RAGTune.
+Adds the RC1 reproducibility and arXiv readiness package for RAGWarrant.
 
-This PR strengthens RAGTune as an open-source RAG governance and promotion-control framework by adding fresh-clone reproduction, release-candidate preparation, CRAG evaluator mapping diagnostics, HotpotQA quality-signal audit, selector ablation stress testing, artifact integrity verification, external evaluator adapter demos, AIM hardware characterization, and arXiv paper scaffolding.
+This PR strengthens RAGWarrant as an open-source RAG governance and promotion-control framework by adding fresh-clone reproduction, release-candidate preparation, CRAG evaluator mapping diagnostics, HotpotQA quality-signal audit, selector ablation stress testing, artifact integrity verification, external evaluator adapter demos, AIM hardware characterization, and arXiv paper scaffolding.
 
 ## Key results
 
@@ -40,14 +40,14 @@ Fail-closed, mixed, blocked, and inconclusive results are preserved.
 
 ## Claims now supported
 
-- RAGTune has a public mini reproduction path.
-- RAGTune has hardened Docker/container validation.
-- RAGTune can emit auditable promotion decisions.
-- RAGTune can verify run artifact integrity.
-- RAGTune can consume external evaluator-style metric exports.
-- RAGTune has selector ablation stress-test tooling.
-- RAGTune has AIM local hardware characterization.
-- RAGTune has an arXiv-ready systems/methods draft scaffold.
+- RAGWarrant has a public mini reproduction path.
+- RAGWarrant has hardened Docker/container validation.
+- RAGWarrant can emit auditable promotion decisions.
+- RAGWarrant can verify run artifact integrity.
+- RAGWarrant can consume external evaluator-style metric exports.
+- RAGWarrant has selector ablation stress-test tooling.
+- RAGWarrant has AIM local hardware characterization.
+- RAGWarrant has an arXiv-ready systems/methods draft scaffold.
 
 ## Claims still unsupported
 

@@ -1,0 +1,85 @@
+{
+  "main_sha": "85b319c6cbb923578ab9ac3c58a20e9e42cd284f",
+  "branch_sha": "fdef2a501ce538fcf00c34112d93b77dc5a44f10",
+  "pr_url": "https://github.com/RAGWarrant/ragwarrant-governance/pull/28",
+  "pr_state": "OPEN",
+  "pr": {
+    "baseRefName": "main",
+    "headRefName": "holistic-ragwarrant-content-rename",
+    "headRefOid": "fdef2a501ce538fcf00c34112d93b77dc5a44f10",
+    "isDraft": false,
+    "mergeable": "MERGEABLE",
+    "number": 28,
+    "state": "OPEN",
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-08-30T19:39:28Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/RAGWarrant/ragwarrant-governance/actions/runs/33331455896/job/99310599987",
+        "name": "validate",
+        "startedAt": "2026-08-30T19:38:55Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-08-30T19:39:15Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/RAGWarrant/ragwarrant-governance/actions/runs/33331443489/job/99310566378",
+        "name": "validate",
+        "startedAt": "2026-08-30T19:38:38Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-08-30T19:39:11Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/RAGWarrant/ragwarrant-governance/actions/runs/33331455895/job/99310599969",
+        "name": "publication-check",
+        "startedAt": "2026-08-30T19:38:55Z",
+        "status": "COMPLETED",
+        "workflowName": "Publication Check"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-08-30T19:39:04Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/RAGWarrant/ragwarrant-governance/actions/runs/33331443533/job/99310566581",
+        "name": "publication-check",
+        "startedAt": "2026-08-30T19:38:38Z",
+        "status": "COMPLETED",
+        "workflowName": "Publication Check"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-08-30T19:40:46Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/RAGWarrant/ragwarrant-governance/actions/runs/33331455942/job/99310600139",
+        "name": "execute-kind-job",
+        "startedAt": "2026-08-30T19:38:56Z",
+        "status": "COMPLETED",
+        "workflowName": "k8s-kind-validation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-08-30T19:39:46Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/RAGWarrant/ragwarrant-governance/actions/runs/33331455946/job/99310600099",
+        "name": "emulator-storage-staging",
+        "startedAt": "2026-08-30T19:38:56Z",
+        "status": "COMPLETED",
+        "workflowName": "storage-staging-validation"
+      }
+    ],
+    "title": "Complete holistic RAGWarrant rebrand",
+    "url": "https://github.com/RAGWarrant/ragwarrant-governance/pull/28"
+  },
+  "immutable_tag": {
+    "tag": "v0.1.0-rc1",
+    "commit": "ff529005bf7d00a0c3f79ba991563f3923d63205",
+    "expected": "ff529005bf7d00a0c3f79ba991563f3923d63205",
+    "passed": true
+  }
+}

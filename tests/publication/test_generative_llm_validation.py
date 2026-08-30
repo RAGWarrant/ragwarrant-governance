@@ -5,16 +5,16 @@ from pathlib import Path
 
 import pytest
 
-from ragtune.crag_generative_validation import run_crag_generative_validation
-from ragtune.generated_answer_quality import GENERATED_QUALITY_CLASSES, assess_quality_signal, generated_quality_score
-from ragtune.generative_validation_common import GEN_LLM_RESULT_CLASSES, GEN_LLM_SYNTHESIS_CLASSES
-from ragtune.generative_validation_synthesis import synthesize_generative_validation
-from ragtune.generators.base import GenerationResult, GeneratorUnavailable
-from ragtune.generators.factory import discover_generator
-from ragtune.generators.hosted_openai import HostedOpenAIGenerator
-from ragtune.generators.azure_openai import AzureOpenAIGenerator
-from ragtune.generators.util import hash_text
-from ragtune.hotpotqa_generative_validation import run_hotpotqa_generative_validation
+from ragwarrant.crag_generative_validation import run_crag_generative_validation
+from ragwarrant.generated_answer_quality import GENERATED_QUALITY_CLASSES, assess_quality_signal, generated_quality_score
+from ragwarrant.generative_validation_common import GEN_LLM_RESULT_CLASSES, GEN_LLM_SYNTHESIS_CLASSES
+from ragwarrant.generative_validation_synthesis import synthesize_generative_validation
+from ragwarrant.generators.base import GenerationResult, GeneratorUnavailable
+from ragwarrant.generators.factory import discover_generator
+from ragwarrant.generators.hosted_openai import HostedOpenAIGenerator
+from ragwarrant.generators.azure_openai import AzureOpenAIGenerator
+from ragwarrant.generators.util import hash_text
+from ragwarrant.hotpotqa_generative_validation import run_hotpotqa_generative_validation
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -35,15 +35,15 @@ def load_json(path: str) -> dict[str, object]:
 
 
 def test_generator_factory_blocks_without_generator(monkeypatch) -> None:
-    monkeypatch.delenv("RAGTUNE_GENERATOR_PROVIDER", raising=False)
+    monkeypatch.delenv("RAGWARRANT_GENERATOR_PROVIDER", raising=False)
     discovery = discover_generator(dry_run=True)
     assert discovery.available is False
     assert discovery.status == "GEN_LLM_VALIDATION_BLOCKED_NO_GENERATOR"
 
 
 def test_ollama_adapter_does_not_require_network_when_dry_run(monkeypatch) -> None:
-    monkeypatch.setenv("RAGTUNE_GENERATOR_PROVIDER", "ollama")
-    monkeypatch.setenv("RAGTUNE_GENERATOR_MODEL", "llama3.1:8b")
+    monkeypatch.setenv("RAGWARRANT_GENERATOR_PROVIDER", "ollama")
+    monkeypatch.setenv("RAGWARRANT_GENERATOR_MODEL", "llama3.1:8b")
     discovery = discover_generator(dry_run=True)
     assert discovery.provider == "ollama"
     assert discovery.status == "dry_run_not_called"

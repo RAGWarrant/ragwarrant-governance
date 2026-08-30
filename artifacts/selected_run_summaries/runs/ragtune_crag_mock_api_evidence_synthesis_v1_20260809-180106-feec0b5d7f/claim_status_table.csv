@@ -1,8 +1,0 @@
-claim,status,evidence_class,limitation
-Docker-reproduced CRAG mock-API superiority,supported,container reproduction,DOCKER_REPRO_SAME_DECISION_DIFFERENT_METRICS
-Split-robust CRAG mock-API superiority,supported,repeat split/seed,frozen_parent_observation_resplit
-RAG Compass superiority,unsupported,secondary optimizer evidence,RAG Compass ranked 5th in parent CRAG mock-API validation
-Generative LLM validation,unsupported,not run,No pinned model or hosted credentials
-Human-eval validation,unsupported,ready-not-run,No annotations collected
-Official platform benchmarking,unsupported,workflow simulation/readiness only,No official integration run
-Production readiness,unsupported,research validation,Candidate external signal only

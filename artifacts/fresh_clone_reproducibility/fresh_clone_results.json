@@ -1,9 +1,9 @@
 {
   "commands": [
     {
-      "command": "git clone --depth 1 https://github.com/AIM-RAGTune/rag-tuning-governance.git <temporary-fresh-clone-dir>/rag-tuning-governance",
+      "command": "git clone --depth 1 https://github.com/RAGWarrant/ragwarrant-governance.git <temporary-fresh-clone-dir>/ragwarrant-governance",
       "duration_s": 0.832,
-      "output_excerpt": "Cloning into '<temporary-fresh-clone-dir>/rag-tuning-governance'...",
+      "output_excerpt": "Cloning into '<temporary-fresh-clone-dir>/ragwarrant-governance'...",
       "output_hash": "1841706e369846f43d2f4eebc7c8b3b24b53f448af189acf4c35c2765ee9a502",
       "returncode": 0,
       "status": "PASS"
@@ -11,21 +11,21 @@
     {
       "command": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m pip install -e .",
       "duration_s": 2.36,
-      "output_excerpt": "Installing collected packages: pygments, pluggy, iniconfig, pytest, rag-tuning-governance\n  Attempting uninstall: rag-tuning-governance\n    Found existing installation: rag-tuning-governance 0.1.0\n    Can't uninstall 'rag-tuning-governance'. No files were found to uninstall.\n\nSuccessfully installed iniconfig-2.3.0 pluggy-1.6.0 pygments-2.20.0 pytest-9.1.1 rag-tuning-governance-0.1.0\n\n\n[notice] A new release of pip is available: 25.1.1 -> 26.2.1\n[notice] To update, run: pip3 install --upgrade pip",
+      "output_excerpt": "Installing collected packages: pygments, pluggy, iniconfig, pytest, ragwarrant-governance\n  Attempting uninstall: ragwarrant-governance\n    Found existing installation: ragwarrant-governance 0.1.0\n    Can't uninstall 'ragwarrant-governance'. No files were found to uninstall.\n\nSuccessfully installed iniconfig-2.3.0 pluggy-1.6.0 pygments-2.20.0 pytest-9.1.1 ragwarrant-governance-0.1.0\n\n\n[notice] A new release of pip is available: 25.1.1 -> 26.2.1\n[notice] To update, run: pip3 install --upgrade pip",
       "output_hash": "807c2e38946a222f291687689055ab2b7bfa094643739180afcb5187a14b1fec",
       "returncode": 0,
       "status": "PASS"
     },
     {
-      "command": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragtune.cli --help",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragwarrant.cli --help",
       "duration_s": 0.057,
-      "output_excerpt": "     {validate-bundle,run-public-mini,run-selector-ablation,run-external-evaluator-demo,run-claim-check,synthesize-readiness,run-governance-job,export-decision,inspect-environment} ...\n\nRAGTune governance and promotion-control engine\n\npositional arguments:\n  {validate-bundle,run-public-mini,run-selector-ablation,run-external-evaluator-demo,run-claim-check,synthesize-readiness,run-governance-job,export-decision,inspect-environment}\n\noptions:\n  -h, --help            show this help message and exit",
+      "output_excerpt": "     {validate-bundle,run-public-mini,run-selector-ablation,run-external-evaluator-demo,run-claim-check,synthesize-readiness,run-governance-job,export-decision,inspect-environment} ...\n\nRAGWarrant governance and promotion-control engine\n\npositional arguments:\n  {validate-bundle,run-public-mini,run-selector-ablation,run-external-evaluator-demo,run-claim-check,synthesize-readiness,run-governance-job,export-decision,inspect-environment}\n\noptions:\n  -h, --help            show this help message and exit",
       "output_hash": "cf3e2bd96cf0ed2a1b9d1d14073e41c18105b92fcbcc287fa47b806cdfb46565",
       "returncode": 0,
       "status": "PASS"
     },
     {
-      "command": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragtune.cli validate-bundle",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragwarrant.cli validate-bundle",
       "duration_s": 0.655,
       "output_excerpt": "publication validation passed",
       "output_hash": "f7a617f772f9ee65a36f2315b846d7fbf3ce1306b53d80bead8b1f08927bdc88",
@@ -33,7 +33,7 @@
       "status": "PASS"
     },
     {
-      "command": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragtune.cli run-public-mini",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragwarrant.cli run-public-mini",
       "duration_s": 0.049,
       "output_excerpt": "",
       "output_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -41,7 +41,7 @@
       "status": "PASS"
     },
     {
-      "command": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragtune.cli run-governance-job --config configs/jobs/public_mini_governance_job.yaml --output-root fresh_clone_outputs --decision-out fresh_clone_outputs/promotion_decision.json",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m ragwarrant.cli run-governance-job --config configs/jobs/public_mini_governance_job.yaml --output-root fresh_clone_outputs --decision-out fresh_clone_outputs/promotion_decision.json",
       "duration_s": 0.657,
       "output_excerpt": "publication validation passed",
       "output_hash": "f7a617f772f9ee65a36f2315b846d7fbf3ce1306b53d80bead8b1f08927bdc88",
@@ -68,6 +68,6 @@
     "requires_hotpotqa_cache": false,
     "requires_private_data": false,
     "result_class": "FRESH_CLONE_REPRODUCTION_PASSED_GIT_CLONE",
-    "suite": "ragtune_fresh_clone_reproducibility_v1"
+    "suite": "ragwarrant_fresh_clone_reproducibility_v1"
   }
 }

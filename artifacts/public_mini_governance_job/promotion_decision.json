@@ -25,7 +25,7 @@
   "run_id": "public_mini_governance_job",
   "schema_version": "1.0",
   "selected_policy": "risk_guarded_governance",
-  "suite": "ragtune_cloud_agnostic_governance_job_v1",
+  "suite": "ragwarrant_cloud_agnostic_governance_job_v1",
   "timestamp_utc": "2026-08-11T17:14:48+00:00",
   "validator_status": "passed"
 }

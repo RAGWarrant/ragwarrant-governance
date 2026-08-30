@@ -1,7 +1,7 @@
 {
   "starting_commit": "03d5b93b5efc75bf94967ff1eac7f42bbdf6720a",
   "branch": "fresh-live-crag-hotpotqa-behavioral-governance",
-  "remote_url": "https://github.com/AIM-RAGTune/rag-tuning-governance.git",
+  "remote_url": "https://github.com/RAGWarrant/ragwarrant-governance.git",
   "working_tree_status_before_changes": "clean",
   "baseline_validation": {
     "publication_validator": "passed",

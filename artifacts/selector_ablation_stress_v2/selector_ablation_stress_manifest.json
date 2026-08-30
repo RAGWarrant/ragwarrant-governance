@@ -23,6 +23,6 @@
     "risk_guarded_selector",
     "oracle_ceiling"
   ],
-  "suite": "ragtune_selector_ablation_stress_v2",
+  "suite": "ragwarrant_selector_ablation_stress_v2",
   "universal_superiority_claimed": false
 }

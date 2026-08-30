@@ -21,5 +21,5 @@
   "repeat_result_class": "GEN_LLM_GOVERNANCE_INCONCLUSIVE_CRAG",
   "repeat_sample_offset": 24,
   "result_class": "CRAG_GEN_LLM_COST_RESULT_NOT_REPLICATED",
-  "suite": "ragtune_crag_generative_repeat_comparison_v1"
+  "suite": "ragwarrant_crag_generative_repeat_comparison_v1"
 }

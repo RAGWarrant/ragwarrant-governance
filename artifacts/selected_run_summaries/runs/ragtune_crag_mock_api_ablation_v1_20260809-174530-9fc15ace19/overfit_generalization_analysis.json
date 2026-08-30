@@ -1,4 +1,0 @@
-{
-  "parent_selection_regret_explanation": "Quality-only optimized raw validation quality; governed selection used frozen operational utility on validation and was supported on confirmatory rows.",
-  "validation_to_confirmatory_delta_change": 1.226770724103033e-06
-}

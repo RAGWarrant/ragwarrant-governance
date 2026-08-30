@@ -1,7 +1,0 @@
-{
-  "executive_case_count": 5,
-  "parent_run": "artifacts/ragtune/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4",
-  "result": "CASE_PACK_CREATED_WITH_STRONG_EXAMPLES",
-  "selection": "largest held-out governed utility advantages with lower budget/latency preference",
-  "technical_case_count": 10
-}

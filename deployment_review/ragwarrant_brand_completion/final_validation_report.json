@@ -1,0 +1,35 @@
+{
+  "branch": "holistic-ragwarrant-content-rename",
+  "tag_invariant": {
+    "tag": "v0.1.0-rc1",
+    "expected_commit": "ff529005bf7d00a0c3f79ba991563f3923d63205",
+    "actual_commit": "ff529005bf7d00a0c3f79ba991563f3923d63205",
+    "passed": true
+  },
+  "clean_virtualenv": {
+    "editable_install": "passed",
+    "canonical_import": "ragwarrant",
+    "legacy_import_package_absent": true,
+    "canonical_cli": "ragwarrant"
+  },
+  "tests": {
+    "make_test": "272 passed, 6 skipped",
+    "make_validate_publication": "passed",
+    "compileall": "passed",
+    "diff_check": "passed"
+  },
+  "brand_validation": {
+    "result_class": "BRAND_CONSISTENCY_PASSED",
+    "unclassified_occurrences": 0
+  },
+  "public_mini_reproduction": {
+    "result_class": "PUBLIC_MINI_REPRODUCTION_FAIL_CLOSED",
+    "semantic_equivalence": "SEMANTIC_EQUIVALENCE_PASSED"
+  },
+  "container_validation": {
+    "image": "ragwarrant-governance:brand-validation",
+    "build": "passed",
+    "validate_bundle": "passed",
+    "hardened_public_mini_smoke": "passed"
+  }
+}

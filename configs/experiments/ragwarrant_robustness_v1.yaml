@@ -1,0 +1,18 @@
+suite: ragwarrant_robustness_v1
+seed: 12345
+dataset:
+  name: fixture_robustness
+policy_space:
+  top_k: [3, 5]
+objectives:
+  cost_weight: 0.25
+  latency_weight: 0.1
+  protected_regression_threshold: -0.03
+baselines:
+  - static_default_rag_policy
+  - ragwarrant_no_fork
+certificate:
+  bootstrap_samples: 100
+output:
+  append_only: true
+

@@ -1,8 +1,0 @@
-{
-  "append_only": true,
-  "attempted_overwrites_blocked": 0,
-  "completed_manifest_present": false,
-  "run_dir": "artifacts/ragtune/runs/ragtune_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f",
-  "run_id": "ragtune_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f",
-  "status": "append_only_confirmed"
-}

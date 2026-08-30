@@ -1,0 +1,44 @@
+{
+  "created_at_utc": "2026-08-30T23:04:11.298833+00:00",
+  "immutable_tag": "v0.1.0-rc1",
+  "immutable_tag_commit": "ff529005bf7d00a0c3f79ba991563f3923d63205",
+  "rows": [
+    {
+      "disposition": "BRAND_REPLACED_IN_CURRENT_TREE",
+      "evidence": "active former-name references replaced with RAGWarrant identifiers",
+      "git_status": "M",
+      "path": "README.md"
+    },
+    {
+      "disposition": "BRAND_REPLACED_IN_CURRENT_TREE",
+      "evidence": "active former-name references replaced with RAGWarrant identifiers",
+      "git_status": "M",
+      "path": "src/ragwarrant/behavioral_governance.py"
+    },
+    {
+      "disposition": "BRAND_REPLACED_IN_CURRENT_TREE",
+      "evidence": "active former-name references replaced with RAGWarrant identifiers",
+      "git_status": "M",
+      "path": "src/ragwarrant/validation_phase3.py"
+    },
+    {
+      "disposition": "BRAND_REPLACED_IN_CURRENT_TREE",
+      "evidence": "active former-name references replaced with RAGWarrant identifiers",
+      "git_status": "M",
+      "path": "tests/test_ragwarrant_crag_mock_api_hardening_phase.py"
+    },
+    {
+      "disposition": "CURRENT_ALIAS_ADDED",
+      "evidence": "RAGWarrant-branded copy used by active behavioral governance code",
+      "git_status": "??",
+      "path": "artifacts/current_ragwarrant_evidence/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4"
+    }
+  ],
+  "summary": {
+    "brand_replaced_in_current_tree": 4,
+    "current_alias_added": 1,
+    "removed_generated_metadata": 0,
+    "removed_redundant_in_tag": 0,
+    "rows": 5
+  }
+}

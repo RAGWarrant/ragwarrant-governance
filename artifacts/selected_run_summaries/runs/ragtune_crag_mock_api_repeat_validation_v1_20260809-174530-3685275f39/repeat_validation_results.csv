@@ -1,3 +1,0 @@
-repeat_seed,result,validation_rows,confirmatory_rows,governed_winner,quality_only_winner,governance_delta,ci_low,ci_high,win,tie,loss,api_calls,failure_rate,rag_compass_rank
-20260810,REPEAT_VALIDATION_REPLICATES_SUPERIORITY,447,555,top_k_low,greedy_regression_aware_search,0.0010020069228032144,0.0010017698229952956,0.0010022790245632093,555,0,0,14172,0.0,5
-20260811,REPEAT_VALIDATION_REPLICATES_SUPERIORITY,438,564,top_k_low,greedy_regression_aware_search,0.0010020440349863948,0.0010017657878905288,0.0010023534773182692,564,0,0,14172,0.0,5

@@ -1,0 +1,17 @@
+suite: ragwarrant_multi_corpus_validation_v4
+suite_version: 4
+seed: 20260808
+
+stratification:
+  report_full_corpus_backed: true
+  report_context_retrieval: true
+  report_replay_context_only_auxiliary: true
+  forbid_context_retrieval_for_full_corpus_claims: true
+
+statistics:
+  bootstrap_samples: 1000
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

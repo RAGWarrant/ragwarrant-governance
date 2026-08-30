@@ -4,7 +4,7 @@ This publication bundle removes CRAG raw question text from review artifacts. Th
 
 ## Why Text Was Removed
 
-CRAG is used under the original provider terms and a local noncommercial-research-only approval. The repository is intended for scientific review of RAGTune governance evidence, not redistribution of licensed dataset rows or reconstructive excerpts.
+CRAG is used under the original provider terms and a local noncommercial-research-only approval. The repository is intended for scientific review of RAGWarrant governance evidence, not redistribution of licensed dataset rows or reconstructive excerpts.
 
 ## Replacement Fields
 

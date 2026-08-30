@@ -2,7 +2,7 @@ check,status,detail
 dockerfile_exists,PASS,Dockerfile
 dockerfile_has_entrypoint_or_cmd,PASS,ENTRYPOINT or CMD
 dockerfile_has_oci_labels,PASS,OCI labels
-dockerfile_sets_container_env,PASS,RAGTUNE_CONTAINER=1
+dockerfile_sets_container_env,PASS,RAGWARRANT_CONTAINER=1
 dockerfile_disables_pip_cache,PASS,PIP_NO_CACHE_DIR=1
 dockerfile_supports_outputs,PASS,/outputs
 dockerfile_fixed_non_root_uid,PASS,fixed non-root user
@@ -12,7 +12,7 @@ dockerfile_no_git_copy,PASS,no broad copy
 dockerfile_copies_gitattributes,PASS,.gitattributes
 dockerfile_copies_docker_assets,PASS,Docker assets
 dockerfile_copies_deploy_assets,PASS,deploy assets
-dockerfile_copies_deployment_review,PASS,deployment review artifacts
+dockerfile_omits_deployment_review,PASS,deployment review artifacts excluded
 dockerignore_exists,PASS,.dockerignore
 dockerignore_excludes_local_data,PASS,.local_data
 dockerignore_excludes_env,PASS,.env patterns

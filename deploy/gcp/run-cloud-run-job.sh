@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 "$(dirname "$0")/../load-image-reference.sh" >/dev/null
-: "${RAGTUNE_GCP_REGION:?set RAGTUNE_GCP_REGION}"
-gcloud run jobs execute ragtune-governance-job --region "$RAGTUNE_GCP_REGION" --wait
+: "${RAGWARRANT_GCP_REGION:?set RAGWARRANT_GCP_REGION}"
+gcloud run jobs execute ragwarrant-governance-job --region "$RAGWARRANT_GCP_REGION" --wait
