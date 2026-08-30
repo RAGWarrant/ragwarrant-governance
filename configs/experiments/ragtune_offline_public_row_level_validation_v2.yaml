@@ -1,8 +1,0 @@
-suite: ragtune_offline_public_row_level_validation_v2
-suite_version: 1
-seed: 20260806
-enabled_only_if_question_1: [YES_ROW_LEVEL_UNCERTAINTY_VALID, PARTIAL_ROW_LEVEL_RECONSTRUCTION]
-certificate:
-  supported_enabled: false
-  max_class: Candidate external signal
-

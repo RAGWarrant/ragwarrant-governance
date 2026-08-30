@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from ragtune.promotion_decision import build_promotion_decision, write_promotion_decision
+from ragwarrant.promotion_decision import build_promotion_decision, write_promotion_decision
 
 
 ROOT = Path(__file__).resolve().parents[2]

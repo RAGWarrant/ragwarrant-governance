@@ -1,0 +1,51 @@
+suite: ragwarrant_hotpotqa_behavioral_governance_v1
+suite_version: 1
+seed: 20260810
+dataset:
+  source: hotpotqa
+  preferred_loader: huggingface
+  hf_dataset: hotpotqa/hotpot_qa
+  hf_config: distractor
+  local_data_root: .local_data/hotpotqa
+  export_raw_question_text: false
+  export_raw_context_text: false
+  export_raw_supporting_fact_text: false
+splits:
+  calibration_fraction: 0.50
+  validation_fraction: 0.25
+  confirmatory_fraction: 0.25
+  stratify_by:
+    - type
+    - level
+quality:
+  quality_noninferiority_margin: 0.01
+  weights:
+    answer_correctness_f1: 0.45
+    answer_exact_match: 0.15
+    supporting_fact_title_recall: 0.20
+    supporting_fact_sentence_recall: 0.10
+    evidence_efficiency: 0.05
+    abstention_correctness: 0.05
+cost_latency:
+  use_context_count_cost: true
+  use_context_token_estimates: true
+  measure_runtime_latency: true
+policies:
+  required:
+    - low_retrieval_single_context
+    - expanded_retrieval_multi_context
+    - adaptive_routing_on_insufficient_evidence
+    - bm25_low_k
+    - bm25_high_k
+    - rerank_top_k
+    - measured_cost_minimizer_at_quality_floor
+    - measured_latency_minimizer_at_quality_floor
+    - quality_only_best_on_validation
+    - constrained_quality_optimizer
+    - pareto_frontier_selector
+    - governed_selection
+    - static_default_policy
+output:
+  append_only: true
+  sanitize_raw_text: true
+  validate_schemas: true

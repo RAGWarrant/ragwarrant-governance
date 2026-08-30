@@ -1,0 +1,11 @@
+suite: ragwarrant_security_regression_v4
+suite_version: 4
+seed: 20260807
+
+security:
+  hard_constraints: true
+  failures_are_not_utility_tradeoffs: true
+
+output:
+  append_only: true
+  write_markdown_report: true

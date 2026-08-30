@@ -1,0 +1,13 @@
+suite: ragwarrant_human_eval_pilot_v1
+suite_version: 1
+seed: 20260808
+human_eval:
+  require_configured_annotation_workflow: true
+  run_without_annotations: false
+certificate:
+  supported_enabled: false
+  max_class: Candidate external signal
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

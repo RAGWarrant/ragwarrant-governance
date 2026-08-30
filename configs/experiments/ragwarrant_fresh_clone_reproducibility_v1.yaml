@@ -1,0 +1,6 @@
+suite: ragwarrant_fresh_clone_reproducibility_v1
+version: 1
+requires_private_data: false
+requires_generator: false
+run_public_mini: true
+sanitize_outputs: true

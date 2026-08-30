@@ -1,0 +1,35 @@
+suite: ragwarrant_real_rag_governance_ablation_v1
+suite_version: 1
+profile: confirmatory
+seed: 11
+
+parent_run:
+  run_dir: <replace_with_reproduction_run_dir>
+  candidate_table_hash: <replace_with_candidate_policy_metrics_sha256>
+
+governance:
+  cost_weight: 0.25
+  latency_weight: 0.10
+  protected_regression_threshold: -0.03
+  minimum_group_size: 20
+  hard_security_constraints: true
+
+utility_grid:
+  lambda_cost: [0.0, 0.1, 0.25, 0.5, 1.0, 2.0]
+  lambda_latency: [0.0, 0.1, 0.25, 0.5, 1.0]
+  protected_regression_threshold: [0.0, -0.01, -0.03, -0.05]
+  faithfulness_weight: [0.5, 1.0, 1.5]
+  abstention_penalty: [low, medium, high]
+
+certificate:
+  policy_version: real_rag_v1
+  supported_enabled: false
+
+dataset: {}
+policy_space: {}
+objectives: {}
+baselines: []
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

@@ -1,0 +1,23 @@
+suite: ragwarrant_crag_governance_evaluation_v1
+suite_version: 1
+seed: 20260808
+
+crag_evaluation:
+  require_ready_gate: true
+  generator_regime: deterministic_grounded_extractive
+  retrieval_eval_only: true
+  primary_comparison: governed_selection_vs_quality_only_selection
+  do_not_claim_mock_api_validation: true
+
+statistics:
+  bootstrap_samples: 300
+  noninferiority_margin: -0.002
+
+certificate:
+  supported_enabled: false
+  max_class: Candidate external signal
+
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

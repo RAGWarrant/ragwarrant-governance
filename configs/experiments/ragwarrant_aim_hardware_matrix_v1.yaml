@@ -1,0 +1,6 @@
+suite: ragwarrant_aim_hardware_matrix_v1
+version: 1
+collect_hostname: false
+collect_ip_address: false
+collect_serial_numbers: false
+claim_official_platform_benchmark: false

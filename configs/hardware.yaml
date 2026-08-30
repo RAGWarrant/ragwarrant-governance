@@ -11,15 +11,15 @@ nodes:
     cpu: "Threadripper-class"
     gpus: ["NVIDIA RTX 5090 32GB", "NVIDIA RTX 5090 32GB"]
     ram_gb: 128
-    hot_scratch_default: "/srv/aim/ragtune/hot"
-    warm_scratch_default: "/srv/aim/ragtune/warm"
+    hot_scratch_default: "/srv/aim/ragwarrant/hot"
+    warm_scratch_default: "/srv/aim/ragwarrant/warm"
   processing_node:
     role: processing
     os: "Ubuntu 24.04"
     cpu: "Ryzen 7 7700X-class"
     gpu: "NVIDIA RTX 4070 12GB"
     ram_gb: 64
-    scratch_default: "/srv/aim/ragtune/processing"
+    scratch_default: "/srv/aim/ragwarrant/processing"
   nas:
     model: "Synology DS923+"
     share: "AIM"

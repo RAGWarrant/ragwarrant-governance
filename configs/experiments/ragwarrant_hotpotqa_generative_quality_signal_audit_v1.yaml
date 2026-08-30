@@ -1,0 +1,47 @@
+suite: ragwarrant_hotpotqa_generative_quality_signal_audit_v1
+suite_version: 1
+seed: 20260810
+
+dataset:
+  source: hotpotqa
+  hf_dataset: hotpotqa/hotpot_qa
+  hf_config: distractor
+  local_data_root: .local_data/hotpotqa
+  export_raw_question_text: false
+  export_raw_context_text: false
+  export_raw_supporting_fact_text: false
+
+sample:
+  development_rows: 100
+  validation_rows: 250
+  confirmatory_rows: 250
+  max_total_rows: 600
+  actual_bounded_run_controlled_by: RAGWARRANT_GEN_MAX_EXAMPLES
+  stratify_by:
+    - type
+    - level
+
+generator:
+  provider_env: RAGWARRANT_GENERATOR_PROVIDER
+  model_env: RAGWARRANT_GENERATOR_MODEL
+  default_provider: ollama
+  default_model: qwen3:8b
+  temperature: 0.0
+  max_tokens: 128
+  timeout_s: 60
+  raw_outputs_gitignored: true
+  commit_raw_outputs: false
+
+quality:
+  noninferiority_margin: 0.01
+  require_nonconstant_quality_signal: true
+  require_nonempty_generated_answers: true
+  require_answer_hash_diversity: true
+  require_answer_correctness_component: true
+  require_supporting_fact_component: true
+  require_generated_answer_parse_audit: true
+
+output:
+  append_only: true
+  sanitize_raw_text: true
+  validate_schemas: true

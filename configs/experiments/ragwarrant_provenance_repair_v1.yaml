@@ -1,0 +1,18 @@
+suite: ragwarrant_provenance_repair_v1
+suite_version: 1
+seed: 20260807
+
+provenance:
+  preferred_mode: strict_git
+  confirmatory_without_git_allowed: false
+  allow_candidate_signal_without_git: false
+  require_docker_digest: false
+  run_operator: codex
+
+certificate:
+  supported_enabled: false
+  max_class: Candidate external signal
+
+output:
+  append_only: true
+  write_markdown_report: true

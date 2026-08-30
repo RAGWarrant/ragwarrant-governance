@@ -11,17 +11,17 @@ def test_dockerfile_exists() -> None:
 
 
 def test_dockerfile_sets_container_env() -> None:
-    assert "RAGTUNE_CONTAINER=1" in (ROOT / "Dockerfile").read_text(encoding="utf-8")
+    assert "RAGWARRANT_CONTAINER=1" in (ROOT / "Dockerfile").read_text(encoding="utf-8")
 
 
 def test_dockerfile_has_entrypoint() -> None:
-    assert 'ENTRYPOINT ["ragtune"]' in (ROOT / "Dockerfile").read_text(encoding="utf-8")
+    assert 'ENTRYPOINT ["ragwarrant"]' in (ROOT / "Dockerfile").read_text(encoding="utf-8")
 
 
 def test_dockerfile_uses_fixed_non_root_uid() -> None:
     text = (ROOT / "Dockerfile").read_text(encoding="utf-8")
     assert "--uid 10001" in text
-    assert "USER ragtune" in text
+    assert "USER ragwarrant" in text
 
 
 def test_dockerfile_has_runtime_metadata_and_stopsignal() -> None:

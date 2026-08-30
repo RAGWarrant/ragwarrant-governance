@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "RAGTune Run Manifest",
+  "title": "RAGWarrant Run Manifest",
   "type": "object",
   "required": ["job_config", "decision_out", "raw_text_exported"],
   "properties": {

@@ -1,7 +1,0 @@
-suite: ragtune_human_eval_sample_v2
-suite_version: 2
-seed: 20260806
-sample_size: 40
-
-certificate:
-  supported_enabled: false

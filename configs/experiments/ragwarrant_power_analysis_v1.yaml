@@ -1,0 +1,15 @@
+suite: ragwarrant_power_analysis_v1
+suite_version: 1
+seed: 20260806
+
+statistics:
+  power_targets:
+    - 0.8
+    - 0.9
+  noninferiority_margins:
+    - 0.005
+    - 0.01
+    - 0.02
+
+certificate:
+  supported_enabled: false

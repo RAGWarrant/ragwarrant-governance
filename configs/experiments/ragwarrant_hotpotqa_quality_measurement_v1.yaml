@@ -1,0 +1,22 @@
+suite: ragwarrant_hotpotqa_quality_measurement_v1
+suite_version: 1
+quality:
+  result_class_when_data_available: QUALITY_MEASURE_ANSWER_AND_SUPPORTING_FACT_LABELS
+  quality_noninferiority_margin: 0.01
+  weights:
+    answer_correctness_f1: 0.45
+    answer_exact_match: 0.15
+    supporting_fact_title_recall: 0.20
+    supporting_fact_sentence_recall: 0.10
+    evidence_efficiency: 0.05
+    abstention_correctness: 0.05
+  required_components:
+    - answer_correctness_f1
+    - answer_exact_match
+    - supporting_fact_title_recall
+    - supporting_fact_sentence_recall
+    - abstention_correctness
+output:
+  append_only: true
+  sanitize_raw_text: true
+  validate_schemas: true

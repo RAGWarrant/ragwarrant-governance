@@ -1,6 +1,0 @@
-suite: ragtune_rc1_arxiv_readiness_synthesis_v1
-version: 1
-include_blocked_results: true
-include_mixed_results: true
-claim_production_readiness: false
-claim_official_platform_benchmarking: false

@@ -1,0 +1,12 @@
+suite: ragwarrant_continued_investment_decision_memo_v1
+suite_version: 1
+seed: 20260809
+decision_policy:
+  supported_certificate_enabled: false
+  maximum_certificate: Candidate external signal
+  do_not_claim_rag_compass_superiority: true
+  do_not_claim_mock_api_without_smoke: true
+output:
+  append_only: true
+  validate_schemas: true
+  write_markdown_report: true

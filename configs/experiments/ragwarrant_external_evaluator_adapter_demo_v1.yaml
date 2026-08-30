@@ -1,0 +1,20 @@
+suite: ragwarrant_external_evaluator_adapters_v1
+suite_version: 1
+inputs:
+  demo_rows: synthetic_sanitized
+  require_ragas_install: false
+  require_deepeval_install: false
+schema:
+  canonical_fields:
+    - example_id
+    - query_hash
+    - policy_id
+    - dataset_id
+    - evaluator_name
+    - metric_name
+    - metric_value
+    - metric_direction
+    - metric_weight
+    - metric_group
+    - split
+    - source_artifact_hash

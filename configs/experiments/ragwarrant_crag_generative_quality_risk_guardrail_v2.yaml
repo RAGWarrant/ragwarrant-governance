@@ -1,0 +1,60 @@
+suite: ragwarrant_crag_generative_quality_risk_guardrail_v2
+suite_version: 2
+seed: 20260811
+
+dataset:
+  source: crag
+  evidence_source: sanitized_generated_metric_artifacts
+  export_raw_question_text: false
+  export_raw_evidence_text: false
+  export_raw_api_response: false
+  export_raw_prompt_text: false
+  export_raw_generated_answer_text: false
+
+generator:
+  provider: ollama
+  model: llama3.2:3b
+  raw_prompts_committed: false
+  raw_generated_answers_committed: false
+
+protocol:
+  primary_endpoint: latency
+  offsets:
+    - 0
+    - 24
+    - 36
+    - 60
+  validation_design: pooled_cross_offset_validation
+  test_design: heldout_offset_testing
+  quality_noninferiority_margin: 0.01
+  strict_quality_loss_blocking: true
+  promotion_requires:
+    - deployable_features_only
+    - no_raw_text_export
+    - validation_gate_passed
+    - no_heldout_quality_loss
+    - heldout_latency_ci_high_below_zero
+
+features:
+  allowed:
+    - low_context_token_estimate
+    - expanded_context_token_estimate
+    - context_token_gap
+    - retrieval_cost_gap
+    - low_input_token_estimate
+    - expanded_input_token_estimate
+    - input_token_gap
+  disallowed:
+    - raw_question_text
+    - raw_answer_text
+    - raw_source_text
+    - raw_api_response
+    - prompt_text
+    - generated_answer_text
+    - answer_hash
+    - generated_answer_hash
+    - final_generated_quality_score
+
+output:
+  sanitize_raw_text: true
+  append_only: true

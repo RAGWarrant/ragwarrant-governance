@@ -13,6 +13,6 @@
   "requires_generator_credentials": false,
   "requires_hotpotqa_raw_data": false,
   "result_class": "PUBLIC_MINI_REPRODUCTION_FAIL_CLOSED",
-  "suite": "ragtune_public_mini_reproduction_v1",
+  "suite": "ragwarrant_public_mini_reproduction_v1",
   "unsafe_low_cost_policy_blocked": true
 }
