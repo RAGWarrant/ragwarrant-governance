@@ -10,12 +10,12 @@
 
 ## Active Starting Surfaces
 
-- Python distribution: `rag-tuning-governance`
-- Import package: `ragtune`
-- CLI entrypoint: `ragtune = ragtune.cli:main`
-- Docker images: `ragtune-governance:local, ragtune-governance:ci`
-- GHCR paths: `ghcr.io/aim-ragtune/rag-tuning-governance`
-- Repository URLs: `https://github.com/AIM-RAGTune/rag-tuning-governance, https://github.com/AIM-RAGTune/rag-tuning-governance-public`
+- Python distribution: `ragwarrant-governance`
+- Import package: `ragwarrant`
+- CLI entrypoint: `ragwarrant = ragwarrant.cli:main`
+- Docker images: `ragwarrant-governance:local, ragwarrant-governance:ci`
+- GHCR paths: `ghcr.io/ragwarrant/ragwarrant-governance`
+- Repository URLs: `https://github.com/RAGWarrant/ragwarrant-governance, https://github.com/RAGWarrant/ragwarrant-governance`
 
 ## Inventory Counts
 

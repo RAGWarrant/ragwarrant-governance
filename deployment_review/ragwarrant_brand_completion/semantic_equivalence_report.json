@@ -71,7 +71,7 @@
     }
   },
   "intentional_suite_rename": {
-    "baseline": "ragtune_public_mini_reproduction_v1",
+    "baseline": "ragwarrant_public_mini_reproduction_v1",
     "current": "ragwarrant_public_mini_reproduction_v1",
     "expected_brand_rename": true
   }

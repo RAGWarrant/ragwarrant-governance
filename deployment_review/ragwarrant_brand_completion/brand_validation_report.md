@@ -1,18 +1,17 @@
 # RAGWarrant Brand Validation Report
 
 - Result: `BRAND_CONSISTENCY_PASSED`
-- Canonical repository: `https://github.com/RAGWarrant/ragwarrant-governance`
-- Total former-name occurrences: 27229
-- Classified occurrences: 27229
-- Unclassified occurrences: 0
+- Total legacy-token occurrences: `1245`
+- Classified occurrences: `1245`
+- Unclassified occurrences: `0`
+- Active former-name occurrences: `0`
+- Broad exception rules: `0`
 
-## Classifications
+## Classification Counts
 
-- `historical_run_identifier`: 22898
-- `immutable_historical_artifact`: 998
-- `legacy_redirect_reference`: 4
-- `migration_documentation`: 3327
-- `validator_fixture`: 2
+- `migration_documentation`: `1225`
+- `pre_rename_archive_manifest`: `6`
+- `validator_negative_fixture`: `14`
 
 ## Unclassified Occurrences
 

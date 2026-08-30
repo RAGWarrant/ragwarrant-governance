@@ -1,2 +1,2 @@
-./paper/preprints/RAGTune_ArXiv_Preprint_v0.1.1-rc1.docx
-./paper/preprints/RAGTune_ArXiv_Preprint_v0.1.1-rc1_revised.docx
+./paper/preprints/RAGWarrant_ArXiv_Preprint_v0.1.1-rc1.docx
+./paper/preprints/RAGWarrant_ArXiv_Preprint_v0.1.1-rc1_revised.docx

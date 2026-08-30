@@ -3,7 +3,7 @@
 - Result: `SEMANTIC_EQUIVALENCE_PASSED`
 - Baseline: `/tmp/ragwarrant-pre-rename-semantic-baseline.json`
 - Current primary outcome: `artifacts/public_mini_reproduction/primary_outcome_statistics.json`
-- Intentional suite rename: `ragtune_public_mini_reproduction_v1` -> `ragwarrant_public_mini_reproduction_v1`
+- Intentional suite rename: `ragwarrant_public_mini_reproduction_v1` -> `ragwarrant_public_mini_reproduction_v1`
 
 ## Compared Fields
 

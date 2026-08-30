@@ -11,20 +11,20 @@
     "verify_run": "VERIFY_RUN_PASSED",
     "verify_run_output_path": "/tmp/ragwarrant-pre-rename-verify-run.txt"
   },
-  "current_cli_entrypoint": "ragtune = ragtune.cli:main",
+  "current_cli_entrypoint": "ragwarrant = ragwarrant.cli:main",
   "current_docker_image_names": [
-    "ragtune-governance:local",
-    "ragtune-governance:ci"
+    "ragwarrant-governance:local",
+    "ragwarrant-governance:ci"
   ],
   "current_ghcr_paths": [
-    "ghcr.io/aim-ragtune/rag-tuning-governance"
+    "ghcr.io/ragwarrant/ragwarrant-governance"
   ],
   "current_head": "85b319c6cbb923578ab9ac3c58a20e9e42cd284f",
-  "current_import_package": "ragtune",
-  "current_package_name": "rag-tuning-governance",
+  "current_import_package": "ragwarrant",
+  "current_package_name": "ragwarrant-governance",
   "current_repository_urls": [
-    "https://github.com/AIM-RAGTune/rag-tuning-governance",
-    "https://github.com/AIM-RAGTune/rag-tuning-governance-public"
+    "https://github.com/RAGWarrant/ragwarrant-governance",
+    "https://github.com/RAGWarrant/ragwarrant-governance"
   ],
   "immutable_commit_type": "commit",
   "inventory_counts": {
