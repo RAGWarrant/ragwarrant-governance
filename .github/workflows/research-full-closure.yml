@@ -1,0 +1,104 @@
+name: Research FULL aborted-run closure
+run-name: FULL closure ${{ inputs.seal_subject_commit }} run-${{ inputs.aborted_execution_run_id }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      seal_subject_commit:
+        description: Exact frozen subject commit SHA
+        required: true
+        type: string
+      seal_workflow_run_id:
+        description: Canonical successful seal workflow run ID
+        required: true
+        type: string
+      seal_commit_sha:
+        description: Immutable seal-tree commit SHA
+        required: true
+        type: string
+      aborted_execution_run_id:
+        description: Cancelled or artifactless execution run ID
+        required: true
+        type: string
+
+permissions: {}
+
+jobs:
+  publish-incomplete-write-only:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ragwarrant-full-results-${{ inputs.seal_subject_commit }}
+      cancel-in-progress: false
+    permissions:
+      actions: read
+      contents: write
+      pull-requests: write
+    env:
+      SUBJECT_COMMIT: ${{ inputs.seal_subject_commit }}
+      SEAL_RUN_ID: ${{ inputs.seal_workflow_run_id }}
+      SEAL_COMMIT_SHA: ${{ inputs.seal_commit_sha }}
+      ABORTED_RUN_ID: ${{ inputs.aborted_execution_run_id }}
+    steps:
+      - name: Require the closure workflow from the exact frozen ref
+        env:
+          WORKFLOW_SHA: ${{ github.workflow_sha }}
+        shell: bash
+        run: |
+          test "$GITHUB_SHA" = "$SUBJECT_COMMIT"
+          test "$WORKFLOW_SHA" = "$SUBJECT_COMMIT"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: full-seal-${{ inputs.seal_subject_commit }}
+          path: ${{ runner.temp }}/publication
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ inputs.seal_workflow_run_id }}
+      - name: Validate the canonical seal and create an incomplete closure
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          publication="$RUNNER_TEMP/publication/seal-publication.json"
+          test "$(jq -r .subject_commit "$publication")" = "$SUBJECT_COMMIT"
+          test "$(jq -r .seal_commit_sha "$publication")" = "$SEAL_COMMIT_SHA"
+          test "$(jq -r .seal_workflow_run_id "$publication")" = "$SEAL_RUN_ID"
+          seal_branch="$(jq -r .canonical_seal_branch "$publication")"
+          frozen_ref="$(jq -r .frozen_subject_ref "$publication")"
+          frozen_name="${frozen_ref#refs/}"
+          test "$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/${seal_branch}" --jq .object.sha)" = "$SEAL_COMMIT_SHA"
+          test "$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/${frozen_name}" --jq .object.sha)" = "$SUBJECT_COMMIT"
+          test "$(gh pr view "$(jq -r .draft_pr_url "$publication")" --repo "$GITHUB_REPOSITORY" --json headRefOid --jq .headRefOid)" = "$SEAL_COMMIT_SHA"
+          jq -n \
+            --arg subject "$SUBJECT_COMMIT" \
+            --arg url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$ABORTED_RUN_ID" \
+            '{schema_version:"1.0",closure_status:"ABORTED_OR_INCOMPLETE",subject_commit:$subject,workflow_conclusion:"cancelled_or_artifactless",workflow_run_url:$url,same_seal_required_for_resume:true,fallback_round_permitted:false,publication_independent_of_scientific_direction:true,execution_manifest_present:false,output_hashes_verified:false}' \
+            > "$RUNNER_TEMP/publication/execution-closure.json"
+      - name: Append the cancellation record to the one results branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh auth setup-git
+          results_branch="ragwarrant-full-results-${SUBJECT_COMMIT}"
+          results_tree="$RUNNER_TEMP/results-tree"
+          if git ls-remote --exit-code --heads "https://github.com/${GITHUB_REPOSITORY}.git" "refs/heads/${results_branch}" >/dev/null 2>&1; then
+            git clone --branch "$results_branch" --single-branch "https://github.com/${GITHUB_REPOSITORY}.git" "$results_tree"
+          else
+            git init "$results_tree"
+            git -C "$results_tree" remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+            git -C "$results_tree" fetch --depth 1 origin "$SUBJECT_COMMIT"
+            git -C "$results_tree" checkout -b "$results_branch" FETCH_HEAD
+          fi
+          destination="$results_tree/executions/${ABORTED_RUN_ID}"
+          if [ -e "$destination" ]; then exit 0; fi
+          mkdir -p "$destination"
+          cp -R "$RUNNER_TEMP/publication/." "$destination/"
+          git -C "$results_tree" config user.name "ragwarrant-research-bot"
+          git -C "$results_tree" config user.email "ragwarrant-research-bot@users.noreply.github.com"
+          git -C "$results_tree" add "executions/${ABORTED_RUN_ID}"
+          git -C "$results_tree" commit -m "Publish incomplete FULL execution ${ABORTED_RUN_ID} for ${SUBJECT_COMMIT}"
+          git -C "$results_tree" push --porcelain origin "HEAD:refs/heads/${results_branch}"
+          existing="$(gh pr list --repo "$GITHUB_REPOSITORY" --state all --head "$results_branch" --json url --jq 'length')"
+          if [ "$existing" = "0" ]; then
+            gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$results_branch" --draft --title "RAGWARRANT FULL RESULTS ${SUBJECT_COMMIT}" --body "Append-only FULL outcomes for sealed commit ${SUBJECT_COMMIT}. Do not merge into the research source branch."
+          fi

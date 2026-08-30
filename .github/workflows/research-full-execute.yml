@@ -1,0 +1,284 @@
+name: Research FULL future-beacon execution
+run-name: FULL execute ${{ inputs.seal_subject_commit }} sealrun-${{ inputs.seal_workflow_run_id }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      seal_subject_commit:
+        description: Exact frozen subject commit SHA
+        required: true
+        type: string
+      seal_workflow_run_id:
+        description: Canonical successful seal workflow run ID
+        required: true
+        type: string
+      seal_commit_sha:
+        description: Immutable seal-tree commit SHA
+        required: true
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: ragwarrant-full-execution-${{ inputs.seal_subject_commit }}
+  cancel-in-progress: false
+
+jobs:
+  execute-read-only:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+      pull-requests: read
+    env:
+      SUBJECT_COMMIT: ${{ inputs.seal_subject_commit }}
+      SEAL_RUN_ID: ${{ inputs.seal_workflow_run_id }}
+      SEAL_COMMIT_SHA: ${{ inputs.seal_commit_sha }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.SUBJECT_COMMIT }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: .github/drand-verifier/package-lock.json
+      - name: Require exact frozen commit, workflow, and manifest
+        env:
+          WORKFLOW_SHA: ${{ github.workflow_sha }}
+        shell: bash
+        run: |
+          test "$SUBJECT_COMMIT" = "$GITHUB_SHA"
+          test "$SUBJECT_COMMIT" = "$WORKFLOW_SHA"
+          test "$SUBJECT_COMMIT" = "$(git rev-parse HEAD)"
+          test "$SUBJECT_COMMIT" != "0000000000000000000000000000000000000000"
+          test -z "$(git status --porcelain --untracked-files=no)"
+          test -f configs/research/full_confirmation_freeze_manifest.json
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        id: seal-artifact
+        continue-on-error: true
+        with:
+          name: full-seal-${{ inputs.seal_subject_commit }}
+          path: ${{ runner.temp }}/canonical-seal
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ inputs.seal_workflow_run_id }}
+      - name: Verify immutable seal commit, PR head, and frozen subject ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SEAL_ARTIFACT_OUTCOME: ${{ steps.seal-artifact.outcome }}
+        shell: bash
+        run: |
+          if [ "$SEAL_ARTIFACT_OUTCOME" != "success" ]; then
+            mkdir -p "$RUNNER_TEMP/canonical-seal"
+            seal_branch="ragwarrant-full-seal-${SUBJECT_COMMIT}"
+            gh api "repos/${GITHUB_REPOSITORY}/contents/seals/${SUBJECT_COMMIT}.json?ref=${SEAL_COMMIT_SHA}" --jq .content | base64 --decode > "$RUNNER_TEMP/canonical-seal/seal.json"
+            pr_json="$(gh pr list --repo "$GITHUB_REPOSITORY" --state all --head "$seal_branch" --json url,createdAt,headRefName,headRefOid,title --jq 'map(select(.title == "RAGWARRANT FULL SEAL '"$SUBJECT_COMMIT"'")) | if length == 1 then .[0] else error("expected one canonical seal PR") end')"
+            seal_sha="$(python -c 'import hashlib,json,sys; value=json.load(open(sys.argv[1])); canonical=json.dumps(value,sort_keys=True,separators=(",",":"),allow_nan=False)+"\n"; print(hashlib.sha256(canonical.encode()).hexdigest())' "$RUNNER_TEMP/canonical-seal/seal.json")"
+            jq -n \
+              --arg subject "$SUBJECT_COMMIT" \
+              --arg seal_sha "$seal_sha" \
+              --arg seal_commit "$SEAL_COMMIT_SHA" \
+              --arg seal_branch "$seal_branch" \
+              --arg pr_url "$(echo "$pr_json" | jq -r .url)" \
+              --arg pr_created "$(echo "$pr_json" | jq -r .createdAt)" \
+              --argjson run_id "$SEAL_RUN_ID" \
+              '{schema_version:"1.0",subject_commit:$subject,seal_sha256:$seal_sha,seal_commit_sha:$seal_commit,canonical_seal_branch:$seal_branch,canonical_seal_ref:("refs/heads/"+$seal_branch),frozen_subject_ref:("refs/heads/ragwarrant-full-subject-"+$subject),draft_pr_url:$pr_url,github_created_at_utc:$pr_created,seal_workflow_run_id:$run_id}' \
+              > "$RUNNER_TEMP/canonical-seal/seal-publication.json"
+          fi
+          seal="$RUNNER_TEMP/canonical-seal/seal.json"
+          publication="$RUNNER_TEMP/canonical-seal/seal-publication.json"
+          test "$(jq -r .subject_commit "$publication")" = "$SUBJECT_COMMIT"
+          test "$(jq -r .seal_commit_sha "$publication")" = "$SEAL_COMMIT_SHA"
+          test "$(jq -r .seal_workflow_run_id "$publication")" = "$SEAL_RUN_ID"
+          seal_branch="$(jq -r .canonical_seal_branch "$publication")"
+          frozen_ref="$(jq -r .frozen_subject_ref "$publication")"
+          frozen_name="${frozen_ref#refs/}"
+          remote_seal_oid="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/${seal_branch}" --jq .object.sha)"
+          remote_subject_oid="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/${frozen_name}" --jq .object.sha)"
+          test "$remote_seal_oid" = "$SEAL_COMMIT_SHA"
+          test "$remote_subject_oid" = "$SUBJECT_COMMIT"
+          gh api "repos/${GITHUB_REPOSITORY}/contents/seals/${SUBJECT_COMMIT}.json?ref=${SEAL_COMMIT_SHA}" --jq .content | base64 --decode > "$RUNNER_TEMP/remote-seal.json"
+          cmp --silent "$seal" "$RUNNER_TEMP/remote-seal.json"
+          pr_url="$(jq -r .draft_pr_url "$publication")"
+          pr_json="$(gh pr view "$pr_url" --repo "$GITHUB_REPOSITORY" --json createdAt,headRefName,headRefOid)"
+          test "$(echo "$pr_json" | jq -r .headRefOid)" = "$SEAL_COMMIT_SHA"
+          test "$(echo "$pr_json" | jq -r .headRefName)" = "$seal_branch"
+          test "$(echo "$pr_json" | jq -r .createdAt)" = "$(jq -r .github_created_at_utc "$publication")"
+          canonical_seal_sha="$(python -c 'import hashlib,json,sys; value=json.load(open(sys.argv[1])); canonical=json.dumps(value,sort_keys=True,separators=(",",":"),allow_nan=False)+"\n"; print(hashlib.sha256(canonical.encode()).hexdigest())' "$seal")"
+          test "$canonical_seal_sha" = "$(jq -r .seal_sha256 "$publication")"
+          seal_run_json="$(gh run view "$SEAL_RUN_ID" --repo "$GITHUB_REPOSITORY" --json conclusion,headSha,workflowName)"
+          test "$(echo "$seal_run_json" | jq -r .conclusion)" = "success"
+          test "$(echo "$seal_run_json" | jq -r .headSha)" = "$SUBJECT_COMMIT"
+          test "$(echo "$seal_run_json" | jq -r .workflowName)" = "Research FULL future-beacon seal"
+      - name: Wait only for the exact sealed round
+        shell: bash
+        run: |
+          target_epoch="$(python -c 'import json,sys; from datetime import datetime; value=json.load(open(sys.argv[1]))["drand"]["target_round_timestamp_utc"]; print(int(datetime.fromisoformat(value.replace("Z","+00:00")).timestamp()))' "$RUNNER_TEMP/canonical-seal/seal.json")"
+          now_epoch="$(date -u +%s)"
+          if [ "$now_epoch" -lt "$target_epoch" ]; then sleep "$((target_epoch - now_epoch + 5))"; fi
+      - name: Install exact integrity-locked official verifier
+        working-directory: .github/drand-verifier
+        run: npm ci --ignore-scripts
+      - name: Verify exact beacon and run the sealed FULL benchmark
+        id: benchmark
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        shell: bash
+        run: |
+          python scripts/run_sealed_full_benchmark.py \
+            --freeze-manifest configs/research/full_confirmation_freeze_manifest.json \
+            --seal "$RUNNER_TEMP/canonical-seal/seal.json" \
+            --seal-publication "$RUNNER_TEMP/canonical-seal/seal-publication.json" \
+            --output "$RUNNER_TEMP/full-output"
+      - name: Build direction-independent publication handoff
+        if: ${{ always() }}
+        env:
+          BENCHMARK_OUTCOME: ${{ steps.benchmark.outcome }}
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/full-publication"
+          cp "$RUNNER_TEMP/canonical-seal/seal.json" "$RUNNER_TEMP/full-publication/seal.json"
+          cp "$RUNNER_TEMP/canonical-seal/seal-publication.json" "$RUNNER_TEMP/full-publication/seal-publication.json"
+          if [ -d "$RUNNER_TEMP/full-output" ]; then cp -R "$RUNNER_TEMP/full-output" "$RUNNER_TEMP/full-publication/benchmark-output"; fi
+          conclusion=failure
+          if [ "$BENCHMARK_OUTCOME" = "success" ]; then conclusion=success; fi
+          args=(--seal "$RUNNER_TEMP/full-publication/seal.json" --workflow-conclusion "$conclusion" --workflow-run-url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" --output "$RUNNER_TEMP/full-publication/execution-closure.json")
+          if [ -f "$RUNNER_TEMP/full-publication/benchmark-output/full_execution_manifest.json" ]; then
+            args+=(--execution-manifest "$RUNNER_TEMP/full-publication/benchmark-output/full_execution_manifest.json" --benchmark-output "$RUNNER_TEMP/full-publication/benchmark-output")
+          fi
+          python scripts/build_full_publication_closure.py "${args[@]}"
+          printf '{"benchmark_step_outcome":"%s","subject_commit":"%s","seal_workflow_run_id":"%s","scientific_direction_inspected":false}\n' "$BENCHMARK_OUTCOME" "$SUBJECT_COMMIT" "$SEAL_RUN_ID" > "$RUNNER_TEMP/full-publication/workflow-outcome.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        with:
+          name: full-execution-${{ inputs.seal_subject_commit }}
+          path: ${{ runner.temp }}/full-publication
+          if-no-files-found: error
+          retention-days: 90
+      - name: Preserve execution failure after the publication handoff
+        if: ${{ steps.benchmark.outcome != 'success' }}
+        run: exit 1
+
+  publish-write-only:
+    needs: execute-read-only
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ragwarrant-full-results-${{ inputs.seal_subject_commit }}
+      cancel-in-progress: false
+    permissions:
+      actions: read
+      contents: write
+      pull-requests: write
+    env:
+      SUBJECT_COMMIT: ${{ inputs.seal_subject_commit }}
+      SEAL_RUN_ID: ${{ inputs.seal_workflow_run_id }}
+      SEAL_COMMIT_SHA: ${{ inputs.seal_commit_sha }}
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        id: execution-artifact
+        continue-on-error: true
+        with:
+          name: full-execution-${{ inputs.seal_subject_commit }}
+          path: ${{ runner.temp }}/publication
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        if: ${{ steps.execution-artifact.outcome != 'success' }}
+        with:
+          name: full-seal-${{ inputs.seal_subject_commit }}
+          path: ${{ runner.temp }}/canonical-seal
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ inputs.seal_workflow_run_id }}
+      - name: Validate or construct the immutable execution closure
+        env:
+          EXECUTION_ARTIFACT_OUTCOME: ${{ steps.execution-artifact.outcome }}
+        shell: bash
+        run: |
+          if [ "$EXECUTION_ARTIFACT_OUTCOME" != "success" ]; then
+            mkdir -p "$RUNNER_TEMP/publication"
+            cp "$RUNNER_TEMP/canonical-seal/seal.json" "$RUNNER_TEMP/publication/seal.json"
+            cp "$RUNNER_TEMP/canonical-seal/seal-publication.json" "$RUNNER_TEMP/publication/seal-publication.json"
+            jq -n --arg subject "$SUBJECT_COMMIT" --arg url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" '{schema_version:"1.0",closure_status:"ABORTED_OR_INCOMPLETE",subject_commit:$subject,workflow_conclusion:"cancelled_or_artifactless",workflow_run_url:$url,same_seal_required_for_resume:true,fallback_round_permitted:false,publication_independent_of_scientific_direction:true,execution_manifest_present:false,output_hashes_verified:false}' > "$RUNNER_TEMP/publication/execution-closure.json"
+          fi
+          python - "$RUNNER_TEMP/publication" "$SUBJECT_COMMIT" "$SEAL_RUN_ID" "$SEAL_COMMIT_SHA" <<'PY'
+          import hashlib, json, pathlib, sys
+          root = pathlib.Path(sys.argv[1])
+          subject, seal_run, seal_commit = sys.argv[2:]
+          seal = json.loads((root / "seal.json").read_text())
+          publication = json.loads((root / "seal-publication.json").read_text())
+          closure = json.loads((root / "execution-closure.json").read_text())
+          if seal.get("subject_commit") != subject or publication.get("subject_commit") != subject:
+              raise SystemExit("publication subject mismatch")
+          if str(publication.get("seal_workflow_run_id")) != seal_run:
+              raise SystemExit("seal workflow run mismatch")
+          if publication.get("seal_commit_sha") != seal_commit:
+              raise SystemExit("seal commit mismatch")
+          canonical = json.dumps(seal, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n"
+          if hashlib.sha256(canonical.encode()).hexdigest() != publication.get("seal_sha256"):
+              raise SystemExit("published seal bytes mismatch")
+          if closure.get("closure_status") == "COMPLETED":
+              if closure.get("output_hashes_verified") is not True:
+                  raise SystemExit("completed closure lacks verified output hashes")
+              output = root / "benchmark-output"
+              manifest = json.loads((output / "full_execution_manifest.json").read_text())
+              actual = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in output.iterdir() if p.is_file() and p.name != "full_execution_manifest.json"}
+              if actual != manifest.get("output_hashes"):
+                  raise SystemExit("FULL output hashes changed after read-only execution")
+              benchmark = json.loads((output / "benchmark_manifest.json").read_text())
+              if benchmark.get("profile") != "FULL" or benchmark.get("evidence_role") != "confirmatory" or benchmark.get("complete") is not True:
+                  raise SystemExit("FULL benchmark manifest is incomplete or nonconfirmatory")
+              if benchmark.get("deployable_method_accessed_population_truth") is not False:
+                  raise SystemExit("deployable method truth isolation failed")
+          elif closure.get("closure_status") != "ABORTED_OR_INCOMPLETE":
+              raise SystemExit("unknown execution closure status")
+          PY
+      - name: Recheck public refs before the write
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          publication="$RUNNER_TEMP/publication/seal-publication.json"
+          seal_branch="$(jq -r .canonical_seal_branch "$publication")"
+          frozen_ref="$(jq -r .frozen_subject_ref "$publication")"
+          frozen_name="${frozen_ref#refs/}"
+          test "$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/${seal_branch}" --jq .object.sha)" = "$SEAL_COMMIT_SHA"
+          test "$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/${frozen_name}" --jq .object.sha)" = "$SUBJECT_COMMIT"
+          pr_url="$(jq -r .draft_pr_url "$publication")"
+          test "$(gh pr view "$pr_url" --repo "$GITHUB_REPOSITORY" --json headRefOid --jq .headRefOid)" = "$SEAL_COMMIT_SHA"
+      - name: Append the outcome to the one results branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh auth setup-git
+          results_branch="ragwarrant-full-results-${SUBJECT_COMMIT}"
+          results_tree="$RUNNER_TEMP/results-tree"
+          if git ls-remote --exit-code --heads "https://github.com/${GITHUB_REPOSITORY}.git" "refs/heads/${results_branch}" >/dev/null 2>&1; then
+            git clone --branch "$results_branch" --single-branch "https://github.com/${GITHUB_REPOSITORY}.git" "$results_tree"
+          else
+            git init "$results_tree"
+            git -C "$results_tree" remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+            git -C "$results_tree" fetch --depth 1 origin "$SUBJECT_COMMIT"
+            git -C "$results_tree" checkout -b "$results_branch" FETCH_HEAD
+          fi
+          destination="$results_tree/executions/${GITHUB_RUN_ID}"
+          test ! -e "$destination" || { echo "This execution run is already published." >&2; exit 1; }
+          mkdir -p "$destination"
+          cp -R "$RUNNER_TEMP/publication/." "$destination/"
+          git -C "$results_tree" config user.name "ragwarrant-research-bot"
+          git -C "$results_tree" config user.email "ragwarrant-research-bot@users.noreply.github.com"
+          git -C "$results_tree" add "executions/${GITHUB_RUN_ID}"
+          git -C "$results_tree" commit -m "Publish FULL execution ${GITHUB_RUN_ID} for ${SUBJECT_COMMIT}"
+          git -C "$results_tree" push --porcelain origin "HEAD:refs/heads/${results_branch}"
+          existing="$(gh pr list --repo "$GITHUB_REPOSITORY" --state all --head "$results_branch" --json url --jq 'length')"
+          if [ "$existing" = "0" ]; then
+            gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$results_branch" --draft --title "RAGWARRANT FULL RESULTS ${SUBJECT_COMMIT}" --body "Append-only FULL outcomes for sealed commit ${SUBJECT_COMMIT}. Do not merge into the research source branch."
+          fi

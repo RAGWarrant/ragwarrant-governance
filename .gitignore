@@ -3,6 +3,7 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .local_data/
+.github/drand-verifier/node_modules/
 .DS_Store
 *.env
 *.pem
