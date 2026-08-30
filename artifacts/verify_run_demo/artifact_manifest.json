@@ -2,9 +2,9 @@
   "artifact_count": 6,
   "artifacts": [
     {
-      "bytes": 668,
+      "bytes": 671,
       "path": "mini_reproduction_manifest.json",
-      "sha256": "5a4550587cd7a83daae93d4742d329b77fba69c8495c2cdcbd7161c606dc7b95"
+      "sha256": "d8da639ab68ccdb42377ee9036158e74bb51fc4365367840fd5c09a5b802c9e6"
     },
     {
       "bytes": 1873,
@@ -22,9 +22,9 @@
       "sha256": "24f70d9a71e99bf7bfd4bbf2d25e13659664fe7b5a32554889ae122094b7caec"
     },
     {
-      "bytes": 668,
+      "bytes": 671,
       "path": "primary_outcome_statistics.json",
-      "sha256": "5a4550587cd7a83daae93d4742d329b77fba69c8495c2cdcbd7161c606dc7b95"
+      "sha256": "d8da639ab68ccdb42377ee9036158e74bb51fc4365367840fd5c09a5b802c9e6"
     },
     {
       "bytes": 218,
