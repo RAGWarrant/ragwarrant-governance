@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "canonical": {
+    "product": "RAGWarrant",
+    "package": "ragwarrant",
+    "environment_prefix": "RAGWARRANT_",
+    "repository_slug": "ragwarrant-governance",
+    "repository_url": "https://github.com/RAGWarrant/ragwarrant-governance",
+    "container_image": "ghcr.io/ragwarrant/ragwarrant-governance"
+  },
+  "classifications": [
+    {
+      "classification": "migration_documentation",
+      "path_prefixes": [
+        "docs/migration/",
+        "deployment_review/ragwarrant_brand_completion/",
+        "scripts/validate_brand_consistency.py"
+      ],
+      "rationale": "Files whose purpose is to document or enforce the rename must name legacy identifiers."
+    },
+    {
+      "classification": "validator_fixture",
+      "path_exact": [
+        "tests/publication/test_brand_consistency.py",
+        "tests/publication/test_ragwarrant_namespace.py"
+      ],
+      "rationale": "Tests intentionally mention the old namespace to confirm it is absent or classified."
+    },
+    {
+      "classification": "legacy_redirect_reference",
+      "path_exact": [
+        "README.md",
+        "src/ragwarrant_governance.egg-info/PKG-INFO"
+      ],
+      "rationale": "The public README and package long description include a bounded former-path redirect note."
+    },
+    {
+      "classification": "immutable_historical_artifact",
+      "path_prefixes": [
+        "artifacts/selected_run_summaries/runs/",
+        "artifacts/audit/",
+        "deployment_review/",
+        "results/historical/"
+      ],
+      "rationale": "Archived artifacts and review packets preserve original run IDs, paths, and reports."
+    },
+    {
+      "classification": "historical_run_identifier",
+      "path_prefixes": [
+        "artifacts/",
+        "results/",
+        "requirements-dev.lock",
+        "requirements-runtime.lock",
+        "requirements-storage-emulators.lock"
+      ],
+      "rationale": "Machine-readable historical suite and run identifiers are immutable evidence keys."
+    },
+    {
+      "classification": "historical_run_identifier",
+      "path_exact": [
+        "docs/behaviorally_distinct_policy_experiment_plan.md",
+        "docs/claim_boundaries.md",
+        "docs/crag_mock_api_validation.md",
+        "docs/historical_validation_summary.md",
+        "docs/rag_compass_name_migration.md",
+        "reproduction/commands/reproduce_multihop_confirmatory.md"
+      ],
+      "rationale": "These documents discuss historical suites, run IDs, or the RAG Compass no-fork naming history."
+    }
+  ]
+}

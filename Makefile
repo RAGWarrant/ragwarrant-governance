@@ -1,4 +1,4 @@
-.PHONY: setup test reproduce-crag reproduce-multihop reproduce-public-mini tables figures validate-publication validate-deployment-readiness docker-build docker-validate docker-run-public-mini docker-compose-public-mini docker-run-external-evaluator-demo clean
+.PHONY: setup test reproduce-crag reproduce-multihop reproduce-public-mini tables figures validate-brand validate-publication validate-deployment-readiness docker-build docker-validate docker-run-public-mini docker-compose-public-mini docker-run-external-evaluator-demo clean
 
 setup:
 	pip install --require-hashes -r requirements-dev.lock
@@ -16,6 +16,7 @@ reproduce-multihop:
 reproduce-public-mini:
 	python3 scripts/run_public_mini_reproduction.py --config configs/experiments/ragwarrant_public_mini_reproduction_v1.yaml --output-root artifacts/public_mini_reproduction --force
 	python3 scripts/validate_publication_bundle.py
+	python3 scripts/validate_brand_consistency.py
 
 reproduce-dataset-matrix:
 	bash scripts/reproduce_dataset_matrix.sh
@@ -26,8 +27,12 @@ tables:
 figures:
 	python scripts/make_figures.py
 
+validate-brand:
+	python scripts/validate_brand_consistency.py
+
 validate-publication:
 	python scripts/validate_publication_bundle.py
+	python scripts/validate_brand_consistency.py
 
 validate-deployment-readiness:
 	python scripts/validate_deployment_readiness.py --config configs/experiments/ragwarrant_deployment_readiness_v1.yaml --output-root artifacts/deployment_readiness --force
