@@ -1,15 +1,15 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: ragtune-governance-job
+  name: ragwarrant-governance-job
 spec:
   backoffLimit: 0
   template:
     spec:
       restartPolicy: Never
       containers:
-        - name: ragtune
-          image: RAGTUNE_IMAGE_REFERENCE_PLACEHOLDER
+        - name: ragwarrant
+          image: RAGWARRANT_IMAGE_REFERENCE_PLACEHOLDER
           imagePullPolicy: Always
           args:
             - run-governance-job
@@ -20,11 +20,11 @@ spec:
             - --decision-out
             - /outputs/promotion_decision.json
           env:
-            - name: RAGTUNE_STORAGE_MODE
+            - name: RAGWARRANT_STORAGE_MODE
               value: local
-            - name: RAGTUNE_INPUT_DIR
+            - name: RAGWARRANT_INPUT_DIR
               value: /inputs
-            - name: RAGTUNE_OUTPUT_DIR
+            - name: RAGWARRANT_OUTPUT_DIR
               value: /outputs
           securityContext:
             allowPrivilegeEscalation: false
@@ -36,19 +36,19 @@ spec:
               drop:
                 - ALL
           volumeMounts:
-            - name: ragtune-config
+            - name: ragwarrant-config
               mountPath: /inputs
               readOnly: true
-            - name: ragtune-outputs
+            - name: ragwarrant-outputs
               mountPath: /outputs
             - name: tmp
               mountPath: /tmp
       volumes:
-        - name: ragtune-config
+        - name: ragwarrant-config
           configMap:
-            name: ragtune-job-config
-        - name: ragtune-outputs
+            name: ragwarrant-job-config
+        - name: ragwarrant-outputs
           persistentVolumeClaim:
-            claimName: ragtune-outputs
+            claimName: ragwarrant-outputs
         - name: tmp
           emptyDir: {}

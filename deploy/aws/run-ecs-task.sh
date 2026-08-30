@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 "$(dirname "$0")/../load-image-reference.sh" >/dev/null
-: "${RAGTUNE_AWS_CLUSTER:?set RAGTUNE_AWS_CLUSTER}"
-: "${RAGTUNE_AWS_SUBNET:?set RAGTUNE_AWS_SUBNET}"
-: "${RAGTUNE_AWS_SECURITY_GROUP:?set RAGTUNE_AWS_SECURITY_GROUP}"
+: "${RAGWARRANT_AWS_CLUSTER:?set RAGWARRANT_AWS_CLUSTER}"
+: "${RAGWARRANT_AWS_SUBNET:?set RAGWARRANT_AWS_SUBNET}"
+: "${RAGWARRANT_AWS_SECURITY_GROUP:?set RAGWARRANT_AWS_SECURITY_GROUP}"
 aws ecs run-task \
-  --cluster "$RAGTUNE_AWS_CLUSTER" \
+  --cluster "$RAGWARRANT_AWS_CLUSTER" \
   --launch-type FARGATE \
-  --task-definition ragtune-governance-task \
-  --network-configuration "awsvpcConfiguration={subnets=[$RAGTUNE_AWS_SUBNET],securityGroups=[$RAGTUNE_AWS_SECURITY_GROUP],assignPublicIp=DISABLED}"
+  --task-definition ragwarrant-governance-task \
+  --network-configuration "awsvpcConfiguration={subnets=[$RAGWARRANT_AWS_SUBNET],securityGroups=[$RAGWARRANT_AWS_SECURITY_GROUP],assignPublicIp=DISABLED}"

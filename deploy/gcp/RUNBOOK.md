@@ -1,6 +1,6 @@
 # GCP Zero-to-First-Run Runbook
 
-This runbook describes how an operator can run the finite RAGTune governance job as a Google Cloud Run job. It is a deployment guide only. It does not report live GCP validation, production readiness, official benchmarking, or platform certification.
+This runbook describes how an operator can run the finite RAGWarrant governance job as a Google Cloud Run job. It is a deployment guide only. It does not report live GCP validation, production readiness, official benchmarking, or platform certification.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ If the image reference is pending, run the GHCR publish workflow first and updat
 ## Deploy
 
 ```bash
-export RAGTUNE_GCP_REGION="<gcp-region>"
+export RAGWARRANT_GCP_REGION="<gcp-region>"
 
 bash deploy/gcp/deploy-cloud-run-job.sh
 ```
@@ -30,7 +30,7 @@ bash deploy/gcp/deploy-cloud-run-job.sh
 ## Run
 
 ```bash
-export RAGTUNE_GCP_REGION="<gcp-region>"
+export RAGWARRANT_GCP_REGION="<gcp-region>"
 
 bash deploy/gcp/run-cloud-run-job.sh
 ```

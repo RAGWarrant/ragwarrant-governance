@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build image
-        run: docker build -t ragtune-governance:ci .
+        run: docker build -t ragwarrant-governance:ci .
       - name: Run governance job
-        run: docker run --rm ragtune-governance:ci run-governance-job --config configs/jobs/public_mini_governance_job.yaml --output-root /tmp/ragtune-outputs --decision-out /tmp/ragtune-outputs/promotion_decision.json
+        run: docker run --rm ragwarrant-governance:ci run-governance-job --config configs/jobs/public_mini_governance_job.yaml --output-root /tmp/ragwarrant-outputs --decision-out /tmp/ragwarrant-outputs/promotion_decision.json

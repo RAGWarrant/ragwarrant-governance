@@ -1,14 +1,14 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: Example RAGTune AWS Batch job definition
+Description: Example RAGWarrant AWS Batch job definition
 Parameters:
   ContainerImage:
     Type: String
-    Default: RAGTUNE_IMAGE_REFERENCE_PLACEHOLDER
+    Default: RAGWARRANT_IMAGE_REFERENCE_PLACEHOLDER
 Resources:
   JobDefinition:
     Type: AWS::Batch::JobDefinition
     Properties:
-      JobDefinitionName: ragtune-governance-batch
+      JobDefinitionName: ragwarrant-governance-batch
       Type: container
       PlatformCapabilities:
         - FARGATE
@@ -28,10 +28,10 @@ Resources:
           - Type: MEMORY
             Value: "2048"
         Environment:
-          - Name: RAGTUNE_STORAGE_MODE
+          - Name: RAGWARRANT_STORAGE_MODE
             Value: local
-          - Name: RAGTUNE_INPUT_DIR
+          - Name: RAGWARRANT_INPUT_DIR
             Value: /inputs
-          - Name: RAGTUNE_OUTPUT_DIR
+          - Name: RAGWARRANT_OUTPUT_DIR
             Value: /outputs
         ReadonlyRootFilesystem: true
