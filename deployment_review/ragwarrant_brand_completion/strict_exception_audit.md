@@ -11,9 +11,9 @@
 
 - `completion-claim-diff-json`: `0`
 - `completion-claim-diff-md`: `0`
-- `completion-file-disposition-csv`: `205`
-- `completion-file-disposition-json`: `205`
-- `completion-file-disposition-md`: `205`
+- `completion-file-disposition-csv`: `0`
+- `completion-file-disposition-json`: `0`
+- `completion-file-disposition-md`: `0`
 - `completion-strict-exception-audit-json`: `143`
 - `completion-strict-exception-audit-md`: `0`
 - `migration-active-identifier-map`: `302`
