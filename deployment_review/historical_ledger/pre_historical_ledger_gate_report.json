@@ -2,7 +2,7 @@
   "repository": "<sanitized-publication-repository>",
   "commit": "e85c4915c5a3c99d762f2602626a6d1da5dbd583",
   "branch": "main",
-  "remote": "https://github.com/AIM-RAGTune/rag-tuning-governance.git",
+  "remote": "https://github.com/RAGWarrant/ragwarrant-governance.git",
   "files_scanned": 887,
   "raw_query_text_scan": {
     "result": "PASS",

@@ -4,7 +4,7 @@
 
 - Starting commit: `07b4ee089d7cec6468092b0038f23e422f6b6c28`
 - Branch: `fresh-live-crag-unblock-validation`
-- Remote: `https://github.com/AIM-RAGTune/rag-tuning-governance.git`
+- Remote: `https://github.com/RAGWarrant/ragwarrant-governance.git`
 - Working tree before CRAG unblock changes: clean at branch creation; CRAG unblock artifacts and source hardening were then modified on this branch.
 
 ## Baseline Validation

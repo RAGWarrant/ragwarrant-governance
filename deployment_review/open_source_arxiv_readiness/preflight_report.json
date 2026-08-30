@@ -3,7 +3,7 @@
   "starting_commit": "37e0a997b8e7510e444961d9026ed419859eddeb",
   "starting_branch": "codex/open-source-arxiv-readiness",
   "working_tree_status": "clean before open-source readiness edits",
-  "remote_url": "https://github.com/AIM-RAGTune/rag-tuning-governance.git",
+  "remote_url": "https://github.com/RAGWarrant/ragwarrant-governance.git",
   "validator_result": "passed",
   "pytest_publication_result": "86 passed before edits",
   "compile_result": "passed before edits",

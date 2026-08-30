@@ -14,7 +14,7 @@ The policy suite includes low retrieval, expanded retrieval, adaptive routing, c
 
 ## Dataset and evidence class
 
-Dataset/path: sanitized CRAG mock-API frozen observations from `ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4`. Evidence class: `public_full_corpus_mock_api_validation_derived_frozen_observation`.
+Dataset/path: sanitized CRAG mock-API frozen observations from `ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4`. Evidence class: `public_full_corpus_mock_api_validation_derived_frozen_observation`.
 
 ## Quality metric
 

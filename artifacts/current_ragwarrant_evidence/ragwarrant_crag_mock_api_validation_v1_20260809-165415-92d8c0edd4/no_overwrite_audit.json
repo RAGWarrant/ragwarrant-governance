@@ -1,0 +1,8 @@
+{
+  "append_only": true,
+  "attempted_overwrites_blocked": 0,
+  "completed_manifest_present": false,
+  "run_dir": "artifacts/ragwarrant/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4",
+  "run_id": "ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4",
+  "status": "append_only_confirmed"
+}

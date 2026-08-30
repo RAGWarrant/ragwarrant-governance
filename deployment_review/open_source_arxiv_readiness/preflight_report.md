@@ -6,7 +6,7 @@ Starting commit: `37e0a997b8e7510e444961d9026ed419859eddeb`
 
 Branch: `codex/open-source-arxiv-readiness`
 
-Remote: `https://github.com/AIM-RAGTune/rag-tuning-governance.git`
+Remote: `https://github.com/RAGWarrant/ragwarrant-governance.git`
 
 Pre-edit gates passed: publication validator, publication tests, compileall, and diff-check.
 

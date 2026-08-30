@@ -14,6 +14,6 @@
   "raw_questions_committed": false,
   "result_class": "EXTERNAL_EVALUATOR_ADAPTER_V2_PROMOTION_DECISION_GENERATED",
   "selected_policy": "quality_policy",
-  "suite": "ragtune_external_evaluator_adapter_demo_v2",
+  "suite": "ragwarrant_external_evaluator_adapter_demo_v2",
   "tool_replacement_claimed": false
 }

@@ -1,7 +1,7 @@
 {
   "starting_commit": "e8e228820ed51d7e907bf25eccdefad4c41d797d",
   "branch": "generative-llm-validation-v1",
-  "remote": "https://github.com/AIM-RAGTune/rag-tuning-governance.git",
+  "remote": "https://github.com/RAGWarrant/ragwarrant-governance.git",
   "working_tree_status": "clean",
   "publication_validator": "passed",
   "pytest_publication": "34 passed",

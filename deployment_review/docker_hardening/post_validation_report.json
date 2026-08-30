@@ -1,5 +1,5 @@
 {
-  "repository_path": "<public-ragtune-repository>",
+  "repository_path": "<public-ragwarrant-repository>",
   "branch": "codex/docker-runtime-hardening",
   "starting_commit": "f9a67ac89bfe75b0dcd286d5b9bc22c839ee317f",
   "post_validation_commit": "<created-after-validation>",

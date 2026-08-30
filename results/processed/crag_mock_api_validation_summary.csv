@@ -1,2 +1,2 @@
 parent_run_id,validation_rows,confirmatory_rows,api_calls,failure_rate,governed_winner,quality_only_winner,rag_compass_rank,delta,ci_low,ci_high,wins,ties,losses,sensitivity_summary
-ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4,431,571,14172,0.0,top_k_low,greedy_regression_aware_search,5,0.0010025405,0.0010022708,0.0010028250,571,0,0,governance superior in 14 of 15 cost-latency settings
+ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4,431,571,14172,0.0,top_k_low,greedy_regression_aware_search,5,0.0010025405,0.0010022708,0.0010028250,571,0,0,governance superior in 14 of 15 cost-latency settings

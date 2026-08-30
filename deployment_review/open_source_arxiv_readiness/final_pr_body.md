@@ -1,6 +1,6 @@
 ## Summary
 
-Adds the next RAGTune open-source and arXiv-readiness validation package.
+Adds the next RAGWarrant open-source and arXiv-readiness validation package.
 
 This PR includes:
 
@@ -15,7 +15,7 @@ This PR includes:
 
 ## Scientific interpretation
 
-This PR does not claim stable generative cost/latency superiority. The key finding is that RAGTune behaves as a governance and promotion-control framework: it preserves mixed and negative evidence, blocks unsafe promotion under held-out quality loss, and provides machine-checked claim boundaries.
+This PR does not claim stable generative cost/latency superiority. The key finding is that RAGWarrant behaves as a governance and promotion-control framework: it preserves mixed and negative evidence, blocks unsafe promotion under held-out quality loss, and provides machine-checked claim boundaries.
 
 ## Results
 
@@ -47,4 +47,4 @@ This PR does not claim RAG Compass superiority, stable generative cost reduction
 
 ## Recommended next experiment
 
-Prepare the arXiv systems/methods draft around RAGTune as an evidence-preserving RAG governance and promotion-control framework, while continuing targeted CRAG evaluator mapping and generative quality-risk experiments.
+Prepare the arXiv systems/methods draft around RAGWarrant as an evidence-preserving RAG governance and promotion-control framework, while continuing targeted CRAG evaluator mapping and generative quality-risk experiments.

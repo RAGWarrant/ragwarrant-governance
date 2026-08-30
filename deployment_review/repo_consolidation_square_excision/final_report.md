@@ -6,7 +6,7 @@
 - Private history imported: no.
 - Private paths imported: 0.
 - Private paths excluded/classified: 1370.
-- Vendored stable hash path: `src/ragtune/utils/hashing.py`.
+- Vendored stable hash path: `src/ragwarrant/utils/hashing.py`.
 - Stable hash regression: passed; representative nested output `8236bd6928`.
 - Publication tests: 224 passed.
 - `make test`: 224 passed.

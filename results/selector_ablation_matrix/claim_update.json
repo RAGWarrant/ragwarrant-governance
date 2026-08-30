@@ -19,7 +19,7 @@
     "risk_guarded_selector",
     "oracle_ceiling"
   ],
-  "suite": "ragtune_selector_ablation_matrix_v1",
+  "suite": "ragwarrant_selector_ablation_matrix_v1",
   "universal_superiority_claimed": false,
   "unsafe_selector_cases": 2
 }

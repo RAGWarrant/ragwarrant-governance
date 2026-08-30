@@ -1,9 +1,9 @@
 {
-  "remote_url": "https://github.com/AIM-RAGTune/rag-tuning-governance.git",
+  "remote_url": "https://github.com/RAGWarrant/ragwarrant-governance.git",
   "branch_pushed": "main",
   "sanitization_commit_hash": "3d44ef5d69577d9166c7c4a6ca3129700ea72a4a",
   "push_status": "PUSHED",
-  "repository_url": "https://github.com/AIM-RAGTune/rag-tuning-governance",
+  "repository_url": "https://github.com/RAGWarrant/ragwarrant-governance",
   "repository_visibility": "PRIVATE",
   "default_branch": "main",
   "history_sanitization_mode": "current_tree_only",

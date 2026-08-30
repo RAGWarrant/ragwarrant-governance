@@ -13,7 +13,7 @@
     "obsolete_removed_simulation_or_legacy_lineage": 365
   },
   "canonical_url_cleanup_commit": "74da4f7414d0198263795a3016b3ad82aa2a1d2a",
-  "vendored_stable_hash_path": "src/ragtune/utils/hashing.py",
+  "vendored_stable_hash_path": "src/ragwarrant/utils/hashing.py",
   "stable_hash_regression": "passed; representative nested output 8236bd6928",
   "removed_package_content_grep": "no hits",
   "removed_project_content_grep": "no code references; review filenames are the only filename exceptions",

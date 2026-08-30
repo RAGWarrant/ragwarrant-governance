@@ -1,6 +1,6 @@
 # Docker Runtime Hardening Preflight
 
-Repository path: `<public-ragtune-repository>`
+Repository path: `<public-ragwarrant-repository>`
 
 Starting commit: `f9a67ac89bfe75b0dcd286d5b9bc22c839ee317f`
 
@@ -10,7 +10,7 @@ Working branch: `codex/docker-runtime-hardening`
 
 Origin main commit: `f9a67ac89bfe75b0dcd286d5b9bc22c839ee317f`
 
-Remote URL: `https://github.com/AIM-RAGTune/rag-tuning-governance.git`
+Remote URL: `https://github.com/RAGWarrant/ragwarrant-governance.git`
 
 Working tree status at branch creation: clean.
 

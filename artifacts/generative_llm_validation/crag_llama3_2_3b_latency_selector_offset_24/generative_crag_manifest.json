@@ -16,5 +16,5 @@
   "raw_questions_committed": false,
   "result_class": "GEN_LLM_GOVERNANCE_REDUCES_LATENCY_AT_EQUIVALENT_GENERATED_QUALITY_CRAG",
   "secrets_committed": false,
-  "suite": "ragtune_crag_generative_llm_validation_v1"
+  "suite": "ragwarrant_crag_generative_llm_validation_v1"
 }

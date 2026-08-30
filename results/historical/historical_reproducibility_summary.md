@@ -1,6 +1,6 @@
 # Historical Reproducibility Summary
 
-RAGTune validation emphasized append-only artifacts, strict provenance checks, no-overwrite discipline, leakage checks, and reproducibility gates.
+RAGWarrant validation emphasized append-only artifacts, strict provenance checks, no-overwrite discipline, leakage checks, and reproducibility gates.
 
 Known summarized test milestones:
 

@@ -101,7 +101,7 @@
   ],
   "selector_candidate_policy_count": 3,
   "selector_design": "validation_learned_deployable_quality_risk_predictor_vs_quality_only_high_evidence_confirmatory_eval",
-  "suite": "ragtune_crag_generative_llm_validation_v1",
+  "suite": "ragwarrant_crag_generative_llm_validation_v1",
   "unique_answer_hash_count": 77,
   "usable_quality_signal": true
 }

@@ -1,7 +1,7 @@
 {
   "acquisition_instructions": [
     "pip install datasets",
-    "python3 scripts/acquire_hotpotqa_public_corpus.py --source huggingface --config distractor --output-root ${RAGTUNE_DATA_ROOT:-.local_data}/hotpotqa",
+    "python3 scripts/acquire_hotpotqa_public_corpus.py --source huggingface --config distractor --output-root ${RAGWARRANT_DATA_ROOT:-.local_data}/hotpotqa",
     "Alternatively clone https://github.com/hotpotqa/hotpot and follow official download instructions.",
     "Do not commit raw questions, context paragraphs, or supporting-fact sentences."
   ],
@@ -74,7 +74,7 @@
   "question_wording_exported": false,
   "rag_compass_rank": 4,
   "result_class": "HOTPOTQA_GOVERNANCE_OPERATIONAL_GAIN_QUALITY_LOSS",
-  "suite": "ragtune_hotpotqa_behavioral_governance_v1",
+  "suite": "ragwarrant_hotpotqa_behavioral_governance_v1",
   "supporting_fact_sentence_recall_delta": {
     "ci_high": 0.07302543507362784,
     "ci_low": -0.03654618473895582,

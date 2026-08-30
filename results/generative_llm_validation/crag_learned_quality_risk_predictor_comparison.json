@@ -130,5 +130,5 @@
       "validation_unprotected_quality_risk_count": 0
     }
   ],
-  "suite": "ragtune_crag_learned_quality_risk_predictor_guarded_latency_v1"
+  "suite": "ragwarrant_crag_learned_quality_risk_predictor_guarded_latency_v1"
 }

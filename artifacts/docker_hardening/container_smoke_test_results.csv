@@ -3,4 +3,4 @@ docker_build,PASS,#22 DONE 4.4s
 container_help,PASS,"  -h, --help            show this help message and exit"
 container_validate_bundle,PASS,publication validation passed
 container_public_mini,PASS,publication validation passed
-docker_compose_public_mini,PASS, Container docker-ragtune-public-mini-1  Stopped
+docker_compose_public_mini,PASS, Container docker-ragwarrant-public-mini-1  Stopped

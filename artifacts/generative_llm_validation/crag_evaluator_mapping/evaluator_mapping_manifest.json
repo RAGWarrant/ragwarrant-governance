@@ -9,5 +9,5 @@
   "raw_generated_answers_committed": false,
   "raw_generated_answers_required_for_public_artifacts": false,
   "raw_query_text_required_for_public_artifacts": false,
-  "suite": "ragtune_crag_generated_answer_evaluator_mapping_v1"
+  "suite": "ragwarrant_crag_generated_answer_evaluator_mapping_v1"
 }

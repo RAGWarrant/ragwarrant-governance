@@ -2251,355 +2251,355 @@
   },
   {
     "path_hash": "dc7453ab6990241397ce2c61ef36331f61c40f9227b7f6a71657bb5a68326b36",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "33b6ffd49a5f90e85e33a28526b43f43e48cf941caad15e6aa050838b59fc59f",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "1f554394c1b2b124d5623bfada22c7dfbd66bb301dd19a17b85762d0b271219c",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.json",
     "status": "needs_manual_review",
     "reason": "raw_text_field_or_prompt_pattern"
   },
   {
     "path_hash": "9d86ac38b5b01e86f908ee27fff902018f36318fe4bca280009dbeb76890b37d",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.md",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.md",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "14e9ef1fe41d903eeadec315eaa7f1c70899d914a0bfcf8ff911d004d7e524bf",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_technical_case_pack.md",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_technical_case_pack.md",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "d643ad66f763966332c9b19f78daed880146161b2264081d1980496087ae96a2",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "a8e68a1edd55f42f61d1a01bf53b0c1db54b1b2b0fa5b20a79f7b618808e51db",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180013-afbd193043/input_config.yaml",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180013-afbd193043/input_config.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "73e950d600671248b32e6d51e553f467b3be387cc03180ba4687d4cf1c0d42ef",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/crag_mock_api_docker_reproduction_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/crag_mock_api_docker_reproduction_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "6233fb7bba7cae326e5e73704621c416bb5362e79a9a3d2b2c1cc692efa838f5",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_build_report.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_build_report.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "b18bb2fa30469e0fc4691c039a3a4bbea827563d0d5b7c0baba78f3c72ddc2b2",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_mock_api_server_report.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_mock_api_server_report.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "9723a9269b67faa9d3682c3f95574a6c02bcd06b462f42c64d8c13d783bdb5aa",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_parent_comparison.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_parent_comparison.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "170befe27f8260c6a222c36a3dde721db9a9ba814a71e4a39b52a85dafdae733",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_reproduction_result.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_reproduction_result.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "e96b8b2ac60dabc352d933d385081ae894b86ccc518a0bd8009e36e58ed141ce",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_validation_run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_validation_run_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "afdfc63167ac0079d2badb1c4277300633294850a66048cc25695afa768b01d4",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/input_config.yaml",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/input_config.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "9c164b3c3e671b5cbcef1381b7ac13079101b0275956d79d09080fed0daf53b6",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "8f26b475c6f6451d5c6c4ffec6e61fe3394f8e13023733ea1763385957479d86",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/cross_run_evidence_summary.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/cross_run_evidence_summary.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "748fa367f3d5dd881432fc0360104b42736d6ca6848d12cd769681b42ccfe548",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "b190e70ce17b2a8ad47a8f60c50d15a067838adf4f039b0a00b871e2e36a0475",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "75edb76119b6737a88c5ee39f7919aca633259dc5b7bcc33ddfa09129885bbdf",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "83ed7fc06aeb2ae018a70325b5d20f5463ad55323b42036c86fd3e544f506abf",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "d88373e940f3b20f1b1acbd32fa59a643f2307addecd7d82405f925f0eb34246",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_validation_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_validation_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "a538adcfea94d253ae7e2a144b21cdc1813eb240e12bd071b735fd538a364f7c",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/input_config.yaml",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/input_config.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "c3a337d13a6797c2cbd30a53626fd2d599a244384b622530e74b3c46690facee",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "6939133ef5ae2a1ece1714e0d11aa62ae15ce027889cb2259764bb1af70c244d",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "530deead02c1d85e50a6dd518f725f89ff9706a357e875a0b87313ac363c6706",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "f5df4fb90a2970ec8c1d2fc89c41942439111141c51527cf5c35be7abd6944fd",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_validation_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_validation_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "2b94a526496437312e7904056befbb9431f212c4479e6b622fe11fdced34c050",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/input_config.yaml",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/input_config.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "ae472b790a7a823ee788e780b10c2b11d5b4f76568c5230cf3413f4eaeaafc07",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "e5016a187c9e8083b616138873f25711d0fca66246265bcdd4673751c556eea0",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "0b55666759886434fed6d95d42ca02c37d7b05621243ca2f3044a461dcf53d09",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "2a06d3d16f7d1c26f989e7d9f85edc0a315fa3ae74a6306a063f02e0ce4159ea",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_validation_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_validation_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "f8fae438ea1c2f99e16522c50f3105a4238b36d1d0c690c0f03c590c597bf77c",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/input_config.yaml",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/input_config.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "2b25ac4873f77f231d1c30f6640fa0d41639b828670312dea4eab3f28deb5709",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "3351b102ed10c16bdf926af863279fdb98f9ca105e9bc75101bfab99a71b4448",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/no_overwrite_audit.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/no_overwrite_audit.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "3b270ca7552997db0dcc2201e5e2aa9c4e88a051111f2688b0a64f4b2e36ab23",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/run_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "c8eb875e4276be4fc2bcff2b3a7a2226f9b8acee6db9ac294f21beb4b5f1a779",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170222-04e5da91fa/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170222-04e5da91fa/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "e572040bee54a0cb833cfd8b9524257eb5abad11789b05bf2f1938b6dcb19695",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170327-04e5da91fa/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170327-04e5da91fa/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "37eb05f210bdc0245b2715806db68b35e8bb2d073bc6adbacb7c86ca218e90a2",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/natural_divergence_adjudication_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/natural_divergence_adjudication_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "fdc64bfd09b2abb8d4daa4b1209bfafa7af1cde3409e27c1acab0770c152d673",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "d54caea8157d8687d3febf24a9f29dca655c00358d043f6e61a47a6dda5f4bfd",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/natural_divergence_adjudication_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/natural_divergence_adjudication_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "25799a54320dd884bdfd412a38a9850caf4c490b7b2aa4dc560e8d7e231164f3",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "8b4c4bca4837547b797ec6b251d83097b61fbda83cc24dbe868cb6e91fa921bb",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "fa424b4e1fe9bd2f6dda7aeb1df593d01fb2c032e2aef4b733230f5db813e2a3",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/strict_git_provenance_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/strict_git_provenance_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "9c9651eb67851181f63b9372166fb9f2a068af0735f07e3ab6ca77d168794be9",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/strict_git_provenance_repair_report.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/strict_git_provenance_repair_report.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "4d2ce3442e042f726d59cac3691fe864f75fdf3fa8f54655272615101412b5c7",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "c06e1dbd3a847cfc06cd72518954b5cb07699df1ed012cafbb3e3b4bf323671d",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/strict_git_provenance_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/strict_git_provenance_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "96c60f7bac86cedc4a8e9d5378f92e9256df6aabb62478f768dab095ffef3bb0",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/strict_git_provenance_repair_report.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/strict_git_provenance_repair_report.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "b273c068b67a46d0fe3dc4cef5f17b43cb2846a8d56d0e86cce5458cb75e45b2",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "1ad0c3437957d3f5654edcc2f703db3d753c872898d4c5d35b98675d074db623",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/strict_git_provenance_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/strict_git_provenance_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "9e854367bf519bad8ff60cce50fdb2d1999dc45d8b1a12734f3dcf41dd1e4c5e",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/strict_git_provenance_repair_report.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/strict_git_provenance_repair_report.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "00c36142023e507681a64b4665d60bc95a797f276f1b6bee7248a2db5626f89e",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "2a4d89747c3ce9f8de29320bae021842fa4167cba4f6569fc87e386fbf2eee2d",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/strict_git_provenance_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/strict_git_provenance_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "2d5e9640271f1482708982c0f6e62fa4ffd8cdb5b8ab051a65db4d1d5630f756",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/strict_git_provenance_repair_report.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/strict_git_provenance_repair_report.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "6f32fca18c837af40877048fe1cd82f6b3408f713139677dbeacef21f9bc1013",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "6d06903e9539ee338b392e5e170780eb6eb1d107f0afa4bda1bb4684c671b169",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/strict_git_provenance_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/strict_git_provenance_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "60822a4f1d54515f5601091bbd8b8021c737a0bd209293e977076cc89eb1c70e",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/strict_git_provenance_repair_report.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/strict_git_provenance_repair_report.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "055f3771fc3553b5a3c06ace0fe05ed64a29ac76eab6b5800024331ffab8cdcc",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/run_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/run_manifest.json",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "ad351cadeca9f222e34b53349d84c483ac9a5c996712e53c24edc26b23cac157",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/strict_git_provenance_manifest.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/strict_git_provenance_manifest.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "bc93d9b72f755afdc873358f4e5614aaebe990f788e349c1394aaa51254f74db",
-    "display_path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/strict_git_provenance_repair_report.json",
+    "display_path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/strict_git_provenance_repair_report.json",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
@@ -2737,283 +2737,283 @@
   },
   {
     "path_hash": "092859836f5159b8fd146a381be1a45e82f5505b23d1f686a7de6ae0a386f2f5",
-    "display_path": "configs/experiments/ragtune_aim_hardware_characterization_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_aim_hardware_characterization_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "abd472de4ca0e22d8fc7a3d3c08df70da97f1d9e4ee51f38efaad7f65c6a0342",
-    "display_path": "configs/experiments/ragtune_aim_hardware_matrix_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_aim_hardware_matrix_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "57c0fc7728274d0ec5cbf8950f9ff8b5a6e556fded0cd169f9908aebfc1ef1be",
-    "display_path": "configs/experiments/ragtune_answer_quality_measurement_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_answer_quality_measurement_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "1e0e83b940cfb67ab01cf9c0b92827e98df754588f92fe5129efaefab0f772ec",
-    "display_path": "configs/experiments/ragtune_behavioral_governance_paper_summary_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_behavioral_governance_paper_summary_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "78198c4128fa08e5b8516fa9f9aeea1ea967d44e7dad3cc49897239e33bcb4b5",
-    "display_path": "configs/experiments/ragtune_behavioral_governance_primary_outcome_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_behavioral_governance_primary_outcome_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "0cc752937123a25854842be0b0b0d20ac8f96cd575e7480b574e9412bd274488",
-    "display_path": "configs/experiments/ragtune_behavioral_governance_repeat_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_behavioral_governance_repeat_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "47abba04a2b5e990855a840d3aab45c249f525fe6548853ce8c0ff3aebba0cfe",
-    "display_path": "configs/experiments/ragtune_behaviorally_distinct_policy_suite_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_behaviorally_distinct_policy_suite_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "5a2b11554738ac3db7aa5e3c6f57508ad7aa46da3be05c0134b31aecbed58b5e",
-    "display_path": "configs/experiments/ragtune_challenge_unlock_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_challenge_unlock_v1.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "ce80c92c4c869f23d6631ff55aff228c74f1a554387ce224292c67d735c611ee",
-    "display_path": "configs/experiments/ragtune_container_smoke_tests_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_container_smoke_tests_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "c6fc4f4922462c145abbf7ac942fb78665683a21f6efc0d0957f8aa44b5acd91",
-    "display_path": "configs/experiments/ragtune_crag_evaluator_mapping_diagnostic_v2.yaml",
+    "display_path": "configs/experiments/ragwarrant_crag_evaluator_mapping_diagnostic_v2.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "1e6534953ccf5a6a9f9047191650535d8a0f6345bcd72499096216c0d4e8f04b",
-    "display_path": "configs/experiments/ragtune_crag_generated_answer_evaluator_mapping_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_crag_generated_answer_evaluator_mapping_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "4986fe789274f46b694eafccf05d454a2ef8c8a69067c64efcee4aa4331c1c88",
-    "display_path": "configs/experiments/ragtune_crag_generative_llm_validation_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_crag_generative_llm_validation_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "c672f3fa4a6cf812b03352431f20bfd20d32e30568ddd0ea65afb1d12da79333",
-    "display_path": "configs/experiments/ragtune_crag_generative_quality_risk_guardrail_v2.yaml",
+    "display_path": "configs/experiments/ragwarrant_crag_generative_quality_risk_guardrail_v2.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "385e1f29e842480b12c1094345c334846acbd7d20845cf8c898fc98a57a8760a",
-    "display_path": "configs/experiments/ragtune_crag_mock_api_docker_reproduction_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_crag_mock_api_docker_reproduction_v1.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "30da0955492953c491f437ba90e48b47144c9597ae0c3e86e93f54d41ffaa846",
-    "display_path": "configs/experiments/ragtune_crag_mock_api_governance_evaluation_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_crag_mock_api_governance_evaluation_v1.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "9bec2b5bae4c4a623f1beb527c4ebcb068c38cf2a76976b033be95e80c7b4749",
-    "display_path": "configs/experiments/ragtune_crag_mock_api_path_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_crag_mock_api_path_v1.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "26ff3dabffbada690659afcbf675885b6db75c4c7062a2f0d2b94e83ed47bb26",
-    "display_path": "configs/experiments/ragtune_crag_mock_api_server_smoke_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_crag_mock_api_server_smoke_v1.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern; host_or_ip_like_pattern"
   },
   {
     "path_hash": "f1bf30c16da302ce86af4f6a986b2b4e77f285634441f28c859ad2fa2bc0336c",
-    "display_path": "configs/experiments/ragtune_crag_mock_api_validation_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_crag_mock_api_validation_v1.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "086925b4b9a4512e1a1f613f573ac98795ec1c947bc46a0a6b3accec4d139fcb",
-    "display_path": "configs/experiments/ragtune_deployment_readiness_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_deployment_readiness_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "7e1be636ef9dc8b64f75be606a91a8b04d4b909d3216f0dafb4bbd0d40e26b8d",
-    "display_path": "configs/experiments/ragtune_end_to_end_governance_replay_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_end_to_end_governance_replay_v1.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "7bf11313516892a37f1ba2b2e9ad455ad1677dc1cda061439d83a00c1a2f80c2",
-    "display_path": "configs/experiments/ragtune_end_to_end_public_development_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_end_to_end_public_development_v1.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "617f72c941d79c91f0168aea3f80ffdc1bd1c9083b207a92fd502e18ceaac550",
-    "display_path": "configs/experiments/ragtune_external_evaluator_adapter_demo_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_external_evaluator_adapter_demo_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "173818a551cac4d2506492f294e29f4ba5a990e0b6c9649f35df33270070d2ba",
-    "display_path": "configs/experiments/ragtune_fresh_clone_reproducibility_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_fresh_clone_reproducibility_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "a1c410f16f083b0a9dcc5006f164386e439b6c755a66203eb7266fc5d064a707",
-    "display_path": "configs/experiments/ragtune_fresh_live_crag_mock_api_behavioral_governance_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_fresh_live_crag_mock_api_behavioral_governance_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "75362828ad5228aa9fb61a42d3b616bafaa93656bc6c5a25164d51d634c5f445",
-    "display_path": "configs/experiments/ragtune_generated_answer_quality_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_generated_answer_quality_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "3a0b64916c456fd1137e3e98eced2030d19ead3293b896db1507b84fe997a383",
-    "display_path": "configs/experiments/ragtune_generative_llm_validation_synthesis_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_generative_llm_validation_synthesis_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "ba9f1a119c4eceb85f7c95e05eec3a1033534fe6cab4de7b02864322e1c2dc15",
-    "display_path": "configs/experiments/ragtune_generator_cost_model_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_generator_cost_model_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "a917d243931c60573396c3da78a61a5728afa063808f4597215b72dd2cba4e3c",
-    "display_path": "configs/experiments/ragtune_hotpotqa_behavioral_governance_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_hotpotqa_behavioral_governance_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "8e077e7a161db46df496f86ecfed2a68827e1f0dfd875ec83be901527cda79ea",
-    "display_path": "configs/experiments/ragtune_hotpotqa_generative_llm_validation_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_hotpotqa_generative_llm_validation_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "8c564689d4bc8ee9320a339e6c924838298104657953aee91490279f26c317cd",
-    "display_path": "configs/experiments/ragtune_hotpotqa_generative_quality_signal_audit_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_hotpotqa_generative_quality_signal_audit_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "056ca79d552dbe90a9d2a71bb39cd1c3b05a4d49b48984ee3c7474c5f258978c",
-    "display_path": "configs/experiments/ragtune_hotpotqa_generative_quality_signal_audit_v2.yaml",
+    "display_path": "configs/experiments/ragwarrant_hotpotqa_generative_quality_signal_audit_v2.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "cc3866bf8c71817214db1919adf69fc7f18504e43077698840dc76cd4bfc12a8",
-    "display_path": "configs/experiments/ragtune_hotpotqa_quality_measurement_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_hotpotqa_quality_measurement_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "47d9a98fbf5f26c49c3c7bb76f2c9eddce977eff0dc6ca7be74e75f0b76256c2",
-    "display_path": "configs/experiments/ragtune_human_eval_sample_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_human_eval_sample_v1.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "ba8ce829c36e418af1fd8dea918d934e6e443849225da79e506e6664fa80f9aa",
-    "display_path": "configs/experiments/ragtune_multi_dataset_behavioral_governance_synthesis_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_multi_dataset_behavioral_governance_synthesis_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "af48650116a1ead525612d16311ebe0d883062209920e92c49a408ac6d6608fe",
-    "display_path": "configs/experiments/ragtune_open_source_arxiv_readiness_synthesis_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_open_source_arxiv_readiness_synthesis_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "848d54918f10848e163014d403b0d8473a20b58739d0832f4f0a2b3f2a2d374f",
-    "display_path": "configs/experiments/ragtune_pareto_constraint_baselines_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_pareto_constraint_baselines_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "18c99a0446ccf1731cfe76240af511b82de818b0898c0c013df29ea7d78f1fa8",
-    "display_path": "configs/experiments/ragtune_public_mini_reproduction_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_public_mini_reproduction_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "3033adc09b59e01dbd0f6f0c893e6f81b36c06cd49941e5adbca89209b4649c7",
-    "display_path": "configs/experiments/ragtune_rc1_arxiv_readiness_synthesis_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_rc1_arxiv_readiness_synthesis_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "37b61eb79ac3e433da05665c94a92c39422f6b3e9fd5a54fbeff0bfc745a2b19",
-    "display_path": "configs/experiments/ragtune_real_rag_reproduction_v1_confirmatory.yaml",
+    "display_path": "configs/experiments/ragwarrant_real_rag_reproduction_v1_confirmatory.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "2d1946c8fd8e44b7102647ae04a4b14af54a1d0eb72b0492f29ed984b7009390",
-    "display_path": "configs/experiments/ragtune_real_rag_reproduction_v1_development.yaml",
+    "display_path": "configs/experiments/ragwarrant_real_rag_reproduction_v1_development.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "bd8c6718fdb47bae5afacb993817dcad5f9a5818de0fa878d9447393067ef4df",
-    "display_path": "configs/experiments/ragtune_real_rag_reproduction_v1_public_confirmatory.yaml",
+    "display_path": "configs/experiments/ragwarrant_real_rag_reproduction_v1_public_confirmatory.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "43f0697a411835293aa1eea0fe12a108152c326a912e4e769a5a0174eb7340be",
-    "display_path": "configs/experiments/ragtune_real_rag_reproduction_v1_public_development.yaml",
+    "display_path": "configs/experiments/ragwarrant_real_rag_reproduction_v1_public_development.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "2ad3d0ee49ef391016be350d19fcb915bed8382d6d6324682921462ebb4b7673",
-    "display_path": "configs/experiments/ragtune_real_rag_reproduction_v1_smoke.yaml",
+    "display_path": "configs/experiments/ragwarrant_real_rag_reproduction_v1_smoke.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "2804a134cb2afa4e92ca9311105ce86efa56b02b0c706495f09bf976047d5442",
-    "display_path": "configs/experiments/ragtune_release_candidate_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_release_candidate_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "c41d820f476695c052b56e6e216290376e8ed08d69e98efda35b7cc721a5cdd3",
-    "display_path": "configs/experiments/ragtune_selector_ablation_matrix_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_selector_ablation_matrix_v1.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "82eb268a9e331e49d8bc26f2fd81d31f1c76c6dcbfacfd383d3a2efb0a1ba962",
-    "display_path": "configs/experiments/ragtune_selector_ablation_stress_v2.yaml",
+    "display_path": "configs/experiments/ragwarrant_selector_ablation_stress_v2.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "e8171913b9bd318ae9bca7daf00f9b56ae21dc8e4e89634f038c9418c3e83106",
-    "display_path": "configs/experiments/ragtune_statistical_audit_v1.yaml",
+    "display_path": "configs/experiments/ragwarrant_statistical_audit_v1.yaml",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
@@ -3667,31 +3667,31 @@
   },
   {
     "path_hash": "247cfa46ddb188ec2c2c8ffcee2dd76f0e462ae5a30ba798c389ce58bce79e7a",
-    "display_path": "deploy/kubernetes/ragtune-configmap.example.yaml",
+    "display_path": "deploy/kubernetes/ragwarrant-configmap.example.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "e1dfaae4a6373637e0ce10fbdbcf5f18a73dfbeb40a88de9eee5b5cb2112cffa",
-    "display_path": "deploy/kubernetes/ragtune-cronjob.yaml",
+    "display_path": "deploy/kubernetes/ragwarrant-cronjob.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "7fc0691b3be15d87e4d0a1b1fbc5517d61e52f3683ffd6be19cd51e9e66325eb",
-    "display_path": "deploy/kubernetes/ragtune-job.yaml",
+    "display_path": "deploy/kubernetes/ragwarrant-job.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "3fbf43b72ee36b90418719710f762f289b0e01681f9b5b80bf87ca37945cc488",
-    "display_path": "deploy/kubernetes/ragtune-pvc.example.yaml",
+    "display_path": "deploy/kubernetes/ragwarrant-pvc.example.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "fe52602f40fd8e19fbbf655d511a189b42dae77be85f70e46c86eaa2fd75c719",
-    "display_path": "deploy/kubernetes/ragtune-secret.example.yaml",
+    "display_path": "deploy/kubernetes/ragwarrant-secret.example.yaml",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
@@ -5665,403 +5665,403 @@
   },
   {
     "path_hash": "a89581830950e7dfce193205068a7b7041bfa0b8f5c6346acc84c7926f8b6a7c",
-    "display_path": "scripts/verify_ragtune_run.py",
+    "display_path": "scripts/verify_ragwarrant_run.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "76eed030a484a400475ddeb5edaacdf4c2fe69e6176ff6d340ee1bc8f05d26f5",
-    "display_path": "src/rag_tuning_governance.egg-info/PKG-INFO",
+    "display_path": "src/ragwarrant_governance.egg-info/PKG-INFO",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "77ba17a41f1f60e2410225ef680a37cadbb7bed2d8c27e96a95222e6585e9c25",
-    "display_path": "src/rag_tuning_governance.egg-info/SOURCES.txt",
+    "display_path": "src/ragwarrant_governance.egg-info/SOURCES.txt",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "164fb34d8b859bff19f3f6946cff1ab8c154f6933435021266b6fed6bcf6df84",
-    "display_path": "src/ragtune/aim_hardware_characterization.py",
+    "display_path": "src/ragwarrant/aim_hardware_characterization.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "44c7837e11f7c866bd9b3331f59df349294b97e48e418d8162f0f24742fbc8d8",
-    "display_path": "src/ragtune/artifacts.py",
+    "display_path": "src/ragwarrant/artifacts.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "993d654414b9ca7ad7353981fa33c2b1eca36428e874184742afc2d1ecd87a5a",
-    "display_path": "src/ragtune/behavioral_governance.py",
+    "display_path": "src/ragwarrant/behavioral_governance.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "5a98ca8e12c456f1b49a99455b85ea9d6fbc66a192e6f7e46dce8fdca5f5b876",
-    "display_path": "src/ragtune/certificates.py",
+    "display_path": "src/ragwarrant/certificates.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "432aef8f1d930ea6c3d1012578e48869ffab9362cd2bab7825850f8bdabb9e1a",
-    "display_path": "src/ragtune/cli.py",
+    "display_path": "src/ragwarrant/cli.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "67dc9d143f419542037c21d9339726b220ef650a786f0ae1d5df0e7881e47928",
-    "display_path": "src/ragtune/container_runtime.py",
+    "display_path": "src/ragwarrant/container_runtime.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "58b63017ca64420d956d1c07b578e529d1b22eb0bbff22d4a0799fd63160411c",
-    "display_path": "src/ragtune/container_security_scans.py",
+    "display_path": "src/ragwarrant/container_security_scans.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "75dc4f8b22a45f1b32531c8d42034cb0b3ba6853c79a87a5a08773287b05bd00",
-    "display_path": "src/ragtune/container_smoke_tests.py",
+    "display_path": "src/ragwarrant/container_smoke_tests.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "01914396ebb55c91aa0bc97f119eea532646fa997c2653f068888b09704f25a4",
-    "display_path": "src/ragtune/crag_evaluator_mapping.py",
+    "display_path": "src/ragwarrant/crag_evaluator_mapping.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "b353a68e90a4024dab8cde20d36e59f20a28698f061a615582e62770d5cc99a9",
-    "display_path": "src/ragtune/crag_generative_validation.py",
+    "display_path": "src/ragwarrant/crag_generative_validation.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "a41fa287bb94ea144cf24a45704c76b39c7844059521675defb9fc6aa7d747c6",
-    "display_path": "src/ragtune/deployment_readiness.py",
+    "display_path": "src/ragwarrant/deployment_readiness.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "db60f272e42030e08cfaf76af859ef77a5a3ced6c2bc6d02918aa30cc442061a",
-    "display_path": "src/ragtune/docker_static_validation.py",
+    "display_path": "src/ragwarrant/docker_static_validation.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "2835fdc3ce35edd88705408c8e9ac3b9d75cc6f56174a951104b61fe9f9c78e6",
-    "display_path": "src/ragtune/experiments/certificate_calibration.py",
+    "display_path": "src/ragwarrant/experiments/certificate_calibration.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "7642043f9481cca94f521c7efb0ec87885e8c89e1a46c0ae598e72cae9d49672",
-    "display_path": "src/ragtune/experiments/cloud_repro.py",
+    "display_path": "src/ragwarrant/experiments/cloud_repro.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "a9c231ccf5f8f782ae6f842fb7d9c1286e7066b832c97916f1cd16a08d9b8f41",
-    "display_path": "src/ragtune/experiments/common.py",
+    "display_path": "src/ragwarrant/experiments/common.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "640a76210db471098d76364cb0333992065b815bd057c487cb9fa8356d8e2f4e",
-    "display_path": "src/ragtune/experiments/end_to_end_public.py",
+    "display_path": "src/ragwarrant/experiments/end_to_end_public.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "f3348b7a0a96b3eadb0c54459e7e44726f03f6a0bc2047cac26e6ed6d8bb832d",
-    "display_path": "src/ragtune/external_evaluator_adapter_demo.py",
+    "display_path": "src/ragwarrant/external_evaluator_adapter_demo.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "9b84503b874bc768b687712045d10ade7eb3e960b0565e5bf4648813fe33da59",
-    "display_path": "src/ragtune/external_evaluators/__init__.py",
+    "display_path": "src/ragwarrant/external_evaluators/__init__.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "e1c149a1c20de8535b7b16e0cc87dc36e0ce351240701ac86353c5854163e8e0",
-    "display_path": "src/ragtune/external_evaluators/deepeval_adapter.py",
+    "display_path": "src/ragwarrant/external_evaluators/deepeval_adapter.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "36d2643b9683012733c6798c2d11672256e7ccfef9953944b8f3c282de0b91d2",
-    "display_path": "src/ragtune/external_evaluators/generic_csv_adapter.py",
+    "display_path": "src/ragwarrant/external_evaluators/generic_csv_adapter.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "1b1f92b2263ca88d61464348b703c6ff0c4c2fe4ca91f1b82e8a4e4106723273",
-    "display_path": "src/ragtune/external_evaluators/generic_jsonl_adapter.py",
+    "display_path": "src/ragwarrant/external_evaluators/generic_jsonl_adapter.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "eed4e438fbef87f39f6b6b6ee9dc35d130a610162d3f656598e2a05dbf62d97d",
-    "display_path": "src/ragtune/external_evaluators/ragas_adapter.py",
+    "display_path": "src/ragwarrant/external_evaluators/ragas_adapter.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "0129255604a159a0ee281b004f28c1c3546ea3851fa6c47dcccd08f36878de2f",
-    "display_path": "src/ragtune/external_evaluators/schema.py",
+    "display_path": "src/ragwarrant/external_evaluators/schema.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "6d805123e853915f345c06ca5f6b407c2cfde965d9c078bffec129eab19a99b7",
-    "display_path": "src/ragtune/fixtures.py",
+    "display_path": "src/ragwarrant/fixtures.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "9a10db60b4150d6659a48dac5a72f836cdd1219713fb5acc1eb647854f368349",
-    "display_path": "src/ragtune/fresh_live_behavioral_governance.py",
+    "display_path": "src/ragwarrant/fresh_live_behavioral_governance.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "db2d2357cf5cfd2dd9206270d06d8177200f249e0958909d4d5f1a91f5fa41b8",
-    "display_path": "src/ragtune/generated_answer_quality.py",
+    "display_path": "src/ragwarrant/generated_answer_quality.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "323e83343b7aadb674394046ec28639b36cbb9103acd708e57ed864fe01e9be8",
-    "display_path": "src/ragtune/generative_prompts.py",
+    "display_path": "src/ragwarrant/generative_prompts.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "1ba2a1018e9c294252bd8c05e63bee9a51c0a12ed6e7f2fb272684f25b670abc",
-    "display_path": "src/ragtune/generative_validation_common.py",
+    "display_path": "src/ragwarrant/generative_validation_common.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "2e97ed2518f48d330178b8090ceaca432904e01d3aa9c35d0c49c4050efe54a3",
-    "display_path": "src/ragtune/generative_validation_synthesis.py",
+    "display_path": "src/ragwarrant/generative_validation_synthesis.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "f91700334e982af0d7f4634a43cb9282486f34f0a40899135d2a356e3e78958d",
-    "display_path": "src/ragtune/generators/__init__.py",
+    "display_path": "src/ragwarrant/generators/__init__.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "ecc7fec4b6f1ac6d4ac1418e5f04c2115d79ff53f7ab2025d7eb57fe74856760",
-    "display_path": "src/ragtune/generators/azure_openai.py",
+    "display_path": "src/ragwarrant/generators/azure_openai.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "f31c05a1654570d24a6499ed7d3b717db5ea7337f4ad94959f6fd389a4c84e29",
-    "display_path": "src/ragtune/generators/base.py",
+    "display_path": "src/ragwarrant/generators/base.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "595d6f126cdf205475c19d01ef7abe35a7b07c735d917f8da390f35e0bbe00ec",
-    "display_path": "src/ragtune/generators/factory.py",
+    "display_path": "src/ragwarrant/generators/factory.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "e01bb0c00f5f94096cd164cb0ed2b6e1a2f54c2f8edc246a5aae410b76077b14",
-    "display_path": "src/ragtune/generators/hosted_openai.py",
+    "display_path": "src/ragwarrant/generators/hosted_openai.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "08b5f4bb6fdd0a212e928236ee8a5a62043510334e66f63cc56b2944f161afef",
-    "display_path": "src/ragtune/generators/local_openai_compatible.py",
+    "display_path": "src/ragwarrant/generators/local_openai_compatible.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "ce462aca060964da5ee440dc3baf91786bf6a3ce560f7f7f8083a123e4739af6",
-    "display_path": "src/ragtune/generators/ollama.py",
+    "display_path": "src/ragwarrant/generators/ollama.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "732741445925ed5a45c4e8cab8636b8049590ca1ea06371d114d49536a065664",
-    "display_path": "src/ragtune/generators/util.py",
+    "display_path": "src/ragwarrant/generators/util.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "327af8b240eb73d8636e35074acbaf3c5b59e1ff9af05e1dc6fe29b57c14f9e6",
-    "display_path": "src/ragtune/hotpotqa_generative_quality_signal_audit.py",
+    "display_path": "src/ragwarrant/hotpotqa_generative_quality_signal_audit.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "210465f663a12fbc6352a850ca4e475f822515410e545f1b7250af5d3e21d076",
-    "display_path": "src/ragtune/hotpotqa_generative_validation.py",
+    "display_path": "src/ragwarrant/hotpotqa_generative_validation.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "6a6f1dcdc67b8ca01fb21e3862e8f6d5d2a2156d09ab5a8f0c48bebc5af903c0",
-    "display_path": "src/ragtune/open_source_arxiv_readiness_synthesis.py",
+    "display_path": "src/ragwarrant/open_source_arxiv_readiness_synthesis.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "bf42f50dff338500552be5726994d4cc6e141b7c65a035840233e423cdefb68d",
-    "display_path": "src/ragtune/phase2.py",
+    "display_path": "src/ragwarrant/phase2.py",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "c98065c05aa1ce03102c98a46847d91439dc18f80a5070dad170155f2bd0d862",
-    "display_path": "src/ragtune/policy.py",
+    "display_path": "src/ragwarrant/policy.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "d114db04b9d88941913131aeec4dd06d0e10c0cabe8db6bbfcf7728d756c63f6",
-    "display_path": "src/ragtune/policy_selection.py",
+    "display_path": "src/ragwarrant/policy_selection.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "48b5d629adaefa3cc7c068c90b039452bbf4ee96bb0e4072ed259d7987791250",
-    "display_path": "src/ragtune/promotion_decision.py",
+    "display_path": "src/ragwarrant/promotion_decision.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "e4568180dc07e9fb07b024261dc5b94946e27ef1a58563c2ebd3df635f0d52e5",
-    "display_path": "src/ragtune/public_mini_reproduction.py",
+    "display_path": "src/ragwarrant/public_mini_reproduction.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "a59ebdff1ba6b317c42c99e63f550817ec1ba5172c6d8179f8cba50861a99930",
-    "display_path": "src/ragtune/publication_sanitization.py",
+    "display_path": "src/ragwarrant/publication_sanitization.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "3a1467da2cc91d4a3e2430a9ea26648bbc31fde7bd3e88addee9e44cd0d1123e",
-    "display_path": "src/ragtune/quality_metrics.py",
+    "display_path": "src/ragwarrant/quality_metrics.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "fb9bed4247feaaf67161bfd886a7939917d4164618c1a9e9914e975909c08845",
-    "display_path": "src/ragtune/rc1_maturity.py",
+    "display_path": "src/ragwarrant/rc1_maturity.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "8e19bbefa9292f6fe8235f37d450874cddedd756f1ca8461d79cfc57c575e4d3",
-    "display_path": "src/ragtune/real_rag.py",
+    "display_path": "src/ragwarrant/real_rag.py",
     "status": "must_exclude",
     "reason": "private_path_like_pattern"
   },
   {
     "path_hash": "e14e514ac160a4ef046bee8f6ec7a817078a267b2c31dbd8e2a7e07f65c4b433",
-    "display_path": "src/ragtune/reports.py",
+    "display_path": "src/ragwarrant/reports.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "080443ea61a583e762284999b86ea7d3f3b2200853d37bf3d844ca69d0b5f8bf",
-    "display_path": "src/ragtune/robustness.py",
+    "display_path": "src/ragwarrant/robustness.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "83fc543abcaeeca5b8b78e38cba85214d42cb5f5ade6cc45f4246b7126b7c74e",
-    "display_path": "src/ragtune/selector_ablation_matrix.py",
+    "display_path": "src/ragwarrant/selector_ablation_matrix.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "b7f4a7dba98c0c027748f279db457be61180a7d06065fa7d5ee5502d70269674",
-    "display_path": "src/ragtune/storage/__init__.py",
+    "display_path": "src/ragwarrant/storage/__init__.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "aed12b71025f1bcb85b6bea433e89cb499379365f874eb3a3e2f2b23d0f6172d",
-    "display_path": "src/ragtune/storage/azure_blob.py",
+    "display_path": "src/ragwarrant/storage/azure_blob.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "159a06318da672d7c47f6f4ae10f64c0334782d712735a8f0c98fe864451b09b",
-    "display_path": "src/ragtune/storage/base.py",
+    "display_path": "src/ragwarrant/storage/base.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "29e36666435ffcaec1891ce202bfe0cd99c675554cf74db304212749de363299",
-    "display_path": "src/ragtune/storage/factory.py",
+    "display_path": "src/ragwarrant/storage/factory.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "571d587e42f3831a281559f04d64cef6b46b42300082a80cb959f6a778343878",
-    "display_path": "src/ragtune/storage/gcs.py",
+    "display_path": "src/ragwarrant/storage/gcs.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "ef42e7ebf48e54f6fcde23d85227b3128a252de9b707e2ec22ecd67601b66663",
-    "display_path": "src/ragtune/storage/local.py",
+    "display_path": "src/ragwarrant/storage/local.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "2148cb34e2665b8076407cc13ca6e28c6574d6a88b467e591e01a0f6e58f69c4",
-    "display_path": "src/ragtune/storage/s3.py",
+    "display_path": "src/ragwarrant/storage/s3.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "f6ab5fb4667457b8aac6d860a81468372f98e68d267bf175e6a63de1afd20b94",
-    "display_path": "src/ragtune/utils/__init__.py",
+    "display_path": "src/ragwarrant/utils/__init__.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "57c4f3425bd638b4c58a6015189faec92c612a541940af7217212e8d4123ef29",
-    "display_path": "src/ragtune/utils/files.py",
+    "display_path": "src/ragwarrant/utils/files.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "ad6952518475ff8a08955b0cbdd784844a5edba01adac407997413b38532e2f4",
-    "display_path": "src/ragtune/utils/hashing.py",
+    "display_path": "src/ragwarrant/utils/hashing.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "64a1ffaf5e6bd5339524c645585f7923279f4b6faf35b242a0539bec7294c6c4",
-    "display_path": "src/ragtune/utils/write_once.py",
+    "display_path": "src/ragwarrant/utils/write_once.py",
     "status": "safe_candidate",
     "reason": "public_survivor_only"
   },
   {
     "path_hash": "3b698e701a9fd11f02367e951734d4418d40482ae5f4fa9f60054c2ddf4a4683",
-    "display_path": "src/ragtune/validation_phase3.py",
+    "display_path": "src/ragwarrant/validation_phase3.py",
     "status": "must_exclude",
     "reason": "private_path_like_pattern; raw_text_field_or_prompt_pattern"
   },
@@ -8101,37 +8101,37 @@
   },
   {
     "path_hash": "432205ae142d31b470e8bfa55bf6749d8a87200dad7732880defccacc1b650d4",
-    "display_path": "tests/test_ragtune_confirmatory_v2_phase.py",
+    "display_path": "tests/test_ragwarrant_confirmatory_v2_phase.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "2e5d5b6ff6203b1cade04446ef7b20819fb232d3238b06aa7a5c0a586c99ac7b",
-    "display_path": "tests/test_ragtune_crag_mock_api_hardening_phase.py",
+    "display_path": "tests/test_ragwarrant_crag_mock_api_hardening_phase.py",
     "status": "needs_manual_review",
     "reason": "raw_text_field_or_prompt_pattern"
   },
   {
     "path_hash": "52d8bb1ff9c690ec52f26356e9a09c7cbd2b60c7ec48e4d9658511876b19347c",
-    "display_path": "tests/test_ragtune_real_rag_validation.py",
+    "display_path": "tests/test_ragwarrant_real_rag_validation.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "8107412d0f91466900526d84187f8184090e6c97902bb1264ecc1d6e2c740bc6",
-    "display_path": "tests/test_ragtune_rowlevel_e2e_phase.py",
+    "display_path": "tests/test_ragwarrant_rowlevel_e2e_phase.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "fcafd1c9de1029e0b62ba3c320178bd1985b044591c0d716677633e58bf16530",
-    "display_path": "tests/test_ragtune_validation.py",
+    "display_path": "tests/test_ragwarrant_validation.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },
   {
     "path_hash": "cca8165dee2cdd15e8008001de1a85f3f5d3740ff4f52f2dc7cfd68ada8302ed",
-    "display_path": "tests/test_ragtune_validation_phase2.py",
+    "display_path": "tests/test_ragwarrant_validation_phase2.py",
     "status": "safe_candidate",
     "reason": "no_blocking_pattern_in_sample"
   },

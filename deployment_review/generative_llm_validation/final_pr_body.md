@@ -1,6 +1,6 @@
 ## Summary
 
-Adds RAGTune Generative LLM Validation v1. This validates policy-specific generated answers using a pinned generator where available, sanitized generated-answer metrics, and strict publication hygiene.
+Adds RAGWarrant Generative LLM Validation v1. This validates policy-specific generated answers using a pinned generator where available, sanitized generated-answer metrics, and strict publication hygiene.
 
 ## Generator status
 

@@ -1,6 +1,6 @@
 # Cloud-Agnostic Deployment Hardening Preflight
 
-Repository path: `<public-ragtune-repository>`
+Repository path: `<public-ragwarrant-repository>`
 
 Starting commit: `4b86f6e19b77f0de822cc37c4569d083fff56976`
 
@@ -8,7 +8,7 @@ Starting branch: `main`
 
 Working branch: `codex/cloud-agnostic-deployable-tool-hardening`
 
-Origin remote: `https://github.com/AIM-RAGTune/rag-tuning-governance.git`
+Origin remote: `https://github.com/RAGWarrant/ragwarrant-governance.git`
 
 Working tree status at branch creation: clean.
 

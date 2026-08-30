@@ -73,7 +73,7 @@
   ],
   "selector_candidate_policy_count": 6,
   "selector_design": "validation_split_quality_only_high_evidence_vs_governed_latency_feasible_confirmatory_eval",
-  "suite": "ragtune_crag_generative_llm_validation_v1",
+  "suite": "ragwarrant_crag_generative_llm_validation_v1",
   "unique_answer_hash_count": 76,
   "usable_quality_signal": true
 }

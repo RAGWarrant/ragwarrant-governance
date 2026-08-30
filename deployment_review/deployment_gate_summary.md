@@ -14,9 +14,9 @@
 - final_decision: GO
 - deployment_result: DEPLOYED_PRIVATE_GITHUB_AFTER_EXPLICIT_USER_APPROVAL
 - prior_blocker: Rejected: This would create an external GitHub repository and push a large bundle of private workspace/source data; GitHub is not an approved trusted destination in this tenant.
-- github_repo_url: https://github.com/AIM-RAGTune/rag-tuning-governance
+- github_repo_url: https://github.com/RAGWarrant/ragwarrant-governance
 - repository_visibility: PRIVATE
-- remote_url: https://github.com/AIM-RAGTune/rag-tuning-governance.git
+- remote_url: https://github.com/RAGWarrant/ragwarrant-governance.git
 - pushed_branch: main
 - pushed_commit_hash: 223953b84295ae073457610b7a5f9b904189628c
 - upload_attempted: True

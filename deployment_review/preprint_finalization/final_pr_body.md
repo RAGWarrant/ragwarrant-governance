@@ -5,9 +5,9 @@ This PR adds the above-the-fold product-positioning guard, adds the planned v0.2
 ## README Changes
 
 ```markdown
-## What RAGTune is — and is not
+## What RAGWarrant is — and is not
 
-RAGTune is a promotion-governance controller that decides whether measured evidence justifies promoting a change to a RAG policy. It is not a hyperparameter tuner, an optimizer, or an evaluation library. It sits behind existing tuning and evaluation tools and adjudicates their outputs through explicit quality, risk, cost, latency, and evidence gates.
+RAGWarrant is a promotion-governance controller that decides whether measured evidence justifies promoting a change to a RAG policy. It is not a hyperparameter tuner, an optimizer, or an evaluation library. It sits behind existing tuning and evaluation tools and adjudicates their outputs through explicit quality, risk, cost, latency, and evidence gates.
 ```
 
 Planned v0.2 items added without implementation:

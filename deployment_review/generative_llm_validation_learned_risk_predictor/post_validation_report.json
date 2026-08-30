@@ -1,5 +1,5 @@
 {
-  "suite": "ragtune_crag_learned_quality_risk_predictor_guarded_latency_v1",
+  "suite": "ragwarrant_crag_learned_quality_risk_predictor_guarded_latency_v1",
   "generator_provider": "ollama",
   "generator_model": "llama3.2:3b",
   "primary_endpoint": "latency",

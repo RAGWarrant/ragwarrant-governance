@@ -1,0 +1,40 @@
+{
+  "document_family_bootstrap_ci": [
+    0.001002270839103757,
+    0.001002825032239709
+  ],
+  "duplicate_cluster_bootstrap_ci": [
+    0.001002270839103757,
+    0.001002825032239709
+  ],
+  "effect_size": 286.4390133446677,
+  "left_policy": "top_k_low",
+  "median_delta": 0.0010000751959159948,
+  "paired_examples": 571,
+  "point_estimate": 0.0010025405091496173,
+  "probability_of_noninferiority": 1.0,
+  "probability_of_superiority": 1.0,
+  "query_bootstrap": {
+    "bootstrap_samples": 1000,
+    "ci_high": 0.001002825032239709,
+    "ci_low": 0.001002270839103757,
+    "mean_delta": 0.0010025405091496173,
+    "unit_count": 571
+  },
+  "query_bootstrap_ci": [
+    0.001002270839103757,
+    0.001002825032239709
+  ],
+  "query_win_tie_loss": {
+    "loss": 0,
+    "tie": 0,
+    "win": 571
+  },
+  "right_policy": "greedy_regression_aware_search",
+  "seed_level_bootstrap_ci": [
+    0.001002270839103757,
+    0.001002825032239709
+  ],
+  "status": "ok",
+  "std_delta": 3.500013833462258e-06
+}

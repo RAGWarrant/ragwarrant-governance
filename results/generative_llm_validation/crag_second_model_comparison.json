@@ -29,5 +29,5 @@
   "result_class": "CRAG_GEN_LLM_COST_RESULT_MIXED_OR_INCONCLUSIVE_ACROSS_MODELS",
   "second_generator_model": "gpt-oss:20b",
   "second_model_stability_result": "CRAG_GEN_LLM_COST_RESULT_INCONCLUSIVE_ACROSS_REPEATS",
-  "suite": "ragtune_crag_generative_second_model_comparison_v1"
+  "suite": "ragwarrant_crag_generative_second_model_comparison_v1"
 }

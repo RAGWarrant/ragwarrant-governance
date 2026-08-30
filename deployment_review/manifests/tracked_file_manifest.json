@@ -116,1027 +116,1027 @@
   },
   {
     "bytes": 832,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/beneficial_governance_candidate_table.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/beneficial_governance_candidate_table.csv",
     "sha256": "bf8e9f895b8dc33d0e970a9b72b1d52f35e71c1edff85bed3a0f939dcd4e2eaf"
   },
   {
     "bytes": 1549,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/beneficial_governance_divergence_cases.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/beneficial_governance_divergence_cases.json",
     "sha256": "01b10c2dbad087e5d3efc4613790ea082ab6d9923eaf447b0ff773f81bea14cd"
   },
   {
     "bytes": 197,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/beneficial_governance_divergence_search_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/beneficial_governance_divergence_search_manifest.json",
     "sha256": "c574a1e62e124d45f474f9e34781185cf1fbc600df6ea699bb5e7407005dbcc1"
   },
   {
     "bytes": 194,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/beneficial_governance_divergence_search_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/beneficial_governance_divergence_search_report.md",
     "sha256": "b3fc2a87b952def6abf78200597843b2db90275c5d1afb62efdc119bc6ac7300"
   },
   {
     "bytes": 351,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/beneficial_governance_divergence_summary.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/beneficial_governance_divergence_summary.json",
     "sha256": "25542b4f335313a195b6f45d4ad8829602199ab5bd0ee4a8838c8363c0545199"
   },
   {
     "bytes": 444,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/input_config.yaml",
     "sha256": "14c0a8a869a4c6b75fecc2e5b39d55abbe89fc0f9ee2450fcccf80c55ad3d7eb"
   },
   {
     "bytes": 348,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/no_overwrite_audit.json",
     "sha256": "f128b5813d9b377ac421be1217c7a1f682b7f87b545e39a48892f0ecb3fd9730"
   },
   {
     "bytes": 1158,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_beneficial_governance_divergence_search_v1_20260809-170326-3dbd620301/run_manifest.json",
     "sha256": "f0e86ef034269a21678a0a6b6ead4d1ca0750c20f4c9428efc3775c0f8da2b43"
   },
   {
     "bytes": 684,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/ablation_result.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/ablation_result.json",
     "sha256": "43535cad07d1e2a5eab987d8d4ace5aed4af0568073a8ba54725063f3215c2ea"
   },
   {
     "bytes": 126,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/api_efficiency_analysis.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/api_efficiency_analysis.json",
     "sha256": "9a9725de97cf24d45ec4ae0c1b8410fb8f61052cea67cfced28dd0f5bf3dd848"
   },
   {
     "bytes": 1036,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/counterfactual_governance_layers.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/counterfactual_governance_layers.json",
     "sha256": "2062d4d20abcf54e5248052a785f9fdd94fc14ad1afea0712b6a9db3a516feea"
   },
   {
     "bytes": 684,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/crag_mock_api_ablation_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/crag_mock_api_ablation_manifest.json",
     "sha256": "43535cad07d1e2a5eab987d8d4ace5aed4af0568073a8ba54725063f3215c2ea"
   },
   {
     "bytes": 363,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/crag_mock_api_ablation_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/crag_mock_api_ablation_report.md",
     "sha256": "7b93cabae56a6f6870b20b341728558feaec3e345c861a39d22f8ab93afb047f"
   },
   {
     "bytes": 281,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/input_config.yaml",
     "sha256": "f7d2b3300abdc15c95c5ed1358df482a522c4c4f1761ac40a61fbbb893f84fdc"
   },
   {
     "bytes": 314,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/no_overwrite_audit.json",
     "sha256": "aa68e051363b10feed4d97fdaf7c3852e0fb40939f95d765eacda2812d1d2b66"
   },
   {
     "bytes": 266,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/overfit_generalization_analysis.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/overfit_generalization_analysis.json",
     "sha256": "9a72c1608a055bbb5cf6d0ffa89c95eb3dc35341eae10bcd2bf8db69b2ac4c01"
   },
   {
     "bytes": 18395,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/query_segment_analysis.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/query_segment_analysis.csv",
     "sha256": "95ac15cb6bf76316fd0bbd94e0883de293f9c8b92bfe4539e3100d3e43708083"
   },
   {
     "bytes": 208,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/retrieval_noise_analysis.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/retrieval_noise_analysis.json",
     "sha256": "9701d6229de3d7898702ff0de94b1a1de8f0f8658228bb52a3653451257c4943"
   },
   {
     "bytes": 1094,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/run_manifest.json",
     "sha256": "92cc4828ba38ce8c1e11f97aabbc8cb46a27e3e4def88c444a215cc3d9f7d667"
   },
   {
     "bytes": 579172,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/top_k_low_vs_greedy_metrics.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/top_k_low_vs_greedy_metrics.csv",
     "sha256": "2780fdcdf66d27320a58959719b28386631555f962297fcd460c78aa03316ac0"
   },
   {
     "bytes": 465,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/utility_decomposition.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/utility_decomposition.json",
     "sha256": "c5d4713c79196c6c6f9b67085e348d279aa9e0e8bcd598e81c3779839165a670"
   },
   {
     "bytes": 320,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/case_pack_result.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/case_pack_result.json",
     "sha256": "148b2dc8cff4f378a346510f928b56250cc28db29f8520c6b7372272691fdffd"
   },
   {
     "bytes": 161,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/case_pack_selection_rationale.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/case_pack_selection_rationale.json",
     "sha256": "298e63ac7d2493f397b1c833619ba9004e66e63d2a4ef1ebee686fcc5befdfdd"
   },
   {
     "bytes": 320,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_pack_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_pack_manifest.json",
     "sha256": "148b2dc8cff4f378a346510f928b56250cc28db29f8520c6b7372272691fdffd"
   },
   {
     "bytes": 10683,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.json",
     "sha256": "335aa69566ce9dbdccb155cbeb64befe004e89352bbe33eecac7c7aff4900d76"
   },
   {
     "bytes": 4171,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.md",
     "sha256": "20fe4ba4cbea1c908873f54c0e44c7593c3ee5e79b49cff62341c025386e0ae4"
   },
   {
     "bytes": 1094,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_executive_case_pack.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_executive_case_pack.md",
     "sha256": "369d1fbfcd25cce00996800335e9d2debd157d4d43f92aac4d33de23108c92f0"
   },
   {
     "bytes": 4171,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_technical_case_pack.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_technical_case_pack.md",
     "sha256": "20fe4ba4cbea1c908873f54c0e44c7593c3ee5e79b49cff62341c025386e0ae4"
   },
   {
     "bytes": 323,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/input_config.yaml",
     "sha256": "f71ba2065dc72b100e77618fbf6d59c42617213ca95c669848bac1c8a7cb7f6b"
   },
   {
     "bytes": 340,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/no_overwrite_audit.json",
     "sha256": "631e10025630622fea557efe6572a737d2d8ef822b465c1fce57b54487d6367f"
   },
   {
     "bytes": 1130,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/run_manifest.json",
     "sha256": "0d9ef2cefa78f1bde43a04949cb3dd7a032f1e42ec363bb143958b58ec10809b"
   },
   {
     "bytes": 1071,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180013-afbd193043/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180013-afbd193043/input_config.yaml",
     "sha256": "2c5e716d668ebe95c2d95c4eb2b41351b8280014d7044e7e209e2df07da9d256"
   },
   {
     "bytes": 569,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/crag_mock_api_docker_reproduction_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/crag_mock_api_docker_reproduction_manifest.json",
     "sha256": "302c6c721da74c2b0a0b6bdedfe62e029601e8e7d7e385f2ee00d153c8f2134f"
   },
   {
     "bytes": 1963,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_build_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_build_report.json",
     "sha256": "c052702a83571db2533dfa91c6d0f5d216ea9937bc84f37aff25b06cf4a42d6c"
   },
   {
     "bytes": 207,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_mock_api_server_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_mock_api_server_report.json",
     "sha256": "2a20ff5aea3ad157429eed875126d9120a6283acea847eab0a32ded10f391531"
   },
   {
     "bytes": 5858,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_parent_comparison.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_parent_comparison.json",
     "sha256": "8b5b9cce6fb6c967406282dfe3c8b9d8602125642010a70610cbae970dc76d12"
   },
   {
     "bytes": 717,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_reproduction_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_reproduction_report.md",
     "sha256": "9f58c5d141e466511d4634ab9c90357ac022e12ed359e3a97a9d6a29696497d1"
   },
   {
     "bytes": 569,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_reproduction_result.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_reproduction_result.json",
     "sha256": "302c6c721da74c2b0a0b6bdedfe62e029601e8e7d7e385f2ee00d153c8f2134f"
   },
   {
     "bytes": 104,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_runtime_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_runtime_report.json",
     "sha256": "4d425ba3560dc852ac573ef5846f1f4743ed824d4ec5b8f5d548f89397d67ecc"
   },
   {
     "bytes": 2533,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_validation_run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/docker_validation_run_manifest.json",
     "sha256": "644378df77745fd271a923130a955d047bd7109895577dfb1b9a303284c844a2"
   },
   {
     "bytes": 1150,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/input_config.yaml",
     "sha256": "5d6563c54a46f023801fc6167ee97e2f72fd1ed1ef187ce242983c9142d0d21c"
   },
   {
     "bytes": 336,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/no_overwrite_audit.json",
     "sha256": "aadd6804a511ddff6809674e49a170a9869670d87e67cf6b832e1a412fad5611"
   },
   {
     "bytes": 1140,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_docker_reproduction_v1_20260809-180046-afbd193043/run_manifest.json",
     "sha256": "3bcbb6f2a660f1c2c9af47f24ec2b91230bfe81ab478340fdd6427679bf8429e"
   },
   {
     "bytes": 732,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/claim_status_table.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/claim_status_table.csv",
     "sha256": "4315cf3bfe9d0d6ba4d92af4e7abd70764c262b4122d48f6c0976add0c2df6a6"
   },
   {
     "bytes": 182,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/crag_mock_api_evidence_synthesis_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/crag_mock_api_evidence_synthesis_manifest.json",
     "sha256": "737ff2e95a0b4c77f1987ce6324c7293fc0b42f3c22bfdfee195a90dc554889c"
   },
   {
     "bytes": 788,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/crag_mock_api_evidence_synthesis_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/crag_mock_api_evidence_synthesis_report.md",
     "sha256": "d6f9af2cf931069c37fabe7523d0d9de9e8825fabfcb727d94edae1979af2766"
   },
   {
     "bytes": 4744,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/cross_run_evidence_summary.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/cross_run_evidence_summary.json",
     "sha256": "470478821dadfb47f9d26c8f0486c09075b32b5b3e1b8bf1f5c20bd02c8b373c"
   },
   {
     "bytes": 191,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/executive_result_summary.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/executive_result_summary.md",
     "sha256": "80f5eee28b6a6835941e3d158b72db43180eb86344bb3b335a9ac2a181bf06b1"
   },
   {
     "bytes": 236,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/input_config.yaml",
     "sha256": "775201c6251a02cb468cb4a6d7b8d8fdd8257c952026f361f9dd65f5829a9f52"
   },
   {
     "bytes": 334,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/no_overwrite_audit.json",
     "sha256": "b23df7aeba359ee85e568720b4c81df757aba0bcdf3cbaa9ff36aa0770aef681"
   },
   {
     "bytes": 161,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/paper_ready_result_summary.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/paper_ready_result_summary.md",
     "sha256": "bee845613c0efe36bc9221d082c8cb933862707073f961f330a88c8c012d8479"
   },
   {
     "bytes": 1151,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_evidence_synthesis_v1_20260809-180106-feec0b5d7f/run_manifest.json",
     "sha256": "04dd36adb5224a391474f5407e1868fdd681b42c066b25a25c7bd1852936e283"
   },
   {
     "bytes": 326,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/crag_mock_api_repeat_validation_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/crag_mock_api_repeat_validation_manifest.json",
     "sha256": "735f09b107cca4ed1c4e41f0aa6ba098019a27452cdab54748c095f90a4292e4"
   },
   {
     "bytes": 272,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/crag_mock_api_repeat_validation_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/crag_mock_api_repeat_validation_report.md",
     "sha256": "35ee96838e98dc47c04305a5c8a1e505f83d37ca395c80d11baeab684d775621"
   },
   {
     "bytes": 314,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/cross_split_synthesis.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/cross_split_synthesis.json",
     "sha256": "3c7fc7c69f410df9fa0e6992a1a987b5b9ce9e28eba76305691c8323f53c77b6"
   },
   {
     "bytes": 522,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/input_config.yaml",
     "sha256": "a53fe352b48ed2d97404951e4d560a673d348b6fb741ab608cf5f113f8d4f114"
   },
   {
     "bytes": 332,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/no_overwrite_audit.json",
     "sha256": "d7c3fd8fd0ab805e02462d51b99822f13eb5365ed17059e0e9812acd4f865dc9"
   },
   {
     "bytes": 48,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/repeat_leakage_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/repeat_leakage_report.json",
     "sha256": "b12dbec45d275ff95d6060e1e5a4714b3c313ec7355a031359157322b98d4c6c"
   },
   {
     "bytes": 3717,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/repeat_parent_comparison.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/repeat_parent_comparison.json",
     "sha256": "d7430b380dbd96999e048283441a0f02fee3c3061d48e3fb2e0405efa7314ee3"
   },
   {
     "bytes": 300,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/repeat_split_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/repeat_split_manifest.json",
     "sha256": "92a6d6c34c6e8de6a16e60f060e18c5cd7467c29c581d47ebd4724d59249400b"
   },
   {
     "bytes": 4837,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/repeat_statistical_analysis.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/repeat_statistical_analysis.json",
     "sha256": "66c81e7f87bf272e0828406d9075895b33c179c23d2e61ade44d5352d62155ea"
   },
   {
     "bytes": 6021,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/repeat_utility_sensitivity.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/repeat_utility_sensitivity.csv",
     "sha256": "cc6f734384efefeed91e06f21bb4eb24dce6dd70e3df0f65bcb54ccf513b7ff5"
   },
   {
     "bytes": 544,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/repeat_validation_results.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/repeat_validation_results.csv",
     "sha256": "c8afbd31dd4024a9f42133284585522f8cebfdd521b03dcc253c180625c76ece"
   },
   {
     "bytes": 1128,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_repeat_validation_v1_20260809-174530-3685275f39/run_manifest.json",
     "sha256": "6d81399647062e42ba1512dd9cabbf48620537fd9aa5621b286323e04564206e"
   },
   {
     "bytes": 259,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_budget_latency_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_budget_latency_report.json",
     "sha256": "0ded97c68d25dd9694d272b5efabfae0f2d5388f33e92f7f7416ade6bc87c8ef"
   },
   {
     "bytes": 1414,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_candidate_metrics.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_candidate_metrics.csv",
     "sha256": "c84340ccdfdea1f713f25081cd8d580e14f4d59765d8b794833f1edee25cfc5a"
   },
   {
     "bytes": 1278,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_confirmatory_candidate_metrics.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_confirmatory_candidate_metrics.csv",
     "sha256": "7658b26eaa16daad87c0621c66e0d95f1b8dbf05d484a59ea11bd26b39be424a"
   },
   {
     "bytes": 36180,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
     "sha256": "5d6c7434a0899a2d757bcdc75e0ba270fab1405a5d7190c535fa3577406a4ff0"
   },
   {
     "bytes": 571588,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_per_query_results.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_per_query_results.csv",
     "sha256": "1029b9b4e1a09ae6ab29f91df723ce9ec7a21e925b43bf30a9dace26cce373b6"
   },
   {
     "bytes": 2035,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_selection_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_selection_report.json",
     "sha256": "9e078e294f626561205e35ca6739d024e70b8ece6c5d4bf2072922455447eeaa"
   },
   {
     "bytes": 3127,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_server_logs_sanitized.txt",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_server_logs_sanitized.txt",
     "sha256": "48f38c1d1c66f53d198febda39993a4d67b795b25583afbaee997748a71bce96"
   },
   {
     "bytes": 989,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_statistical_analysis.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_statistical_analysis.json",
     "sha256": "85f85dc92c83ac53518e24435fbe0aeabb02ae43bf20cfff6136dfd23279a358"
   },
   {
     "bytes": 14562,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
     "sha256": "81a72e04175e3acd2936c5174619e742179db152f0225a991d77799e39840ecc"
   },
   {
     "bytes": 800,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_validation_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_validation_manifest.json",
     "sha256": "cbffa003ab5d7127420addf6f424d0b2b661a79a34b4df9eb5da68bada9c3bc1"
   },
   {
     "bytes": 499,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_validation_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_validation_report.md",
     "sha256": "36ffd08db7cc19594c9647f224c57dee60d5862f51753580956646788e9dd9da"
   },
   {
     "bytes": 633,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/input_config.yaml",
     "sha256": "ad907eac53e7edbca48bc97614a650d583428f8d7b24b5d137fb45b085f29ec1"
   },
   {
     "bytes": 318,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/no_overwrite_audit.json",
     "sha256": "79732c417872ad80ef065ba77d69de8c14674061c75e0a34dff9e38cf7d976fb"
   },
   {
     "bytes": 1099,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/run_manifest.json",
     "sha256": "b35b1b35417c21c280dd11165d239f0eb22634fc450c961ff1e2e01b162af7db"
   },
   {
     "bytes": 258,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_budget_latency_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_budget_latency_report.json",
     "sha256": "e8937ed9d6ffb7f33ec9c5bc4bba5c191934dbdd3ac3b6327badcb76dcf053d9"
   },
   {
     "bytes": 1495,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_candidate_metrics.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_candidate_metrics.csv",
     "sha256": "ca3f0d13886d62f54d6d88317a678c29f8d987a9d5e4db0ae969764dbec70077"
   },
   {
     "bytes": 1469,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_confirmatory_candidate_metrics.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_confirmatory_candidate_metrics.csv",
     "sha256": "29d1ac6af761d32030a0e394092937d896cf71245b70702b76b07199b74194ec"
   },
   {
     "bytes": 123427,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
     "sha256": "79e75250de6d6cbfae669bffdbb50f1a46e4f9a8be7faa1d33f3e43fbaac9b59"
   },
   {
     "bytes": 1945473,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_per_query_results.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_per_query_results.csv",
     "sha256": "d3e169e6f3eb9edf00bd0c9b3be3b9a629043e5d56e326dc0c7e1caf9fcb5759"
   },
   {
     "bytes": 2040,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_selection_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_selection_report.json",
     "sha256": "69fc732f0dc560f165b767b18bc20d3e249c7acc0b298a627a62d9c87b3bef41"
   },
   {
     "bytes": 3127,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_server_logs_sanitized.txt",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_server_logs_sanitized.txt",
     "sha256": "589ddf08a313f59dadf6f64e177274900c97362dcdb864509ad8e0e84460990e"
   },
   {
     "bytes": 994,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_statistical_analysis.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_statistical_analysis.json",
     "sha256": "a55eaa9cf85bd2892aa605fdc53fc1809d1d94ccbb3dceced90f0add42e975f9"
   },
   {
     "bytes": 3001,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_utility_sensitivity.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_utility_sensitivity.csv",
     "sha256": "6c23f129145577df9760acdb1b09f472e294127bc1bbf8e618cd562a026ac532"
   },
   {
     "bytes": 877,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_utility_sensitivity.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_utility_sensitivity.json",
     "sha256": "a085fff0c1d8e5a6f074f6c12308bcae09fbab453f9970e1deb1d4b11837a3b8"
   },
   {
     "bytes": 39116,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
     "sha256": "6a3ab3b0ee32173c2d50e0caac013d75465c8505ecc942b6de7da350a6e86592"
   },
   {
     "bytes": 801,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_validation_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_validation_manifest.json",
     "sha256": "ffbaf30473f893bdda9995f647ed3decd14d4f5cdafda9263ed024269f7ed0f8"
   },
   {
     "bytes": 500,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_validation_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_validation_report.md",
     "sha256": "16074231072dcbfb50d6549c124928623172ca79ff71806b911752bb09060ddb"
   },
   {
     "bytes": 819,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/input_config.yaml",
     "sha256": "3a198accb8cda19cc13743e8cff2cf805d3c0aacced7e8c57f38454cb6df2437"
   },
   {
     "bytes": 318,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/no_overwrite_audit.json",
     "sha256": "454a088ea9b3c4a84b48b79a1670dce904e5dff40e0bbb625dbf8b41206c04c4"
   },
   {
     "bytes": 1099,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/run_manifest.json",
     "sha256": "cee8fe705d8d1aa39873dcdcc6060d0200e9eaa769d2293601c3f49a578b6469"
   },
   {
     "bytes": 258,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_budget_latency_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_budget_latency_report.json",
     "sha256": "202a77b86077efb13d54c040d1e371bd30729369fed1ac07a710f03a16180f23"
   },
   {
     "bytes": 1464,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_candidate_metrics.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_candidate_metrics.csv",
     "sha256": "25b4329524da02b1fb36877b0420cf047c6142e31cbac1f9c83886a25b35f370"
   },
   {
     "bytes": 1504,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_confirmatory_candidate_metrics.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_confirmatory_candidate_metrics.csv",
     "sha256": "cff204462f05a83598a39248bb4288e168f79c41657cc7213e2aeb01f4beeb71"
   },
   {
     "bytes": 180935,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
     "sha256": "faba21fca35539010ec5b96fd058431be59e2241e6e102a8592d73f92a6f7e61"
   },
   {
     "bytes": 2838962,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_per_query_results.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_per_query_results.csv",
     "sha256": "e723c94b9b1d6d5ae9b22a955a1118b45739251db060d0a5b1068effe8ce37b3"
   },
   {
     "bytes": 2034,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_selection_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_selection_report.json",
     "sha256": "e1b3c4b970768d3522a497d6de39be525e42f179ddf749da505b91daf15e9ed5"
   },
   {
     "bytes": 3127,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_server_logs_sanitized.txt",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_server_logs_sanitized.txt",
     "sha256": "51116e9a56730635454d51be1a0646ba04465d40520c1d9f296eaa02103198dd"
   },
   {
     "bytes": 988,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_statistical_analysis.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_statistical_analysis.json",
     "sha256": "b7f4c282a8a9bc8575b557a944f101ee78e985251ab2fd5acac1c1d85a4205ed"
   },
   {
     "bytes": 3002,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_utility_sensitivity.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_utility_sensitivity.csv",
     "sha256": "54a3f28c234183b8ef06a530017298527e03d27b0e7fe1b1a6f48a4956b54bf2"
   },
   {
     "bytes": 877,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_utility_sensitivity.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_utility_sensitivity.json",
     "sha256": "a085fff0c1d8e5a6f074f6c12308bcae09fbab453f9970e1deb1d4b11837a3b8"
   },
   {
     "bytes": 55640,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
     "sha256": "1f67ce5fef19d6c04fa2e629eb1ea97be590e602711151f11940dc72d736177a"
   },
   {
     "bytes": 802,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_validation_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_validation_manifest.json",
     "sha256": "9d0455604c1c37f760211ba2ebfb66ffdd7380cf041776e387ec85fa7c687054"
   },
   {
     "bytes": 501,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_validation_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_validation_report.md",
     "sha256": "407ec80c2969f79495fd8270a3c873d56100b720be4f68850b36b876d95fe545"
   },
   {
     "bytes": 819,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/input_config.yaml",
     "sha256": "3a198accb8cda19cc13743e8cff2cf805d3c0aacced7e8c57f38454cb6df2437"
   },
   {
     "bytes": 318,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/no_overwrite_audit.json",
     "sha256": "5db232f984aa1b8ea5b27c5ab8ebd15f424baf45c97aaba23a435564d584916c"
   },
   {
     "bytes": 1099,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/run_manifest.json",
     "sha256": "65eb26f97ad2a73eb938b5a93f0dd9ff0f169c780d9765ace5e13283225e3945"
   },
   {
     "bytes": 1,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/crag_mock_api_per_query_results.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/crag_mock_api_per_query_results.csv",
     "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
   },
   {
     "bytes": 92,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/crag_mock_api_statistical_analysis.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/crag_mock_api_statistical_analysis.json",
     "sha256": "936bebf2282caf7c5eb89206d98ed1bbc324f6a5607746e2fe2e62268e55815f"
   },
   {
     "bytes": 141,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/crag_mock_api_validation_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/crag_mock_api_validation_manifest.json",
     "sha256": "4527c915443cf3375ad7b8947e12244da904babcc7d09e617ceb055e7d80e1bf"
   },
   {
     "bytes": 94,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/crag_mock_api_validation_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/crag_mock_api_validation_report.md",
     "sha256": "e9b907fcc4330fc6128a9c039e051439106ae30e1f225a31453b660a67d48dd3"
   },
   {
     "bytes": 595,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/input_config.yaml",
     "sha256": "fb7d6369033dc77a26877ef0d2322554ec667a94579c32ff50926a848a0106ec"
   },
   {
     "bytes": 367,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/no_overwrite_audit.json",
     "sha256": "0c76f7888fad5f0abd66d70cdc1f6b1d1f11162928a3eb451ab71d72efb8a2de"
   },
   {
     "bytes": 1128,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-174919-7cf1da20ed/run_manifest.json",
     "sha256": "077c795e8f331ae612822ca354df5029cccd6ede721f4fc6227f5a42269980c0"
   },
   {
     "bytes": 51,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170222-04e5da91fa/human_eval_interrater_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170222-04e5da91fa/human_eval_interrater_report.json",
     "sha256": "8dd7e1ac8203ab9c511ecb9982b757e473f29d6fe1b6c091058a23fa4f126997"
   },
   {
     "bytes": 51,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170222-04e5da91fa/human_eval_metric_alignment.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170222-04e5da91fa/human_eval_metric_alignment.json",
     "sha256": "8dd7e1ac8203ab9c511ecb9982b757e473f29d6fe1b6c091058a23fa4f126997"
   },
   {
     "bytes": 4819,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170222-04e5da91fa/human_eval_pairs_blinded.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170222-04e5da91fa/human_eval_pairs_blinded.csv",
     "sha256": "c4530be29b4f96f414f883c3f43a39b896c1c2b0627eabc76832da539fc82ca0"
   },
   {
     "bytes": 227,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170222-04e5da91fa/human_eval_pilot_v4_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170222-04e5da91fa/human_eval_pilot_v4_manifest.json",
     "sha256": "a3d07d1a782e060d16226cb15d91bd4dd099cc26f5e6155152be12195b72b683"
   },
   {
     "bytes": 129,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170222-04e5da91fa/human_eval_pilot_v4_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170222-04e5da91fa/human_eval_pilot_v4_report.md",
     "sha256": "df7a5c9bf6bcd9292c1ebca4c68a6c2871fb2e3f55d72c6f71230bf8ad6d5b75"
   },
   {
     "bytes": 480,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170222-04e5da91fa/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170222-04e5da91fa/input_config.yaml",
     "sha256": "ca3ba4f6f45bc4b3afd7ac906bead97558de7994afefbe83dd4f5b5067d960f6"
   },
   {
     "bytes": 302,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170222-04e5da91fa/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170222-04e5da91fa/no_overwrite_audit.json",
     "sha256": "04e440d0729beb955f0c4f4b904467555eef374b36069db0ef56f812bd8f8053"
   },
   {
     "bytes": 1055,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170222-04e5da91fa/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170222-04e5da91fa/run_manifest.json",
     "sha256": "b1b94f9dce40b39e3f7aee38b70e9a067dd859b3fb8837cf36cf546b8bacc202"
   },
   {
     "bytes": 51,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170327-04e5da91fa/human_eval_interrater_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170327-04e5da91fa/human_eval_interrater_report.json",
     "sha256": "8dd7e1ac8203ab9c511ecb9982b757e473f29d6fe1b6c091058a23fa4f126997"
   },
   {
     "bytes": 51,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170327-04e5da91fa/human_eval_metric_alignment.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170327-04e5da91fa/human_eval_metric_alignment.json",
     "sha256": "8dd7e1ac8203ab9c511ecb9982b757e473f29d6fe1b6c091058a23fa4f126997"
   },
   {
     "bytes": 5032,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170327-04e5da91fa/human_eval_pairs_blinded.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170327-04e5da91fa/human_eval_pairs_blinded.csv",
     "sha256": "c8dfe708184304426ae48358613b58dbc46478248eb58ca8608553f5892b07a1"
   },
   {
     "bytes": 226,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170327-04e5da91fa/human_eval_pilot_v4_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170327-04e5da91fa/human_eval_pilot_v4_manifest.json",
     "sha256": "0e17c06045576a210364d4ef06c877f9b660bacd7c8b0253beb40c96562d8286"
   },
   {
     "bytes": 129,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170327-04e5da91fa/human_eval_pilot_v4_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170327-04e5da91fa/human_eval_pilot_v4_report.md",
     "sha256": "df7a5c9bf6bcd9292c1ebca4c68a6c2871fb2e3f55d72c6f71230bf8ad6d5b75"
   },
   {
     "bytes": 480,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170327-04e5da91fa/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170327-04e5da91fa/input_config.yaml",
     "sha256": "ca3ba4f6f45bc4b3afd7ac906bead97558de7994afefbe83dd4f5b5067d960f6"
   },
   {
     "bytes": 302,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170327-04e5da91fa/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170327-04e5da91fa/no_overwrite_audit.json",
     "sha256": "c6eaf94ef31f53380afa0ca711758a5b2f3b6e9a41d56eef98d0dee51353d076"
   },
   {
     "bytes": 1055,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_human_eval_pilot_v4_20260809-170327-04e5da91fa/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_human_eval_pilot_v4_20260809-170327-04e5da91fa/run_manifest.json",
     "sha256": "dbdbc1da6a4ec02ba89fe8320ca4ae7e414adf74425623722fb1fc8744156d08"
   },
   {
     "bytes": 458,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/beneficial_divergence_summary.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/beneficial_divergence_summary.json",
     "sha256": "7092e6ab505ef8958d947b4d0c7e924f8afd47f3c3351056f1d005e8d47cc97c"
   },
   {
     "bytes": 552,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/input_config.yaml",
     "sha256": "f23c9f3b21882cf37180581f37d65e2a54cb7fbf441afa11987c9ed1e01d263f"
   },
   {
     "bytes": 306,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/natural_divergence_adjudication_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/natural_divergence_adjudication_manifest.json",
     "sha256": "bd7a6e6cc27c138d6216a975b5716ce9cc31da1549abdf67fed475fe2b27e8da"
   },
   {
     "bytes": 469,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/natural_divergence_adjudication_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/natural_divergence_adjudication_report.md",
     "sha256": "69685e7f619cef5451c0308f34a176528f338488f13f4f4784138710d2b43b67"
   },
   {
     "bytes": 6981,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/natural_divergence_case_packets.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/natural_divergence_case_packets.json",
     "sha256": "87eb3bed9af5bedaed7aa52e34a7312120b9cb9958a5ddef209ef0749a76eb57"
   },
   {
     "bytes": 758,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/natural_divergence_case_packets.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/natural_divergence_case_packets.md",
     "sha256": "e7c2d4f79877356388014323c756c88bcc50505404ad01304fa7097194655570"
   },
   {
     "bytes": 774,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/natural_divergence_classification_table.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/natural_divergence_classification_table.csv",
     "sha256": "6a34144ce5e63e4db1a336fae36dfdcacd499584e14fbe31bd50befeb7c3e107"
   },
   {
     "bytes": 332,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/no_overwrite_audit.json",
     "sha256": "42cdbe19ea3309ff2d451647bb7b145a5a613536eb5ffe2a325d0cfc95bdd7be"
   },
   {
     "bytes": 1119,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170222-f5dacc1eb1/run_manifest.json",
     "sha256": "727048d15a94515082a2da76958d9098bbe248f05d8d23565e45aed5f687efda"
   },
   {
     "bytes": 567,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/beneficial_divergence_summary.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/beneficial_divergence_summary.json",
     "sha256": "457a20b3a5c9afa11a07fa7e2c2954fb410e5d3d424c6f53d4620f843dc90bef"
   },
   {
     "bytes": 552,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/input_config.yaml",
     "sha256": "f23c9f3b21882cf37180581f37d65e2a54cb7fbf441afa11987c9ed1e01d263f"
   },
   {
     "bytes": 305,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/natural_divergence_adjudication_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/natural_divergence_adjudication_manifest.json",
     "sha256": "6eb00d4363cf5feebd2a2ba1342e4f6928519202d1b6b8cdeee9f7b0ea946999"
   },
   {
     "bytes": 468,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/natural_divergence_adjudication_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/natural_divergence_adjudication_report.md",
     "sha256": "bada950374b8ea96d8b1722352dd2402a7c35b801e87fe2c225e7685e39d2345"
   },
   {
     "bytes": 10724,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/natural_divergence_case_packets.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/natural_divergence_case_packets.json",
     "sha256": "25441b6e0fffeeb55496bfbba85c0114cf87173e66a45a27b7747f242f150028"
   },
   {
     "bytes": 992,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/natural_divergence_case_packets.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/natural_divergence_case_packets.md",
     "sha256": "2d9d5442b45c24d96e524504366a62b83cf476fc994c52e7de4a6c549fe5e131"
   },
   {
     "bytes": 980,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/natural_divergence_classification_table.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/natural_divergence_classification_table.csv",
     "sha256": "96afca0f78d4b0b38a2041418a2e59bd162d82112945b175c9e68ac162c1c600"
   },
   {
     "bytes": 332,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/no_overwrite_audit.json",
     "sha256": "83f8c204caf172e5938441c5ab48d75bb45df7d2475c2bc666811aec862d1b6d"
   },
   {
     "bytes": 1119,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_natural_divergence_adjudication_v1_20260809-170326-f5dacc1eb1/run_manifest.json",
     "sha256": "b635e2f32ded46881caa4a9b2f3399e70f9b559d33e08ba42c8c384f76eddf9e"
   },
   {
     "bytes": 321,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/docker_git_provenance_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/docker_git_provenance_report.json",
     "sha256": "a73d19eb3d24f8704d92630abadf1ec37a1b88b0e4aef51e198930cd9a94f9ea"
   },
   {
     "bytes": 85,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/docker_git_provenance_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/docker_git_provenance_report.md",
     "sha256": "89ae9b9513e6a845dde3d3e24fa7a60775d912612db16e09a8f354ad77a3ffac"
   },
   {
     "bytes": 2,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/git_command_outputs.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/git_command_outputs.json",
     "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
   },
   {
     "bytes": 513,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/input_config.yaml",
     "sha256": "39435dff4ffca879e1f0c83ac30be98c03717e3be98081d82add9d97ea49bb31"
   },
   {
     "bytes": 326,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/no_overwrite_audit.json",
     "sha256": "01f24d26c60abb69d6b8e3a83bd5b62704c6e7f7ba3e995c776ae23fd7cc7f62"
   },
   {
     "bytes": 1074,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/run_manifest.json",
     "sha256": "c9b41a5bed66d99bcf3aa05ef995a228d12b6dbb8d44bd55607b0370f534aaff"
   },
   {
     "bytes": 539,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/strict_git_provenance_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/strict_git_provenance_manifest.json",
     "sha256": "4c96f807d24dd253ba360b5221683c1ea606ab54527962c51cf693168aa0c5a1"
   },
   {
     "bytes": 1608,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/strict_git_provenance_repair_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/strict_git_provenance_repair_report.json",
     "sha256": "f472fedd6776aba0114df1b561f0ea48a0bdbbaa563fcab41c5d89e32d48c59c"
   },
   {
     "bytes": 258,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/strict_git_provenance_repair_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-162434-8621179ce7/strict_git_provenance_repair_report.md",
     "sha256": "f45db8c65346caed5cefd5e83cabdaef7aa66556cfe8f1a9901717811d7be6fa"
   },
   {
     "bytes": 321,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/docker_git_provenance_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/docker_git_provenance_report.json",
     "sha256": "6136dcfde4d21695451b2db2890289be8a48cf701ec4a5cf30afcd8bb6761704"
   },
   {
     "bytes": 85,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/docker_git_provenance_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/docker_git_provenance_report.md",
     "sha256": "89ae9b9513e6a845dde3d3e24fa7a60775d912612db16e09a8f354ad77a3ffac"
   },
   {
     "bytes": 2,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/git_command_outputs.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/git_command_outputs.json",
     "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
   },
   {
     "bytes": 513,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/input_config.yaml",
     "sha256": "39435dff4ffca879e1f0c83ac30be98c03717e3be98081d82add9d97ea49bb31"
   },
   {
     "bytes": 326,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/no_overwrite_audit.json",
     "sha256": "72d437f7cf2d0840484fde671cf9ecb07540ee4059371ca91c39ac0dd999aa17"
   },
   {
     "bytes": 1074,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/run_manifest.json",
     "sha256": "c7894f680548ed80cbed0746160c15704d43a3f75e7c5e879b52de68b0cbf21e"
   },
   {
     "bytes": 539,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/strict_git_provenance_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/strict_git_provenance_manifest.json",
     "sha256": "aab52048db8392b2e7d2a4c615f9e19b774bb9998d9a3b4aadaecbf6b695d7ba"
   },
   {
     "bytes": 1608,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/strict_git_provenance_repair_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/strict_git_provenance_repair_report.json",
     "sha256": "3511f714f5599c34722445e0b890ca7a9ccd9aa86ee8de20519cdb8e8f154857"
   },
   {
     "bytes": 258,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/strict_git_provenance_repair_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-164908-8621179ce7/strict_git_provenance_repair_report.md",
     "sha256": "464226fe0550cb82acc644433402c4b7f2f4221778a1d7d6c192184156afa920"
   },
   {
     "bytes": 321,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/docker_git_provenance_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/docker_git_provenance_report.json",
     "sha256": "c7ed34089da975221a2a42dafa08fdeb370ed025129e4df7ae3a0cac4d1ad656"
   },
   {
     "bytes": 85,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/docker_git_provenance_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/docker_git_provenance_report.md",
     "sha256": "89ae9b9513e6a845dde3d3e24fa7a60775d912612db16e09a8f354ad77a3ffac"
   },
   {
     "bytes": 2,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/git_command_outputs.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/git_command_outputs.json",
     "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
   },
   {
     "bytes": 513,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/input_config.yaml",
     "sha256": "39435dff4ffca879e1f0c83ac30be98c03717e3be98081d82add9d97ea49bb31"
   },
   {
     "bytes": 326,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/no_overwrite_audit.json",
     "sha256": "9782f138d42ccf4642b2b0b43804638c23f88fb8eb0a8b3fadc3cd35d93dea2e"
   },
   {
     "bytes": 1074,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/run_manifest.json",
     "sha256": "ec254e0753552ce924a10c4011198c09bd470cf8a47940b120ec8a7f84acddc1"
   },
   {
     "bytes": 539,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/strict_git_provenance_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/strict_git_provenance_manifest.json",
     "sha256": "4622ee95652b55bac09551b606fa37e3491765eb8b4f96378c89a16bfbc96064"
   },
   {
     "bytes": 1608,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/strict_git_provenance_repair_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/strict_git_provenance_repair_report.json",
     "sha256": "cd5bb41b86a3a15f0e343ba4056400bc167073de8801c7e22fda48847f35b97c"
   },
   {
     "bytes": 258,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/strict_git_provenance_repair_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-165408-8621179ce7/strict_git_provenance_repair_report.md",
     "sha256": "3a896541470abc0dc7fdb18783414310d8dc6d67812d306e1b88c21fe878e122"
   },
   {
     "bytes": 321,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/docker_git_provenance_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/docker_git_provenance_report.json",
     "sha256": "53d2434d419ff90a8b0dbe404e72f3f50b95f69f986675cb7c3383b907aae618"
   },
   {
     "bytes": 85,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/docker_git_provenance_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/docker_git_provenance_report.md",
     "sha256": "89ae9b9513e6a845dde3d3e24fa7a60775d912612db16e09a8f354ad77a3ffac"
   },
   {
     "bytes": 2,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/git_command_outputs.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/git_command_outputs.json",
     "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
   },
   {
     "bytes": 513,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/input_config.yaml",
     "sha256": "39435dff4ffca879e1f0c83ac30be98c03717e3be98081d82add9d97ea49bb31"
   },
   {
     "bytes": 326,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/no_overwrite_audit.json",
     "sha256": "e2fb5b3210835622cdf830cd182d64ac5a8befc35dee6f16f8d9403ebb34d437"
   },
   {
     "bytes": 1074,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/run_manifest.json",
     "sha256": "13669e0847e2b0b7a76338221543114d046a4e906bbe20547bf3d6e05438c8b3"
   },
   {
     "bytes": 539,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/strict_git_provenance_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/strict_git_provenance_manifest.json",
     "sha256": "c3fa35d723b36a28de094779bc7771064ed7de11008f4995c4adeb4eb3a39da9"
   },
   {
     "bytes": 1608,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/strict_git_provenance_repair_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/strict_git_provenance_repair_report.json",
     "sha256": "3c8b24c33fc45158478ee136b1d2ccf3b03b2343cebf9d56b8251a65adb72eb1"
   },
   {
     "bytes": 258,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/strict_git_provenance_repair_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170318-8621179ce7/strict_git_provenance_repair_report.md",
     "sha256": "88efc1da31534ed7e576fc881079b08866d39ecdf0cbbe94922014dc9e24ee02"
   },
   {
     "bytes": 321,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/docker_git_provenance_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/docker_git_provenance_report.json",
     "sha256": "21564db884df1d902d25cf0f58a8b7dbb0849e006b7258a184065fb0d01adc73"
   },
   {
     "bytes": 85,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/docker_git_provenance_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/docker_git_provenance_report.md",
     "sha256": "89ae9b9513e6a845dde3d3e24fa7a60775d912612db16e09a8f354ad77a3ffac"
   },
   {
     "bytes": 2,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/git_command_outputs.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/git_command_outputs.json",
     "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
   },
   {
     "bytes": 513,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/input_config.yaml",
     "sha256": "39435dff4ffca879e1f0c83ac30be98c03717e3be98081d82add9d97ea49bb31"
   },
   {
     "bytes": 326,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/no_overwrite_audit.json",
     "sha256": "8ccfa6da3554aa0822301a0c5da91bf8eb091e3bb1ea3e9c60def0d1ead8cbe3"
   },
   {
     "bytes": 1074,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/run_manifest.json",
     "sha256": "ddca9016518aaacb141e2d967d529326bc7adef684dd464a1c91afdd2aeb910a"
   },
   {
     "bytes": 539,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/strict_git_provenance_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/strict_git_provenance_manifest.json",
     "sha256": "a671286ea5e5674ebd2931b89dde5e87a4d6843f21e90ccdb6ee9086bf6bbab4"
   },
   {
     "bytes": 1608,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/strict_git_provenance_repair_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/strict_git_provenance_repair_report.json",
     "sha256": "9099aae6ddffe9442b9e69d837b4f721678f17b2eca435dadb7ad6072e922c1e"
   },
   {
     "bytes": 258,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/strict_git_provenance_repair_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-170600-8621179ce7/strict_git_provenance_repair_report.md",
     "sha256": "f3991665ab5b0462459ee5a845e34dfcfec97fd84b0ee1722860fc0f0d70bd43"
   },
   {
     "bytes": 321,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/docker_git_provenance_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/docker_git_provenance_report.json",
     "sha256": "21564db884df1d902d25cf0f58a8b7dbb0849e006b7258a184065fb0d01adc73"
   },
   {
     "bytes": 85,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/docker_git_provenance_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/docker_git_provenance_report.md",
     "sha256": "89ae9b9513e6a845dde3d3e24fa7a60775d912612db16e09a8f354ad77a3ffac"
   },
   {
     "bytes": 2,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/git_command_outputs.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/git_command_outputs.json",
     "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
   },
   {
     "bytes": 513,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/input_config.yaml",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/input_config.yaml",
     "sha256": "39435dff4ffca879e1f0c83ac30be98c03717e3be98081d82add9d97ea49bb31"
   },
   {
     "bytes": 326,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/no_overwrite_audit.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/no_overwrite_audit.json",
     "sha256": "4b6a02a2b0ec1f357870d08f794e796e63a4cdf79865c24ccff77a443aec2c1e"
   },
   {
     "bytes": 1074,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/run_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/run_manifest.json",
     "sha256": "13fad0bb3b17ce34e5259b7fa4c00ab1c78622fb041076a26c8ea3bf7f8fe1b9"
   },
   {
     "bytes": 539,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/strict_git_provenance_manifest.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/strict_git_provenance_manifest.json",
     "sha256": "b8a252a092fec9f824ab8806c606333508cd6cda0c9039b40b62dbe4f7c7e381"
   },
   {
     "bytes": 1608,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/strict_git_provenance_repair_report.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/strict_git_provenance_repair_report.json",
     "sha256": "c4c17117f187e6b0358a74b8d05da7ce07876eeda4741fce12f8d4a72c699932"
   },
   {
     "bytes": 258,
-    "path": "artifacts/selected_run_summaries/runs/ragtune_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/strict_git_provenance_repair_report.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_strict_git_provenance_repair_v1_20260809-173309-8621179ce7/strict_git_provenance_repair_report.md",
     "sha256": "f3991665ab5b0462459ee5a845e34dfcfec97fd84b0ee1722860fc0f0d70bd43"
   },
   {
@@ -1182,507 +1182,507 @@
   },
   {
     "bytes": 444,
-    "path": "configs/experiments/ragtune_beneficial_governance_divergence_search_v1.yaml",
+    "path": "configs/experiments/ragwarrant_beneficial_governance_divergence_search_v1.yaml",
     "sha256": "14c0a8a869a4c6b75fecc2e5b39d55abbe89fc0f9ee2450fcccf80c55ad3d7eb"
   },
   {
     "bytes": 338,
-    "path": "configs/experiments/ragtune_certificate_calibration_v1.yaml",
+    "path": "configs/experiments/ragwarrant_certificate_calibration_v1.yaml",
     "sha256": "a1b7874581f4c78ee0856e7324b9e10d4ec714a41b377adabbc5c828c4cd1805"
   },
   {
     "bytes": 608,
-    "path": "configs/experiments/ragtune_challenge_unlock_v1.yaml",
+    "path": "configs/experiments/ragwarrant_challenge_unlock_v1.yaml",
     "sha256": "1040a94f195d942c2925300c21cdb14ce1602bacd2651e38b3489eaa7dc8dde6"
   },
   {
     "bytes": 328,
-    "path": "configs/experiments/ragtune_cloud_repro_v1.yaml",
+    "path": "configs/experiments/ragwarrant_cloud_repro_v1.yaml",
     "sha256": "5cef4c202450b9f17b72d8fdefeab2031445a6a8455093d13e15d99efdb31613"
   },
   {
     "bytes": 767,
-    "path": "configs/experiments/ragtune_confirmatory_provenance_v1.yaml",
+    "path": "configs/experiments/ragwarrant_confirmatory_provenance_v1.yaml",
     "sha256": "6c4d9bcfce159af051f8800fa2c98d8fa908f8cf23462d124ada9165084cb614"
   },
   {
     "bytes": 970,
-    "path": "configs/experiments/ragtune_confirmatory_provenance_v2.yaml",
+    "path": "configs/experiments/ragwarrant_confirmatory_provenance_v2.yaml",
     "sha256": "f7f078c1588b2168a9ed0f81b0a93e3a3866d44deb28eadbce8c5ae9e6881155"
   },
   {
     "bytes": 1851,
-    "path": "configs/experiments/ragtune_confirmatory_readiness_gate_v1.yaml",
+    "path": "configs/experiments/ragwarrant_confirmatory_readiness_gate_v1.yaml",
     "sha256": "d364745b1f75b103cab628cacb547cbbe228afb79428dc0c670a267520c726b5"
   },
   {
     "bytes": 362,
-    "path": "configs/experiments/ragtune_continued_investment_decision_memo_v1.yaml",
+    "path": "configs/experiments/ragwarrant_continued_investment_decision_memo_v1.yaml",
     "sha256": "2dd6abde43b6964360b7c9050ef636a21bfd860e42279b0c1d78a2bb549ea9e3"
   },
   {
     "bytes": 1077,
-    "path": "configs/experiments/ragtune_crag_acquisition_adapter_v1.yaml",
+    "path": "configs/experiments/ragwarrant_crag_acquisition_adapter_v1.yaml",
     "sha256": "5eb7f841ed720885b89f1d13e113916af5f0d298e99065a8b40962a3517ad58c"
   },
   {
     "bytes": 546,
-    "path": "configs/experiments/ragtune_crag_governance_evaluation_v1.yaml",
+    "path": "configs/experiments/ragwarrant_crag_governance_evaluation_v1.yaml",
     "sha256": "ca60f028f6413738052d3fe709b3a8971d5e33ca4da18077b79408702ae83f49"
   },
   {
     "bytes": 266,
-    "path": "configs/experiments/ragtune_crag_manual_approval_decision_v1.yaml",
+    "path": "configs/experiments/ragwarrant_crag_manual_approval_decision_v1.yaml",
     "sha256": "04fca1458f9bf9016c7f9263cf412257932b231edf1e5b1487a04a80f50a14cc"
   },
   {
     "bytes": 955,
-    "path": "configs/experiments/ragtune_crag_manual_approval_decision_v2.yaml",
+    "path": "configs/experiments/ragwarrant_crag_manual_approval_decision_v2.yaml",
     "sha256": "4eb8be6bf174c9066f7abf3f32dd1c6fd48e5c7b4a65bbe50d106cf0c2043a3e"
   },
   {
     "bytes": 281,
-    "path": "configs/experiments/ragtune_crag_mock_api_ablation_v1.yaml",
+    "path": "configs/experiments/ragwarrant_crag_mock_api_ablation_v1.yaml",
     "sha256": "f7d2b3300abdc15c95c5ed1358df482a522c4c4f1761ac40a61fbbb893f84fdc"
   },
   {
     "bytes": 323,
-    "path": "configs/experiments/ragtune_crag_mock_api_case_explanation_pack_v1.yaml",
+    "path": "configs/experiments/ragwarrant_crag_mock_api_case_explanation_pack_v1.yaml",
     "sha256": "f71ba2065dc72b100e77618fbf6d59c42617213ca95c669848bac1c8a7cb7f6b"
   },
   {
     "bytes": 1150,
-    "path": "configs/experiments/ragtune_crag_mock_api_docker_reproduction_v1.yaml",
+    "path": "configs/experiments/ragwarrant_crag_mock_api_docker_reproduction_v1.yaml",
     "sha256": "5d6563c54a46f023801fc6167ee97e2f72fd1ed1ef187ce242983c9142d0d21c"
   },
   {
     "bytes": 236,
-    "path": "configs/experiments/ragtune_crag_mock_api_evidence_synthesis_v1.yaml",
+    "path": "configs/experiments/ragwarrant_crag_mock_api_evidence_synthesis_v1.yaml",
     "sha256": "775201c6251a02cb468cb4a6d7b8d8fdd8257c952026f361f9dd65f5829a9f52"
   },
   {
     "bytes": 425,
-    "path": "configs/experiments/ragtune_crag_mock_api_governance_evaluation_v1.yaml",
+    "path": "configs/experiments/ragwarrant_crag_mock_api_governance_evaluation_v1.yaml",
     "sha256": "7c30caac0c317169cde40a7767bfde07f67c5780537e19a054f00a5e912e193b"
   },
   {
     "bytes": 575,
-    "path": "configs/experiments/ragtune_crag_mock_api_path_v1.yaml",
+    "path": "configs/experiments/ragwarrant_crag_mock_api_path_v1.yaml",
     "sha256": "3b2c4b574e6f4bdb1f68a64e24f3e856b9407c2ba41a3aa25a913d8c3aec4fe9"
   },
   {
     "bytes": 522,
-    "path": "configs/experiments/ragtune_crag_mock_api_repeat_validation_v1.yaml",
+    "path": "configs/experiments/ragwarrant_crag_mock_api_repeat_validation_v1.yaml",
     "sha256": "a53fe352b48ed2d97404951e4d560a673d348b6fb741ab608cf5f113f8d4f114"
   },
   {
     "bytes": 475,
-    "path": "configs/experiments/ragtune_crag_mock_api_server_smoke_v1.yaml",
+    "path": "configs/experiments/ragwarrant_crag_mock_api_server_smoke_v1.yaml",
     "sha256": "c6f625976b1226427e873c32b9ee2916d709eabb7445799255448872f7894f46"
   },
   {
     "bytes": 819,
-    "path": "configs/experiments/ragtune_crag_mock_api_validation_v1.yaml",
+    "path": "configs/experiments/ragwarrant_crag_mock_api_validation_v1.yaml",
     "sha256": "3a198accb8cda19cc13743e8cff2cf805d3c0aacced7e8c57f38454cb6df2437"
   },
   {
     "bytes": 595,
-    "path": "configs/experiments/ragtune_crag_mock_api_validation_v1_docker.yaml",
+    "path": "configs/experiments/ragwarrant_crag_mock_api_validation_v1_docker.yaml",
     "sha256": "fb7d6369033dc77a26877ef0d2322554ec667a94579c32ff50926a848a0106ec"
   },
   {
     "bytes": 607,
-    "path": "configs/experiments/ragtune_crag_readiness_gate_v1.yaml",
+    "path": "configs/experiments/ragwarrant_crag_readiness_gate_v1.yaml",
     "sha256": "069ee502b20ae8f7cc24351a7b9b06ac3ffc93c1314aee397859a9a585a53a61"
   },
   {
     "bytes": 230,
-    "path": "configs/experiments/ragtune_dataset_acquisition_matrix_v2.yaml",
+    "path": "configs/experiments/ragwarrant_dataset_acquisition_matrix_v2.yaml",
     "sha256": "f7ff6031d380a5612abd3e269b3f528b4a0001056bd6e10ece6f1a76b1f166cc"
   },
   {
     "bytes": 149,
-    "path": "configs/experiments/ragtune_dataset_matrix_v3.yaml",
+    "path": "configs/experiments/ragwarrant_dataset_matrix_v3.yaml",
     "sha256": "7af3f2802ab0c614411f530d57ab25d269d4903cf7f8c1cb8503c5a0093f5c2f"
   },
   {
     "bytes": 346,
-    "path": "configs/experiments/ragtune_dataset_matrix_v4.yaml",
+    "path": "configs/experiments/ragwarrant_dataset_matrix_v4.yaml",
     "sha256": "7be75774fb70aa351afb1feaab5ff0b913680cb88ca7d7899a8ad1c6bb65d37f"
   },
   {
     "bytes": 444,
-    "path": "configs/experiments/ragtune_end_to_end_governance_replay_v1.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_governance_replay_v1.yaml",
     "sha256": "2985acf11f3549833c012260535ce3941096852710fd3a5403e7dfd89f8fc811"
   },
   {
     "bytes": 147,
-    "path": "configs/experiments/ragtune_end_to_end_governance_replay_v2.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_governance_replay_v2.yaml",
     "sha256": "c3b383cb1a589bc3554baa46b8528925396d1c6e08373d04d633bb79436c9fc5"
   },
   {
     "bytes": 120,
-    "path": "configs/experiments/ragtune_end_to_end_governance_replay_v3.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_governance_replay_v3.yaml",
     "sha256": "2f9a7b0c0a797224d886b83130e7687fe7e31b89fa822c660c77a05370bf166f"
   },
   {
     "bytes": 343,
-    "path": "configs/experiments/ragtune_end_to_end_public_confirmatory_v1.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_public_confirmatory_v1.yaml",
     "sha256": "d289591bd80a1582466a5143ef7c7cc25b480ab9087930ab3a3a554f5284dff7"
   },
   {
     "bytes": 819,
-    "path": "configs/experiments/ragtune_end_to_end_public_confirmatory_v1_confirmatory.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_public_confirmatory_v1_confirmatory.yaml",
     "sha256": "f398ae1ebdfdf0fdcf0ab2308044454577f6888b4dd8bda83584adf319444549"
   },
   {
     "bytes": 818,
-    "path": "configs/experiments/ragtune_end_to_end_public_confirmatory_v1_development.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_public_confirmatory_v1_development.yaml",
     "sha256": "7ccee809a71360ae56e5fc1ad9dbce8cfecb05f7efaf8c739c3e3e22d10f10e2"
   },
   {
     "bytes": 776,
-    "path": "configs/experiments/ragtune_end_to_end_public_confirmatory_v1_smoke.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_public_confirmatory_v1_smoke.yaml",
     "sha256": "4434d274b89d076050bd8510d125a4ed4e14412bfaa574bdb7622d9edb4862de"
   },
   {
     "bytes": 1120,
-    "path": "configs/experiments/ragtune_end_to_end_public_confirmatory_v2.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_public_confirmatory_v2.yaml",
     "sha256": "9907251c3148da68c8e7cbd1b67b3c5f807bca03a73c6b8c706f3bc98c28a6c7"
   },
   {
     "bytes": 1504,
-    "path": "configs/experiments/ragtune_end_to_end_public_development_v1.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_public_development_v1.yaml",
     "sha256": "1bcb6e6115f167ce624504a34f273a336461f5fd7b25d04dec89f13441dc0d8d"
   },
   {
     "bytes": 984,
-    "path": "configs/experiments/ragtune_end_to_end_public_development_v2.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_public_development_v2.yaml",
     "sha256": "2874f1cab9f2844ec865edf6ba256d879340ac7745e683ee8c00d827cf51ea09"
   },
   {
     "bytes": 1295,
-    "path": "configs/experiments/ragtune_end_to_end_public_v1_confirmatory.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_public_v1_confirmatory.yaml",
     "sha256": "98b118187d320f146f5e367a371f988e476e76119cf552433a56d4e4c1f46d3b"
   },
   {
     "bytes": 959,
-    "path": "configs/experiments/ragtune_end_to_end_public_v1_smoke.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_public_v1_smoke.yaml",
     "sha256": "1d9a7d95d3670049f39ed949869e5fded612589695591fc4c8c286d1acc06d17"
   },
   {
     "bytes": 122,
-    "path": "configs/experiments/ragtune_end_to_end_robustness_security_v3.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_robustness_security_v3.yaml",
     "sha256": "5c01294ee1aa3874e11907c8c877bf5ed556c3842fdc7279a8d90a05167242b1"
   },
   {
     "bytes": 346,
-    "path": "configs/experiments/ragtune_end_to_end_robustness_v2.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_robustness_v2.yaml",
     "sha256": "9d0d2f2287295af113da01bba667a9d88041cc59b2789d68b53e28807e41a979"
   },
   {
     "bytes": 522,
-    "path": "configs/experiments/ragtune_end_to_end_v1.yaml",
+    "path": "configs/experiments/ragwarrant_end_to_end_v1.yaml",
     "sha256": "37b6073e525b84029a7c3d4e90ca1fb2df809aaac790e6e3f289244ce6cb3c22"
   },
   {
     "bytes": 364,
-    "path": "configs/experiments/ragtune_generative_llm_regime_v1.yaml",
+    "path": "configs/experiments/ragwarrant_generative_llm_regime_v1.yaml",
     "sha256": "c0280b7e105db0f0cbf90d4758a64161c8844b05d27598753f4bc05ea405557c"
   },
   {
     "bytes": 307,
-    "path": "configs/experiments/ragtune_generative_llm_validation_v1.yaml",
+    "path": "configs/experiments/ragwarrant_generative_llm_validation_v1.yaml",
     "sha256": "3cc515b331f3fab87a9acc5c0bcde0794e8f4322f023d9fe0cb876e582323eae"
   },
   {
     "bytes": 246,
-    "path": "configs/experiments/ragtune_generative_regime_validation_v1.yaml",
+    "path": "configs/experiments/ragwarrant_generative_regime_validation_v1.yaml",
     "sha256": "f7913d837d330068ac0e7e8c21b82fe591e910ed68e93c11d3c7f1677c9b7dfb"
   },
   {
     "bytes": 238,
-    "path": "configs/experiments/ragtune_generator_path_enablement_v2.yaml",
+    "path": "configs/experiments/ragwarrant_generator_path_enablement_v2.yaml",
     "sha256": "1cc6df7bf5df72dfacc1d4c5d0bb61bff8becdaea90fa2ce609b48b60acca897"
   },
   {
     "bytes": 194,
-    "path": "configs/experiments/ragtune_generator_path_enablement_v3.yaml",
+    "path": "configs/experiments/ragwarrant_generator_path_enablement_v3.yaml",
     "sha256": "053e7447f90810c9825a48c7b8b43634578425cd9e443e3a44a8f8cdb209c3c9"
   },
   {
     "bytes": 270,
-    "path": "configs/experiments/ragtune_generator_path_enablement_v4.yaml",
+    "path": "configs/experiments/ragwarrant_generator_path_enablement_v4.yaml",
     "sha256": "cb80c009c94799495f572771fffbc39c6679b8b4580049064a00b0b26636075c"
   },
   {
     "bytes": 358,
-    "path": "configs/experiments/ragtune_generator_regime_enablement_v1.yaml",
+    "path": "configs/experiments/ragwarrant_generator_regime_enablement_v1.yaml",
     "sha256": "6278695abbc8ea4f0fbb605002c55ad70dfef91fad7b97df5b6a108de925da33"
   },
   {
     "bytes": 124,
-    "path": "configs/experiments/ragtune_governance_ablation_confirmatory_v1.yaml",
+    "path": "configs/experiments/ragwarrant_governance_ablation_confirmatory_v1.yaml",
     "sha256": "aca376d4a3813ab48eefb5636f4ed44dc072cbf54d4d68b00e5d00119cfefd2b"
   },
   {
     "bytes": 569,
-    "path": "configs/experiments/ragtune_governance_ablation_confirmatory_v2.yaml",
+    "path": "configs/experiments/ragwarrant_governance_ablation_confirmatory_v2.yaml",
     "sha256": "55f4508a5bf918ddc4f5863ae50298e4034a9f8a92516d788d2427778601c17c"
   },
   {
     "bytes": 1181,
-    "path": "configs/experiments/ragtune_governance_ablation_v1.yaml",
+    "path": "configs/experiments/ragwarrant_governance_ablation_v1.yaml",
     "sha256": "a253bcf87f6153ddd376711e7fd6dc884b5437f5eb9851f448cabade3fd12719"
   },
   {
     "bytes": 604,
-    "path": "configs/experiments/ragtune_governance_platform_benchmarks_v1.yaml",
+    "path": "configs/experiments/ragwarrant_governance_platform_benchmarks_v1.yaml",
     "sha256": "c71cdef592b50e5417f5f7c76702db50085af479b03f4c65ec3f93bd893f2f7d"
   },
   {
     "bytes": 181,
-    "path": "configs/experiments/ragtune_governance_power_analysis_v2.yaml",
+    "path": "configs/experiments/ragwarrant_governance_power_analysis_v2.yaml",
     "sha256": "4a9ac41a1f145d7b5f52ef96725e5c434e37bbd4578d4520e2a6c961a757fe27"
   },
   {
     "bytes": 135,
-    "path": "configs/experiments/ragtune_governance_robustness_security_confirmatory_v1.yaml",
+    "path": "configs/experiments/ragwarrant_governance_robustness_security_confirmatory_v1.yaml",
     "sha256": "14d5839c2aff7b6097c21224a116b77fbb5b34362ede000da42410e3e6289605"
   },
   {
     "bytes": 272,
-    "path": "configs/experiments/ragtune_governance_superiority_cases_v1.yaml",
+    "path": "configs/experiments/ragwarrant_governance_superiority_cases_v1.yaml",
     "sha256": "05fe5f3048c7766709ffd8d26d378df4f9e0620393ee44db60356fec3ae64f7a"
   },
   {
     "bytes": 346,
-    "path": "configs/experiments/ragtune_governance_workflow_benchmarks_v1.yaml",
+    "path": "configs/experiments/ragwarrant_governance_workflow_benchmarks_v1.yaml",
     "sha256": "45eab81366d0877b35e59d6ccaccac3ce7c223830093523f65c11f8a000ff209"
   },
   {
     "bytes": 1085,
-    "path": "configs/experiments/ragtune_governed_selection_confirmatory_v1.yaml",
+    "path": "configs/experiments/ragwarrant_governed_selection_confirmatory_v1.yaml",
     "sha256": "33e1f9cd1aed73a350abcda34d7e8cb00bdbd9ab3570b998a2d72fa3847d0474"
   },
   {
     "bytes": 1191,
-    "path": "configs/experiments/ragtune_governed_selection_confirmatory_v2.yaml",
+    "path": "configs/experiments/ragwarrant_governed_selection_confirmatory_v2.yaml",
     "sha256": "b690c01729089f426e01579955859e0a7cd853fe29e338e94ae01b0c2ff641df"
   },
   {
     "bytes": 607,
-    "path": "configs/experiments/ragtune_hotpotqa_corpus_reconstruction_v1.yaml",
+    "path": "configs/experiments/ragwarrant_hotpotqa_corpus_reconstruction_v1.yaml",
     "sha256": "ba597fad981f403c27a62ac03cd304004d63f7cb718c434b27618236d2825eb3"
   },
   {
     "bytes": 193,
-    "path": "configs/experiments/ragtune_human_eval_execution_readiness_v1.yaml",
+    "path": "configs/experiments/ragwarrant_human_eval_execution_readiness_v1.yaml",
     "sha256": "7fa92c4559aeb3df1f69f6ccc1629c39c26003d299a06bea10efaa42e8b6d994"
   },
   {
     "bytes": 477,
-    "path": "configs/experiments/ragtune_human_eval_execution_readiness_v2.yaml",
+    "path": "configs/experiments/ragwarrant_human_eval_execution_readiness_v2.yaml",
     "sha256": "0fc3d837d9e211feba5bbf6d9dabcf2c784e877d5073a4c145abf15cd91cbc9f"
   },
   {
     "bytes": 493,
-    "path": "configs/experiments/ragtune_human_eval_pilot_readiness_v3.yaml",
+    "path": "configs/experiments/ragwarrant_human_eval_pilot_readiness_v3.yaml",
     "sha256": "ca745fe69cbf5831f90c44a15b52dd1214212afcf7f82810c1e576ed50675fe9"
   },
   {
     "bytes": 321,
-    "path": "configs/experiments/ragtune_human_eval_pilot_v1.yaml",
+    "path": "configs/experiments/ragwarrant_human_eval_pilot_v1.yaml",
     "sha256": "2108e23ff1abcecfd5e78aab10406b80427a22e2f80fe15fc9361083decfacf6"
   },
   {
     "bytes": 480,
-    "path": "configs/experiments/ragtune_human_eval_pilot_v4.yaml",
+    "path": "configs/experiments/ragwarrant_human_eval_pilot_v4.yaml",
     "sha256": "ca3ba4f6f45bc4b3afd7ac906bead97558de7994afefbe83dd4f5b5067d960f6"
   },
   {
     "bytes": 456,
-    "path": "configs/experiments/ragtune_human_eval_sample_v1.yaml",
+    "path": "configs/experiments/ragwarrant_human_eval_sample_v1.yaml",
     "sha256": "8223082f7fb53a6676e5fa92b8c1c8c63d8dfa8a3fcc8be3b365d4fc47093a6b"
   },
   {
     "bytes": 125,
-    "path": "configs/experiments/ragtune_human_eval_sample_v2.yaml",
+    "path": "configs/experiments/ragwarrant_human_eval_sample_v2.yaml",
     "sha256": "87d1e7c354fa1ff8e890010596adf4b2462f2897f079fff5a28f4530a96bf44b"
   },
   {
     "bytes": 125,
-    "path": "configs/experiments/ragtune_human_eval_sample_v3.yaml",
+    "path": "configs/experiments/ragwarrant_human_eval_sample_v3.yaml",
     "sha256": "6c5c70053235fe27d136562a146b7a5a07461fb512c70880edc72b170213541b"
   },
   {
     "bytes": 284,
-    "path": "configs/experiments/ragtune_human_eval_validation_v1.yaml",
+    "path": "configs/experiments/ragwarrant_human_eval_validation_v1.yaml",
     "sha256": "e6ac9f4c7f0696ece3be6f1131bceb04b6d30e1f471f665130cc110c34b1aaac"
   },
   {
     "bytes": 469,
-    "path": "configs/experiments/ragtune_human_eval_workflow_setup_v2.yaml",
+    "path": "configs/experiments/ragwarrant_human_eval_workflow_setup_v2.yaml",
     "sha256": "cd9852927ed440dfaae9fc916a5a663c9a377ee7f5d118b9e67f58c01d70228a"
   },
   {
     "bytes": 367,
-    "path": "configs/experiments/ragtune_multi_corpus_validation_v1.yaml",
+    "path": "configs/experiments/ragwarrant_multi_corpus_validation_v1.yaml",
     "sha256": "bd4198f2425e3fc7ce4412c07e43d8ba0ebc9cc119013f815e2bc1c2e0b63f57"
   },
   {
     "bytes": 245,
-    "path": "configs/experiments/ragtune_multi_corpus_validation_v2.yaml",
+    "path": "configs/experiments/ragwarrant_multi_corpus_validation_v2.yaml",
     "sha256": "80209b47fa1071091654d6f338c3bf8d127a321c55198648155aac58a0b271db"
   },
   {
     "bytes": 242,
-    "path": "configs/experiments/ragtune_multi_corpus_validation_v3.yaml",
+    "path": "configs/experiments/ragwarrant_multi_corpus_validation_v3.yaml",
     "sha256": "e541c5f39946dc911aefc69f577ec3babb42bb52204c0e5031ae89aaa0aecc4f"
   },
   {
     "bytes": 382,
-    "path": "configs/experiments/ragtune_multi_corpus_validation_v4.yaml",
+    "path": "configs/experiments/ragwarrant_multi_corpus_validation_v4.yaml",
     "sha256": "4745f9ad26f6152f955aa6addafefce5b9ef91e89a447561b6becc7d2bf9e517"
   },
   {
     "bytes": 772,
-    "path": "configs/experiments/ragtune_multihop_confirmatory_data_verify_v1.yaml",
+    "path": "configs/experiments/ragwarrant_multihop_confirmatory_data_verify_v1.yaml",
     "sha256": "e45946c0f1d88b3059f321f9ff703f041e09500b511427612dbcfea97306efad"
   },
   {
     "bytes": 552,
-    "path": "configs/experiments/ragtune_natural_divergence_adjudication_v1.yaml",
+    "path": "configs/experiments/ragwarrant_natural_divergence_adjudication_v1.yaml",
     "sha256": "f23c9f3b21882cf37180581f37d65e2a54cb7fbf441afa11987c9ed1e01d263f"
   },
   {
     "bytes": 305,
-    "path": "configs/experiments/ragtune_natural_governance_superiority_v1.yaml",
+    "path": "configs/experiments/ragwarrant_natural_governance_superiority_v1.yaml",
     "sha256": "c609ff77970809cd2649ff9b1d8c204ff18ed37ef872c4cc25be1d20145d366d"
   },
   {
     "bytes": 319,
-    "path": "configs/experiments/ragtune_natural_governance_superiority_v2.yaml",
+    "path": "configs/experiments/ragwarrant_natural_governance_superiority_v2.yaml",
     "sha256": "82dfee917001d82ab3f72fe3d94d493a88560226f377ff49487f2923513a879a"
   },
   {
     "bytes": 350,
-    "path": "configs/experiments/ragtune_natural_governance_superiority_v3.yaml",
+    "path": "configs/experiments/ragwarrant_natural_governance_superiority_v3.yaml",
     "sha256": "89bf984f2efa9ed62bc994ba6e4fc50a079f26245a59296c6f463707e9a06da1"
   },
   {
     "bytes": 262,
-    "path": "configs/experiments/ragtune_offline_public_row_level_validation_v2.yaml",
+    "path": "configs/experiments/ragwarrant_offline_public_row_level_validation_v2.yaml",
     "sha256": "f1ad536d68fc12debc99f59c31fa1a20d0f14a3cad47da46b0d592a088c801ab"
   },
   {
     "bytes": 399,
-    "path": "configs/experiments/ragtune_platform_integration_readiness_v2.yaml",
+    "path": "configs/experiments/ragwarrant_platform_integration_readiness_v2.yaml",
     "sha256": "3a6399c7137fc08a0a7731206b7318514063e9db9328e935c43d83acf634d274"
   },
   {
     "bytes": 377,
-    "path": "configs/experiments/ragtune_platform_integration_readiness_v3.yaml",
+    "path": "configs/experiments/ragwarrant_platform_integration_readiness_v3.yaml",
     "sha256": "05fe7093429e84332424fd0c04bf1a372c0dec4c7fd748541810ee1b5961048a"
   },
   {
     "bytes": 216,
-    "path": "configs/experiments/ragtune_power_analysis_v1.yaml",
+    "path": "configs/experiments/ragwarrant_power_analysis_v1.yaml",
     "sha256": "464b6ef1d5a5ad4ebc83b6f468288e16f7d1266e259b31736533f71dff00ca55"
   },
   {
     "bytes": 388,
-    "path": "configs/experiments/ragtune_provenance_repair_v1.yaml",
+    "path": "configs/experiments/ragwarrant_provenance_repair_v1.yaml",
     "sha256": "53c618377f4a71f7f75e358bdbffb47a8b9063d9a0ab54e14fc6d4fb250306d3"
   },
   {
     "bytes": 478,
-    "path": "configs/experiments/ragtune_rag_compass_niche_analysis_v1.yaml",
+    "path": "configs/experiments/ragwarrant_rag_compass_niche_analysis_v1.yaml",
     "sha256": "421490d2b6ac52b9f543e03331e60d00bca99d00132eb20006051a400229a982"
   },
   {
     "bytes": 794,
-    "path": "configs/experiments/ragtune_ragbench_end_to_end_loader_v1.yaml",
+    "path": "configs/experiments/ragwarrant_ragbench_end_to_end_loader_v1.yaml",
     "sha256": "f7e11f958eebe2b9d54c3fdd9f24e27ab5547620fc2f939b69ce658c185019b9"
   },
   {
     "bytes": 855,
-    "path": "configs/experiments/ragtune_ragbench_subset_expansion_v1.yaml",
+    "path": "configs/experiments/ragwarrant_ragbench_subset_expansion_v1.yaml",
     "sha256": "58e45c4b3bfdd76f0038cdd8d5d3d4faa8f95fadc7014ffc76d5d2c984cb3f2f"
   },
   {
     "bytes": 843,
-    "path": "configs/experiments/ragtune_real_rag_governance_ablation_v1.yaml",
+    "path": "configs/experiments/ragwarrant_real_rag_governance_ablation_v1.yaml",
     "sha256": "e6e8536bf4a12c699cc64913155e4108ba35d9af2aae31344457c98319281b73"
   },
   {
     "bytes": 2624,
-    "path": "configs/experiments/ragtune_real_rag_reproduction_v1_confirmatory.yaml",
+    "path": "configs/experiments/ragwarrant_real_rag_reproduction_v1_confirmatory.yaml",
     "sha256": "47578f188170171e8b3f2ba37410a2dd83ff3534ef225934684b2356c82c3e13"
   },
   {
     "bytes": 2598,
-    "path": "configs/experiments/ragtune_real_rag_reproduction_v1_development.yaml",
+    "path": "configs/experiments/ragwarrant_real_rag_reproduction_v1_development.yaml",
     "sha256": "fc6b70d4e456a2b10f270c9a4368216bc4e6418ffc71b097e9008c98ee7c5640"
   },
   {
     "bytes": 2728,
-    "path": "configs/experiments/ragtune_real_rag_reproduction_v1_public_confirmatory.yaml",
+    "path": "configs/experiments/ragwarrant_real_rag_reproduction_v1_public_confirmatory.yaml",
     "sha256": "d119e8d10d6d938a5e7783ab8f19b5307ac6390471514916e29a6080c87f666e"
   },
   {
     "bytes": 2702,
-    "path": "configs/experiments/ragtune_real_rag_reproduction_v1_public_development.yaml",
+    "path": "configs/experiments/ragwarrant_real_rag_reproduction_v1_public_development.yaml",
     "sha256": "ab56d7f721398bddd123c6e62c8fb95ea1118e0293b3d7d30dd8643ce756ec60"
   },
   {
     "bytes": 2577,
-    "path": "configs/experiments/ragtune_real_rag_reproduction_v1_smoke.yaml",
+    "path": "configs/experiments/ragwarrant_real_rag_reproduction_v1_smoke.yaml",
     "sha256": "2ae481cedc3d7af243fdd26cd26ea10f43417294daa16d44a964813f88916025"
   },
   {
     "bytes": 981,
-    "path": "configs/experiments/ragtune_reproduction_v1.yaml",
+    "path": "configs/experiments/ragwarrant_reproduction_v1.yaml",
     "sha256": "6ac7644126b8b653df4e09711e18e7219368610565898b125def754a9e760556"
   },
   {
     "bytes": 352,
-    "path": "configs/experiments/ragtune_robustness_security_v1.yaml",
+    "path": "configs/experiments/ragwarrant_robustness_security_v1.yaml",
     "sha256": "21b395261ce298b6ce8fefe9a2244eec31256e9d52c902658fadd092bfb31f97"
   },
   {
     "bytes": 329,
-    "path": "configs/experiments/ragtune_robustness_v1.yaml",
+    "path": "configs/experiments/ragwarrant_robustness_v1.yaml",
     "sha256": "12600367e3d1e10b1a9ab4f4f6973c0b847bca9607844c9e24bdc912a36be859"
   },
   {
     "bytes": 840,
-    "path": "configs/experiments/ragtune_row_level_reconstruction_v1.yaml",
+    "path": "configs/experiments/ragwarrant_row_level_reconstruction_v1.yaml",
     "sha256": "7d6627f5234e767cb174ae80cf057e9664a53c2a52a0af6cf3c3547ea2f3799f"
   },
   {
     "bytes": 208,
-    "path": "configs/experiments/ragtune_security_regression_v4.yaml",
+    "path": "configs/experiments/ragwarrant_security_regression_v4.yaml",
     "sha256": "e602485c589bbef6cf8b836b631b903bb1f0c37294abae27274f0115edddb19a"
   },
   {
     "bytes": 526,
-    "path": "configs/experiments/ragtune_selection_regret_audit_v1.yaml",
+    "path": "configs/experiments/ragwarrant_selection_regret_audit_v1.yaml",
     "sha256": "499930df6ab079c160c8fcd0dfa44bd55cf92e453d6c19a21b8c3d9ea6161c7e"
   },
   {
     "bytes": 283,
-    "path": "configs/experiments/ragtune_selection_regret_audit_v2.yaml",
+    "path": "configs/experiments/ragwarrant_selection_regret_audit_v2.yaml",
     "sha256": "86c8903ab6191dc8d0f9a6c737b30a0e0367e598c970d3286cc59446b7107c6c"
   },
   {
     "bytes": 458,
-    "path": "configs/experiments/ragtune_statistical_audit_v1.yaml",
+    "path": "configs/experiments/ragwarrant_statistical_audit_v1.yaml",
     "sha256": "2e813a8a5e8e3d2421db3ea2622f7d918997b0ec8618df81848cc75bd18c0a29"
   },
   {
     "bytes": 513,
-    "path": "configs/experiments/ragtune_strict_git_provenance_repair_v1.yaml",
+    "path": "configs/experiments/ragwarrant_strict_git_provenance_repair_v1.yaml",
     "sha256": "39435dff4ffca879e1f0c83ac30be98c03717e3be98081d82add9d97ea49bb31"
   },
   {
@@ -2375,172 +2375,172 @@
   },
   {
     "bytes": 3683,
-    "path": "src/rag_tuning_governance.egg-info/PKG-INFO",
+    "path": "src/ragwarrant_governance.egg-info/PKG-INFO",
     "sha256": "8f89271d2bb510d52c6b12b41fbf2e0da8a26660b5b2167ea348173bb0aa7280"
   },
   {
     "bytes": 2361,
-    "path": "src/rag_tuning_governance.egg-info/SOURCES.txt",
+    "path": "src/ragwarrant_governance.egg-info/SOURCES.txt",
     "sha256": "89eeb8867863bd37ebb134a4f02660705b4b21b5708225e759ec7368d7e37a0b"
   },
   {
     "bytes": 1,
-    "path": "src/rag_tuning_governance.egg-info/dependency_links.txt",
+    "path": "src/ragwarrant_governance.egg-info/dependency_links.txt",
     "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
   },
   {
     "bytes": 27,
-    "path": "src/rag_tuning_governance.egg-info/requires.txt",
+    "path": "src/ragwarrant_governance.egg-info/requires.txt",
     "sha256": "f2c7c5e4d76e9a1df62f77f96586c13fecfb306e82778a774bf9ba58b22cce38"
   },
   {
     "bytes": 8,
-    "path": "src/rag_tuning_governance.egg-info/top_level.txt",
+    "path": "src/ragwarrant_governance.egg-info/top_level.txt",
     "sha256": "2a2085951daeaa0365055273be9639c47b708af16c3aa14db95d74066cd73782"
   },
   {
     "bytes": 96,
-    "path": "src/ragtune/__init__.py",
+    "path": "src/ragwarrant/__init__.py",
     "sha256": "130d1de2f21f57597cf30cf4c89b75b5f4dd1c361b1f9bd64f4db2d1d4bdfec2"
   },
   {
     "bytes": 4245,
-    "path": "src/ragtune/artifacts.py",
+    "path": "src/ragwarrant/artifacts.py",
     "sha256": "366666512d29e32a5f2c39055099f39b2ac6b33c5fea2607d2dd677c14856583"
   },
   {
     "bytes": 1565,
-    "path": "src/ragtune/certificates.py",
+    "path": "src/ragwarrant/certificates.py",
     "sha256": "395155a2c8e9234632e66cce7384e20ec3569b5d56e40b484c3436845f08744b"
   },
   {
     "bytes": 3051,
-    "path": "src/ragtune/cli.py",
+    "path": "src/ragwarrant/cli.py",
     "sha256": "8e36abc61bc2871c7b3749e2068c113591cd119390808bf80b5660148e14f744"
   },
   {
     "bytes": 327,
-    "path": "src/ragtune/cloud.py",
+    "path": "src/ragwarrant/cloud.py",
     "sha256": "ed6003422d46bf677e88b88d5ae4ffe2a9eb5c94bcc126106d98ae3f10ac6e7b"
   },
   {
     "bytes": 1728,
-    "path": "src/ragtune/config.py",
+    "path": "src/ragwarrant/config.py",
     "sha256": "f8196d9ea1f60c5cc232eb7cbfe9c6ab9a2dd0e38dc5926e6b76caaa53347c8b"
   },
   {
     "bytes": 4767,
-    "path": "src/ragtune/end_to_end.py",
+    "path": "src/ragwarrant/end_to_end.py",
     "sha256": "9f41911cbfc207ca5da870fb914991abb9294bd4f9139c1c1b2a3aa305bd442f"
   },
   {
     "bytes": 34,
-    "path": "src/ragtune/experiments/__init__.py",
+    "path": "src/ragwarrant/experiments/__init__.py",
     "sha256": "9e2bc7136b6c5d80631362c346054e4fc74d88e2bf8c5957b9712f9859644f97"
   },
   {
     "bytes": 1920,
-    "path": "src/ragtune/experiments/certificate_calibration.py",
+    "path": "src/ragwarrant/experiments/certificate_calibration.py",
     "sha256": "c78d2a9e9a83e6b2bb1a05fbbe5c4fbc3b27ad82f8ac793981679aa7c3aab26e"
   },
   {
     "bytes": 918,
-    "path": "src/ragtune/experiments/cloud_repro.py",
+    "path": "src/ragwarrant/experiments/cloud_repro.py",
     "sha256": "4ba2bfbadd7ba1236c36b9687be21f930c683a18cc97d94a8979018bdca78afc"
   },
   {
     "bytes": 5226,
-    "path": "src/ragtune/experiments/common.py",
+    "path": "src/ragwarrant/experiments/common.py",
     "sha256": "f1cb8d8de47e50f9668bee9057fc437683bcc038aa324cf34b57c1cb389790d1"
   },
   {
     "bytes": 1935,
-    "path": "src/ragtune/experiments/end_to_end.py",
+    "path": "src/ragwarrant/experiments/end_to_end.py",
     "sha256": "5e6ec0cc40a4d3be72710f88dfef055ec5987f27a9574e06726049905b343e18"
   },
   {
     "bytes": 7045,
-    "path": "src/ragtune/experiments/end_to_end_public.py",
+    "path": "src/ragwarrant/experiments/end_to_end_public.py",
     "sha256": "ef7dd210d50222dec9c82f37b14aa5b281c4eb5bfd2d481e26ff597740cceeae"
   },
   {
     "bytes": 3246,
-    "path": "src/ragtune/experiments/governance.py",
+    "path": "src/ragwarrant/experiments/governance.py",
     "sha256": "a6c0213b9f54c7bcbdb182996ee6f0d13783ecd49f3335073a014b9acf6a889b"
   },
   {
     "bytes": 31460,
-    "path": "src/ragtune/experiments/phase2_suites.py",
+    "path": "src/ragwarrant/experiments/phase2_suites.py",
     "sha256": "12c57d0e002aa8392daf4c0ce71ce1129a2a1e40a3cfd1568c392ece5decae8e"
   },
   {
     "bytes": 540,
-    "path": "src/ragtune/experiments/real_rag_governance.py",
+    "path": "src/ragwarrant/experiments/real_rag_governance.py",
     "sha256": "2bd43abf40a6c1434250d980b26e976ce68c7e503d4602dd8854aae47194658d"
   },
   {
     "bytes": 544,
-    "path": "src/ragtune/experiments/real_rag_reproduction.py",
+    "path": "src/ragwarrant/experiments/real_rag_reproduction.py",
     "sha256": "b665954b0b14135e19a2193ae9984838ed1c4c668d8688743114ccacf153cab1"
   },
   {
     "bytes": 581,
-    "path": "src/ragtune/experiments/reproduction.py",
+    "path": "src/ragwarrant/experiments/reproduction.py",
     "sha256": "5119aec31db59ccccbf9688dbc30a0b8c6d89cc9fd82195aed2907e2b1914555"
   },
   {
     "bytes": 1485,
-    "path": "src/ragtune/experiments/robustness.py",
+    "path": "src/ragwarrant/experiments/robustness.py",
     "sha256": "d820ace6d1d607dd3003c3e92c3a40e847ddb04fa5e7520d5690f4c5558f8824"
   },
   {
     "bytes": 9361,
-    "path": "src/ragtune/experiments/runner.py",
+    "path": "src/ragwarrant/experiments/runner.py",
     "sha256": "5ccc03e61650612a2be0267633d3282fe2abb13a7d3fdfc71b08dd2aa6b2f878"
   },
   {
     "bytes": 5810,
-    "path": "src/ragtune/fixtures.py",
+    "path": "src/ragwarrant/fixtures.py",
     "sha256": "d910639e6bc525fb86b5677ccd58c8e915b054f0e3a5aff975009ce732dc7abf"
   },
   {
     "bytes": 3744,
-    "path": "src/ragtune/metrics.py",
+    "path": "src/ragwarrant/metrics.py",
     "sha256": "2861233c93adcadf00f3a50934f0332f66c9a337eec3cafe400cad8ccdec01c3"
   },
   {
     "bytes": 27370,
-    "path": "src/ragtune/phase2.py",
+    "path": "src/ragwarrant/phase2.py",
     "sha256": "784ad5d926ad372e52a100ca4d3b2a107e79f29fc014decbcdb9e314dd54f715"
   },
   {
     "bytes": 444,
-    "path": "src/ragtune/policy.py",
+    "path": "src/ragwarrant/policy.py",
     "sha256": "b96e558eee5b1ce5a99111364de7076873b62dc139b73e63bdbd0fc6e26c0849"
   },
   {
     "bytes": 54038,
-    "path": "src/ragtune/real_rag.py",
+    "path": "src/ragwarrant/real_rag.py",
     "sha256": "0193fa35bab6e780a94c4aac2480cbb90d14182b9b16ea3f8a92b75202a98900"
   },
   {
     "bytes": 2577,
-    "path": "src/ragtune/reports.py",
+    "path": "src/ragwarrant/reports.py",
     "sha256": "a8d99b963a319bd34a30493ea6f9d3bd238f71bfb842253c18733b25ad90f0b3"
   },
   {
     "bytes": 1458,
-    "path": "src/ragtune/robustness.py",
+    "path": "src/ragwarrant/robustness.py",
     "sha256": "96751367ea011178f2bc7593a9fc21cb2f4d79928f6c28f1d54c9906f360affe"
   },
   {
     "bytes": 1613,
-    "path": "src/ragtune/statistics.py",
+    "path": "src/ragwarrant/statistics.py",
     "sha256": "12208f0dc3ec9ba85f8ee03c9b5931c177dbf6254f56bfbb01a8bcc2cb2d9d0f"
   },
   {
     "bytes": 486288,
-    "path": "src/ragtune/validation_phase3.py",
+    "path": "src/ragwarrant/validation_phase3.py",
     "sha256": "44bc78ed3c0f762d82cf52d02c733704af739976d6966ff87b3c50648123461a"
   },
   {
@@ -3793,62 +3793,62 @@
   },
   {
     "bytes": 6669,
-    "path": "tests/test_ragtune_confirmatory_v2_phase.py",
+    "path": "tests/test_ragwarrant_confirmatory_v2_phase.py",
     "sha256": "02c8e009cef569ca11f666f7356155a6c6b3e1d2f677f7efef4af6599b86e493"
   },
   {
     "bytes": 42820,
-    "path": "tests/test_ragtune_corpus_expansion_v4_phase.py",
+    "path": "tests/test_ragwarrant_corpus_expansion_v4_phase.py",
     "sha256": "add82af1a3e5bb747ba012bac14e2198ee8bf62f6ff175779d96e07cea3c8c27"
   },
   {
     "bytes": 23200,
-    "path": "tests/test_ragtune_crag_mock_api_hardening_phase.py",
+    "path": "tests/test_ragwarrant_crag_mock_api_hardening_phase.py",
     "sha256": "0ce0277869959e0a12e427dfbd4aad4a7b0a247e0bef8141d0ee0b4d6ab340bd"
   },
   {
     "bytes": 12529,
-    "path": "tests/test_ragtune_fresh_corpus_readiness_phase.py",
+    "path": "tests/test_ragwarrant_fresh_corpus_readiness_phase.py",
     "sha256": "3d15f5f10eab056e293926b97159c4f4596c2612382ecf49b25cf74703f9f1ae"
   },
   {
     "bytes": 7721,
-    "path": "tests/test_ragtune_generalization_validation_phase.py",
+    "path": "tests/test_ragwarrant_generalization_validation_phase.py",
     "sha256": "e04e044bc87fd72e13d25081634fcdd27e83e0561934d17fdb4d84385299d916"
   },
   {
     "bytes": 4736,
-    "path": "tests/test_ragtune_governance_expansion_phase.py",
+    "path": "tests/test_ragwarrant_governance_expansion_phase.py",
     "sha256": "212054f864bb079b9ac257cd69ee62cf811dfd3341093a4c6a85ca7047b936b7"
   },
   {
     "bytes": 5027,
-    "path": "tests/test_ragtune_governance_first_phase.py",
+    "path": "tests/test_ragwarrant_governance_first_phase.py",
     "sha256": "b5da939ba6b607303ea1cf7450edba4a76611f9d4ab0e2321ca345af7fd741ca"
   },
   {
     "bytes": 8220,
-    "path": "tests/test_ragtune_ragbench_enablement_phase.py",
+    "path": "tests/test_ragwarrant_ragbench_enablement_phase.py",
     "sha256": "ecceb99784f06ab7b897173be28ac0dd75b151acefb084f9f8bd94f0957e1936"
   },
   {
     "bytes": 9245,
-    "path": "tests/test_ragtune_real_rag_validation.py",
+    "path": "tests/test_ragwarrant_real_rag_validation.py",
     "sha256": "72361e98ef2fe37b0188aaafa1f36fbb20dbe2a38a2c31d60ef37fdf22f3a58b"
   },
   {
     "bytes": 7217,
-    "path": "tests/test_ragtune_rowlevel_e2e_phase.py",
+    "path": "tests/test_ragwarrant_rowlevel_e2e_phase.py",
     "sha256": "0e5b2ae4e097ad75383f8881f3129cc5605fba2b6ab35bc5cf93a7452a533b92"
   },
   {
     "bytes": 6061,
-    "path": "tests/test_ragtune_validation.py",
+    "path": "tests/test_ragwarrant_validation.py",
     "sha256": "611c9a01071e88324f18c4c2c90c36ff9c203057f6206fc75b2a6df7c13ab39b"
   },
   {
     "bytes": 9441,
-    "path": "tests/test_ragtune_validation_phase2.py",
+    "path": "tests/test_ragwarrant_validation_phase2.py",
     "sha256": "bcc439bdbe1383056d46b461f9ca8558299e02603c5247149f3372b6173b7db4"
   },
   {

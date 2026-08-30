@@ -15,4 +15,4 @@ Negative and limiting findings are intentionally preserved to reduce cherry-pick
 - No pinned generator was configured.
 - Official platform integrations were not run.
 
-These results constrain the current claims: the evidence favors RAGTune governance more than RAG Compass optimizer superiority.
+These results constrain the current claims: the evidence favors RAGWarrant governance more than RAG Compass optimizer superiority.

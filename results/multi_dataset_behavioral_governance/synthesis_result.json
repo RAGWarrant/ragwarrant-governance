@@ -4,7 +4,7 @@
   "hotpotqa_result_class": "HOTPOTQA_GOVERNANCE_OPERATIONAL_GAIN_QUALITY_LOSS",
   "prior_frozen_observation_result_class": "GOVERNANCE_REDUCES_COST_AT_EQUIVALENT_QUALITY",
   "result_class": "MULTI_DATASET_BEHAVIORAL_GOVERNANCE_INCONCLUSIVE",
-  "suite": "ragtune_multi_dataset_behavioral_governance_synthesis_v1",
+  "suite": "ragwarrant_multi_dataset_behavioral_governance_synthesis_v1",
   "unsupported_claims": [
     "RAG Compass superiority",
     "human validation",

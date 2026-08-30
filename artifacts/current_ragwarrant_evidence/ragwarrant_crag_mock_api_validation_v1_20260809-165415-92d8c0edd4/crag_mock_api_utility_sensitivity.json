@@ -1,0 +1,38 @@
+{
+  "cost_weights": [
+    0.0,
+    0.005,
+    0.01,
+    0.02,
+    0.05
+  ],
+  "fragile_regions": [
+    {
+      "cost_weight": 0.0,
+      "governed_winner": "greedy_regression_aware_search",
+      "latency_weight": 0.0,
+      "quality_only_winner": "greedy_regression_aware_search",
+      "result": "MOCK_API_VALIDATION_MATCHES_QUALITY_ONLY"
+    }
+  ],
+  "governance_superior_frequency": 14,
+  "governed_winner_frequency": {
+    "greedy_regression_aware_search": 1,
+    "top_k_low": 14
+  },
+  "grid_count": 15,
+  "latency_weights": [
+    0.0,
+    0.001,
+    0.005
+  ],
+  "quality_only_winner_frequency": {
+    "greedy_regression_aware_search": 15
+  },
+  "rag_compass_governed_winner_frequency": 0,
+  "rag_compass_quality_only_winner_frequency": 0,
+  "result_frequency": {
+    "MOCK_API_VALIDATION_GOVERNANCE_SUPERIOR": 14,
+    "MOCK_API_VALIDATION_MATCHES_QUALITY_ONLY": 1
+  }
+}

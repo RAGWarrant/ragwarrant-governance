@@ -1,12 +1,12 @@
 # Cloud-Agnostic Deployment Hardening Post-Validation
 
-Repository path: `<public-ragtune-repository>`
+Repository path: `<public-ragwarrant-repository>`
 
 Branch: `codex/cloud-agnostic-deployable-tool-hardening`
 
 Validation results:
 
-- CLI help: pass with `PYTHONPATH=src python3 -m ragtune.cli --help`
+- CLI help: pass with `PYTHONPATH=src python3 -m ragwarrant.cli --help`
 - CLI environment inspection: pass, sanitized
 - public mini CLI: pass
 - governance job CLI: pass; embedded publication validator passed

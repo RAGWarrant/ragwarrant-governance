@@ -16,5 +16,5 @@
   "python_version": "3.13.5",
   "ram_gb": 0.0,
   "result_class": "AIM_HARDWARE_CHARACTERIZATION_COMPLETED",
-  "suite": "ragtune_aim_hardware_characterization_v1"
+  "suite": "ragwarrant_aim_hardware_characterization_v1"
 }

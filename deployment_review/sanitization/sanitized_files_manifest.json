@@ -1,6 +1,6 @@
 [
   {
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
     "rows_affected": 200,
     "fields_removed": [
       "query_text"
@@ -12,7 +12,7 @@
     ]
   },
   {
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
     "rows_affected": 678,
     "fields_removed": [
       "query_text"
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
     "rows_affected": 1002,
     "fields_removed": [
       "query_text"
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.json",
     "rows_affected": 10,
     "fields_removed": [
       "query_text"
@@ -48,7 +48,7 @@
     ]
   },
   {
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.md",
     "rows_affected": 10,
     "fields_removed": [
       "Markdown Query line raw text"
@@ -58,7 +58,7 @@
     ]
   },
   {
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_technical_case_pack.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_technical_case_pack.md",
     "rows_affected": 10,
     "fields_removed": [
       "Markdown Query line raw text"

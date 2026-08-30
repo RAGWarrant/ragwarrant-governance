@@ -1,0 +1,9 @@
+{
+  "api_call_count": 14172,
+  "budget_units_total": 14711.999999999998,
+  "confirmatory_api_call_count": 8065,
+  "failure_rate_mean": 0.0,
+  "latency_ms_mean": 46.15418042286976,
+  "latency_ms_total": 416218.3990534395,
+  "validation_api_call_count": 6107
+}

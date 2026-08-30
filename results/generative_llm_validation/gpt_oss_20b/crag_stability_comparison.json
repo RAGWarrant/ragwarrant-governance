@@ -109,6 +109,6 @@
     36,
     60
   ],
-  "suite": "ragtune_crag_generative_stability_comparison_v1",
+  "suite": "ragwarrant_crag_generative_stability_comparison_v1",
   "usable_quality_signal_run_count": 4
 }

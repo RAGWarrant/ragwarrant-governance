@@ -1,0 +1,29 @@
+Result: MOCK_API_VALIDATION_GOVERNANCE_SUPERIOR
+No secrets logged. External network disabled by policy.
+
+2026-08-09 11:54:16.530 | INFO     | cragapi.open:__init__:24 - Reading open_kg file from: cragkg/open/kg.0.jsonl.bz2
+2026-08-09 11:54:18.486 | INFO     | cragapi.open:__init__:24 - Reading open_kg file from: cragkg/open/kg.1.jsonl.bz2
+2026-08-09 11:54:19.783 | INFO     | cragapi.open:__init__:44 - Open KG initialized ✅
+2026-08-09 11:54:19.783 | INFO     | cragapi.movie:__init__:31 - Reading year database from: cragkg/movie/year_db.json
+2026-08-09 11:54:19.795 | INFO     | cragapi.movie:__init__:37 - Reading person database from: cragkg/movie/person_db.json
+2026-08-09 11:54:20.734 | INFO     | cragapi.movie:__init__:43 - Reading movie database from: cragkg/movie/movie_db.json
+2026-08-09 11:54:23.656 | INFO     | cragapi.movie:__init__:53 - Movie KG initialized ✅
+2026-08-09 11:54:23.656 | INFO     | cragapi.finance:__init__:27 - Reading cragkg/finance/company_name.dict
+2026-08-09 11:54:23.696 | INFO     | cragapi.finance:_load_db:46 - Reading price history from: cragkg/finance/finance_price.sqlite
+2026-08-09 11:54:23.705 | INFO     | cragapi.finance:_load_db:51 - Reading detailed price history from: cragkg/finance/finance_detailed_price.sqlite
+2026-08-09 11:54:23.707 | INFO     | cragapi.finance:_load_db:56 - Reading dividend history from: cragkg/finance/finance_dividend.sqlite
+2026-08-09 11:54:23.710 | INFO     | cragapi.finance:_load_db:61 - Reading market capitalization from: cragkg/finance/finance_marketcap.sqlite
+2026-08-09 11:54:23.712 | INFO     | cragapi.finance:_load_db:66 - Reading financial information from: cragkg/finance/finance_info.sqlite
+2026-08-09 11:54:23.715 | INFO     | cragapi.finance:__init__:41 - Finance KG initialized ✅
+2026-08-09 11:54:23.715 | INFO     | cragapi.music:__init__:29 - Reading artist dictionary from: cragkg/music/artist_dict_simplified.pickle
+2026-08-09 11:54:28.252 | INFO     | cragapi.music:__init__:35 - Reading song dictionary from: cragkg/music/song_dict_simplified.pickle
+2026-08-09 11:54:29.606 | INFO     | cragapi.music:__init__:41 - Reading Grammy DataFrame from: cragkg/music/grammy_df.pickle
+2026-08-09 11:54:29.613 | INFO     | cragapi.music:__init__:47 - Reading rank dictionary for Hot 100 from: cragkg/music/rank_dict_hot100.pickle
+2026-08-09 11:54:29.735 | INFO     | cragapi.music:__init__:53 - Reading song dictionary for Hot 100 from: cragkg/music/song_dict_hot100.pickle
+2026-08-09 11:54:29.766 | INFO     | cragapi.music:__init__:59 - Reading artist work dictionary from: cragkg/music/artist_work_dict.pickle
+2026-08-09 11:54:55.184 | INFO     | cragapi.music:__init__:91 - Music KG initialized ✅
+2026-08-09 11:54:55.184 | INFO     | cragapi.sports:__init__:26 - Reading soccer KG from: cragkg/sports/soccer_team_match_stats.pkl
+2026-08-09 11:54:55.198 | INFO     | cragapi.sports:__init__:29 - Soccer KG initialized ✅
+2026-08-09 11:54:55.198 | INFO     | cragapi.sports:__init__:64 - Reading NBA KG from: cragkg/sports/nba.sqlite
+2026-08-09 11:54:55.200 | INFO     | cragapi.sports:__init__:66 - NBA KG initialized ✅
+

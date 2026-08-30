@@ -1,6 +1,6 @@
 # Manuscript Change Report
 
-- Canonical Word manuscript: `paper/preprints/RAGTune_ArXiv_Preprint_v0.1.1-rc1.docx`
+- Canonical Word manuscript: `paper/preprints/RAGWarrant_ArXiv_Preprint_v0.1.1-rc1.docx`
 - Before SHA-256: `cefb97cb538b0e1d8ef6e8c09cb85d06173cd5c29cfce9a969259c2d80a1d7b3`
 - After SHA-256: `da3c6ddd4eebf049afc27ee15c9cdee6b3a5e635e9e874ddb97a6d0a72a82ab8`
 

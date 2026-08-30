@@ -7,9 +7,9 @@ Current-tree sanitization removes CRAG raw query text from the latest GitHub vie
 Create a fresh clean repository from the sanitized current tree:
 
 ```bash
-mkdir rag-tuning-governance-clean
-rsync -a --exclude .git <sanitized-repository-bundle>/ rag-tuning-governance-clean/
-cd rag-tuning-governance-clean
+mkdir ragwarrant-governance-clean
+rsync -a --exclude .git <sanitized-repository-bundle>/ ragwarrant-governance-clean/
+cd ragwarrant-governance-clean
 git init
 git add .
 git commit -m "Initial sanitized publication bundle"
@@ -30,4 +30,4 @@ git branch backup/pre-crag-query-text-history-rewrite
 git push --force-with-lease origin main
 ```
 
-Do not run this automatically. Set and document an explicit approval such as `RAGTUNE_ALLOW_HISTORY_REWRITE=true` before destructive history rewriting.
+Do not run this automatically. Set and document an explicit approval such as `RAGWARRANT_ALLOW_HISTORY_REWRITE=true` before destructive history rewriting.

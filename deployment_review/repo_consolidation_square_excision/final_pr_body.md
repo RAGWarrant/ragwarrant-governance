@@ -1,6 +1,6 @@
 ## Summary
 
-This PR consolidates the public survivor repository posture by removing vestigial legacy quantum-simulation code, vendoring the small hash utility RAGTune still needed, classifying private-source differences through reviewed file-level inventory, and updating canonical public repository references.
+This PR consolidates the public survivor repository posture by removing vestigial legacy quantum-simulation code, vendoring the small hash utility RAGWarrant still needed, classifying private-source differences through reviewed file-level inventory, and updating canonical public repository references.
 
 The public repository history remains immutable. No private git history was merged, rebased, cherry-picked, pulled, or imported.
 
@@ -15,8 +15,8 @@ The public repository history remains immutable. No private git history was merg
 ## Task A - Legacy Simulation Excision
 
 - Removed the legacy simulation source tree, related configs, and direct legacy-only tests.
-- Vendored `stable_hash` into `src/ragtune/utils/hashing.py`.
-- Updated RAGTune imports that depended on the removed utility package.
+- Vendored `stable_hash` into `src/ragwarrant/utils/hashing.py`.
+- Updated RAGWarrant imports that depended on the removed utility package.
 - Regression verified exact `stable_hash` outputs on representative inputs.
 
 ## Task B - Private Repository Consolidation
@@ -30,7 +30,7 @@ The public repository history remains immutable. No private git history was merg
 
 ## Canonical Repository URL Cleanup
 
-- Public canonical repository: `https://github.com/AIM-RAGTune/rag-tuning-governance`.
+- Public canonical repository: `https://github.com/RAGWarrant/ragwarrant-governance`.
 - Updated citation and stale deployment-review URL references as needed.
 
 ## Verification Gates

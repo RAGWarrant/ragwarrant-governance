@@ -13,5 +13,5 @@
   "raw_supporting_fact_text_committed": false,
   "result_class": "GEN_LLM_GOVERNANCE_INCONCLUSIVE",
   "secrets_committed": false,
-  "suite": "ragtune_hotpotqa_generative_llm_validation_v1"
+  "suite": "ragwarrant_hotpotqa_generative_llm_validation_v1"
 }

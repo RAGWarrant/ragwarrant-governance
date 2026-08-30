@@ -1,6 +1,6 @@
 [
   {
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
     "field_name": "query_text",
     "exposure_type": "raw_crag_query_text_csv_column",
     "row_count": 200,
@@ -9,7 +9,7 @@
     "replacement_strategy": "query_text_hash + query_text_redacted + sanitized_query_summary"
   },
   {
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
     "field_name": "query_text",
     "exposure_type": "raw_crag_query_text_csv_column",
     "row_count": 678,
@@ -18,7 +18,7 @@
     "replacement_strategy": "query_text_hash + query_text_redacted + sanitized_query_summary"
   },
   {
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
     "field_name": "query_text",
     "exposure_type": "raw_crag_query_text_csv_column",
     "row_count": 1002,
@@ -27,7 +27,7 @@
     "replacement_strategy": "query_text_hash + query_text_redacted + sanitized_query_summary"
   },
   {
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.json",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.json",
     "field_name": "query_text",
     "exposure_type": "raw_crag_query_text_json_field",
     "row_count": 10,
@@ -36,7 +36,7 @@
     "replacement_strategy": "query_text_hash + query_text_redacted + sanitized_query_summary"
   },
   {
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.md",
     "field_name": "Query",
     "exposure_type": "raw_crag_query_text_markdown_line",
     "row_count": 10,
@@ -45,7 +45,7 @@
     "replacement_strategy": "redacted line referencing query_text_hash in JSON"
   },
   {
-    "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_technical_case_pack.md",
+    "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_technical_case_pack.md",
     "field_name": "Query",
     "exposure_type": "raw_crag_query_text_markdown_line",
     "row_count": 10,

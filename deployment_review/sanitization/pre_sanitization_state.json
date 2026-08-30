@@ -5,14 +5,14 @@
   "files_containing_private_paths": [],
   "files_containing_raw_text_related_terms": [
     {
-      "path": "tests/test_ragtune_rowlevel_e2e_phase.py",
+      "path": "tests/test_ragwarrant_rowlevel_e2e_phase.py",
       "patterns": [
         "question"
       ],
       "size": 7217
     },
     {
-      "path": "tests/test_ragtune_crag_mock_api_hardening_phase.py",
+      "path": "tests/test_ragwarrant_crag_mock_api_hardening_phase.py",
       "patterns": [
         "query_text",
         "question"
@@ -20,7 +20,7 @@
       "size": 23200
     },
     {
-      "path": "tests/test_ragtune_fresh_corpus_readiness_phase.py",
+      "path": "tests/test_ragwarrant_fresh_corpus_readiness_phase.py",
       "patterns": [
         "query_text",
         "question"
@@ -28,7 +28,7 @@
       "size": 12529
     },
     {
-      "path": "tests/test_ragtune_corpus_expansion_v4_phase.py",
+      "path": "tests/test_ragwarrant_corpus_expansion_v4_phase.py",
       "patterns": [
         "query_text",
         "question",
@@ -37,7 +37,7 @@
       "size": 42820
     },
     {
-      "path": "tests/test_ragtune_confirmatory_v2_phase.py",
+      "path": "tests/test_ragwarrant_confirmatory_v2_phase.py",
       "patterns": [
         "question"
       ],
@@ -50,7 +50,7 @@
       "size": 19343
     },
     {
-      "path": "tests/test_ragtune_ragbench_enablement_phase.py",
+      "path": "tests/test_ragwarrant_ragbench_enablement_phase.py",
       "patterns": [
         "question"
       ],
@@ -63,7 +63,7 @@
       "size": 12604
     },
     {
-      "path": "src/ragtune/validation_phase3.py",
+      "path": "src/ragwarrant/validation_phase3.py",
       "patterns": [
         "query_text",
         "raw_query",
@@ -74,21 +74,21 @@
       "size": 486288
     },
     {
-      "path": "src/ragtune/real_rag.py",
+      "path": "src/ragwarrant/real_rag.py",
       "patterns": [
         "question"
       ],
       "size": 54038
     },
     {
-      "path": "src/ragtune/phase2.py",
+      "path": "src/ragwarrant/phase2.py",
       "patterns": [
         "question"
       ],
       "size": 27370
     },
     {
-      "path": "src/ragtune/fixtures.py",
+      "path": "src/ragwarrant/fixtures.py",
       "patterns": [
         "question"
       ],
@@ -134,7 +134,7 @@
       "size": 1688
     },
     {
-      "path": "configs/experiments/ragtune_offline_public_row_level_validation_v2.yaml",
+      "path": "configs/experiments/ragwarrant_offline_public_row_level_validation_v2.yaml",
       "patterns": [
         "question"
       ],
@@ -148,14 +148,14 @@
       "size": 420
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_per_query_results.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_per_query_results.csv",
       "patterns": [
         "question"
       ],
       "size": 1945473
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
       "patterns": [
         "query_text",
         "question"
@@ -163,14 +163,14 @@
       "size": 123427
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_per_query_results.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_per_query_results.csv",
       "patterns": [
         "question"
       ],
       "size": 2838962
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
       "patterns": [
         "query_text",
         "question"
@@ -178,7 +178,7 @@
       "size": 180935
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.json",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_case_explanation_pack_v1_20260809-174530-2c68f91651/crag_mock_api_case_packets.json",
       "patterns": [
         "query_text",
         "question"
@@ -186,14 +186,14 @@
       "size": 10683
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_per_query_results.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_per_query_results.csv",
       "patterns": [
         "question"
       ],
       "size": 571588
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
       "patterns": [
         "query_text",
         "question"
@@ -201,14 +201,14 @@
       "size": 36180
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/top_k_low_vs_greedy_metrics.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/top_k_low_vs_greedy_metrics.csv",
       "patterns": [
         "question"
       ],
       "size": 579172
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/query_segment_analysis.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/query_segment_analysis.csv",
       "patterns": [
         "question"
       ],
@@ -218,31 +218,31 @@
   "files_containing_secret_like_patterns": [],
   "largest_files": [
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_per_query_results.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_per_query_results.csv",
       "size": 2838962
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_per_query_results.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_per_query_results.csv",
       "size": 1945473
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/top_k_low_vs_greedy_metrics.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_ablation_v1_20260809-174530-9fc15ace19/top_k_low_vs_greedy_metrics.csv",
       "size": 579172
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_per_query_results.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_per_query_results.csv",
       "size": 571588
     },
     {
-      "path": "src/ragtune/__pycache__/validation_phase3.cpython-313.pyc",
+      "path": "src/ragwarrant/__pycache__/validation_phase3.cpython-313.pyc",
       "size": 547090
     },
     {
-      "path": "src/ragtune/validation_phase3.py",
+      "path": "src/ragwarrant/validation_phase3.py",
       "size": 486288
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
       "size": 180935
     },
     {
@@ -250,7 +250,7 @@
       "size": 163939
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
       "size": 123427
     },
     {
@@ -262,31 +262,31 @@
       "size": 66118
     },
     {
-      "path": "src/ragtune/__pycache__/real_rag.cpython-313.pyc",
+      "path": "src/ragwarrant/__pycache__/real_rag.cpython-313.pyc",
       "size": 64992
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-165415-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
       "size": 55640
     },
     {
-      "path": "src/ragtune/real_rag.py",
+      "path": "src/ragwarrant/real_rag.py",
       "size": 54038
     },
     {
-      "path": "tests/test_ragtune_corpus_expansion_v4_phase.py",
+      "path": "tests/test_ragwarrant_corpus_expansion_v4_phase.py",
       "size": 42820
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-164913-92d8c0edd4/crag_mock_api_validation_freeze_manifest.json",
       "size": 39116
     },
     {
-      "path": "artifacts/selected_run_summaries/runs/ragtune_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
+      "path": "artifacts/selected_run_summaries/runs/ragwarrant_crag_mock_api_validation_v1_20260809-162440-92d8c0edd4/crag_mock_api_domain_task_sample.csv",
       "size": 36180
     },
     {
-      "path": "src/ragtune/__pycache__/phase2.cpython-313.pyc",
+      "path": "src/ragwarrant/__pycache__/phase2.cpython-313.pyc",
       "size": 35882
     },
     {
@@ -296,7 +296,7 @@
       "size": 33117
     }
   ],
-  "remote_url": "origin\thttps://github.com/AIM-RAGTune/rag-tuning-governance.git (fetch)\norigin\thttps://github.com/AIM-RAGTune/rag-tuning-governance.git (push)",
+  "remote_url": "origin\thttps://github.com/RAGWarrant/ragwarrant-governance.git (fetch)\norigin\thttps://github.com/RAGWarrant/ragwarrant-governance.git (push)",
   "repository_path": "<sanitized-repository-bundle>",
   "repository_visibility": "error connecting to api.github.com\ncheck your internet connection or https://githubstatus.com",
   "working_tree_status": ""

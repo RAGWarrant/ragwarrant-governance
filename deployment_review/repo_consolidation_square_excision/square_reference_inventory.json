@@ -2,8 +2,8 @@
   "inventory_kind": "removed_legacy_simulation_reference_inventory",
   "source": "git grep and filename search performed before excision",
   "classification_summary": {
-    "code_dependency": "removed or replaced with ragtune.utils helpers",
-    "test_dependency": "removed for legacy-only test modules or redirected to RAGTune helpers",
+    "code_dependency": "removed or replaced with ragwarrant.utils helpers",
+    "test_dependency": "removed for legacy-only test modules or redirected to RAGWarrant helpers",
     "artifact_historical_mention": "reworded to excluded earlier internal simulation work",
     "documentation_lineage_mention": "reworded to conservative claim-boundary language",
     "candidate_for_deletion": "legacy simulation source, configs, and direct tests",
