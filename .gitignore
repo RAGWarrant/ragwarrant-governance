@@ -4,6 +4,7 @@ __pycache__/
 .ruff_cache/
 *.egg-info/
 .local_data/
+.github/drand-verifier/node_modules/
 .DS_Store
 *.env
 *.pem

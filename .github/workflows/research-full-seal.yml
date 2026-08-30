@@ -1,0 +1,212 @@
+name: Research FULL future-beacon seal
+
+on:
+  push:
+    paths:
+      - configs/research/full_confirmation_freeze_manifest.json
+
+permissions: {}
+
+concurrency:
+  group: ragwarrant-full-seal-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  prepare-read-only:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.11"
+      - name: Require the exact clean frozen workflow commit
+        env:
+          WORKFLOW_SHA: ${{ github.workflow_sha }}
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$WORKFLOW_SHA" = "$GITHUB_SHA"
+          test -z "$(git status --porcelain --untracked-files=no)"
+      - name: Reuse an already-published branch seal without selecting a new round
+        id: existing
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: src
+        shell: bash
+        run: |
+          seal_branch="ragwarrant-full-seal-${GITHUB_SHA}"
+          existing_oid="$(git ls-remote "https://github.com/${GITHUB_REPOSITORY}.git" "refs/heads/${seal_branch}" | awk '{print $1}')"
+          if [ -z "$existing_oid" ]; then
+            echo "reuse=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          gh api "repos/${GITHUB_REPOSITORY}/contents/seals/${GITHUB_SHA}.json?ref=${existing_oid}" --jq .content | base64 --decode > "$RUNNER_TEMP/seal.json"
+          python - "$RUNNER_TEMP/seal.json" configs/research/full_confirmation_freeze_manifest.json "$GITHUB_SHA" <<'PY'
+          import json, pathlib, sys
+          from ragwarrant.research.public_beacon import validate_seal_manifest, verify_benchmark_freeze_manifest
+          seal = json.loads(pathlib.Path(sys.argv[1]).read_text())
+          manifest = json.loads(pathlib.Path(sys.argv[2]).read_text())
+          validate_seal_manifest(seal)
+          digest = verify_benchmark_freeze_manifest(manifest, pathlib.Path.cwd())
+          if seal.get("subject_commit") != sys.argv[3] or seal.get("benchmark_freeze_digest") != digest:
+              raise SystemExit("existing canonical seal does not bind this frozen subject and benchmark")
+          PY
+          echo "reuse=true" >> "$GITHUB_OUTPUT"
+      - name: Obtain GitHub server workflow start time
+        id: clock
+        if: ${{ steps.existing.outputs.reuse != 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          started_at="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" --jq '.run_started_at // .created_at')"
+          test -n "$started_at"
+          started_unix="$(date -u -d "$started_at" +%s)"
+          echo "started_unix=${started_unix}" >> "$GITHUB_OUTPUT"
+      - name: Prepare exact future-round seal without beacon retrieval
+        if: ${{ steps.existing.outputs.reuse != 'true' }}
+        env:
+          PYTHONPATH: src
+        shell: bash
+        run: |
+          python scripts/prepare_full_beacon_seal.py \
+            --freeze-manifest configs/research/full_confirmation_freeze_manifest.json \
+            --subject-commit "$GITHUB_SHA" \
+            --workflow-start-unix "${{ steps.clock.outputs.started_unix }}" \
+            --output "$RUNNER_TEMP/seal.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: full-seal-prepared-${{ github.sha }}
+          path: ${{ runner.temp }}/seal.json
+          if-no-files-found: error
+          retention-days: 90
+
+  publish-write-only:
+    needs: prepare-read-only
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: full-seal-prepared-${{ github.sha }}
+          path: ${{ runner.temp }}/prepared
+      - name: Publish or recover the one canonical seal
+        id: seal
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SUBJECT_REF_NAME: ${{ github.ref_name }}
+        shell: bash
+        run: |
+          subject="$GITHUB_SHA"
+          seal="$RUNNER_TEMP/prepared/seal.json"
+          seal_branch="ragwarrant-full-seal-${subject}"
+          frozen_branch="ragwarrant-full-subject-${subject}"
+          gh auth setup-git
+
+          frozen_oid="$(git ls-remote "https://github.com/${GITHUB_REPOSITORY}.git" "refs/heads/${frozen_branch}" | awk '{print $1}')"
+          if [ -n "$frozen_oid" ]; then
+            test "$frozen_oid" = "$subject" || { echo "Frozen subject ref was rewritten." >&2; exit 1; }
+          else
+            gh api --method POST "repos/${GITHUB_REPOSITORY}/git/refs" -f "ref=refs/heads/${frozen_branch}" -f "sha=${subject}" >/dev/null
+          fi
+
+          existing_oid="$(git ls-remote "https://github.com/${GITHUB_REPOSITORY}.git" "refs/heads/${seal_branch}" | awk '{print $1}')"
+          if [ -n "$existing_oid" ]; then
+            gh api "repos/${GITHUB_REPOSITORY}/contents/seals/${subject}.json?ref=${existing_oid}" --jq .content | base64 --decode > "$RUNNER_TEMP/existing-seal.json"
+            cmp --silent "$seal" "$RUNNER_TEMP/existing-seal.json" || { echo "Existing canonical seal bytes differ; resealing is forbidden." >&2; exit 1; }
+            seal_commit="$existing_oid"
+          else
+            seal_tree="$RUNNER_TEMP/seal-tree"
+            git init "$seal_tree"
+            git -C "$seal_tree" remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+            git -C "$seal_tree" fetch --depth 1 origin "$subject"
+            git -C "$seal_tree" checkout -b "$seal_branch" FETCH_HEAD
+            git -C "$seal_tree" config user.name "ragwarrant-research-bot"
+            git -C "$seal_tree" config user.email "ragwarrant-research-bot@users.noreply.github.com"
+            mkdir -p "$seal_tree/seals"
+            cp "$seal" "$seal_tree/seals/${subject}.json"
+            git -C "$seal_tree" add "seals/${subject}.json"
+            git -C "$seal_tree" commit -m "Seal FULL future beacon for ${subject}"
+            seal_commit="$(git -C "$seal_tree" rev-parse HEAD)"
+            git -C "$seal_tree" push --porcelain origin "HEAD:refs/heads/${seal_branch}"
+          fi
+
+          pr_json="$(gh pr list --repo "$GITHUB_REPOSITORY" --state all --head "$seal_branch" --json url,number,createdAt,headRefName,headRefOid,title,body --jq 'map(select(.title == "RAGWARRANT FULL SEAL '"$subject"'"))')"
+          pr_count="$(echo "$pr_json" | jq length)"
+          if [ "$pr_count" = "0" ]; then
+            target_at="$(jq -r .drand.target_round_timestamp_utc "$seal")"
+            now_at="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" --jq .updated_at)"
+            python - "$now_at" "$target_at" <<'PY'
+          from datetime import datetime
+          import sys
+          parse = lambda value: datetime.fromisoformat(value.replace("Z", "+00:00"))
+          if parse(sys.argv[1]) >= parse(sys.argv[2]):
+              raise SystemExit("partial seal recovery missed the sealed round; no reseal is permitted")
+          PY
+            pr_url="$(gh pr create --repo "$GITHUB_REPOSITORY" --base "$SUBJECT_REF_NAME" --head "$seal_branch" --draft --title "RAGWARRANT FULL SEAL ${subject}" --body "Immutable pre-round seal for frozen commit ${subject}.\n\nSeal commit: ${seal_commit}\nSeal workflow run: ${GITHUB_RUN_ID}\nFrozen subject ref: ${frozen_branch}\n\nThis PR must not be merged or rewritten.")"
+            pr_json="$(gh pr view "$pr_url" --repo "$GITHUB_REPOSITORY" --json url,number,createdAt,headRefName,headRefOid,title,body)"
+          elif [ "$pr_count" = "1" ]; then
+            pr_json="$(echo "$pr_json" | jq '.[0]')"
+          else
+            echo "Multiple canonical seal PRs exist." >&2
+            exit 1
+          fi
+
+          pr_head="$(echo "$pr_json" | jq -r .headRefOid)"
+          pr_branch="$(echo "$pr_json" | jq -r .headRefName)"
+          pr_created="$(echo "$pr_json" | jq -r .createdAt)"
+          pr_url="$(echo "$pr_json" | jq -r .url)"
+          test "$pr_head" = "$seal_commit"
+          test "$pr_branch" = "$seal_branch"
+          target_at="$(jq -r .drand.target_round_timestamp_utc "$seal")"
+          python - "$pr_created" "$target_at" <<'PY'
+          from datetime import datetime
+          import sys
+          parse = lambda value: datetime.fromisoformat(value.replace("Z", "+00:00"))
+          if parse(sys.argv[1]) >= parse(sys.argv[2]):
+              raise SystemExit("draft seal PR was not public before the target round")
+          PY
+          seal_sha="$(python -c 'import hashlib,json,sys; value=json.load(open(sys.argv[1])); canonical=json.dumps(value,sort_keys=True,separators=(",",":"),allow_nan=False)+"\n"; print(hashlib.sha256(canonical.encode()).hexdigest())' "$seal")"
+          jq -n \
+            --arg subject "$subject" \
+            --arg seal_sha "$seal_sha" \
+            --arg seal_commit "$seal_commit" \
+            --arg seal_branch "$seal_branch" \
+            --arg frozen_branch "$frozen_branch" \
+            --arg pr_url "$pr_url" \
+            --arg pr_created "$pr_created" \
+            --argjson run_id "$GITHUB_RUN_ID" \
+            '{schema_version:"1.0",subject_commit:$subject,seal_sha256:$seal_sha,seal_commit_sha:$seal_commit,canonical_seal_branch:$seal_branch,canonical_seal_ref:("refs/heads/"+$seal_branch),frozen_subject_ref:("refs/heads/"+$frozen_branch),draft_pr_url:$pr_url,github_created_at_utc:$pr_created,seal_workflow_run_id:$run_id}' \
+            > "$RUNNER_TEMP/seal-publication.json"
+          cp "$seal" "$RUNNER_TEMP/seal.json"
+          echo "seal_commit_sha=${seal_commit}" >> "$GITHUB_OUTPUT"
+          echo "frozen_branch=${frozen_branch}" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: full-seal-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/seal.json
+            ${{ runner.temp }}/seal-publication.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Dispatch exact frozen Stage B without an approval gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FROZEN_BRANCH: ${{ steps.seal.outputs.frozen_branch }}
+          SEAL_COMMIT_SHA: ${{ steps.seal.outputs.seal_commit_sha }}
+        shell: bash
+        run: |
+          gh workflow run research-full-execute.yml --repo "$GITHUB_REPOSITORY" --ref "$FROZEN_BRANCH" \
+            -f "seal_subject_commit=${GITHUB_SHA}" \
+            -f "seal_workflow_run_id=${GITHUB_RUN_ID}" \
+            -f "seal_commit_sha=${SEAL_COMMIT_SHA}"
