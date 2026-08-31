@@ -1,0 +1,44 @@
+{
+  "schema_version": "ragwarrant_packaging_integrity_amendment.v2",
+  "amendment_id": "RAGWARRANT-PACKAGING-INTEGRITY-002",
+  "amendment_type": "TRUST_ROOT_REBINDING_AND_PATH_CONTAINMENT_HARDENING",
+  "parent_amendment_id": "RAGWARRANT-RESEARCH-PACKAGING-PORTABILITY-001",
+  "parent_record": {
+    "path": "configs/research/packaging_portability_amendment_v1.json",
+    "sha256": "8008c6fd03ce2b765a791412eaaaf9e8fd0b33781abd00a7e2af9b12994272c3"
+  },
+  "focus1_authority": {
+    "checkpoint_commit": "124836bcc2fba48373d7bd08f0087b23f2e41620",
+    "accepted_digest": "c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e"
+  },
+  "authorized_rebinding_paths": [
+    ".gitattributes",
+    "docs/research/packaging_integrity_amendment_v2.md",
+    "docs/research/packaging_portability_amendment_v1.md",
+    "pyproject.toml",
+    "scripts/verify_packaging_portability.py",
+    "src/ragwarrant/research/packaging_portability_amendment.py",
+    "tests/research/conftest.py",
+    "tests/research/test_confirmation_provenance_amendment.py",
+    "tests/research/test_joint_power_confirmation.py",
+    "tests/research/test_packaging_portability_amendment.py"
+  ],
+  "authorized_rebindings_sha256": "aa27669521cd10ebd63f5a9256b5e7fa953b383befabd5803d3c8490a60b2609",
+  "authority_json_paths": [
+    ".local_data/research_review/confirmation_amendment/ORIGINAL_MATERIALIZATION_INVENTORY.json",
+    ".local_data/research_review/confirmation_amendment/confirmation_provenance_amendment_v1.json"
+  ],
+  "trust_boundary": {
+    "verifier_self_attestation": false,
+    "reviewed_git_commit_and_ci_required": true,
+    "global_external_copy_integrity_claimed": false
+  },
+  "declarations": {
+    "scientific_input_changed": false,
+    "result_changed": false,
+    "original_confirmation_output_changed": false,
+    "simulation_rerun": false,
+    "full_executed": false,
+    "drand_accessed": false
+  }
+}
