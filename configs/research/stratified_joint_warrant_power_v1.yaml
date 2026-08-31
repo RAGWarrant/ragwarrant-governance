@@ -1,0 +1,156 @@
+schema_version: ragwarrant_stratified_joint_power_v1
+contract_id: STRATIFIED_CONFIRMATORY_EVIDENCE_V1
+planner_id: RAGWARRANT_JOINT_WARRANT_POWER_PLANNER_V1
+focus1_digest: c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e
+research_only: true
+execution_authorized: false
+evidence_collected: false
+full_executed: false
+drand_round_selected: false
+original_full_status: FULL_ORIGINAL_BUDGET_NOT_EXECUTED_DEVELOPMENTALLY_UNDERPOWERED
+
+# This is a frozen synthetic planning superpopulation, not an authorization or
+# codebook for recruiting people or production traffic.
+target_population:
+  id: STRATIFIED_PLANNING_SUPERPOPULATION_V1
+  sampling_frame_id: SYNTHETIC_ELIGIBLE_EVENT_FRAME_V1
+  unit_definition: one independently sampled eligible evaluation event with one immutable unit ID
+  inclusion: eligible event present in the frozen frame before sampling
+  exclusion: duplicate, missing eligibility, missing or ambiguous group label
+  recruitment_window: relative days 0 through 13 after a future activation timestamp
+  privacy_boundary: synthetic planning inputs only; no PII and aggregate publication only
+  owner_operational_fields_status: BLOCKED_PENDING_OWNER_OPERATIONAL_FIELDS
+
+groups:
+  assignment_source: immutable pre-evaluation event metadata
+  missing_label: BLOCK
+  ambiguous_or_multiple_label: BLOCK
+  known_before_expensive_evaluation: true
+  labels:
+    - id: majority
+      prevalence: 0.90
+    - id: minority
+      prevalence: 0.10
+
+sampling:
+  core_mechanism: IID_PROBABILITY_SAMPLE
+  topup_mechanism: OUTCOME_BLIND_RANDOM_WITHIN_GROUP
+  replacement: false
+  core_inclusion_probability: equal within frozen frame
+  topup_inclusion_probability: equal within each frozen conditional group frame
+  max_elapsed_days: 14
+  screening_cap: 50000
+  recruitment_deadline_days: 14
+  failure_result: BLOCKED_INSUFFICIENT_GROUP_EVIDENCE
+  duplicate_rule: reject across core and every top-up source
+  core_counts_toward_matching_group_quota: true
+  topups_in_unweighted_overall_estimates: false
+
+freeze_points:
+  candidate_family: before sampling identities are derived
+  incumbent_version: planning-incumbent-v1
+  model_version: planning-model-family-v1
+  evaluator_version: planning-evaluator-contract-v1
+
+warrant:
+  candidate_count: 24
+  candidate_ids:
+    - policy_000
+    - policy_001
+    - policy_002
+    - policy_003
+    - policy_004
+    - policy_005
+    - policy_006
+    - policy_007
+    - policy_008
+    - policy_009
+    - policy_010
+    - policy_011
+    - policy_012
+    - policy_013
+    - policy_014
+    - policy_015
+    - policy_016
+    - policy_017
+    - policy_018
+    - policy_019
+    - policy_020
+    - policy_021
+    - policy_022
+    - policy_023
+  safe_planning_candidate_ids: [policy_000, policy_001, policy_002]
+  familywise_error_level: 0.05
+  multiplicity: HOLM_ACROSS_CANDIDATES
+  candidate_p_value: max_all_enabled_component_p_values
+  enabled_risks:
+    - overall_quality
+    - group_quality
+    - safety_violation_probability
+    - execution_failure_probability
+    - insufficient_evidence_probability
+  enabled_group_risks: [safety_violation_probability]
+  quality_support: [-0.25, 0.25]
+  overall_quality_margin: 0.02
+  group_quality_margin: 0.03
+  binary_thresholds:
+    safety_violation_probability: 0.05
+    execution_failure_probability: 0.03
+    insufficient_evidence_probability: 0.10
+
+# Alternatives are prespecified planning inputs, never hidden benchmark truth.
+planning_alternatives:
+  quality_slack: 0.10
+  quality_noise_half_width: 0.05
+  binary_probabilities:
+    safety_violation_probability: 0.025
+    execution_failure_probability: 0.015
+    insufficient_evidence_probability: 0.05
+  unsafe_boundary_offset:
+    quality: 0.01
+    safety_violation_probability: 0.005
+    execution_failure_probability: 0.005
+    insufficient_evidence_probability: 0.01
+
+dependence:
+  levels:
+    low: 0.0
+    medium: 0.5
+    high: 0.9
+  interpretation: shared-variation mixture fraction, not Pearson correlation
+
+designs:
+  - id: COMPONENT_50
+    core_n: 898
+    group_quota: 536
+  - id: COMPONENT_80
+    core_n: 1383
+    group_quota: 826
+  - id: COMPONENT_90
+    core_n: 1720
+    group_quota: 1028
+  - id: JOINT_EXPANSION_1
+    core_n: 2304
+    group_quota: 1380
+  - id: JOINT_EXPANSION_2
+    core_n: 3072
+    group_quota: 1840
+
+operating_targets: [0.50, 0.80, 0.90]
+operating_point_rule: first prespecified design whose point estimate reaches the target in every dependence level; report Wilson uncertainty and do not treat as a guarantee
+operational_cost_rank_rule: multiplicative_permutation_mod24_multiplier7_offset3
+operational_latency_rank_rule: multiplicative_permutation_mod24_multiplier11_offset5
+replicates: 96
+master_seed: 740771201
+
+cost_model:
+  eligibility_rate: 0.95
+  usable_rate: 0.98
+  duplicate_rate: 0.01
+  acquisition_probability: 0.95
+  unit_costs:
+    group_screen: 0.02
+    eligibility_screen: 0.02
+    full_evaluation: 1.0
+    manual_review: 0.05
+    data_acquisition: 0.05

@@ -45,4 +45,5 @@ pythonpath = ["src"]
 testpaths = ["tests/publication"]
 markers = [
   "storage_emulator: integration tests that require Docker-backed object-storage emulators",
+  "workspace_materialization: read-only integrity tests requiring an explicitly supplied local confirmation materialization root",
 ]
