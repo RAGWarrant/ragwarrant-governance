@@ -1,0 +1,152 @@
+{
+  "schema_version": "ragwarrant_research_packaging_portability_amendment.v1",
+  "amendment_id": "RAGWARRANT-RESEARCH-PACKAGING-PORTABILITY-001",
+  "amendment_type": "NONSCIENTIFIC_PACKAGING_AND_CLEAN_CHECKOUT_TEST_PORTABILITY",
+  "frozen_authorities": {
+    "focus1_digest": "c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e",
+    "v1_hash": "bf3b3331b623afbdaed295919b3ac945c10692f6",
+    "original_confirmation_output_set_sha256": "a6ff12e61dc800be65c089cdb7cbe8aca68339a53af08d6ac1bbc95db8a57493"
+  },
+  "frozen_yaml_files": [
+    {
+      "path": "configs/research/fixed_sample_multi_risk_warrant_v2.yaml",
+      "sha256": "9ea78712a5ab0cee58982cec0cd2d69bc363d2c3c084d9507e54416dc18d1238"
+    },
+    {
+      "path": "configs/research/fixed_sample_multi_risk_warrant_v2_iut_holm.yaml",
+      "sha256": "b396bff282fb80ee2c9258caec1342862417b3dc92d3c30f208d9009267a1566"
+    }
+  ],
+  "gitattributes_rules": {
+    "configs/research/fixed_sample_multi_risk_warrant_v2.yaml": "whitespace=-blank-at-eof",
+    "configs/research/fixed_sample_multi_risk_warrant_v2_iut_holm.yaml": "whitespace=-blank-at-eof",
+    "docs/research/operational_contract_template.md": "whitespace=-blank-at-eof",
+    "src/ragwarrant/research/joint_power_confirmation.py": "whitespace=-blank-at-eof"
+  },
+  "hash_rebindings": [
+    {
+      "prior_path": ".gitattributes",
+      "prior_sha256": "fcd6699b9b87914dc5b92aa5e986696b883c6c24a7722d6bfde3679b8213c66c",
+      "new_path": ".gitattributes",
+      "new_sha256": "ad661a962b8ff9f6d834833c0a6995e96a26bc6ff0cd6f2bc0445916458f9e37",
+      "amendment_id": "RAGWARRANT-PACKAGING-INTEGRITY-002",
+      "change_category": "GIT_WHITESPACE_POLICY",
+      "reason": "Allow only blank-at-eof on four exact-byte preserved paths, including the two frozen YAMLs, while preserving all other whitespace review.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": "pyproject.toml",
+      "prior_sha256": "e816c8eb3aff7ba6454e63f81f11636c310f47c630d8021e305bd58655c48d45",
+      "new_path": "pyproject.toml",
+      "new_sha256": "30e47dc1ae5f43011ad79293120b01f1d68fa325ddadaedfea1f3c8d2822ab35",
+      "amendment_id": "RAGWARRANT-PACKAGING-INTEGRITY-002",
+      "change_category": "PYTEST_MARKER_REGISTRATION",
+      "reason": "Register the explicit read-only workspace-materialization test marker.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": null,
+      "prior_sha256": "NEW_FILE",
+      "new_path": "tests/research/conftest.py",
+      "new_sha256": "846d97e00cb9576b301f9c91ce5a519723d94033c5ff1180cca63eadb2a4e384",
+      "amendment_id": "RAGWARRANT-PACKAGING-INTEGRITY-002",
+      "change_category": "OPTIONAL_LOCAL_DEPENDENCY_PORTABILITY",
+      "reason": "Materialize an immutable checkpoint-authoritative Focus 1 manifest without replacing the production verifier, and skip exactly three pinned BLS-client tests only when the ignored Node dependency is absent.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": "tests/research/test_joint_power_confirmation.py",
+      "prior_sha256": "a76ea9bfac13a433d81b72756dbe7d795f26f911d38c6e19e162f5a2e3f39fab",
+      "new_path": "tests/research/test_joint_power_confirmation.py",
+      "new_sha256": "de883b6ca7d6fd60545b1383360a6246c84c3e00d1615ac05f07bb7ffda8d0ef",
+      "amendment_id": "RAGWARRANT-PACKAGING-INTEGRITY-002",
+      "change_category": "CLEAN_CHECKOUT_TEST_PORTABILITY",
+      "reason": "Replace ignored-workspace dependencies in ordinary tests with generated synthetic fixtures and isolate actual materialization checks behind an explicit read-only marker.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": "tests/research/test_confirmation_provenance_amendment.py",
+      "prior_sha256": "14d5fbebba40b2773a3cb710c0686fda9fedb0b42d5c53c023f396d489bb9a8c",
+      "new_path": "tests/research/test_confirmation_provenance_amendment.py",
+      "new_sha256": "a4585f69fe65c784af4714adcbe2a369d0576f854ca5d5c93d9bf02d81994f0e",
+      "amendment_id": "RAGWARRANT-PACKAGING-INTEGRITY-002",
+      "change_category": "CLEAN_CHECKOUT_TEST_PORTABILITY",
+      "reason": "Keep synthetic provenance coverage portable and make the actual ignored materialization check explicit, opt-in, and read-only.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": null,
+      "prior_sha256": "NEW_FILE",
+      "new_path": "src/ragwarrant/research/packaging_portability_amendment.py",
+      "new_sha256": "2a23b19965b551f79a8fc715167973db3435874832ab5dd86035bd4bb0b442db",
+      "amendment_id": "RAGWARRANT-PACKAGING-INTEGRITY-002",
+      "change_category": "ADDITIVE_READ_ONLY_VERIFIER",
+      "reason": "Verify the nonscientific amendment, frozen authorities, additive test-hash bindings, and optional preserved workspace materialization without rewriting historical freezes.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": null,
+      "prior_sha256": "NEW_FILE",
+      "new_path": "scripts/verify_packaging_portability.py",
+      "new_sha256": "20eca83905cade2f723f50f1fbd6e2a5352574524b8091ddf47ecde0320065fa",
+      "amendment_id": "RAGWARRANT-PACKAGING-INTEGRITY-002",
+      "change_category": "ADDITIVE_READ_ONLY_VERIFICATION_COMMAND",
+      "reason": "Expose machine-readable tracked and opt-in workspace verification without simulation or artifact mutation.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": null,
+      "prior_sha256": "NEW_FILE",
+      "new_path": "tests/research/test_packaging_portability_amendment.py",
+      "new_sha256": "4d85418c6a3e1dad8149da6be5210e64ec000555a93f8b1ee2b6bf0c66e51058",
+      "amendment_id": "RAGWARRANT-PACKAGING-INTEGRITY-002",
+      "change_category": "PORTABILITY_VERIFIER_TESTS",
+      "reason": "Provide generated synthetic clean-checkout coverage for hash, path, policy, mutation, and read-only materialization checks.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": null,
+      "prior_sha256": "NEW_FILE",
+      "new_path": "docs/research/packaging_portability_amendment_v1.md",
+      "new_sha256": "c54fbb2ee0ed129d70e0250cc3e7e47d4d5a844c49ddc45ee7caa21c318cdfbf",
+      "amendment_id": "RAGWARRANT-PACKAGING-INTEGRITY-002",
+      "change_category": "PORTABILITY_PROTOCOL_DOCUMENTATION",
+      "reason": "Document the nonscientific scope, narrow Git rule, portable fixture contract, explicit workspace commands, and claim boundary.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": null,
+      "prior_sha256": "NEW_FILE",
+      "new_path": "docs/research/packaging_integrity_amendment_v2.md",
+      "new_sha256": "93a980f600bb18fb2806e4f9eb6b55f39826cceddc150e6043a064a6dfbb1e53",
+      "amendment_id": "RAGWARRANT-PACKAGING-INTEGRITY-002",
+      "change_category": "PACKAGING_INTEGRITY_DOCUMENTATION",
+      "reason": "Document the closed rebinding authority, checkpoint trust root, contained authority loading, and limited integrity claim.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    }
+  ],
+  "declarations": {
+    "scientific_input_changed": false,
+    "scenario_changed": false,
+    "truth_changed": false,
+    "threshold_or_margin_changed": false,
+    "method_changed": false,
+    "seed_changed": false,
+    "result_changed": false,
+    "original_confirmation_output_changed": false,
+    "simulation_rerun": false,
+    "amendment_scope": "GIT_WHITESPACE_POLICY_AND_TEST_PORTABILITY_ONLY",
+    "test_hashes_rebound_additively": true,
+    "frozen_yaml_bytes_and_hashes_unchanged": true
+  }
+}

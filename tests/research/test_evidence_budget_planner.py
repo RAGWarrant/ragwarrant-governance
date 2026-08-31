@@ -54,17 +54,15 @@ PRESERVED_SHA256 = {
     "src/ragwarrant/research/focus2_v2_benchmark.py": "339b9df2276945547ddd3533818d366757d665a970ca8aa5904c2e1abfacc2dd",
     "src/ragwarrant/research/focus2_v2_reporting.py": "87c34660ce9ba0dfc37b008d44c5aecc3f846bd6219cb209cf56d02ec1e5e2ce",
     "tests/research/test_fixed_sample_warrant_v2.py": "54d8d4ab3f7e0a82af5f07edfa6da040541519cdb57a410e6e09f84f743f5210",
-    "tests/research/test_focus2_power_feasibility.py": "0baac22c8166b07890efddcb4460b9224f61eab512c8bb6308772284d22b4d17",
-    "tests/research/test_focus2_v2_benchmark_integration.py": "ef4b86b518f297dc9b1b3b45e7c9e5b320ba4442f5c5f5bb36db08f3bfb76696",
+    "tests/research/test_focus2_power_feasibility.py": "bc696685c3f1b960d1b586056a8526126eea500056958da791c62fb07d6ca446",
+    "tests/research/test_focus2_v2_benchmark_integration.py": "66af1fb74c36acdc35468a8de6dcae0da6959dcfc628ac08d76d1c03a07829ba",
     "configs/research/false_promotion_benchmark_v1.yaml": "4469bb06123796cb71103c2ec0b105e444167fe2b7e538193288ba22d916920a",
     "docs/research/false_promotion_benchmark_protocol.md": "6d661b06d49f31d40ac21a5cc0516e9f61c6e084514c1ac1838b36f6693686ad",
     "docs/research/false_promotion_benchmark_seed_schedule_v2_amendment.md": "9ffcb40dae4e8740e6f944d817e3f9a384d3ce53c4c2c3fa154bc91895447628",
+    "docs/research/false_promotion_benchmark_full_entropy_drand_amendment.md": "14618686523a420f840b810e3107d177c6299fb1eb9e4a35d01bf4d3b68c577f",
     "src/ragwarrant/research/seed_schedule.py": "1083c32e750b87f3b4876b6685d9cf25a97d0b765181af03f3a2ac60c4411aba",
+    "src/ragwarrant/research/public_beacon.py": "ee17e10f8747b931da09c0745b1d2b6eeb547e4ce4622efba6a581e01e41c2a3",
 }
-
-# PR A intentionally excludes the complete sealed-study document and replaces
-# public_beacon.py with a fail-closed compatibility boundary. The final scoped
-# path verifier binds that split; PR B restores this test and both exact files.
 
 
 @pytest.fixture(scope="module")
