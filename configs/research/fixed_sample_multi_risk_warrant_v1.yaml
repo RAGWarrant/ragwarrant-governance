@@ -1,0 +1,23 @@
+schema_version: fixed_sample_multi_risk_warrant_config.v1
+method_id: fixed_sample_multi_risk_warrant_v1
+focus1_benchmark_freeze_digest: c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e
+seed_schedule_version: 2
+familywise_error_level: 0.05
+primary_multiplicity_method: holm
+multiplicity_methods:
+  - holm
+  - bonferroni
+incumbent_policy_id: benchmark_incumbent_v1
+quality_delta_bounds:
+  - -0.25
+  - 0.25
+selection_objective: minimize_cost
+permitted_selection_objectives:
+  - minimize_cost
+  - minimize_latency
+structural_family_mismatch_behavior: invalidate_warrant
+insufficient_prespecified_group_count_behavior: retain_hypothesis_with_p_value_one
+development_evidence_used_for_certification: false
+full_profile_permitted: false
+research_only: true
+production_integrated: false
