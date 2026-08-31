@@ -7,9 +7,16 @@ Amendment type: `DETACHED_PINNED_CHECKPOINT_AUTHORITY`
 
 Focus 1 was legitimately replayed onto the merged PR #28 RAGWarrant baseline.
 Cherry-picking preserved the frozen content but not the original commit ancestry.
-This nonscientific amendment allows that replayed branch to prove exact content
-equivalence for the canonical 36-path Focus 1 freeze without adding a synthetic
-merge parent or replaying PR #27-era commits into the owner-review branch.
+This nonscientific amendment allowed the immutable owner-review branch to prove
+exact content equivalence for the canonical 36-path Focus 1 freeze without
+adding a synthetic merge parent or replaying PR #27-era commits into that
+branch. The immutable owner-review commit remains the historical authority.
+
+The stacked PR B candidate intentionally does not claim that same exact
+36-path digest. It preserves 35 historical paths and contains one separately
+authorized nonscientific security correction at
+`.github/workflows/research-full-closure.yml`. The historical authority and
+the declared PR B compatibility delta are verified as distinct claims.
 
 No scenario, truth, threshold, margin, risk, method, seed, result, confirmation
 output, production behavior, or historical artifact changes in this amendment.
@@ -72,10 +79,19 @@ The accepted detached status is
 `FOCUS1_AUTHORITY_VERIFIED_DETACHED`. Lineage success returns
 `FOCUS1_AUTHORITY_VERIFIED_LINEAGE`.
 
+The strict contract above remains the historical exact-equivalence contract.
+On PR B it is expected to reject the current candidate because the closure
+workflow changed. PR B instead requires both
+`HISTORICAL_FOCUS1_AUTHORITY_VERIFIED` for immutable owner-review bytes and
+`PR_B_DECLARED_COMPATIBILITY_DELTA_VERIFIED` for the exact one-path correction.
+The delta record sets `complete_historical_byte_equivalence_claimed` to false.
+
 ## Trust boundary
 
-Detached authority verifies byte equivalence for the canonical frozen Focus 1
-path set selected by the accepted freeze algorithm. It does not establish
+Detached authority verifies byte equivalence for the immutable owner-review
+materialization of the canonical frozen Focus 1 path set selected by the
+accepted freeze algorithm. PR B's separate delta verifier does not turn the
+modified candidate into that historical materialization. Neither verifier establishes
 branch ancestry, whole-tree equality, scientific validity, result validity,
 production readiness, or absence of unrelated changes.
 
@@ -101,16 +117,19 @@ merge commit was introduced for authority purposes.
 
 ## CI usage
 
-CI must fetch full history and tags, verify the tag target exactly, and run the
-dedicated verifier:
+CI must fetch full history and tags, verify the tag target exactly, install the
+locked project dependencies, and verify both distinct claims:
 
 ```text
-python scripts/verify_focus1_authority.py
+verify_historical_focus1_authority(Path.cwd())
+verify_pr_b_declared_compatibility_delta(Path.cwd())
 ```
 
-CI must require `FOCUS1_AUTHORITY_VERIFIED_DETACHED`. A shallow checkout that
-lacks the required tag or checkpoint object fails closed, as does a missing or
-retargeted tag, changed checkpoint digest, or changed candidate frozen blob.
+CI must require `HISTORICAL_FOCUS1_AUTHORITY_VERIFIED` and
+`PR_B_DECLARED_COMPATIBILITY_DELTA_VERIFIED`. A checkout that lacks the required
+tag or immutable owner-review/checkpoint objects fails closed, as does a
+missing or retargeted tag, changed historical digest, additional frozen-path
+difference, or unapproved closure-workflow byte.
 
 ## Claim boundary
 

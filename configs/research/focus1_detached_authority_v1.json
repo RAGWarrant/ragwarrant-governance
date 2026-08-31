@@ -4,7 +4,7 @@
   "amendment_type": "DETACHED_PINNED_CHECKPOINT_AUTHORITY",
   "parent_authority": {
     "path": "configs/research/packaging_integrity_amendment_v2.json",
-    "sha256": "8e8e00752f0f573df8b51943c9fc05acd8cfa754822e1fe81b5c44609e801183"
+    "sha256": "d2a159a2a98721b2f7c3a3076f7d4ff5bbbd739eed8151c7bd64ed05e94c6b50"
   },
   "authority_mode": "DETACHED_PINNED_CHECKPOINT",
   "authority_ref": "refs/tags/ragwarrant-focus1-freeze-v1-c771afc",
@@ -17,7 +17,7 @@
       "prior_path": "src/ragwarrant/research/packaging_portability_amendment.py",
       "prior_sha256": "2a23b19965b551f79a8fc715167973db3435874832ab5dd86035bd4bb0b442db",
       "new_path": "src/ragwarrant/research/packaging_portability_amendment.py",
-      "new_sha256": "af9063dfa4fbab603e3629e8b2f6979dd3d4d67c906be58b9283fc80c1a8d332",
+      "new_sha256": "1a126c38c7c0c38d32a2d04f5c4d096b6ecf0dc57d2c4cd7be2cc656ada6fd6d",
       "amendment_id": "RAGWARRANT-FOCUS1-DETACHED-AUTHORITY-001",
       "change_category": "DETACHED_AUTHORITY_VERIFIER",
       "reason": "Add explicit lineage and detached pinned-checkpoint verification without changing scientific inputs or results.",
@@ -28,7 +28,7 @@
       "prior_path": "tests/research/test_packaging_portability_amendment.py",
       "prior_sha256": "4d85418c6a3e1dad8149da6be5210e64ec000555a93f8b1ee2b6bf0c66e51058",
       "new_path": "tests/research/test_packaging_portability_amendment.py",
-      "new_sha256": "0f9373f7a75fb602def72e83e3e5cc3b88d7d62b3ceaef49819e60ab09968b51",
+      "new_sha256": "b3f3a1580ef96c5e2afcbe111eaf76369445d96522e8cc9b40e2d0bb62bf5f0c",
       "amendment_id": "RAGWARRANT-FOCUS1-DETACHED-AUTHORITY-001",
       "change_category": "COMMIT_BLOB_AUTHORITY_TEST",
       "reason": "Update the accepted authority test to tamper committed candidate bytes and assert explicit checkpoint/candidate failure statuses.",

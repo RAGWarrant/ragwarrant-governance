@@ -32,6 +32,43 @@ INTEGRITY_AMENDMENT_TYPE = (
     "TRUST_ROOT_REBINDING_AND_PATH_CONTAINMENT_HARDENING"
 )
 FOCUS1_CHECKPOINT_COMMIT = "124836bcc2fba48373d7bd08f0087b23f2e41620"
+IMMUTABLE_OWNER_REVIEW_COMMIT = "b67bb4df0716609e3d915ec8ab4574632d43f215"
+PR_A_QUALIFIED_COMMIT = "3039150a36045f2aaa1636d94ce988ed8c62e166"
+PR_B_CLOSURE_SECURITY_FIX_COMMIT = "c3bc646866a276e9b3610f201f345b69d3798652"
+PR_B_CLOSURE_COMPATIBILITY_PATH = ".github/workflows/research-full-closure.yml"
+PR_B_CLOSURE_ORIGINAL_BLOB = "b93eb8edfbea5d100215f5bdf77516abd13e75c6"
+PR_B_CLOSURE_CORRECTED_BLOB = "13a7d5ea8f1558d64818b19a9b8cc7cbf4e9c6c9"
+PR_B_CLOSURE_ORIGINAL_SHA256 = (
+    "a0ffdcec1c5b173469b7c54439330406c8336f618e4420a1a4d1b3d544ea56e6"
+)
+PR_B_CLOSURE_CORRECTED_SHA256 = (
+    "3b64db700582ef92c988dfe8be0f7a4b1fb1b1da9a64c13d5356bad3cc4de5ab"
+)
+PR_B_CLOSURE_PATCH_SHA256 = (
+    "0d0501ae4a0cec150ba053afe75bd44e7c64ac3b350435661fbc435441bce5c8"
+)
+PR_B_COMPATIBILITY_AUTHORIZATION = (
+    "AUTHORIZE_DECLARED_NOSCIENTIFIC_COMPATIBILITY_DELTA"
+)
+PR_B_AUTHORIZED_COMPATIBILITY_DIFFERENCES: tuple[Mapping[str, str], ...] = (
+    {
+        "path": PR_B_CLOSURE_COMPATIBILITY_PATH,
+        "original_blob": PR_B_CLOSURE_ORIGINAL_BLOB,
+        "original_sha256": PR_B_CLOSURE_ORIGINAL_SHA256,
+        "corrected_blob": PR_B_CLOSURE_CORRECTED_BLOB,
+        "corrected_sha256": PR_B_CLOSURE_CORRECTED_SHA256,
+        "patch_sha256": PR_B_CLOSURE_PATCH_SHA256,
+        "reason": (
+            "closure run-ID validation, server-side run binding, and destination "
+            "containment security correction"
+        ),
+        "scientific_impact": "NONE",
+        "statistical_impact": "NONE",
+        "result_impact": "NONE",
+        "execution_status": "NOT_EXECUTED",
+        "authorization": PR_B_COMPATIBILITY_AUTHORIZATION,
+    },
+)
 FOCUS1_DETACHED_AUTHORITY_AMENDMENT_ID = (
     "RAGWARRANT-FOCUS1-DETACHED-AUTHORITY-001"
 )
@@ -42,6 +79,9 @@ FOCUS1_AUTHORITY_RECORD_PATH = (
 FOCUS1_AUTHORITY_REF = "refs/tags/ragwarrant-focus1-freeze-v1-c771afc"
 FOCUS1_AUTHORITY_PARENT_RECORD_SHA256 = (
     "8e8e00752f0f573df8b51943c9fc05acd8cfa754822e1fe81b5c44609e801183"
+)
+CURRENT_FOCUS1_AUTHORITY_PARENT_RECORD_SHA256 = (
+    "d2a159a2a98721b2f7c3a3076f7d4ff5bbbd739eed8151c7bd64ed05e94c6b50"
 )
 FOCUS1_AUTHORITY_REBOUND_PATH = (
     "src/ragwarrant/research/packaging_portability_amendment.py"
@@ -223,7 +263,7 @@ REQUIRED_REBINDING_PATHS = frozenset(AUTHORIZED_REBINDING_METADATA)
 AUTHORIZED_REPLACEMENT_SHA256: Mapping[str, str] = {
     ".gitattributes": "ad661a962b8ff9f6d834833c0a6995e96a26bc6ff0cd6f2bc0445916458f9e37",
     "pyproject.toml": "30e47dc1ae5f43011ad79293120b01f1d68fa325ddadaedfea1f3c8d2822ab35",
-    "tests/research/conftest.py": "846d97e00cb9576b301f9c91ce5a519723d94033c5ff1180cca63eadb2a4e384",
+    "tests/research/conftest.py": "eaef073dd91dc2e3d05a9e76219a1d9562ba7f1539e7abfde4590733591a227a",
     "tests/research/test_joint_power_confirmation.py": "de883b6ca7d6fd60545b1383360a6246c84c3e00d1615ac05f07bb7ffda8d0ef",
     "tests/research/test_confirmation_provenance_amendment.py": "a4585f69fe65c784af4714adcbe2a369d0576f854ca5d5c93d9bf02d81994f0e",
     "scripts/verify_packaging_portability.py": "20eca83905cade2f723f50f1fbd6e2a5352574524b8091ddf47ecde0320065fa",
@@ -258,6 +298,11 @@ PACKAGING_REBINDING_EXTRA_AUTHORITY_ENTRY = (
 FOCUS1_AUTHORITY_VERIFIED = "FOCUS1_AUTHORITY_VERIFIED"
 FOCUS1_AUTHORITY_VERIFIED_LINEAGE = "FOCUS1_AUTHORITY_VERIFIED_LINEAGE"
 FOCUS1_AUTHORITY_VERIFIED_DETACHED = "FOCUS1_AUTHORITY_VERIFIED_DETACHED"
+HISTORICAL_FOCUS1_AUTHORITY_VERIFIED = "HISTORICAL_FOCUS1_AUTHORITY_VERIFIED"
+PR_B_DECLARED_COMPATIBILITY_DELTA_VERIFIED = (
+    "PR_B_DECLARED_COMPATIBILITY_DELTA_VERIFIED"
+)
+PR_B_COMPATIBILITY_DELTA_MISMATCH = "PR_B_COMPATIBILITY_DELTA_MISMATCH"
 FOCUS1_AUTHORITY_CHECKPOINT_MISSING = "FOCUS1_AUTHORITY_CHECKPOINT_MISSING"
 FOCUS1_AUTHORITY_TAG_MISSING = "FOCUS1_AUTHORITY_TAG_MISSING"
 FOCUS1_AUTHORITY_TAG_NOT_ANNOTATED = "FOCUS1_AUTHORITY_TAG_NOT_ANNOTATED"
@@ -765,6 +810,51 @@ def _git_blob(
         ) from exc
 
 
+def _git_blob_oid(repository_root: Path, commit: str, relative_path: str) -> str:
+    canonical = _canonical_relative_path(relative_path, "blob_path")
+    completed = _git_no_replace(
+        repository_root,
+        ["rev-parse", "--verify", f"{commit}:{canonical}"],
+        check=True,
+        text=True,
+    )
+    oid = completed.stdout.strip()
+    if not _GIT_SHA1_RE.fullmatch(oid) or _git_object_type(
+        repository_root,
+        oid,
+        missing_status=FOCUS1_AUTHORITY_OBJECT_TYPE_INVALID,
+    ) != "blob":
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_OBJECT_TYPE_INVALID,
+            f"Authority path does not resolve to one blob: {canonical}.",
+        )
+    return oid
+
+
+def _git_patch_sha256(
+    repository_root: Path,
+    original_commit: str,
+    corrected_commit: str,
+    relative_path: str,
+) -> str:
+    canonical = _canonical_relative_path(relative_path, "patch_path")
+    patch = _git_no_replace(
+        repository_root,
+        [
+            "diff",
+            "--binary",
+            "--no-ext-diff",
+            "--no-textconv",
+            original_commit,
+            corrected_commit,
+            "--",
+            canonical,
+        ],
+        check=True,
+    ).stdout
+    return hashlib.sha256(patch).hexdigest()
+
+
 def _checkpoint_frozen_paths(generator_blob: bytes) -> tuple[str, ...]:
     try:
         syntax = ast.parse(generator_blob.decode("utf-8"))
@@ -1010,9 +1100,27 @@ def _lineage_authority_record() -> dict[str, Any]:
     }
 
 
-def _load_focus1_authority_record(repository_root: Path) -> dict[str, Any]:
-    loaded = _read_repository_file_once(repository_root, FOCUS1_AUTHORITY_RECORD_PATH)
-    record = _parse_loaded_json(loaded, "Focus 1 detached-authority record")
+def _load_focus1_authority_record(
+    repository_root: Path,
+    *,
+    source_commit: str | None = None,
+) -> dict[str, Any]:
+    if source_commit is None:
+        loaded = _read_repository_file_once(
+            repository_root, FOCUS1_AUTHORITY_RECORD_PATH
+        )
+        record = _parse_loaded_json(loaded, "Focus 1 detached-authority record")
+    else:
+        raw_record = _git_blob(
+            repository_root, source_commit, FOCUS1_AUTHORITY_RECORD_PATH
+        )
+        parsed = _json_without_duplicate_keys(raw_record.decode("utf-8"))
+        if not isinstance(parsed, dict):
+            raise PortabilityVerificationError(
+                FOCUS1_AUTHORITY_MODE_INVALID,
+                "Historical Focus 1 authority record is not an object.",
+            )
+        record = parsed
     required = {
         "schema_version",
         "amendment_id",
@@ -1045,11 +1153,22 @@ def _load_focus1_authority_record(repository_root: Path) -> dict[str, Any]:
             FOCUS1_AUTHORITY_MODE_INVALID,
             "Focus 1 authority identity differs from the accepted amendment.",
         )
-    parent_loaded = _read_repository_file_once(repository_root, INTEGRITY_RECORD_PATH)
+    parent_hash = (
+        _read_repository_file_once(repository_root, INTEGRITY_RECORD_PATH).sha256
+        if source_commit is None
+        else hashlib.sha256(
+            _git_blob(repository_root, source_commit, INTEGRITY_RECORD_PATH)
+        ).hexdigest()
+    )
+    expected_parent_hash = (
+        FOCUS1_AUTHORITY_PARENT_RECORD_SHA256
+        if source_commit is not None
+        else CURRENT_FOCUS1_AUTHORITY_PARENT_RECORD_SHA256
+    )
     if record["parent_authority"] != {
         "path": INTEGRITY_RECORD_PATH,
-        "sha256": FOCUS1_AUTHORITY_PARENT_RECORD_SHA256,
-    } or parent_loaded.sha256 != FOCUS1_AUTHORITY_PARENT_RECORD_SHA256:
+        "sha256": expected_parent_hash,
+    } or parent_hash != expected_parent_hash:
         raise PortabilityVerificationError(
             PACKAGING_PORTABILITY_HASH_MISMATCH,
             "Detached authority does not bind the accepted packaging-integrity record.",
@@ -1164,7 +1283,13 @@ def _load_focus1_authority_record(repository_root: Path) -> dict[str, Any]:
                 PACKAGING_REBINDING_UNAUTHORIZED_PATH,
                 "Detached authority rebinding differs from its approved authority.",
             )
-        actual_hash = _read_repository_file_once(repository_root, rebound_path).sha256
+        actual_hash = (
+            _read_repository_file_once(repository_root, rebound_path).sha256
+            if source_commit is None
+            else hashlib.sha256(
+                _git_blob(repository_root, source_commit, rebound_path)
+            ).hexdigest()
+        )
         if actual_hash != replacement_hash:
             raise PortabilityVerificationError(
                 PACKAGING_PORTABILITY_HASH_MISMATCH,
@@ -1388,6 +1513,7 @@ def _verify_focus1_authority_contract(
     record: Mapping[str, Any],
     *,
     observed_paths: Sequence[str] | None = None,
+    candidate_commit_override: str | None = None,
 ) -> dict[str, Any]:
     root = _canonical_git_repository_root(repository_root)
     _reject_git_object_substitution(root)
@@ -1437,7 +1563,16 @@ def _verify_focus1_authority_contract(
             FOCUS1_AUTHORITY_OBJECT_TYPE_INVALID,
             "Pinned Focus 1 authority object is not a commit.",
         )
-    candidate_commit = _resolve_candidate_commit(root)
+    candidate_commit = candidate_commit_override or _resolve_candidate_commit(root)
+    if _git_object_type(
+        root,
+        candidate_commit,
+        missing_status=FOCUS1_AUTHORITY_COMMIT_MISSING,
+    ) != "commit":
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_OBJECT_TYPE_INVALID,
+            "Focus 1 candidate authority object is not a commit.",
+        )
     if mode == LINEAGE_CHECKPOINT:
         ancestry = _git_no_replace(
             root,
@@ -1579,6 +1714,161 @@ def verify_focus1_authority(
         record,
         observed_paths=observed_paths,
     )
+
+
+def verify_historical_focus1_authority(repository_root: Path) -> dict[str, Any]:
+    """Verify the unchanged 36-path authority at the immutable owner source."""
+
+    root = _canonical_git_repository_root(repository_root)
+    record = _load_focus1_authority_record(
+        root, source_commit=IMMUTABLE_OWNER_REVIEW_COMMIT
+    )
+    verified = _verify_focus1_authority_contract(
+        root,
+        record,
+        candidate_commit_override=IMMUTABLE_OWNER_REVIEW_COMMIT,
+    )
+    historical = dict(verified)
+    historical["underlying_authority_status"] = verified["status"]
+    historical["status"] = HISTORICAL_FOCUS1_AUTHORITY_VERIFIED
+    historical["historical_owner_review_commit"] = IMMUTABLE_OWNER_REVIEW_COMMIT
+    return historical
+
+
+def _authorized_pr_b_compatibility_entry(
+    repository_root: Path,
+) -> dict[str, str]:
+    root = _canonical_git_repository_root(repository_root)
+    original = _git_blob(
+        root, IMMUTABLE_OWNER_REVIEW_COMMIT, PR_B_CLOSURE_COMPATIBILITY_PATH
+    )
+    corrected = _git_blob(
+        root, PR_B_CLOSURE_SECURITY_FIX_COMMIT, PR_B_CLOSURE_COMPATIBILITY_PATH
+    )
+    return {
+        "path": PR_B_CLOSURE_COMPATIBILITY_PATH,
+        "original_blob": _git_blob_oid(
+            root, IMMUTABLE_OWNER_REVIEW_COMMIT, PR_B_CLOSURE_COMPATIBILITY_PATH
+        ),
+        "original_sha256": hashlib.sha256(original).hexdigest(),
+        "corrected_blob": _git_blob_oid(
+            root, PR_B_CLOSURE_SECURITY_FIX_COMMIT, PR_B_CLOSURE_COMPATIBILITY_PATH
+        ),
+        "corrected_sha256": hashlib.sha256(corrected).hexdigest(),
+        "patch_sha256": _git_patch_sha256(
+            root,
+            IMMUTABLE_OWNER_REVIEW_COMMIT,
+            PR_B_CLOSURE_SECURITY_FIX_COMMIT,
+            PR_B_CLOSURE_COMPATIBILITY_PATH,
+        ),
+        "reason": (
+            "closure run-ID validation, server-side run binding, and destination "
+            "containment security correction"
+        ),
+        "scientific_impact": "NONE",
+        "statistical_impact": "NONE",
+        "result_impact": "NONE",
+        "execution_status": "NOT_EXECUTED",
+        "authorization": PR_B_COMPATIBILITY_AUTHORIZATION,
+    }
+
+
+def verify_pr_b_declared_compatibility_delta(
+    repository_root: Path,
+    *,
+    candidate_commit: str | None = None,
+) -> dict[str, Any]:
+    """Verify the one owner-authorized nonscientific PR B byte difference."""
+
+    root = _canonical_git_repository_root(repository_root)
+    _reject_git_object_substitution(root)
+    historical = verify_historical_focus1_authority(root)
+    candidate = candidate_commit or _resolve_candidate_commit(root)
+    if _git_object_type(
+        root,
+        candidate,
+        missing_status=FOCUS1_AUTHORITY_COMMIT_MISSING,
+    ) != "commit":
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_OBJECT_TYPE_INVALID,
+            "PR B candidate identity is not a commit.",
+        )
+    declared = PR_B_AUTHORIZED_COMPATIBILITY_DIFFERENCES
+    if not isinstance(declared, tuple) or len(declared) != 1:
+        raise PortabilityVerificationError(
+            PR_B_COMPATIBILITY_DELTA_MISMATCH,
+            "PR B compatibility authority must contain exactly one entry.",
+        )
+    entry = declared[0]
+    expected_entry = _authorized_pr_b_compatibility_entry(root)
+    if not isinstance(entry, Mapping) or set(entry) != set(expected_entry):
+        raise PortabilityVerificationError(
+            PR_B_COMPATIBILITY_DELTA_MISMATCH,
+            "PR B compatibility entry has an invalid exact schema.",
+        )
+    try:
+        declared_path = _canonical_relative_path(
+            entry.get("path"), "PR B compatibility path"
+        )
+    except PortabilityVerificationError as exc:
+        raise PortabilityVerificationError(
+            PR_B_COMPATIBILITY_DELTA_MISMATCH,
+            "PR B compatibility path is not canonical.",
+        ) from exc
+    if declared_path != PR_B_CLOSURE_COMPATIBILITY_PATH or dict(entry) != expected_entry:
+        raise PortabilityVerificationError(
+            PR_B_COMPATIBILITY_DELTA_MISMATCH,
+            "PR B compatibility entry differs from raw Git-blob authority.",
+        )
+    actual_differences: list[str] = []
+    for path in FOCUS1_CHECKPOINT_INPUT_SHA256:
+        original = _git_blob(root, IMMUTABLE_OWNER_REVIEW_COMMIT, path)
+        observed = _git_blob(
+            root,
+            candidate,
+            path,
+            missing_status=FOCUS1_AUTHORITY_CANDIDATE_PATH_SET_MISMATCH,
+            source_label="PR B candidate",
+        )
+        if observed != original:
+            actual_differences.append(path)
+    if actual_differences != [PR_B_CLOSURE_COMPATIBILITY_PATH]:
+        raise PortabilityVerificationError(
+            PR_B_COMPATIBILITY_DELTA_MISMATCH,
+            "PR B historical-authority differences are not the exact approved set.",
+            details={"actual_differences": actual_differences},
+        )
+    candidate_blob = _git_blob(root, candidate, PR_B_CLOSURE_COMPATIBILITY_PATH)
+    if hashlib.sha256(candidate_blob).hexdigest() != entry["corrected_sha256"]:
+        raise PortabilityVerificationError(
+            PR_B_COMPATIBILITY_DELTA_MISMATCH,
+            "PR B closure workflow is not the approved corrected blob.",
+        )
+    candidate_patch = _git_patch_sha256(
+        root,
+        IMMUTABLE_OWNER_REVIEW_COMMIT,
+        candidate,
+        PR_B_CLOSURE_COMPATIBILITY_PATH,
+    )
+    if candidate_patch != entry["patch_sha256"]:
+        raise PortabilityVerificationError(
+            PR_B_COMPATIBILITY_DELTA_MISMATCH,
+            "PR B closure workflow patch differs from the approved correction.",
+        )
+    return {
+        "status": PR_B_DECLARED_COMPATIBILITY_DELTA_VERIFIED,
+        "candidate_commit": candidate,
+        "historical_authority_status": historical["status"],
+        "accepted_focus1_digest": FOCUS1_DIGEST,
+        "historical_path_count": len(FOCUS1_CHECKPOINT_INPUT_SHA256),
+        "identical_historical_paths": len(FOCUS1_CHECKPOINT_INPUT_SHA256) - 1,
+        "authorized_historical_differences": [dict(entry)],
+        "complete_historical_byte_equivalence_claimed": False,
+        "scientific_impact": "NONE",
+        "statistical_impact": "NONE",
+        "result_impact": "NONE",
+        "execution_status": "NOT_EXECUTED",
+    }
 
 
 def verify_focus1_checkpoint_authority(
@@ -2518,7 +2808,8 @@ def verify_packaging_portability(
             if detached_record_path.is_file()
             else None
         )
-        focus1_authority = verify_focus1_checkpoint_authority(root)
+        focus1_authority = verify_historical_focus1_authority(root)
+        compatibility_delta = verify_pr_b_declared_compatibility_delta(root)
         record, record_loaded = _load_record(root, record_path)
         integrity_record, integrity_loaded = _load_integrity_record(
             root,
@@ -2567,6 +2858,7 @@ def verify_packaging_portability(
                     for key, value in focus1_authority.items()
                     if key != "manifest"
                 },
+                "pr_b_compatibility_delta": compatibility_delta,
                 "frozen_yaml_sha256": dict(FROZEN_YAML_SHA256),
                 "preserved_blank_eof_input_sha256": dict(
                     PRESERVED_BLANK_EOF_INPUT_SHA256
@@ -2590,6 +2882,13 @@ __all__ = [
     "FOCUS1_AUTHORITY_VERIFIED_DETACHED",
     "FOCUS1_AUTHORITY_VERIFIED_LINEAGE",
     "FOCUS1_CHECKPOINT_COMMIT",
+    "HISTORICAL_FOCUS1_AUTHORITY_VERIFIED",
+    "IMMUTABLE_OWNER_REVIEW_COMMIT",
+    "PR_A_QUALIFIED_COMMIT",
+    "PR_B_AUTHORIZED_COMPATIBILITY_DIFFERENCES",
+    "PR_B_CLOSURE_COMPATIBILITY_PATH",
+    "PR_B_COMPATIBILITY_DELTA_MISMATCH",
+    "PR_B_DECLARED_COMPATIBILITY_DELTA_VERIFIED",
     "FROZEN_YAML_SHA256",
     "ORIGINAL_OUTPUT_SET_SHA256",
     "PRESERVED_BLANK_EOF_INPUT_SHA256",
@@ -2607,7 +2906,9 @@ __all__ = [
     "sha256_file",
     "verify_focus1_checkpoint_authority",
     "verify_focus1_authority",
+    "verify_historical_focus1_authority",
     "verify_focus1_portable_authority",
     "verify_packaging_portability",
+    "verify_pr_b_declared_compatibility_delta",
     "verify_workspace_materialization_read_only",
 ]

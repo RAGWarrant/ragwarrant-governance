@@ -56,14 +56,22 @@ def _isolate_non_focus_authorities(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(portability, "AUTHORIZED_REPLACEMENT_SHA256", {})
     monkeypatch.setattr(
         portability,
-        "verify_focus1_checkpoint_authority",
+        "verify_historical_focus1_authority",
         lambda root: {
-            "status": portability.FOCUS1_AUTHORITY_VERIFIED,
+            "status": portability.HISTORICAL_FOCUS1_AUTHORITY_VERIFIED,
             "checkpoint_commit": portability.FOCUS1_CHECKPOINT_COMMIT,
             "frozen_path_count": 36,
             "expected_digest": portability.FOCUS1_DIGEST,
             "observed_digest": portability.FOCUS1_DIGEST,
             "manifest": {"benchmark_freeze_digest": portability.FOCUS1_DIGEST},
+        },
+    )
+    monkeypatch.setattr(
+        portability,
+        "verify_pr_b_declared_compatibility_delta",
+        lambda root: {
+            "status": portability.PR_B_DECLARED_COMPATIBILITY_DELTA_VERIFIED,
+            "complete_historical_byte_equivalence_claimed": False,
         },
     )
 
@@ -805,21 +813,23 @@ def test_real_checkpoint_blobs_reproduce_accepted_focus1_digest() -> None:
             "strict raw-checkpoint verification requires a full-history checkout; "
             "portable accepted-inventory verification remains mandatory"
         )
-    authority = REAL_FOCUS1_VERIFIER(ROOT)
-    assert authority["status"] == portability.FOCUS1_AUTHORITY_VERIFIED
+    authority = portability.verify_historical_focus1_authority(ROOT)
+    assert authority["status"] == portability.HISTORICAL_FOCUS1_AUTHORITY_VERIFIED
     assert authority["expected_digest"] == portability.FOCUS1_DIGEST
     assert authority["observed_digest"] == portability.FOCUS1_DIGEST
     assert authority["frozen_path_count"] == 36
 
 
 def test_portable_focus1_authority_does_not_require_checkpoint_object(
-    monkeypatch: pytest.MonkeyPatch,
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path,
 ) -> None:
+    repository_root = _copy_portable_focus1_tree(tmp_path)
+
     def forbidden_git_blob(*args: object, **kwargs: object) -> bytes:
         raise AssertionError("portable authority must not access checkpoint Git blobs")
 
     monkeypatch.setattr(portability, "_git_blob", forbidden_git_blob)
-    authority = portability.verify_focus1_portable_authority(ROOT)
+    authority = portability.verify_focus1_portable_authority(repository_root)
     assert authority["status"] == portability.FOCUS1_AUTHORITY_VERIFIED
     assert authority["authority_source"] == "CHECKPOINT_DERIVED_ACCEPTED_INVENTORY"
     assert authority["observed_digest"] == portability.FOCUS1_DIGEST
@@ -831,7 +841,9 @@ def _copy_portable_focus1_tree(tmp_path: Path) -> Path:
         destination = repository_root.joinpath(*relative_path.split("/"))
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_bytes(
-            ROOT.joinpath(*relative_path.split("/")).read_bytes()
+            portability._git_blob(
+                ROOT, portability.IMMUTABLE_OWNER_REVIEW_COMMIT, relative_path
+            )
         )
     return repository_root
 

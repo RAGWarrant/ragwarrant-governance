@@ -50,7 +50,7 @@
       "prior_path": null,
       "prior_sha256": "NEW_FILE",
       "new_path": "tests/research/conftest.py",
-      "new_sha256": "846d97e00cb9576b301f9c91ce5a519723d94033c5ff1180cca63eadb2a4e384",
+      "new_sha256": "eaef073dd91dc2e3d05a9e76219a1d9562ba7f1539e7abfde4590733591a227a",
       "amendment_id": "RAGWARRANT-PACKAGING-INTEGRITY-002",
       "change_category": "OPTIONAL_LOCAL_DEPENDENCY_PORTABILITY",
       "reason": "Materialize an immutable checkpoint-authoritative Focus 1 manifest without replacing the production verifier, and skip exactly three pinned BLS-client tests only when the ignored Node dependency is absent.",

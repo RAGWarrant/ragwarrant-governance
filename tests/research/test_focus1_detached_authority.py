@@ -608,16 +608,117 @@ def test_ref_retarget_during_verification_is_detected(
     assert caught.value.status == authority.FOCUS1_AUTHORITY_TAG_TARGET_MISMATCH
 
 
-def test_repository_record_and_cli_emit_detached_verified_status() -> None:
-    direct = authority.verify_focus1_authority(ROOT)
-    assert direct["status"] == authority.FOCUS1_AUTHORITY_VERIFIED_DETACHED
+def test_repository_reports_distinct_historical_and_pr_b_delta_claims() -> None:
+    historical = authority.verify_historical_focus1_authority(ROOT)
+    assert historical["status"] == authority.HISTORICAL_FOCUS1_AUTHORITY_VERIFIED
+    assert historical["observed_digest"] == authority.FOCUS1_DIGEST
+    delta = authority.verify_pr_b_declared_compatibility_delta(ROOT)
+    assert delta["status"] == authority.PR_B_DECLARED_COMPATIBILITY_DELTA_VERIFIED
+    assert delta["identical_historical_paths"] == 35
+    assert delta["complete_historical_byte_equivalence_claimed"] is False
+    with pytest.raises(authority.PortabilityVerificationError) as caught:
+        authority.verify_focus1_authority(ROOT)
+    assert caught.value.status == authority.FOCUS1_AUTHORITY_CANDIDATE_BLOB_MISMATCH
+
+
+def test_pr_b_delta_rejects_missing_extra_alias_and_wildcard_authority(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    accepted = authority.PR_B_AUTHORIZED_COMPATIBILITY_DIFFERENCES[0]
+    for rejected in (
+        (),
+        (accepted, accepted),
+        ({**accepted, "path": "./.github/workflows/research-full-closure.yml"},),
+        ({**accepted, "path": ".github/workflows/*"},),
+    ):
+        monkeypatch.setattr(
+            authority, "PR_B_AUTHORIZED_COMPATIBILITY_DIFFERENCES", rejected
+        )
+        with pytest.raises(authority.PortabilityVerificationError) as caught:
+            authority.verify_pr_b_declared_compatibility_delta(ROOT)
+        assert caught.value.status == authority.PR_B_COMPATIBILITY_DELTA_MISMATCH
+
+
+def test_pr_b_delta_rejects_coordinated_record_and_workflow_tampering(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    candidate = _git(ROOT, "rev-parse", "HEAD").stdout.strip()
+    real_blob = authority._git_blob
+    accepted = dict(authority.PR_B_AUTHORIZED_COMPATIBILITY_DIFFERENCES[0])
+    accepted["corrected_sha256"] = hashlib.sha256(b"tampered").hexdigest()
+    monkeypatch.setattr(
+        authority, "PR_B_AUTHORIZED_COMPATIBILITY_DIFFERENCES", (accepted,)
+    )
+
+    def tampered_blob(root: Path, commit: str, path: str, **kwargs: object) -> bytes:
+        if commit == candidate and path == authority.PR_B_CLOSURE_COMPATIBILITY_PATH:
+            return b"tampered"
+        return real_blob(root, commit, path, **kwargs)
+
+    monkeypatch.setattr(authority, "_git_blob", tampered_blob)
+    with pytest.raises(authority.PortabilityVerificationError) as caught:
+        authority.verify_pr_b_declared_compatibility_delta(ROOT)
+    assert caught.value.status == authority.PR_B_COMPATIBILITY_DELTA_MISMATCH
+
+
+def test_pr_b_delta_rejects_a_second_historical_or_scientific_change(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    candidate = _git(ROOT, "rev-parse", "HEAD").stdout.strip()
+    real_blob = authority._git_blob
+    second_path = "src/ragwarrant/research/simulator.py"
+
+    def second_change(root: Path, commit: str, path: str, **kwargs: object) -> bytes:
+        blob = real_blob(root, commit, path, **kwargs)
+        return blob + b"tampered" if commit == candidate and path == second_path else blob
+
+    monkeypatch.setattr(authority, "_git_blob", second_change)
+    with pytest.raises(authority.PortabilityVerificationError) as caught:
+        authority.verify_pr_b_declared_compatibility_delta(ROOT)
+    assert caught.value.status == authority.PR_B_COMPATIBILITY_DELTA_MISMATCH
+
+
+def test_pr_b_delta_rejects_an_unapproved_closure_hash(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    candidate = _git(ROOT, "rev-parse", "HEAD").stdout.strip()
+    real_blob = authority._git_blob
+
+    def wrong_closure(root: Path, commit: str, path: str, **kwargs: object) -> bytes:
+        blob = real_blob(root, commit, path, **kwargs)
+        if commit == candidate and path == authority.PR_B_CLOSURE_COMPATIBILITY_PATH:
+            return blob + b"unapproved"
+        return blob
+
+    monkeypatch.setattr(authority, "_git_blob", wrong_closure)
+    with pytest.raises(authority.PortabilityVerificationError) as caught:
+        authority.verify_pr_b_declared_compatibility_delta(ROOT)
+    assert caught.value.status == authority.PR_B_COMPATIBILITY_DELTA_MISMATCH
+
+
+def test_pr_a_commit_and_authority_tags_remain_exact() -> None:
+    assert _git(ROOT, "merge-base", "--is-ancestor", authority.PR_A_QUALIFIED_COMMIT, "HEAD").returncode == 0
+    assert authority.FOCUS1_DIGEST == (
+        "c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e"
+    )
     completed = subprocess.run(
         [os.fspath(Path(os.sys.executable)), os.fspath(SCRIPT)],
         cwd=ROOT,
-        check=True,
+        check=False,
         capture_output=True,
         text=True,
     )
     payload = json.loads(completed.stdout)
-    assert payload["status"] == authority.FOCUS1_AUTHORITY_VERIFIED_DETACHED
-    assert payload["observed_digest"] == authority.FOCUS1_DIGEST
+    assert payload["status"] == authority.FOCUS1_AUTHORITY_CANDIDATE_BLOB_MISMATCH
+
+
+def test_ci_historical_authority_import_runs_after_locked_install() -> None:
+    workflow = (ROOT / ".github/workflows/ci.yml").read_text(encoding="utf-8")
+    locked_install = workflow.index(
+        "      - run: pip install --require-hashes -r requirements-dev.lock"
+    )
+    editable_install = workflow.index("      - run: pip install -e .")
+    authority_step = workflow.index(
+        "      - name: Verify historical Focus 1 authority"
+    )
+    assert locked_install < editable_install < authority_step
