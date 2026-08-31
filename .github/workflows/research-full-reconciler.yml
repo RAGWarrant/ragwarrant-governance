@@ -1,0 +1,117 @@
+name: Research FULL seal reconciler
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: ragwarrant-full-reconciler
+  cancel-in-progress: false
+
+jobs:
+  reconcile-same-seal-only:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resume only missing canonical sealed executions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh pr list --repo "$GITHUB_REPOSITORY" --state all --search "RAGWARRANT FULL SEAL in:title" --json title,headRefName,headRefOid | jq -c '.[]' | while read -r seal; do
+            subject="$(echo "$seal" | jq -r '.title | sub("^RAGWARRANT FULL SEAL "; "")')"
+            head_ref="$(echo "$seal" | jq -r .headRefName)"
+            seal_commit="$(echo "$seal" | jq -r .headRefOid)"
+            seal_run="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow research-full-seal.yml --commit "$subject" --status success --limit 20 --json databaseId,headSha --jq '[.[] | select(.headSha == "'"$subject"'")][0].databaseId // empty')"
+            test "$head_ref" = "ragwarrant-full-seal-${subject}" || continue
+            test -n "$seal_run" || continue
+            frozen_branch="ragwarrant-full-subject-${subject}"
+            frozen_oid="$(git ls-remote "https://github.com/${GITHUB_REPOSITORY}.git" "refs/heads/${frozen_branch}" | awk '{print $1}')"
+            test "$frozen_oid" = "$subject" || continue
+            result_ref="ragwarrant-full-results-${subject}"
+            needs_resume=true
+            review_tree=""
+            if git ls-remote --exit-code --heads "https://github.com/${GITHUB_REPOSITORY}.git" "refs/heads/${result_ref}" >/dev/null 2>&1; then
+              review_tree="$RUNNER_TEMP/results-${subject}"
+              git clone --quiet --depth 1 --branch "$result_ref" "https://github.com/${GITHUB_REPOSITORY}.git" "$review_tree"
+              completed_ids="$(python - "$review_tree" "$subject" "$seal_commit" "$seal_run" <<'PY'
+          import hashlib, json, pathlib, sys
+          root, subject, seal_commit, seal_run = pathlib.Path(sys.argv[1]), *sys.argv[2:]
+          for execution in (root / "executions").glob("*") if (root / "executions").is_dir() else ():
+              try:
+                  seal = json.loads((execution / "seal.json").read_text())
+                  publication = json.loads((execution / "seal-publication.json").read_text())
+                  closure = json.loads((execution / "execution-closure.json").read_text())
+                  output = execution / "benchmark-output"
+                  manifest = json.loads((output / "full_execution_manifest.json").read_text())
+                  benchmark = json.loads((output / "benchmark_manifest.json").read_text())
+                  canonical = json.dumps(seal, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n"
+                  actual = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in output.iterdir() if p.is_file() and p.name != "full_execution_manifest.json"}
+                  valid = (
+                      execution.name.isdigit()
+                      and seal.get("subject_commit") == subject
+                      and publication.get("subject_commit") == subject
+                      and publication.get("seal_commit_sha") == seal_commit
+                      and str(publication.get("seal_workflow_run_id")) == seal_run
+                      and publication.get("seal_sha256") == hashlib.sha256(canonical.encode()).hexdigest()
+                      and closure.get("closure_status") == "COMPLETED"
+                      and closure.get("subject_commit") == subject
+                      and closure.get("output_hashes_verified") is True
+                      and manifest.get("execution_status") == "COMPLETED"
+                      and manifest.get("subject_commit") == subject
+                      and manifest.get("seal_sha256") == publication.get("seal_sha256")
+                      and manifest.get("output_hashes") == actual
+                      and benchmark.get("profile") == "FULL"
+                      and benchmark.get("evidence_role") == "confirmatory"
+                      and benchmark.get("complete") is True
+                      and benchmark.get("deployable_method_accessed_population_truth") is False
+                  )
+                  if valid: print(execution.name)
+              except (OSError, ValueError, TypeError):
+                  pass
+          PY
+              )"
+              while read -r completed_id; do
+                test -n "$completed_id" || continue
+                run_json="$(gh run view "$completed_id" --repo "$GITHUB_REPOSITORY" --json conclusion,displayTitle,headSha,event,workflowName)"
+                if [ "$(echo "$run_json" | jq -r .conclusion)" = "success" ] \
+                  && [ "$(echo "$run_json" | jq -r .headSha)" = "$subject" ] \
+                  && [ "$(echo "$run_json" | jq -r .event)" = "workflow_dispatch" ] \
+                  && [ "$(echo "$run_json" | jq -r .workflowName)" = "Research FULL future-beacon execution" ] \
+                  && [ "$(echo "$run_json" | jq -r .displayTitle)" = "FULL execute ${subject} sealrun-${seal_run}" ]; then
+                  artifact_tree="$RUNNER_TEMP/execution-artifact-${completed_id}"
+                  if gh run download "$completed_id" --repo "$GITHUB_REPOSITORY" --name "full-execution-${subject}" --dir "$artifact_tree" \
+                    && diff -qr "$artifact_tree" "$review_tree/executions/${completed_id}" >/dev/null; then
+                    needs_resume=false
+                  fi
+                fi
+              done <<< "$completed_ids"
+            fi
+            gh run list --repo "$GITHUB_REPOSITORY" --workflow research-full-execute.yml --limit 100 --json databaseId,displayTitle,status,conclusion | jq -c --arg title "FULL execute ${subject} sealrun-${seal_run}" '.[] | select(.displayTitle == $title and .status == "completed" and .conclusion != "success")' | while read -r failed; do
+              failed_id="$(echo "$failed" | jq -r .databaseId)"
+              if [ -n "$review_tree" ] && [ -d "$review_tree/executions/${failed_id}" ]; then continue; fi
+              closure_title="FULL closure ${subject} run-${failed_id}"
+              closure_active="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow research-full-closure.yml --limit 100 --json displayTitle,status --jq '[.[] | select(.displayTitle == "'"$closure_title"'" and .status != "completed")] | length')"
+              if [ "$closure_active" = "0" ]; then
+                gh workflow run research-full-closure.yml --repo "$GITHUB_REPOSITORY" --ref "$frozen_branch" \
+                  -f "seal_subject_commit=${subject}" \
+                  -f "seal_workflow_run_id=${seal_run}" \
+                  -f "seal_commit_sha=${seal_commit}" \
+                  -f "aborted_execution_run_id=${failed_id}"
+              fi
+            done
+            if [ "$needs_resume" = "true" ]; then
+              active="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow research-full-execute.yml --status in_progress --json displayTitle --jq '[.[] | select(.displayTitle | contains("'"$subject"'"))] | length')"
+              if [ "$active" = "0" ]; then
+                gh workflow run research-full-execute.yml --repo "$GITHUB_REPOSITORY" --ref "$frozen_branch" \
+                  -f "seal_subject_commit=${subject}" \
+                  -f "seal_workflow_run_id=${seal_run}" \
+                  -f "seal_commit_sha=${seal_commit}"
+              fi
+            fi
+          done
