@@ -38,6 +38,6 @@ jobs:
       - run: pip install -e .
       - run: python -m compileall src scripts
       - run: python scripts/validate_publication_bundle.py
-      - run: pytest -q tests/publication tests/research
+      - run: python -m pytest -q tests/publication tests/research
       - name: Verify protected historical paths remain unchanged
         run: git diff --exit-code ca7a8fa08500d821dc21163d1b5fca17ab919bd7 HEAD -- README.md artifacts results
