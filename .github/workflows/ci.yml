@@ -4,14 +4,29 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: "3.11"
+      - name: Verify detached Focus 1 authority tag
+        shell: bash
+        run: |
+          test "$(git --no-replace-objects cat-file -t refs/tags/ragwarrant-focus1-freeze-v1-c771afc)" = "tag"
+          test "$(git --no-replace-objects rev-parse refs/tags/ragwarrant-focus1-freeze-v1-c771afc^{commit})" = "124836bcc2fba48373d7bd08f0087b23f2e41620"
+          authority_json="$(python scripts/verify_focus1_authority.py)"
+          printf '%s\n' "$authority_json"
+          python -c 'import json,sys; payload=json.loads(sys.stdin.read()); assert payload["status"] == "FOCUS1_AUTHORITY_VERIFIED_DETACHED"' <<<"$authority_json"
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: "22"
@@ -21,5 +36,8 @@ jobs:
         working-directory: .github/drand-verifier
       - run: pip install --require-hashes -r requirements-dev.lock
       - run: pip install -e .
+      - run: python -m compileall src scripts
       - run: python scripts/validate_publication_bundle.py
       - run: pytest -q tests/publication tests/research
+      - name: Verify protected historical paths remain unchanged
+        run: git diff --exit-code ca7a8fa08500d821dc21163d1b5fca17ab919bd7 HEAD -- README.md artifacts results
