@@ -32,6 +32,59 @@ INTEGRITY_AMENDMENT_TYPE = (
     "TRUST_ROOT_REBINDING_AND_PATH_CONTAINMENT_HARDENING"
 )
 FOCUS1_CHECKPOINT_COMMIT = "124836bcc2fba48373d7bd08f0087b23f2e41620"
+FOCUS1_DETACHED_AUTHORITY_AMENDMENT_ID = (
+    "RAGWARRANT-FOCUS1-DETACHED-AUTHORITY-001"
+)
+FOCUS1_DETACHED_AUTHORITY_AMENDMENT_TYPE = "DETACHED_PINNED_CHECKPOINT_AUTHORITY"
+FOCUS1_AUTHORITY_RECORD_PATH = (
+    "configs/research/focus1_detached_authority_v1.json"
+)
+FOCUS1_AUTHORITY_REF = "refs/tags/ragwarrant-focus1-freeze-v1-c771afc"
+FOCUS1_AUTHORITY_PARENT_RECORD_SHA256 = (
+    "8e8e00752f0f573df8b51943c9fc05acd8cfa754822e1fe81b5c44609e801183"
+)
+FOCUS1_AUTHORITY_REBOUND_PATH = (
+    "src/ragwarrant/research/packaging_portability_amendment.py"
+)
+FOCUS1_AUTHORITY_PRIOR_VERIFIER_SHA256 = (
+    "2a23b19965b551f79a8fc715167973db3435874832ab5dd86035bd4bb0b442db"
+)
+FOCUS1_AUTHORITY_REBOUND_TEST_PATH = (
+    "tests/research/test_packaging_portability_amendment.py"
+)
+FOCUS1_AUTHORITY_PRIOR_TEST_SHA256 = (
+    "4d85418c6a3e1dad8149da6be5210e64ec000555a93f8b1ee2b6bf0c66e51058"
+)
+FOCUS1_AUTHORITY_REBOUND_GITATTRIBUTES_PATH = ".gitattributes"
+FOCUS1_AUTHORITY_PRIOR_GITATTRIBUTES_SHA256 = (
+    "ad661a962b8ff9f6d834833c0a6995e96a26bc6ff0cd6f2bc0445916458f9e37"
+)
+FOCUS1_AUTHORITY_REBOUND_V1_GUARD_TEST_PATH = (
+    "tests/research/test_focus2_v2_benchmark_integration.py"
+)
+FOCUS1_AUTHORITY_PRIOR_V1_GUARD_TEST_SHA256 = (
+    "8609a9ceebff2caea3fde1c343e3aa39ae425300c6be71b0336f252ff7d0fd24"
+)
+FOCUS1_AUTHORITY_REBOUND_EVIDENCE_PLANNER_TEST_PATH = (
+    "tests/research/test_evidence_budget_planner.py"
+)
+FOCUS1_AUTHORITY_PRIOR_EVIDENCE_PLANNER_TEST_SHA256 = (
+    "6e931e3c2ac2f9fc5fb59cde675513b51118d9da907ed097e12a7c71633b5f8a"
+)
+FOCUS1_AUTHORITY_REBOUND_STRATIFIED_TEST_PATH = (
+    "tests/research/test_stratified_joint_warrant_power.py"
+)
+FOCUS1_AUTHORITY_PRIOR_STRATIFIED_TEST_SHA256 = (
+    "a6f738edcbbc20570243a7e5b4eb599202968ddc01a385ec33b9b67d8a403fb4"
+)
+FOCUS1_AUTHORITY_REBOUND_CONFIRMATION_TEST_PATH = (
+    "tests/research/test_joint_power_confirmation.py"
+)
+FOCUS1_AUTHORITY_PRIOR_CONFIRMATION_TEST_SHA256 = (
+    "de883b6ca7d6fd60545b1383360a6246c84c3e00d1615ac05f07bb7ffda8d0ef"
+)
+LINEAGE_CHECKPOINT = "LINEAGE_CHECKPOINT"
+DETACHED_PINNED_CHECKPOINT = "DETACHED_PINNED_CHECKPOINT"
 
 # Accepted 36-path inventory independently reconstructed from raw blobs at the
 # checkpoint.  It keeps clean-checkout test plumbing independent of Git history
@@ -203,7 +256,30 @@ PACKAGING_REBINDING_EXTRA_AUTHORITY_ENTRY = (
 )
 
 FOCUS1_AUTHORITY_VERIFIED = "FOCUS1_AUTHORITY_VERIFIED"
+FOCUS1_AUTHORITY_VERIFIED_LINEAGE = "FOCUS1_AUTHORITY_VERIFIED_LINEAGE"
+FOCUS1_AUTHORITY_VERIFIED_DETACHED = "FOCUS1_AUTHORITY_VERIFIED_DETACHED"
 FOCUS1_AUTHORITY_CHECKPOINT_MISSING = "FOCUS1_AUTHORITY_CHECKPOINT_MISSING"
+FOCUS1_AUTHORITY_TAG_MISSING = "FOCUS1_AUTHORITY_TAG_MISSING"
+FOCUS1_AUTHORITY_TAG_NOT_ANNOTATED = "FOCUS1_AUTHORITY_TAG_NOT_ANNOTATED"
+FOCUS1_AUTHORITY_TAG_TARGET_MISMATCH = "FOCUS1_AUTHORITY_TAG_TARGET_MISMATCH"
+FOCUS1_AUTHORITY_COMMIT_MISSING = "FOCUS1_AUTHORITY_COMMIT_MISSING"
+FOCUS1_AUTHORITY_OBJECT_TYPE_INVALID = "FOCUS1_AUTHORITY_OBJECT_TYPE_INVALID"
+FOCUS1_AUTHORITY_CHECKPOINT_DIGEST_MISMATCH = (
+    "FOCUS1_AUTHORITY_CHECKPOINT_DIGEST_MISMATCH"
+)
+FOCUS1_AUTHORITY_CANDIDATE_PATH_SET_MISMATCH = (
+    "FOCUS1_AUTHORITY_CANDIDATE_PATH_SET_MISMATCH"
+)
+FOCUS1_AUTHORITY_CANDIDATE_BLOB_MISMATCH = (
+    "FOCUS1_AUTHORITY_CANDIDATE_BLOB_MISMATCH"
+)
+FOCUS1_AUTHORITY_CANDIDATE_DIGEST_MISMATCH = (
+    "FOCUS1_AUTHORITY_CANDIDATE_DIGEST_MISMATCH"
+)
+FOCUS1_AUTHORITY_REPLACE_OBJECT_REJECTED = (
+    "FOCUS1_AUTHORITY_REPLACE_OBJECT_REJECTED"
+)
+FOCUS1_AUTHORITY_MODE_INVALID = "FOCUS1_AUTHORITY_MODE_INVALID"
 FOCUS1_AUTHORITY_PATH_SET_MISMATCH = "FOCUS1_AUTHORITY_PATH_SET_MISMATCH"
 FOCUS1_AUTHORITY_BLOB_MISMATCH = "FOCUS1_AUTHORITY_BLOB_MISMATCH"
 FOCUS1_AUTHORITY_DIGEST_MISMATCH = "FOCUS1_AUTHORITY_DIGEST_MISMATCH"
@@ -396,8 +472,9 @@ def _canonical_git_repository_root(supplied_root: Path) -> Path:
     supplied_absolute = Path(os.path.abspath(os.fspath(supplied_root)))
     try:
         command = subprocess.run(
-            ["git", "rev-parse", "--show-toplevel"],
+            ["git", "--no-replace-objects", "rev-parse", "--show-toplevel"],
             cwd=supplied_absolute,
+            env=_authority_git_environment(),
             check=True,
             capture_output=True,
             text=True,
@@ -583,20 +660,108 @@ def _parse_loaded_json(
     return parsed
 
 
-def _git_blob(repository_root: Path, commit: str, relative_path: str) -> bytes:
+_AUTHORITY_GIT_ENVIRONMENT_DENYLIST = frozenset(
+    {
+        "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+        "GIT_COMMON_DIR",
+        "GIT_DIR",
+        "GIT_INDEX_FILE",
+        "GIT_NAMESPACE",
+        "GIT_OBJECT_DIRECTORY",
+        "GIT_REPLACE_REF_BASE",
+        "GIT_WORK_TREE",
+    }
+)
+
+
+def _authority_git_environment() -> dict[str, str]:
+    """Return a stable Git environment that cannot redirect authority inputs."""
+
+    environment = {
+        key: value
+        for key, value in os.environ.items()
+        if key.upper() not in _AUTHORITY_GIT_ENVIRONMENT_DENYLIST
+    }
+    environment["GIT_NO_REPLACE_OBJECTS"] = "1"
+    return environment
+
+
+def _git_no_replace(
+    repository_root: Path,
+    arguments: Sequence[str],
+    *,
+    check: bool = False,
+    text: bool = False,
+) -> subprocess.CompletedProcess[Any]:
+    """Run one authority Git command without replacement-object influence."""
+
+    return subprocess.run(
+        ["git", "--no-replace-objects", *arguments],
+        cwd=repository_root,
+        env=_authority_git_environment(),
+        check=check,
+        capture_output=True,
+        text=text,
+    )
+
+
+def _reject_git_object_substitution(repository_root: Path) -> None:
+    """Fail closed on replace refs or legacy grafts in the authority repository."""
+
+    replacements = _git_no_replace(
+        repository_root,
+        ["for-each-ref", "--format=%(refname)", "refs/replace/"],
+        check=True,
+        text=True,
+    ).stdout.splitlines()
+    if replacements:
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_REPLACE_OBJECT_REJECTED,
+            "Git replacement refs are forbidden during Focus 1 authority verification.",
+            details={"replace_refs": sorted(replacements)},
+        )
+    common_dir_raw = _git_no_replace(
+        repository_root,
+        ["rev-parse", "--git-common-dir"],
+        check=True,
+        text=True,
+    ).stdout.strip()
+    common_dir = Path(common_dir_raw)
+    if not common_dir.is_absolute():
+        common_dir = repository_root / common_dir
+    grafts_path = common_dir / "info" / "grafts"
+    try:
+        graft_bytes = grafts_path.read_bytes()
+    except FileNotFoundError:
+        graft_bytes = b""
+    if graft_bytes.strip():
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_REPLACE_OBJECT_REJECTED,
+            "Legacy Git grafts are forbidden during Focus 1 authority verification.",
+            details={"grafts_path": str(grafts_path)},
+        )
+
+
+def _git_blob(
+    repository_root: Path,
+    commit: str,
+    relative_path: str,
+    *,
+    missing_status: str = FOCUS1_AUTHORITY_MANIFEST_INVALID,
+    source_label: str = "Checkpoint",
+) -> bytes:
     canonical = _canonical_relative_path(relative_path, "checkpoint_path")
     try:
-        return subprocess.run(
-            ["git", "cat-file", "blob", f"{commit}:{canonical}"],
-            cwd=repository_root,
+        return _git_no_replace(
+            repository_root,
+            ["cat-file", "blob", f"{commit}:{canonical}"],
             check=True,
-            capture_output=True,
         ).stdout
     except (OSError, subprocess.CalledProcessError) as exc:
         raise PortabilityVerificationError(
-            FOCUS1_AUTHORITY_MANIFEST_INVALID,
-            f"Checkpoint blob is unavailable: {canonical}.",
-            details={"path": canonical, "checkpoint": commit},
+            missing_status,
+            f"{source_label} blob is unavailable: {canonical}.",
+            details={"path": canonical, "commit": commit},
         ) from exc
 
 
@@ -816,56 +981,493 @@ def verify_focus1_portable_authority(repository_root: Path) -> dict[str, Any]:
     }
 
 
-def verify_focus1_checkpoint_authority(
+def _lineage_authority_record() -> dict[str, Any]:
+    return {
+        "schema_version": "ragwarrant_focus1_detached_authority.v1",
+        "amendment_id": FOCUS1_DETACHED_AUTHORITY_AMENDMENT_ID,
+        "amendment_type": FOCUS1_DETACHED_AUTHORITY_AMENDMENT_TYPE,
+        "authority_mode": LINEAGE_CHECKPOINT,
+        "authority_ref": None,
+        "authority_commit": FOCUS1_CHECKPOINT_COMMIT,
+        "accepted_digest": FOCUS1_DIGEST,
+        "lineage_required": True,
+        "content_equivalence_required": True,
+        "trust_boundary": {
+            "verifier_self_attestation": False,
+            "reviewed_git_commit_and_ci_required": True,
+            "tag_name_alone_is_authority": False,
+            "global_external_copy_integrity_claimed": False,
+        },
+        "declarations": {
+            "scientific_input_changed": False,
+            "result_changed": False,
+            "bridge_merge_created": False,
+            "old_rebrand_history_replayed": False,
+            "simulation_rerun": False,
+            "full_executed": False,
+            "drand_accessed": False,
+        },
+    }
+
+
+def _load_focus1_authority_record(repository_root: Path) -> dict[str, Any]:
+    loaded = _read_repository_file_once(repository_root, FOCUS1_AUTHORITY_RECORD_PATH)
+    record = _parse_loaded_json(loaded, "Focus 1 detached-authority record")
+    required = {
+        "schema_version",
+        "amendment_id",
+        "amendment_type",
+        "parent_authority",
+        "authority_mode",
+        "authority_ref",
+        "authority_commit",
+        "accepted_digest",
+        "lineage_required",
+        "content_equivalence_required",
+        "hash_rebindings",
+        "trust_boundary",
+        "declarations",
+    }
+    if set(record) != required:
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_MODE_INVALID,
+            "Focus 1 authority record has an invalid exact schema.",
+        )
+    if (
+        record["schema_version"] != "ragwarrant_focus1_detached_authority.v1"
+        or record["amendment_id"] != FOCUS1_DETACHED_AUTHORITY_AMENDMENT_ID
+        or record["amendment_type"] != FOCUS1_DETACHED_AUTHORITY_AMENDMENT_TYPE
+        or record["authority_commit"] != FOCUS1_CHECKPOINT_COMMIT
+        or record["accepted_digest"] != FOCUS1_DIGEST
+        or record["content_equivalence_required"] is not True
+    ):
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_MODE_INVALID,
+            "Focus 1 authority identity differs from the accepted amendment.",
+        )
+    parent_loaded = _read_repository_file_once(repository_root, INTEGRITY_RECORD_PATH)
+    if record["parent_authority"] != {
+        "path": INTEGRITY_RECORD_PATH,
+        "sha256": FOCUS1_AUTHORITY_PARENT_RECORD_SHA256,
+    } or parent_loaded.sha256 != FOCUS1_AUTHORITY_PARENT_RECORD_SHA256:
+        raise PortabilityVerificationError(
+            PACKAGING_PORTABILITY_HASH_MISMATCH,
+            "Detached authority does not bind the accepted packaging-integrity record.",
+        )
+    rebindings = record["hash_rebindings"]
+    required_rebinding_fields = {
+        "prior_path",
+        "prior_sha256",
+        "new_path",
+        "new_sha256",
+        "amendment_id",
+        "change_category",
+        "reason",
+        "scientific_impact",
+        "result_impact",
+    }
+    approved_rebindings = {
+        FOCUS1_AUTHORITY_REBOUND_PATH: {
+            "prior_sha256": FOCUS1_AUTHORITY_PRIOR_VERIFIER_SHA256,
+            "change_category": "DETACHED_AUTHORITY_VERIFIER",
+            "reason": (
+                "Add explicit lineage and detached pinned-checkpoint verification "
+                "without changing scientific inputs or results."
+            ),
+        },
+        FOCUS1_AUTHORITY_REBOUND_TEST_PATH: {
+            "prior_sha256": FOCUS1_AUTHORITY_PRIOR_TEST_SHA256,
+            "change_category": "COMMIT_BLOB_AUTHORITY_TEST",
+            "reason": (
+                "Update the accepted authority test to tamper committed candidate "
+                "bytes and assert explicit checkpoint/candidate failure statuses."
+            ),
+        },
+        FOCUS1_AUTHORITY_REBOUND_GITATTRIBUTES_PATH: {
+            "prior_sha256": FOCUS1_AUTHORITY_PRIOR_GITATTRIBUTES_SHA256,
+            "change_category": "CURRENT_MAIN_GITATTRIBUTES_PRESERVATION",
+            "reason": (
+                "Preserve the merged current-main PDF and DOCX binary-review rules "
+                "alongside the four narrow research whitespace rules."
+            ),
+        },
+        FOCUS1_AUTHORITY_REBOUND_V1_GUARD_TEST_PATH: {
+            "prior_sha256": FOCUS1_AUTHORITY_PRIOR_V1_GUARD_TEST_SHA256,
+            "change_category": "DETACHED_REPLAY_INTEGRITY_TEST",
+            "reason": (
+                "Compare frozen v1 files with the accepted v1 commit while "
+                "comparing historical protected paths with the current-main replay base."
+            ),
+        },
+        FOCUS1_AUTHORITY_REBOUND_EVIDENCE_PLANNER_TEST_PATH: {
+            "prior_sha256": FOCUS1_AUTHORITY_PRIOR_EVIDENCE_PLANNER_TEST_SHA256,
+            "change_category": "DETACHED_REPLAY_HASH_CHAIN",
+            "reason": (
+                "Rebind the evidence-planner integrity test to the accepted "
+                "current-main replay guard hash."
+            ),
+        },
+        FOCUS1_AUTHORITY_REBOUND_STRATIFIED_TEST_PATH: {
+            "prior_sha256": FOCUS1_AUTHORITY_PRIOR_STRATIFIED_TEST_SHA256,
+            "change_category": "DETACHED_REPLAY_HASH_CHAIN",
+            "reason": (
+                "Rebind the stratified-design integrity test to the accepted "
+                "evidence-planner test hash."
+            ),
+        },
+        FOCUS1_AUTHORITY_REBOUND_CONFIRMATION_TEST_PATH: {
+            "prior_sha256": FOCUS1_AUTHORITY_PRIOR_CONFIRMATION_TEST_SHA256,
+            "change_category": "DETACHED_REPLAY_HASH_CHAIN",
+            "reason": (
+                "Rebind the confirmation integrity test to the accepted "
+                "stratified-design test hash."
+            ),
+        },
+    }
+    if not isinstance(rebindings, list) or len(rebindings) != len(
+        approved_rebindings
+    ) or any(
+        not isinstance(entry, dict) or set(entry) != required_rebinding_fields
+        for entry in rebindings
+    ):
+        raise PortabilityVerificationError(
+            PACKAGING_REBINDING_EXTRA_AUTHORITY_ENTRY,
+            "Detached authority has an invalid exact additive rebinding set.",
+        )
+    seen_rebindings: set[str] = set()
+    for rebinding in rebindings:
+        rebound_path = _canonical_relative_path(
+            rebinding["new_path"], "detached authority rebinding path"
+        )
+        if rebound_path in seen_rebindings or rebound_path not in approved_rebindings:
+            raise PortabilityVerificationError(
+                PACKAGING_REBINDING_UNAUTHORIZED_PATH,
+                "Detached authority rebinding includes a duplicate or unauthorized path.",
+            )
+        seen_rebindings.add(rebound_path)
+        approved = approved_rebindings[rebound_path]
+        replacement_hash = _require_sha256(
+            rebinding["new_sha256"], "detached authority replacement hash"
+        )
+        if rebinding != {
+            "prior_path": rebound_path,
+            "prior_sha256": approved["prior_sha256"],
+            "new_path": rebound_path,
+            "new_sha256": replacement_hash,
+            "amendment_id": FOCUS1_DETACHED_AUTHORITY_AMENDMENT_ID,
+            "change_category": approved["change_category"],
+            "reason": approved["reason"],
+            "scientific_impact": "NONE",
+            "result_impact": "NONE",
+        }:
+            raise PortabilityVerificationError(
+                PACKAGING_REBINDING_UNAUTHORIZED_PATH,
+                "Detached authority rebinding differs from its approved authority.",
+            )
+        actual_hash = _read_repository_file_once(repository_root, rebound_path).sha256
+        if actual_hash != replacement_hash:
+            raise PortabilityVerificationError(
+                PACKAGING_PORTABILITY_HASH_MISMATCH,
+                "Detached-authority replacement bytes differ from the additive rebinding.",
+                details={
+                    "path": rebound_path,
+                    "expected": replacement_hash,
+                    "actual": actual_hash,
+                },
+            )
+    expected_trust_boundary = {
+        "verifier_self_attestation": False,
+        "reviewed_git_commit_and_ci_required": True,
+        "tag_name_alone_is_authority": False,
+        "global_external_copy_integrity_claimed": False,
+    }
+    expected_declarations = {
+        "scientific_input_changed": False,
+        "result_changed": False,
+        "bridge_merge_created": False,
+        "old_rebrand_history_replayed": False,
+        "simulation_rerun": False,
+        "full_executed": False,
+        "drand_accessed": False,
+    }
+    if (
+        record["trust_boundary"] != expected_trust_boundary
+        or record["declarations"] != expected_declarations
+    ):
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_MODE_INVALID,
+            "Focus 1 authority trust boundary or declarations changed.",
+        )
+    mode = record["authority_mode"]
+    if mode == LINEAGE_CHECKPOINT:
+        valid_mode_fields = (
+            record["authority_ref"] is None
+            and record["lineage_required"] is True
+        )
+    elif mode == DETACHED_PINNED_CHECKPOINT:
+        valid_mode_fields = (
+            record["authority_ref"] == FOCUS1_AUTHORITY_REF
+            and record["lineage_required"] is False
+        )
+    else:
+        valid_mode_fields = False
+    if not valid_mode_fields:
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_MODE_INVALID,
+            "Focus 1 authority mode or its required fields are invalid.",
+        )
+    return record
+
+
+def _focus1_authority_rebinding_overrides(
+    record: Mapping[str, Any],
+) -> dict[str, tuple[str, str]]:
+    return {
+        str(rebinding["new_path"]): (
+            str(rebinding["prior_sha256"]),
+            str(rebinding["new_sha256"]),
+        )
+        for rebinding in record["hash_rebindings"]
+        if str(rebinding["new_path"]) in REQUIRED_REBINDING_PATHS
+    }
+
+
+def _effective_workspace_rebindings(
+    parent_rebindings: Sequence[Mapping[str, Any]],
+    detached_record: Mapping[str, Any] | None,
+) -> list[dict[str, Any]]:
+    """Compose original-to-portable and portable-to-detached hash bindings."""
+
+    effective = [dict(binding) for binding in parent_rebindings]
+    if detached_record is None:
+        return effective
+    positions = {
+        str(binding["new_path"]): index for index, binding in enumerate(effective)
+    }
+    for detached_binding in detached_record["hash_rebindings"]:
+        path = str(detached_binding["new_path"])
+        position = positions.get(path)
+        if position is None:
+            positions[path] = len(effective)
+            effective.append(dict(detached_binding))
+            continue
+        parent_binding = effective[position]
+        if parent_binding["new_sha256"] != detached_binding["prior_sha256"]:
+            raise PortabilityVerificationError(
+                PACKAGING_PORTABILITY_HASH_MISMATCH,
+                "Detached workspace rebinding does not continue its parent hash chain.",
+                details={"path": path},
+            )
+        parent_binding["new_sha256"] = detached_binding["new_sha256"]
+    return effective
+
+
+def _git_object_type(
     repository_root: Path,
+    object_id: str,
+    *,
+    missing_status: str,
+) -> str:
+    completed = _git_no_replace(
+        repository_root,
+        ["cat-file", "-t", object_id],
+        text=True,
+    )
+    if completed.returncode != 0:
+        raise PortabilityVerificationError(
+            missing_status,
+            f"Required Git object is unavailable: {object_id}.",
+        )
+    return completed.stdout.strip()
+
+
+def _resolve_candidate_commit(repository_root: Path) -> str:
+    completed = _git_no_replace(
+        repository_root,
+        ["rev-parse", "--verify", "HEAD^{commit}"],
+        text=True,
+    )
+    if completed.returncode != 0:
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_OBJECT_TYPE_INVALID,
+            "Candidate HEAD cannot be resolved to one commit.",
+        )
+    candidate_commit = completed.stdout.strip()
+    if not _GIT_SHA1_RE.fullmatch(candidate_commit) or _git_object_type(
+        repository_root,
+        candidate_commit,
+        missing_status=FOCUS1_AUTHORITY_OBJECT_TYPE_INVALID,
+    ) != "commit":
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_OBJECT_TYPE_INVALID,
+            "Candidate authority object is not a commit.",
+        )
+    return candidate_commit
+
+
+def _resolve_exact_annotated_authority_tag(repository_root: Path) -> str:
+    completed = _git_no_replace(
+        repository_root,
+        ["show-ref", "--verify", "--hash", "--", FOCUS1_AUTHORITY_REF],
+        text=True,
+    )
+    if completed.returncode != 0:
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_TAG_MISSING,
+            f"Required Focus 1 authority tag is missing: {FOCUS1_AUTHORITY_REF}.",
+        )
+    tag_object = completed.stdout.strip()
+    if not _GIT_SHA1_RE.fullmatch(tag_object):
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_TAG_MISSING,
+            "Focus 1 authority ref did not resolve to one raw object ID.",
+        )
+    if _git_object_type(
+        repository_root,
+        tag_object,
+        missing_status=FOCUS1_AUTHORITY_TAG_MISSING,
+    ) != "tag":
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_TAG_NOT_ANNOTATED,
+            "Focus 1 authority ref must directly name an annotated tag object.",
+        )
+    raw_tag = _git_no_replace(
+        repository_root,
+        ["cat-file", "tag", tag_object],
+        check=True,
+    ).stdout
+    try:
+        headers = raw_tag.split(b"\n\n", 1)[0].decode("utf-8").splitlines()
+    except UnicodeError as exc:
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_TAG_NOT_ANNOTATED,
+            "Focus 1 annotated-tag headers are not valid UTF-8.",
+        ) from exc
+    header_values: dict[str, str] = {}
+    for line in headers:
+        key, separator, value = line.partition(" ")
+        if separator and key in {"object", "type", "tag"}:
+            if key in header_values:
+                raise PortabilityVerificationError(
+                    FOCUS1_AUTHORITY_TAG_NOT_ANNOTATED,
+                    "Focus 1 annotated tag contains duplicate authority headers.",
+                )
+            header_values[key] = value
+    if header_values.get("type") != "commit":
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_OBJECT_TYPE_INVALID,
+            "Focus 1 annotated tag must point directly to a commit object.",
+        )
+    if header_values.get("object") != FOCUS1_CHECKPOINT_COMMIT:
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_TAG_TARGET_MISMATCH,
+            "Focus 1 authority tag target differs from the pinned checkpoint commit.",
+            details={
+                "expected": FOCUS1_CHECKPOINT_COMMIT,
+                "actual": header_values.get("object"),
+            },
+        )
+    return tag_object
+
+
+def _verify_authority_tag_unchanged(repository_root: Path, tag_object: str) -> None:
+    completed = _git_no_replace(
+        repository_root,
+        ["show-ref", "--verify", "--hash", "--", FOCUS1_AUTHORITY_REF],
+        text=True,
+    )
+    if completed.returncode != 0 or completed.stdout.strip() != tag_object:
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_TAG_TARGET_MISMATCH,
+            "Focus 1 authority tag changed during verification.",
+        )
+
+
+def _verify_focus1_authority_contract(
+    repository_root: Path,
+    record: Mapping[str, Any],
     *,
     observed_paths: Sequence[str] | None = None,
 ) -> dict[str, Any]:
-    """Verify candidate Focus 1 bytes against immutable checkpoint Git blobs."""
-
     root = _canonical_git_repository_root(repository_root)
-    exists = subprocess.run(
-        ["git", "cat-file", "-e", f"{FOCUS1_CHECKPOINT_COMMIT}^{{commit}}"],
-        cwd=root,
-        capture_output=True,
-    )
-    if exists.returncode != 0:
+    _reject_git_object_substitution(root)
+    mode = record["authority_mode"]
+    checkpoint_commit = str(record["authority_commit"])
+    accepted_digest = str(record["accepted_digest"])
+    if (
+        checkpoint_commit != FOCUS1_CHECKPOINT_COMMIT
+        or accepted_digest != FOCUS1_DIGEST
+        or record.get("content_equivalence_required") is not True
+    ):
         raise PortabilityVerificationError(
-            FOCUS1_AUTHORITY_CHECKPOINT_MISSING,
-            "The accepted Focus 1 checkpoint commit object is unavailable.",
+            FOCUS1_AUTHORITY_MODE_INVALID,
+            "Focus 1 authority contract changed the pinned commit or digest.",
         )
-    ancestry = subprocess.run(
-        ["git", "merge-base", "--is-ancestor", FOCUS1_CHECKPOINT_COMMIT, "HEAD"],
-        cwd=root,
-        capture_output=True,
-    )
-    if ancestry.returncode != 0:
+    tag_object: str | None = None
+    if mode == DETACHED_PINNED_CHECKPOINT:
+        if (
+            record.get("authority_ref") != FOCUS1_AUTHORITY_REF
+            or record.get("lineage_required") is not False
+        ):
+            raise PortabilityVerificationError(
+                FOCUS1_AUTHORITY_MODE_INVALID,
+                "Detached authority requires the exact pinned tag and no lineage fallback.",
+            )
+        tag_object = _resolve_exact_annotated_authority_tag(root)
+    elif mode == LINEAGE_CHECKPOINT:
+        if record.get("authority_ref") is not None or record.get(
+            "lineage_required"
+        ) is not True:
+            raise PortabilityVerificationError(
+                FOCUS1_AUTHORITY_MODE_INVALID,
+                "Lineage authority requires ancestry and no detached tag ref.",
+            )
+    else:
         raise PortabilityVerificationError(
-            FOCUS1_AUTHORITY_UNTRUSTED_SOURCE,
-            "The candidate branch does not contain the accepted Focus 1 checkpoint.",
+            FOCUS1_AUTHORITY_MODE_INVALID,
+            f"Unknown Focus 1 authority mode: {mode!r}.",
         )
+    checkpoint_type = _git_object_type(
+        root,
+        checkpoint_commit,
+        missing_status=FOCUS1_AUTHORITY_COMMIT_MISSING,
+    )
+    if checkpoint_type != "commit":
+        raise PortabilityVerificationError(
+            FOCUS1_AUTHORITY_OBJECT_TYPE_INVALID,
+            "Pinned Focus 1 authority object is not a commit.",
+        )
+    candidate_commit = _resolve_candidate_commit(root)
+    if mode == LINEAGE_CHECKPOINT:
+        ancestry = _git_no_replace(
+            root,
+            ["merge-base", "--is-ancestor", checkpoint_commit, candidate_commit],
+        )
+        if ancestry.returncode != 0:
+            raise PortabilityVerificationError(
+                FOCUS1_AUTHORITY_UNTRUSTED_SOURCE,
+                "Lineage mode requires the accepted Focus 1 checkpoint as an ancestor.",
+            )
     generator_path = "scripts/generate_benchmark_freeze_manifest.py"
-    generator_blob = _git_blob(root, FOCUS1_CHECKPOINT_COMMIT, generator_path)
+    generator_blob = _git_blob(root, checkpoint_commit, generator_path)
     frozen_paths = _checkpoint_frozen_paths(generator_blob)
     expected_hashes = {
-        path: hashlib.sha256(
-            _git_blob(root, FOCUS1_CHECKPOINT_COMMIT, path)
-        ).hexdigest()
+        path: hashlib.sha256(_git_blob(root, checkpoint_commit, path)).hexdigest()
         for path in frozen_paths
     }
     if expected_hashes != dict(FOCUS1_CHECKPOINT_INPUT_SHA256):
         raise PortabilityVerificationError(
-            FOCUS1_AUTHORITY_MANIFEST_INVALID,
-            "Raw checkpoint blobs differ from the accepted checkpoint-derived inventory.",
+            FOCUS1_AUTHORITY_CHECKPOINT_DIGEST_MISMATCH,
+            "Checkpoint blobs differ from the accepted checkpoint-derived inventory.",
         )
     config_blob = _git_blob(
         root,
-        FOCUS1_CHECKPOINT_COMMIT,
+        checkpoint_commit,
         "configs/research/false_promotion_benchmark_v1.yaml",
     )
     beacon_blob = _git_blob(
         root,
-        FOCUS1_CHECKPOINT_COMMIT,
+        checkpoint_commit,
         "src/ragwarrant/research/public_beacon.py",
     )
     manifest = _focus1_manifest_payload(
@@ -879,11 +1481,11 @@ def verify_focus1_checkpoint_authority(
         input_hashes=expected_hashes,
     )
     expected_digest = _focus1_digest(manifest)
-    if expected_digest != FOCUS1_DIGEST:
+    if expected_digest != accepted_digest:
         raise PortabilityVerificationError(
-            FOCUS1_AUTHORITY_DIGEST_MISMATCH,
+            FOCUS1_AUTHORITY_CHECKPOINT_DIGEST_MISMATCH,
             "Checkpoint blobs cannot reproduce the accepted Focus 1 digest.",
-            details={"expected": FOCUS1_DIGEST, "computed": expected_digest},
+            details={"expected": accepted_digest, "computed": expected_digest},
         )
     candidate_paths = tuple(frozen_paths if observed_paths is None else observed_paths)
     try:
@@ -893,15 +1495,15 @@ def verify_focus1_checkpoint_authority(
         )
     except PortabilityVerificationError as exc:
         raise PortabilityVerificationError(
-            FOCUS1_AUTHORITY_PATH_SET_MISMATCH,
-            "Observed Focus 1 path inventory is not canonical.",
+            FOCUS1_AUTHORITY_CANDIDATE_PATH_SET_MISMATCH,
+            "Candidate Focus 1 path inventory is not canonical.",
         ) from exc
     if len(canonical_candidate_paths) != len(set(canonical_candidate_paths)) or set(
         canonical_candidate_paths
     ) != set(frozen_paths):
         raise PortabilityVerificationError(
-            FOCUS1_AUTHORITY_PATH_SET_MISMATCH,
-            "Observed Focus 1 path set differs from the checkpoint authority.",
+            FOCUS1_AUTHORITY_CANDIDATE_PATH_SET_MISMATCH,
+            "Candidate Focus 1 path set differs from the checkpoint authority.",
             details={
                 "missing": sorted(set(frozen_paths) - set(canonical_candidate_paths)),
                 "extra": sorted(set(canonical_candidate_paths) - set(frozen_paths)),
@@ -910,17 +1512,15 @@ def verify_focus1_checkpoint_authority(
     observed_hashes: dict[str, str] = {}
     mismatches: list[str] = []
     for path in frozen_paths:
-        try:
-            loaded = _read_repository_file_once(root, path)
-        except PortabilityVerificationError as exc:
-            if exc.status == PACKAGING_PORTABILITY_INCOMPLETE:
-                raise PortabilityVerificationError(
-                    FOCUS1_AUTHORITY_PATH_SET_MISMATCH,
-                    f"Required Focus 1 file is missing: {path}.",
-                ) from exc
-            raise
-        observed_hashes[path] = loaded.sha256
-        if loaded.sha256 != expected_hashes[path]:
+        candidate_blob = _git_blob(
+            root,
+            candidate_commit,
+            path,
+            missing_status=FOCUS1_AUTHORITY_CANDIDATE_PATH_SET_MISMATCH,
+            source_label="Candidate commit",
+        )
+        observed_hashes[path] = hashlib.sha256(candidate_blob).hexdigest()
+        if observed_hashes[path] != expected_hashes[path]:
             mismatches.append(path)
     observed_manifest = _focus1_manifest_payload(
         benchmark_protocol_version=manifest["benchmark_protocol_version"],
@@ -931,26 +1531,76 @@ def verify_focus1_checkpoint_authority(
     observed_digest = _focus1_digest(observed_manifest)
     if mismatches:
         raise PortabilityVerificationError(
-            FOCUS1_AUTHORITY_BLOB_MISMATCH,
-            "Candidate Focus 1 bytes differ from checkpoint Git blobs.",
+            FOCUS1_AUTHORITY_CANDIDATE_BLOB_MISMATCH,
+            "Candidate commit Focus 1 bytes differ from checkpoint Git blobs.",
             details={"mismatched_paths": mismatches, "observed_digest": observed_digest},
         )
-    if observed_digest != FOCUS1_DIGEST:
+    if observed_digest != accepted_digest:
         raise PortabilityVerificationError(
-            FOCUS1_AUTHORITY_DIGEST_MISMATCH,
-            "Candidate Focus 1 digest differs from the accepted authority.",
-            details={"expected": FOCUS1_DIGEST, "computed": observed_digest},
+            FOCUS1_AUTHORITY_CANDIDATE_DIGEST_MISMATCH,
+            "Candidate commit Focus 1 digest differs from the accepted authority.",
+            details={"expected": accepted_digest, "computed": observed_digest},
         )
+    if tag_object is not None:
+        _verify_authority_tag_unchanged(root, tag_object)
     authoritative_manifest = dict(manifest)
     authoritative_manifest["benchmark_freeze_digest"] = expected_digest
+    verified_status = (
+        FOCUS1_AUTHORITY_VERIFIED_DETACHED
+        if mode == DETACHED_PINNED_CHECKPOINT
+        else FOCUS1_AUTHORITY_VERIFIED_LINEAGE
+    )
     return {
-        "status": FOCUS1_AUTHORITY_VERIFIED,
-        "checkpoint_commit": FOCUS1_CHECKPOINT_COMMIT,
+        "status": verified_status,
+        "authority_mode": mode,
+        "authority_ref": record["authority_ref"],
+        "authority_tag_object": tag_object,
+        "checkpoint_commit": checkpoint_commit,
+        "candidate_commit": candidate_commit,
+        "lineage_required": bool(record["lineage_required"]),
         "frozen_path_count": len(frozen_paths),
         "expected_digest": expected_digest,
         "observed_digest": observed_digest,
         "manifest": authoritative_manifest,
     }
+
+
+def verify_focus1_authority(
+    repository_root: Path,
+    *,
+    observed_paths: Sequence[str] | None = None,
+) -> dict[str, Any]:
+    """Verify the explicit lineage or detached Focus 1 authority contract."""
+
+    root = _canonical_git_repository_root(repository_root)
+    record = _load_focus1_authority_record(root)
+    return _verify_focus1_authority_contract(
+        root,
+        record,
+        observed_paths=observed_paths,
+    )
+
+
+def verify_focus1_checkpoint_authority(
+    repository_root: Path,
+    *,
+    observed_paths: Sequence[str] | None = None,
+) -> dict[str, Any]:
+    """Compatibility wrapper preserving the pre-amendment generic status."""
+
+    root = _canonical_git_repository_root(repository_root)
+    if root.joinpath(*FOCUS1_AUTHORITY_RECORD_PATH.split("/")).is_file():
+        verified = verify_focus1_authority(root, observed_paths=observed_paths)
+    else:
+        verified = _verify_focus1_authority_contract(
+            root,
+            _lineage_authority_record(),
+            observed_paths=observed_paths,
+        )
+    compatible = dict(verified)
+    compatible["authority_status"] = verified["status"]
+    compatible["status"] = FOCUS1_AUTHORITY_VERIFIED
+    return compatible
 
 
 def _json_without_duplicate_keys(raw: str) -> Any:
@@ -1252,7 +1902,12 @@ def _verify_gitattributes(repository_root: Path, record: Mapping[str, Any]) -> N
         )
 
 
-def _verify_hash_rebindings(repository_root: Path, record: Mapping[str, Any]) -> int:
+def _verify_hash_rebindings(
+    repository_root: Path,
+    record: Mapping[str, Any],
+    *,
+    additive_overrides: Mapping[str, tuple[str, str]] | None = None,
+) -> int:
     bindings = record.get("hash_rebindings")
     if not isinstance(bindings, list):
         raise PortabilityVerificationError(
@@ -1366,7 +2021,22 @@ def _verify_hash_rebindings(repository_root: Path, record: Mapping[str, Any]) ->
                     "actual_authority": new_hash,
                 },
             )
-        if actual_hash != new_hash:
+        override = (additive_overrides or {}).get(new_path)
+        if override is not None:
+            prior_authority, replacement_authority = override
+            if new_hash != prior_authority or actual_hash != replacement_authority:
+                raise PortabilityVerificationError(
+                    PACKAGING_PORTABILITY_HASH_MISMATCH,
+                    f"Additive replacement authority does not match tracked bytes: {new_path}.",
+                    details={
+                        "path": new_path,
+                        "parent_authority": new_hash,
+                        "expected_parent": prior_authority,
+                        "actual": actual_hash,
+                        "replacement_authority": replacement_authority,
+                    },
+                )
+        elif actual_hash != new_hash:
             raise PortabilityVerificationError(
                 PACKAGING_PORTABILITY_HASH_MISMATCH,
                 f"Replacement hash does not match tracked bytes: {new_path}.",
@@ -1387,6 +2057,13 @@ def _verify_hash_rebindings(repository_root: Path, record: Mapping[str, Any]) ->
             PACKAGING_PORTABILITY_INCOMPLETE,
             "Required portability replacements are not all additively rebound.",
             details={"missing_rebindings": missing},
+        )
+    unknown_overrides = sorted(set(additive_overrides or {}) - actual_paths)
+    if unknown_overrides:
+        raise PortabilityVerificationError(
+            PACKAGING_REBINDING_EXTRA_AUTHORITY_ENTRY,
+            "Detached authority rebinding does not correspond to a parent binding.",
+            details={"extra_rebindings": unknown_overrides},
         )
     return len(bindings)
 
@@ -1835,6 +2512,12 @@ def verify_packaging_portability(
                     "actual": record_path,
                 },
             )
+        detached_record_path = root.joinpath(*FOCUS1_AUTHORITY_RECORD_PATH.split("/"))
+        detached_record = (
+            _load_focus1_authority_record(root)
+            if detached_record_path.is_file()
+            else None
+        )
         focus1_authority = verify_focus1_checkpoint_authority(root)
         record, record_loaded = _load_record(root, record_path)
         integrity_record, integrity_loaded = _load_integrity_record(
@@ -1845,7 +2528,15 @@ def verify_packaging_portability(
         _verify_authorities(record)
         _verify_frozen_yamls(root, record)
         _verify_gitattributes(root, record)
-        binding_count = _verify_hash_rebindings(root, record)
+        binding_count = _verify_hash_rebindings(
+            root,
+            record,
+            additive_overrides=(
+                _focus1_authority_rebinding_overrides(detached_record)
+                if detached_record is not None
+                else None
+            ),
+        )
         workspace_details: Mapping[str, Any]
         if workspace_materialization_root is None:
             workspace_details = {
@@ -1856,7 +2547,9 @@ def verify_packaging_portability(
             workspace_details = verify_workspace_materialization_read_only(
                 workspace_materialization_root,
                 repository_root=root,
-                hash_rebindings=record["hash_rebindings"],
+                hash_rebindings=_effective_workspace_rebindings(
+                    record["hash_rebindings"], detached_record
+                ),
             )
         return VerificationResult(
             status=PACKAGING_PORTABILITY_VERIFIED,
@@ -1892,6 +2585,10 @@ __all__ = [
     "AMENDMENT_TYPE",
     "DEFAULT_RECORD_PATH",
     "FOCUS1_DIGEST",
+    "FOCUS1_AUTHORITY_RECORD_PATH",
+    "FOCUS1_AUTHORITY_REF",
+    "FOCUS1_AUTHORITY_VERIFIED_DETACHED",
+    "FOCUS1_AUTHORITY_VERIFIED_LINEAGE",
     "FOCUS1_CHECKPOINT_COMMIT",
     "FROZEN_YAML_SHA256",
     "ORIGINAL_OUTPUT_SET_SHA256",
@@ -1909,6 +2606,7 @@ __all__ = [
     "VerificationResult",
     "sha256_file",
     "verify_focus1_checkpoint_authority",
+    "verify_focus1_authority",
     "verify_focus1_portable_authority",
     "verify_packaging_portability",
     "verify_workspace_materialization_read_only",

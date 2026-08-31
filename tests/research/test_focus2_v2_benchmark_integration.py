@@ -32,6 +32,7 @@ from ragwarrant.research.simulator import load_config
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+OWNER_REVIEW_BASE_COMMIT = "ca7a8fa08500d821dc21163d1b5fca17ab919bd7"
 
 
 @pytest.fixture(scope="module")
@@ -235,12 +236,13 @@ def test_output_rejects_mislabeled_warrant_sample(
 
 
 def test_v1_baseline_and_historical_outputs_remain_untouched() -> None:
-    result = subprocess.run(
+    v1_result = subprocess.run(
         [
             "git",
             "diff",
             "--quiet",
             V1_BASELINE_COMMIT,
+            "HEAD",
             "--",
             "configs/research/fixed_sample_multi_risk_warrant_v1.yaml",
             "docs/research/fixed_sample_multi_risk_warrant_v1_implementation.md",
@@ -254,6 +256,18 @@ def test_v1_baseline_and_historical_outputs_remain_untouched() -> None:
             "tests/research/test_fixed_sample_warrant_method.py",
             "tests/research/test_focus2_benchmark_integration.py",
             "tests/research/test_focus2_output_contract.py",
+        ],
+        cwd=REPOSITORY_ROOT,
+        check=False,
+    )
+    protected_result = subprocess.run(
+        [
+            "git",
+            "diff",
+            "--quiet",
+            OWNER_REVIEW_BASE_COMMIT,
+            "HEAD",
+            "--",
             "README.md",
             "artifacts",
             "results",
@@ -261,4 +275,5 @@ def test_v1_baseline_and_historical_outputs_remain_untouched() -> None:
         cwd=REPOSITORY_ROOT,
         check=False,
     )
-    assert result.returncode == 0
+    assert v1_result.returncode == 0
+    assert protected_result.returncode == 0

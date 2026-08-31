@@ -36,7 +36,7 @@ FOCUS1_DIGEST = "c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212
 PRESERVED_PLANNER_HASHES = {
     "configs/research/evidence_budget_planner_v1.yaml": "04b69b20601d7e1fdc1fbed8dea41384765813ed718b582d953374a1cb11f461",
     "src/ragwarrant/research/evidence_budget_planner.py": "a8d50bef9eda1fb90b40b8a3edc6bc5d2301d213fdbae3df8215c87806c24ab5",
-    "tests/research/test_evidence_budget_planner.py": "6e931e3c2ac2f9fc5fb59cde675513b51118d9da907ed097e12a7c71633b5f8a",
+    "tests/research/test_evidence_budget_planner.py": "df6b8410b163138597829fc1a4b9c8b676c77619ffd7fabb7bab53bf46cbf837",
 }
 
 

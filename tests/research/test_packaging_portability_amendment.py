@@ -882,16 +882,48 @@ def test_focus1_tamper_missing_and_extra_paths_fail(
     monkeypatch.setattr(portability, "FOCUS1_CHECKPOINT_COMMIT", checkpoint)
     target = repository_root / "docs/research/false_promotion_benchmark_protocol.md"
     target.write_bytes(target.read_bytes() + b"tampered")
+    subprocess.run(["git", "add", "--all"], cwd=repository_root, check=True)
+    subprocess.run(
+        ["git", "commit", "-q", "-m", "tampered candidate commit"],
+        cwd=repository_root,
+        check=True,
+    )
     with pytest.raises(portability.PortabilityVerificationError) as caught:
         REAL_FOCUS1_VERIFIER(repository_root)
-    assert caught.value.status == portability.FOCUS1_AUTHORITY_BLOB_MISMATCH
+    assert (
+        caught.value.status
+        == portability.FOCUS1_AUTHORITY_CANDIDATE_BLOB_MISMATCH
+    )
 
-    subprocess.run(["git", "restore", "--", str(target)], cwd=repository_root, check=True)
-    target.unlink()
+    subprocess.run(
+        ["git", "switch", "--detach", checkpoint],
+        cwd=repository_root,
+        check=True,
+        capture_output=True,
+    )
+    subprocess.run(
+        ["git", "rm", "-q", "--", str(target.relative_to(repository_root))],
+        cwd=repository_root,
+        check=True,
+    )
+    subprocess.run(
+        ["git", "commit", "-q", "-m", "missing candidate path"],
+        cwd=repository_root,
+        check=True,
+    )
     with pytest.raises(portability.PortabilityVerificationError) as caught:
         REAL_FOCUS1_VERIFIER(repository_root)
-    assert caught.value.status == portability.FOCUS1_AUTHORITY_PATH_SET_MISMATCH
+    assert (
+        caught.value.status
+        == portability.FOCUS1_AUTHORITY_CANDIDATE_PATH_SET_MISMATCH
+    )
 
+    subprocess.run(
+        ["git", "switch", "--detach", checkpoint],
+        cwd=repository_root,
+        check=True,
+        capture_output=True,
+    )
     generator = subprocess.run(
         ["git", "show", f"{checkpoint}:scripts/generate_benchmark_freeze_manifest.py"],
         cwd=repository_root,
@@ -904,7 +936,10 @@ def test_focus1_tamper_missing_and_extra_paths_fail(
             repository_root,
             observed_paths=(*frozen_paths, "extra/focus1.py"),
         )
-    assert caught.value.status == portability.FOCUS1_AUTHORITY_PATH_SET_MISMATCH
+    assert (
+        caught.value.status
+        == portability.FOCUS1_AUTHORITY_CANDIDATE_PATH_SET_MISMATCH
+    )
 
 
 def test_focus1_manifest_or_accepted_digest_tampering_fails(
@@ -915,7 +950,10 @@ def test_focus1_manifest_or_accepted_digest_tampering_fails(
     monkeypatch.setattr(portability, "FOCUS1_DIGEST", "0" * 64)
     with pytest.raises(portability.PortabilityVerificationError) as caught:
         REAL_FOCUS1_VERIFIER(repository_root)
-    assert caught.value.status == portability.FOCUS1_AUTHORITY_DIGEST_MISMATCH
+    assert (
+        caught.value.status
+        == portability.FOCUS1_AUTHORITY_CHECKPOINT_DIGEST_MISMATCH
+    )
 
 
 def test_focus1_expected_bytes_ignore_git_filters_and_worktree_conversion(

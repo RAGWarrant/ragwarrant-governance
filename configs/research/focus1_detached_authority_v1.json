@@ -1,0 +1,109 @@
+{
+  "schema_version": "ragwarrant_focus1_detached_authority.v1",
+  "amendment_id": "RAGWARRANT-FOCUS1-DETACHED-AUTHORITY-001",
+  "amendment_type": "DETACHED_PINNED_CHECKPOINT_AUTHORITY",
+  "parent_authority": {
+    "path": "configs/research/packaging_integrity_amendment_v2.json",
+    "sha256": "8e8e00752f0f573df8b51943c9fc05acd8cfa754822e1fe81b5c44609e801183"
+  },
+  "authority_mode": "DETACHED_PINNED_CHECKPOINT",
+  "authority_ref": "refs/tags/ragwarrant-focus1-freeze-v1-c771afc",
+  "authority_commit": "124836bcc2fba48373d7bd08f0087b23f2e41620",
+  "accepted_digest": "c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e",
+  "lineage_required": false,
+  "content_equivalence_required": true,
+  "hash_rebindings": [
+    {
+      "prior_path": "src/ragwarrant/research/packaging_portability_amendment.py",
+      "prior_sha256": "2a23b19965b551f79a8fc715167973db3435874832ab5dd86035bd4bb0b442db",
+      "new_path": "src/ragwarrant/research/packaging_portability_amendment.py",
+      "new_sha256": "af9063dfa4fbab603e3629e8b2f6979dd3d4d67c906be58b9283fc80c1a8d332",
+      "amendment_id": "RAGWARRANT-FOCUS1-DETACHED-AUTHORITY-001",
+      "change_category": "DETACHED_AUTHORITY_VERIFIER",
+      "reason": "Add explicit lineage and detached pinned-checkpoint verification without changing scientific inputs or results.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": "tests/research/test_packaging_portability_amendment.py",
+      "prior_sha256": "4d85418c6a3e1dad8149da6be5210e64ec000555a93f8b1ee2b6bf0c66e51058",
+      "new_path": "tests/research/test_packaging_portability_amendment.py",
+      "new_sha256": "0f9373f7a75fb602def72e83e3e5cc3b88d7d62b3ceaef49819e60ab09968b51",
+      "amendment_id": "RAGWARRANT-FOCUS1-DETACHED-AUTHORITY-001",
+      "change_category": "COMMIT_BLOB_AUTHORITY_TEST",
+      "reason": "Update the accepted authority test to tamper committed candidate bytes and assert explicit checkpoint/candidate failure statuses.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": ".gitattributes",
+      "prior_sha256": "ad661a962b8ff9f6d834833c0a6995e96a26bc6ff0cd6f2bc0445916458f9e37",
+      "new_path": ".gitattributes",
+      "new_sha256": "b64728894423b153cad8837cdd81b69d78c0355df11d6d386f6e7a4dae1ba066",
+      "amendment_id": "RAGWARRANT-FOCUS1-DETACHED-AUTHORITY-001",
+      "change_category": "CURRENT_MAIN_GITATTRIBUTES_PRESERVATION",
+      "reason": "Preserve the merged current-main PDF and DOCX binary-review rules alongside the four narrow research whitespace rules.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": "tests/research/test_focus2_v2_benchmark_integration.py",
+      "prior_sha256": "8609a9ceebff2caea3fde1c343e3aa39ae425300c6be71b0336f252ff7d0fd24",
+      "new_path": "tests/research/test_focus2_v2_benchmark_integration.py",
+      "new_sha256": "66af1fb74c36acdc35468a8de6dcae0da6959dcfc628ac08d76d1c03a07829ba",
+      "amendment_id": "RAGWARRANT-FOCUS1-DETACHED-AUTHORITY-001",
+      "change_category": "DETACHED_REPLAY_INTEGRITY_TEST",
+      "reason": "Compare frozen v1 files with the accepted v1 commit while comparing historical protected paths with the current-main replay base.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": "tests/research/test_evidence_budget_planner.py",
+      "prior_sha256": "6e931e3c2ac2f9fc5fb59cde675513b51118d9da907ed097e12a7c71633b5f8a",
+      "new_path": "tests/research/test_evidence_budget_planner.py",
+      "new_sha256": "df6b8410b163138597829fc1a4b9c8b676c77619ffd7fabb7bab53bf46cbf837",
+      "amendment_id": "RAGWARRANT-FOCUS1-DETACHED-AUTHORITY-001",
+      "change_category": "DETACHED_REPLAY_HASH_CHAIN",
+      "reason": "Rebind the evidence-planner integrity test to the accepted current-main replay guard hash.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": "tests/research/test_stratified_joint_warrant_power.py",
+      "prior_sha256": "a6f738edcbbc20570243a7e5b4eb599202968ddc01a385ec33b9b67d8a403fb4",
+      "new_path": "tests/research/test_stratified_joint_warrant_power.py",
+      "new_sha256": "6298e76086f3319083c6e2d8409907aee8158843cdfcacde9d8544d2220c0d19",
+      "amendment_id": "RAGWARRANT-FOCUS1-DETACHED-AUTHORITY-001",
+      "change_category": "DETACHED_REPLAY_HASH_CHAIN",
+      "reason": "Rebind the stratified-design integrity test to the accepted evidence-planner test hash.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    },
+    {
+      "prior_path": "tests/research/test_joint_power_confirmation.py",
+      "prior_sha256": "de883b6ca7d6fd60545b1383360a6246c84c3e00d1615ac05f07bb7ffda8d0ef",
+      "new_path": "tests/research/test_joint_power_confirmation.py",
+      "new_sha256": "a72f061644d0340f57270f5bdab9631dcf7907a9ffa1d7b788df34916a24944a",
+      "amendment_id": "RAGWARRANT-FOCUS1-DETACHED-AUTHORITY-001",
+      "change_category": "DETACHED_REPLAY_HASH_CHAIN",
+      "reason": "Rebind the confirmation integrity test to the accepted stratified-design test hash.",
+      "scientific_impact": "NONE",
+      "result_impact": "NONE"
+    }
+  ],
+  "trust_boundary": {
+    "verifier_self_attestation": false,
+    "reviewed_git_commit_and_ci_required": true,
+    "tag_name_alone_is_authority": false,
+    "global_external_copy_integrity_claimed": false
+  },
+  "declarations": {
+    "scientific_input_changed": false,
+    "result_changed": false,
+    "bridge_merge_created": false,
+    "old_rebrand_history_replayed": false,
+    "simulation_rerun": false,
+    "full_executed": false,
+    "drand_accessed": false
+  }
+}

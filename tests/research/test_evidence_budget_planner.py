@@ -55,7 +55,7 @@ PRESERVED_SHA256 = {
     "src/ragwarrant/research/focus2_v2_reporting.py": "87c34660ce9ba0dfc37b008d44c5aecc3f846bd6219cb209cf56d02ec1e5e2ce",
     "tests/research/test_fixed_sample_warrant_v2.py": "54d8d4ab3f7e0a82af5f07edfa6da040541519cdb57a410e6e09f84f743f5210",
     "tests/research/test_focus2_power_feasibility.py": "bc696685c3f1b960d1b586056a8526126eea500056958da791c62fb07d6ca446",
-    "tests/research/test_focus2_v2_benchmark_integration.py": "8609a9ceebff2caea3fde1c343e3aa39ae425300c6be71b0336f252ff7d0fd24",
+    "tests/research/test_focus2_v2_benchmark_integration.py": "66af1fb74c36acdc35468a8de6dcae0da6959dcfc628ac08d76d1c03a07829ba",
     "configs/research/false_promotion_benchmark_v1.yaml": "4469bb06123796cb71103c2ec0b105e444167fe2b7e538193288ba22d916920a",
     "docs/research/false_promotion_benchmark_protocol.md": "6d661b06d49f31d40ac21a5cc0516e9f61c6e084514c1ac1838b36f6693686ad",
     "docs/research/false_promotion_benchmark_seed_schedule_v2_amendment.md": "9ffcb40dae4e8740e6f944d817e3f9a384d3ce53c4c2c3fa154bc91895447628",

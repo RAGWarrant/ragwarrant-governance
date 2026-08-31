@@ -45,7 +45,7 @@ PRESERVED_STRATIFIED_HASHES = {
     "docs/research/stratified_confirmatory_evidence_v1.md": "f043b8d96ca8223dd7cdee748f0ace80902fa769643ffdee337785686f0478cc",
     "scripts/run_stratified_joint_power_study.py": "8645a369633d86b3407eb2f8d424f2fd7d9e180e76e173c8189578241e2cdb4c",
     "src/ragwarrant/research/stratified_joint_power.py": "9101048d30a5cfc758fca029dc44ce21603d9406f9929ab02859d6f112e72f4d",
-    "tests/research/test_stratified_joint_warrant_power.py": "a6f738edcbbc20570243a7e5b4eb599202968ddc01a385ec33b9b67d8a403fb4",
+    "tests/research/test_stratified_joint_warrant_power.py": "6298e76086f3319083c6e2d8409907aee8158843cdfcacde9d8544d2220c0d19",
 }
 
 
