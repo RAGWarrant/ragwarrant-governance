@@ -1,0 +1,23 @@
+schema_version: fixed_sample_multi_risk_warrant_v2_iut_holm_overlay.v1
+method_id: FIXED_SAMPLE_MULTI_RISK_WARRANT_V2_IUT_HOLM
+focus1_benchmark_freeze_digest: c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e
+v1_baseline_tag: V1_VALID_ZERO_POWER_BASELINE
+v1_baseline_commit: bf3b3331b623afbdaed295919b3ac945c10692f6
+base_component_method: fixed_sample_multi_risk_warrant_v1
+base_component_variant: B_IUT_HOEFFDING
+component_tests: unchanged_v1
+hypothesis_composition: candidate_max_component_p_value
+candidate_family_multiplicity: holm
+familywise_error_level: 0.05
+development_profiles:
+  - CI
+  - LOCAL
+diagnostic_trial_indices:
+  - 0
+  - 1
+full_profile_permitted: false
+target_drand_round_selected: false
+truth_available_to_method: false
+research_only: true
+production_integrated: false
+

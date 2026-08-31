@@ -1,0 +1,57 @@
+schema_version: fixed_sample_multi_risk_warrant_config.v2
+method_id: fixed_sample_multi_risk_warrant_v2
+focus1_benchmark_freeze_digest: c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e
+v1_baseline_tag: V1_VALID_ZERO_POWER_BASELINE
+v1_baseline_commit: bf3b3331b623afbdaed295919b3ac945c10692f6
+seed_schedule_version: 2
+familywise_error_level: 0.05
+incumbent_policy_id: benchmark_incumbent_v1
+quality_delta_bounds:
+  - -0.25
+  - 0.25
+selection_objective: minimize_cost
+permitted_selection_objectives:
+  - minimize_cost
+  - minimize_latency
+primary_candidate_multiplicity_method: holm
+comparison_candidate_multiplicity_method: bonferroni
+variants:
+  - variant_id: A_V1_BASELINE
+    method_id: fixed_sample_multi_risk_warrant_v1
+    multiplicity_scope: flat_whole_family
+    multiplicity_method: holm
+    quality_test: paired_hoeffding
+  - variant_id: B_IUT_HOEFFDING
+    method_id: fixed_sample_multi_risk_warrant_v2_iut_hoeffding_ablation
+    multiplicity_scope: candidate_iut
+    multiplicity_method: holm
+    quality_test: paired_hoeffding
+  - variant_id: C_FLAT_HB
+    method_id: fixed_sample_multi_risk_warrant_v2_flat_hb_ablation
+    multiplicity_scope: flat_whole_family
+    multiplicity_method: holm
+    quality_test: hoeffding_bentkus_quality
+  - variant_id: D_V2_COMBINED
+    method_id: fixed_sample_multi_risk_warrant_v2
+    multiplicity_scope: candidate_iut
+    multiplicity_method: holm
+    quality_test: hoeffding_bentkus_quality
+  - variant_id: D_V2_BONFERRONI_COMPARISON
+    method_id: fixed_sample_multi_risk_warrant_v2_bonferroni_comparison
+    multiplicity_scope: candidate_iut
+    multiplicity_method: bonferroni
+    quality_test: hoeffding_bentkus_quality
+dominant_bottleneck_rule: largest_raw_component_p_value_then_lexical_hypothesis_id
+trial_diagnostic_sample_limit: 2
+development_evidence_used_for_certification: false
+full_profile_permitted: false
+target_drand_round_selected: false
+post_hoc_method_switching_permitted: false
+research_only: true
+production_integrated: false
+prespecified_descriptive_criteria:
+  any_recovery: nonzero correct promotion in at least one safe-candidate n=256 cell
+  material_false_block_reduction: at least 0.10 absolute in at least one LOCAL-v2 safe cell versus A
+  reporting: scenario-and-sample-size-specific with Wilson Monte Carlo intervals
+  guarantee_boundary: no guaranteed-control claim from Monte Carlo outcomes alone
+
