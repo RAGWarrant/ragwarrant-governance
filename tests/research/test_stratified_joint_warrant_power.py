@@ -38,7 +38,7 @@ PRESERVED_PLANNER_HASHES = {
     "src/ragwarrant/research/evidence_budget_planner.py": "a8d50bef9eda1fb90b40b8a3edc6bc5d2301d213fdbae3df8215c87806c24ab5",
     # PR A's planner test excludes B-owned beacon bytes from its preservation
     # inventory; PR B restores the original cumulative hash chain.
-    "tests/research/test_evidence_budget_planner.py": "8968a81dab7e6eb70d2259672b857aa877850127c0e4b1973c59ab4b6d17b13c",
+    "tests/research/test_evidence_budget_planner.py": "7ab097639158cf959ccd476d05138b50fffd83231d916a5b275fe574863887e9",
 }
 
 

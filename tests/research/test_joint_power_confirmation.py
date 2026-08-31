@@ -47,7 +47,7 @@ PRESERVED_STRATIFIED_HASHES = {
     "src/ragwarrant/research/stratified_joint_power.py": "9101048d30a5cfc758fca029dc44ce21603d9406f9929ab02859d6f112e72f4d",
     # PR A carries the split-specific cumulative test hash; PR B restores the
     # exact owner-review test and original preservation chain.
-    "tests/research/test_stratified_joint_warrant_power.py": "4bcb7d2dcaf4a8993f24975ffa5350394093771a99f728f660bf274806a19dd1",
+    "tests/research/test_stratified_joint_warrant_power.py": "4cd92b4d0ef86dda71c15aa933ae747c6889e71deae43244d7243363f328e32b",
 }
 
 

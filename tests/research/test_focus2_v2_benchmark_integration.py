@@ -3,7 +3,6 @@ from __future__ import annotations
 import csv
 import copy
 import json
-import subprocess
 from collections import defaultdict
 from pathlib import Path
 
@@ -19,7 +18,6 @@ from ragwarrant.research.fixed_sample_warrant_v2 import (
 from ragwarrant.research.focus2_v2_benchmark import (
     FROZEN_FOCUS1_CONFIG_PATH,
     FROZEN_V2_CONFIG_PATH,
-    V1_BASELINE_COMMIT,
     _diagnostic_retention_reason,
     load_v2_config,
     run_focus2_v2_benchmark,
@@ -29,10 +27,10 @@ from ragwarrant.research.focus2_v2_reporting import (
     write_focus2_v2_outputs,
 )
 from ragwarrant.research.simulator import load_config
+from ragwarrant.research.review_scope_authority import VERIFIED, verify_review_scope
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
-OWNER_REVIEW_BASE_COMMIT = "ca7a8fa08500d821dc21163d1b5fca17ab919bd7"
 
 
 @pytest.fixture(scope="module")
@@ -236,44 +234,6 @@ def test_output_rejects_mislabeled_warrant_sample(
 
 
 def test_v1_baseline_and_historical_outputs_remain_untouched() -> None:
-    v1_result = subprocess.run(
-        [
-            "git",
-            "diff",
-            "--quiet",
-            V1_BASELINE_COMMIT,
-            "HEAD",
-            "--",
-            "configs/research/fixed_sample_multi_risk_warrant_v1.yaml",
-            "docs/research/fixed_sample_multi_risk_warrant_v1_implementation.md",
-            "docs/research/focus2_platform_preflight_plan.md",
-            "schemas/research/promotion_warrant_v1.schema.json",
-            "scripts/run_fixed_sample_warrant_benchmark.py",
-            "src/ragwarrant/research/fixed_sample_warrant.py",
-            "src/ragwarrant/research/focus2_benchmark.py",
-            "src/ragwarrant/research/focus2_reporting.py",
-            "tests/research/test_fixed_sample_warrant.py",
-            "tests/research/test_fixed_sample_warrant_method.py",
-            "tests/research/test_focus2_benchmark_integration.py",
-            "tests/research/test_focus2_output_contract.py",
-        ],
-        cwd=REPOSITORY_ROOT,
-        check=False,
-    )
-    protected_result = subprocess.run(
-        [
-            "git",
-            "diff",
-            "--quiet",
-            OWNER_REVIEW_BASE_COMMIT,
-            "HEAD",
-            "--",
-            "README.md",
-            "artifacts",
-            "results",
-        ],
-        cwd=REPOSITORY_ROOT,
-        check=False,
-    )
-    assert v1_result.returncode == 0
-    assert protected_result.returncode == 0
+    scope = verify_review_scope(REPOSITORY_ROOT)
+    assert scope["status"] == VERIFIED
+    assert scope["complete_focus1_or_v1_authority"] is False

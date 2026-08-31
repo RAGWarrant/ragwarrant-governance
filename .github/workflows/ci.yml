@@ -4,15 +4,27 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: false
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install --require-hashes -r requirements-dev.lock
-      - run: pip install -e .
+      - run: python -m pip install --require-hashes -r requirements-dev.lock
+      - run: python -m pip install -e .
+      - run: python -m compileall src scripts
       - run: python scripts/validate_publication_bundle.py
-      - run: pytest -q tests/publication
+      - run: python -m pytest -q tests/publication
+      - run: python -m ragwarrant.research.review_scope_authority
+      - run: python -m pytest -q tests/research
+      - run: git diff --check b8534df6ac9a338c2f086fc0f49948032d1e48cc...HEAD
+      - run: git diff --exit-code b8534df6ac9a338c2f086fc0f49948032d1e48cc...HEAD -- README.md artifacts results

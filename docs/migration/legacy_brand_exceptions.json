@@ -64,6 +64,24 @@
       "rationale": "Machine-readable exact exception registry; token regexes necessarily spell the blocked forms."
     },
     {
+      "id": "historical-pre-rename-paper-path",
+      "classification": "immutable_historical_object",
+      "path": "paper/RAGTune_ArXiv_Preprint_v0.1.1-rc1_revised.docx",
+      "location_type": "path",
+      "token_regex": "RAGTune",
+      "max_occurrences": 1,
+      "rationale": "Exact path of the immutable pre-rename paper uploaded on current main."
+    },
+    {
+      "id": "historical-pre-rename-paper-content",
+      "classification": "immutable_historical_object",
+      "path": "paper/RAGTune_ArXiv_Preprint_v0.1.1-rc1_revised.docx",
+      "location_type": "docx",
+      "token_regex": "AIM-RAGTune|RAGTune|rag-tuning-governance",
+      "max_occurrences": 4,
+      "rationale": "Former identifiers embedded in the exact immutable pre-rename paper object."
+    },
+    {
       "id": "validator-source-negative-fixture",
       "classification": "validator_negative_fixture",
       "path": "scripts/validate_brand_consistency.py",
