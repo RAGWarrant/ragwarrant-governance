@@ -1,0 +1,75 @@
+schema_version: ragwarrant_evidence_budget_planner_v1
+planner_id: RAGWARRANT_EVIDENCE_BUDGET_PLANNER_V1
+focus1_benchmark_freeze_digest: c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e
+research_only: true
+production_integrated: false
+full_execution_permitted: false
+drand_round_selected: false
+
+# Worst-case frozen family size. This is a planning input, not a selected result.
+candidate_count: 24
+familywise_error_level: 0.05
+multiplicity_procedure: HOLM
+hypothesis_organization: CANDIDATE_IUT
+
+enabled_risks:
+  - overall_quality
+  - group_quality
+  - safety_violation_probability
+  - execution_failure_probability
+  - insufficient_evidence_probability
+enabled_group_risks:
+  - safety_violation_probability
+
+binary_risks:
+  safety_violation_probability:
+    threshold: 0.05
+    planning_alternatives: [0.01, 0.025, 0.04]
+  execution_failure_probability:
+    threshold: 0.03
+    planning_alternatives: [0.006, 0.015, 0.024]
+  insufficient_evidence_probability:
+    threshold: 0.10
+    planning_alternatives: [0.02, 0.05, 0.08]
+
+# Derived only from the public thresholds before calculation; no simulator
+# truth or prior confirmatory outcome selects these alternatives.
+binary_planning_alternative_rule: THRESHOLD_FRACTIONS_0.20_0.50_0.80
+
+selected_binary_planning_alternatives:
+  safety_violation_probability: 0.025
+  execution_failure_probability: 0.015
+  insufficient_evidence_probability: 0.05
+
+quality:
+  support_lower: -0.25
+  support_upper: 0.25
+  overall_quality_margin: 0.02
+  group_quality_margin: 0.03
+  planning_slacks: [0.05, 0.10, 0.15]
+  selected_planning_slack: 0.10
+  empirical_bernstein_loss_variances: [0.0, 0.01, 0.05, 0.25]
+
+# The 90/10 mixture is a declared target-population acquisition case for the
+# frozen hidden-group family, not an observed group count or candidate truth.
+protected_groups:
+  - group_id: majority
+    target_population_prevalence: 0.90
+    guaranteed_minimum_count: 0
+  - group_id: minority
+    target_population_prevalence: 0.10
+    guaranteed_minimum_count: 0
+group_structure: CATEGORICAL_PARTITION
+
+planning_power_targets: [0.50, 0.80, 0.90]
+marginal_planning_power: 0.50
+desired_planning_power: 0.80
+target_acquisition_probability: 0.95
+marginal_acquisition_probability: 0.90
+study_budgets: [64, 128, 256, 512, 1024, 2048]
+proposed_overall_evidence_budget: 2048
+maximum_search_n: 50000
+# Cost of one fully evaluated evidence row across the frozen candidate family
+# and incumbent; this is not a candidate-example unit.
+per_example_cost: 1.0
+cost_unit: normalized_full_family_evidence_row
