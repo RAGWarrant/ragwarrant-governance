@@ -37,15 +37,27 @@ jobs:
       SUBJECT_COMMIT: ${{ inputs.seal_subject_commit }}
       SEAL_RUN_ID: ${{ inputs.seal_workflow_run_id }}
       SEAL_COMMIT_SHA: ${{ inputs.seal_commit_sha }}
-      ABORTED_RUN_ID: ${{ inputs.aborted_execution_run_id }}
+      CLOSURE_STATUS: ABORTED_OR_INCOMPLETE
     steps:
-      - name: Require the closure workflow from the exact frozen ref
+      - name: Validate the server-side execution identity before writes
+        id: validated-run
         env:
+          ABORTED_EXECUTION_RUN_ID: ${{ inputs.aborted_execution_run_id }}
+          GH_TOKEN: ${{ github.token }}
           WORKFLOW_SHA: ${{ github.workflow_sha }}
         shell: bash
         run: |
           test "$GITHUB_SHA" = "$SUBJECT_COMMIT"
           test "$WORKFLOW_SHA" = "$SUBJECT_COMMIT"
+          validator_source="$(gh api "repos/${GITHUB_REPOSITORY}/contents/scripts/validate_full_closure.py?ref=${SUBJECT_COMMIT}" --jq .content | base64 --decode)"
+          canonical_run_id="$(printf '%s' "$validator_source" | python - canonicalize)"
+          workflow_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/research-full-execute.yml")"
+          run_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${canonical_run_id}")"
+          export RUN_JSON="$run_json" WORKFLOW_JSON="$workflow_json"
+          closure_record="$(printf '%s' "$validator_source" | python - validate)"
+          closure_record_b64="$(printf '%s' "$closure_record" | base64 --wrap=0)"
+          printf 'canonical_run_id=%s\n' "$canonical_run_id" >> "$GITHUB_OUTPUT"
+          printf 'closure_record_b64=%s\n' "$closure_record_b64" >> "$GITHUB_OUTPUT"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           name: full-seal-${{ inputs.seal_subject_commit }}
@@ -53,7 +65,7 @@ jobs:
           github-token: ${{ github.token }}
           repository: ${{ github.repository }}
           run-id: ${{ inputs.seal_workflow_run_id }}
-      - name: Validate the canonical seal and create an incomplete closure
+      - name: Validate the canonical seal
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -68,13 +80,10 @@ jobs:
           test "$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/${seal_branch}" --jq .object.sha)" = "$SEAL_COMMIT_SHA"
           test "$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/${frozen_name}" --jq .object.sha)" = "$SUBJECT_COMMIT"
           test "$(gh pr view "$(jq -r .draft_pr_url "$publication")" --repo "$GITHUB_REPOSITORY" --json headRefOid --jq .headRefOid)" = "$SEAL_COMMIT_SHA"
-          jq -n \
-            --arg subject "$SUBJECT_COMMIT" \
-            --arg url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$ABORTED_RUN_ID" \
-            '{schema_version:"1.0",closure_status:"ABORTED_OR_INCOMPLETE",subject_commit:$subject,workflow_conclusion:"cancelled_or_artifactless",workflow_run_url:$url,same_seal_required_for_resume:true,fallback_round_permitted:false,publication_independent_of_scientific_direction:true,execution_manifest_present:false,output_hashes_verified:false}' \
-            > "$RUNNER_TEMP/publication/execution-closure.json"
       - name: Append the cancellation record to the one results branch
         env:
+          CANONICAL_RUN_ID: ${{ steps.validated-run.outputs.canonical_run_id }}
+          CLOSURE_RECORD_B64: ${{ steps.validated-run.outputs.closure_record_b64 }}
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
@@ -89,14 +98,13 @@ jobs:
             git -C "$results_tree" fetch --depth 1 origin "$SUBJECT_COMMIT"
             git -C "$results_tree" checkout -b "$results_branch" FETCH_HEAD
           fi
-          destination="$results_tree/executions/${ABORTED_RUN_ID}"
-          if [ -e "$destination" ]; then exit 0; fi
-          mkdir -p "$destination"
-          cp -R "$RUNNER_TEMP/publication/." "$destination/"
+          validator_source="$(gh api "repos/${GITHUB_REPOSITORY}/contents/scripts/validate_full_closure.py?ref=${SUBJECT_COMMIT}" --jq .content | base64 --decode)"
+          export RESULTS_TREE="$results_tree"
+          printf '%s' "$validator_source" | python - write
           git -C "$results_tree" config user.name "ragwarrant-research-bot"
           git -C "$results_tree" config user.email "ragwarrant-research-bot@users.noreply.github.com"
-          git -C "$results_tree" add "executions/${ABORTED_RUN_ID}"
-          git -C "$results_tree" commit -m "Publish incomplete FULL execution ${ABORTED_RUN_ID} for ${SUBJECT_COMMIT}"
+          git -C "$results_tree" add "executions/${CANONICAL_RUN_ID}/execution-closure.json"
+          git -C "$results_tree" commit -m "Publish incomplete FULL execution ${CANONICAL_RUN_ID} for ${SUBJECT_COMMIT}"
           git -C "$results_tree" push --porcelain origin "HEAD:refs/heads/${results_branch}"
           existing="$(gh pr list --repo "$GITHUB_REPOSITORY" --state all --head "$results_branch" --json url --jq 'length')"
           if [ "$existing" = "0" ]; then
