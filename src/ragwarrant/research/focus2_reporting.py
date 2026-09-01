@@ -332,6 +332,56 @@ def _validate_warrant_artifact(
         raise ValueError("promotion warrant candidate family is invalid")
     if family.get("multiplicity_method") != expected_procedure:
         raise ValueError("promotion warrant family procedure is inconsistent")
+    selection_objective = artifact.get("selection_objective")
+    if selection_objective not in {"minimize_cost", "minimize_latency"}:
+        raise ValueError("promotion warrant selection objective is invalid")
+    if family.get("selection_objective") != selection_objective:
+        raise ValueError("promotion warrant selection objective is inconsistent")
+    primary = "mean_cost" if selection_objective == "minimize_cost" else "mean_latency"
+    secondary = "mean_latency" if primary == "mean_cost" else "mean_cost"
+    operational = artifact.get("operational_selection_objective")
+    if (
+        not isinstance(operational, Mapping)
+        or set(operational) != {"primary", "secondary", "tertiary", "selected_value"}
+        or operational.get("primary") != primary
+        or operational.get("secondary") != secondary
+        or operational.get("tertiary") != "lexical_policy_id"
+    ):
+        raise ValueError("promotion warrant operational selection objective is inconsistent")
+    summaries = diagnostics.get("candidate_summaries")
+    if not isinstance(summaries, Mapping):
+        raise ValueError("promotion warrant candidate summaries are invalid")
+    if decision == "BLOCKED_INVALID_EVIDENCE":
+        if not set(summaries).issubset(set(candidate_ids)):
+            raise ValueError("promotion warrant candidate summaries name an unknown policy")
+    elif set(summaries) != set(candidate_ids):
+        raise ValueError("promotion warrant candidate summaries are incomplete")
+    for policy_id, summary in summaries.items():
+        if not isinstance(summary, Mapping):
+            raise ValueError(f"promotion warrant candidate summary is invalid for {policy_id}")
+        for field in ("mean_cost", "mean_latency"):
+            value = summary.get(field)
+            if (
+                isinstance(value, bool)
+                or not isinstance(value, (int, float))
+                or not np.isfinite(float(value))
+                or float(value) <= 0.0
+            ):
+                raise ValueError(
+                    f"promotion warrant candidate {field} is invalid for {policy_id}"
+                )
+    selected_value = operational.get("selected_value")
+    if selected is None:
+        if selected_value is not None:
+            raise ValueError("promotion warrant unselected result has an operational value")
+    else:
+        if (
+            isinstance(selected_value, bool)
+            or not isinstance(selected_value, (int, float))
+            or not np.isfinite(float(selected_value))
+            or float(selected_value) != float(summaries[selected][primary])
+        ):
+            raise ValueError("promotion warrant selected operational value is inconsistent")
 
     risk_tests = artifact.get("risk_tests")
     if not isinstance(risk_tests, list):

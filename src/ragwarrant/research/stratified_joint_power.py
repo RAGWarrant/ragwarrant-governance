@@ -190,6 +190,12 @@ class StratifiedEvidence:
             raise ValueError("evidence candidate family differs from frozen family")
         canonical_group_ids = self.candidates[0].core_group_ids
         for item in self.candidates:
+            for field, value in (
+                ("mean_cost", item.mean_cost),
+                ("mean_latency", item.mean_latency),
+            ):
+                if _finite(value, field) <= 0.0:
+                    raise ValueError(f"candidate {field} must be positive")
             if len(item.core_group_ids) != len(self.core_unit_ids):
                 raise ValueError("candidate core group labels are incomplete")
             if len(item.core_quality_delta) != len(self.core_unit_ids):
@@ -601,6 +607,37 @@ def simulate_joint_power(
     groups = family.group_ids
     minority_probability = group_prevalence[groups[-1]]
 
+    lower, upper = family.quality_delta_bounds
+    quality_noise_half_width = 0.05
+    planned_quality_means: list[dict[str, float]] = []
+    for candidate_index, policy_id in enumerate(family.candidate_policy_ids):
+        safe = policy_id in safe_ids
+        means_by_group = {
+            group: -family.group_quality_noninferiority_margin + quality_slack
+            for group in groups
+        }
+        if not safe:
+            failing = (candidate_index - len(safe_ids)) % 8
+            if failing == 0:
+                means_by_group = {
+                    group: -family.quality_noninferiority_margin - 0.01
+                    for group in groups
+                }
+            elif failing in (1, 2):
+                means_by_group[groups[failing - 1]] = (
+                    -family.group_quality_noninferiority_margin - 0.01
+                )
+        for mean in means_by_group.values():
+            if (
+                not math.isfinite(mean)
+                or mean - quality_noise_half_width < lower
+                or mean + quality_noise_half_width > upper
+            ):
+                raise ValueError(
+                    "configured quality delta exceeds frozen support by noise width"
+                )
+        planned_quality_means.append(means_by_group)
+
     for replicate in range(replicates):
         rng = np.random.default_rng(deterministic_seed(master_seed, core_n, tuple(sorted(group_quotas.items())), dependence_level, replicate))
         core_labels_arr = np.where(rng.random(core_n) < minority_probability, groups[-1], groups[0])
@@ -667,16 +704,12 @@ def simulate_joint_power(
             # The configured slack is measured from the group boundary. With
             # margins 0.03 (group) and 0.02 (overall), quality_slack=0.10
             # therefore gives group slack 0.10 and overall slack 0.09.
-            means_by_group = {group: -family.group_quality_noninferiority_margin + quality_slack for group in groups}
+            means_by_group = dict(planned_quality_means[candidate_index])
             binary_probabilities = dict(binary_alternatives)
             group_safety = {group: binary_alternatives["safety_violation_probability"] for group in groups}
             if not safe:
                 failing = (candidate_index - len(safe_ids)) % 8
-                if failing == 0:
-                    means_by_group = {group: -family.quality_noninferiority_margin - 0.01 for group in groups}
-                elif failing in (1, 2):
-                    means_by_group[groups[failing - 1]] = -family.group_quality_noninferiority_margin - 0.01
-                elif failing == 3:
+                if failing == 3:
                     # An overall marginal cannot exceed the threshold while
                     # every exhaustive group marginal remains below it.  This
                     # control therefore violates the overall component and,
@@ -692,8 +725,10 @@ def simulate_joint_power(
                 else:
                     group_safety[groups[-1]] = family.binary_threshold("safety_violation_probability") + 0.005
             core_means = np.asarray([means_by_group[label] for label in core_labels])
-            core_quality = core_means + 0.05 * quality_core_signs[candidate_index]
-            lower, upper = family.quality_delta_bounds
+            core_quality = (
+                core_means
+                + quality_noise_half_width * quality_core_signs[candidate_index]
+            )
             if (
                 not np.all(np.isfinite(core_quality))
                 or np.any(core_quality < lower)
@@ -726,7 +761,8 @@ def simulate_joint_power(
             for group in groups:
                 values = (
                     means_by_group[group]
-                    + 0.05 * quality_topup_signs[group][candidate_index]
+                    + quality_noise_half_width
+                    * quality_topup_signs[group][candidate_index]
                 )
                 if (
                     not np.all(np.isfinite(values))

@@ -8,6 +8,7 @@ import pytest
 import yaml
 from scripts.run_stratified_joint_power_study import load_config
 
+from ragwarrant.research import stratified_joint_power as stratified
 from ragwarrant.research.fixed_sample_warrant import HOLM, freeze_candidate_family
 from ragwarrant.research.fixed_sample_warrant_v2 import (
     PRESPECIFIED_V2_VARIANTS,
@@ -302,6 +303,48 @@ def test_stratified_selection_honors_the_frozen_operational_objective() -> None:
     assert by_latency.selected_policy_id == "b"
 
 
+def test_stratified_selection_uses_lexical_policy_id_for_operational_ties() -> None:
+    core_n = 256
+    evidence = StratifiedEvidence(
+        "selection-tie",
+        tuple(f"core-{index}" for index in range(core_n)),
+        (("majority", ()), ("minority", ())),
+        (_candidate("a", core_n=core_n), _candidate("b", core_n=core_n)),
+    )
+    for objective in ("minimize_cost", "minimize_latency"):
+        result = evaluate_stratified_iut_holm(
+            evidence,
+            _family(core_n=core_n, selection_objective=objective),
+            _policy(),
+            {"majority": 128, "minority": 128},
+        )
+        assert result.selected_policy_id == "a"
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("mean_cost", float("nan")),
+        ("mean_cost", float("inf")),
+        ("mean_cost", 0.0),
+        ("mean_latency", float("nan")),
+        ("mean_latency", -1.0),
+    ],
+)
+def test_stratified_evidence_rejects_invalid_operational_metrics(
+    field: str, value: float
+) -> None:
+    candidate = replace(_candidate("a"), **{field: value})
+    evidence = StratifiedEvidence(
+        "invalid-operational-metric",
+        tuple(f"core-{index}" for index in range(8)),
+        (("majority", ()), ("minority", ())),
+        (candidate, _candidate("b")),
+    )
+    with pytest.raises(ValueError, match=field):
+        evidence.validate(_family())
+
+
 def test_missing_mandatory_binary_evidence_fails_closed() -> None:
     candidate = _candidate("a")
     bad = CandidateSamples(candidate.policy_id, candidate.core_group_ids, candidate.core_quality_delta, candidate.core_binary[:-1], candidate.topup_quality_delta, candidate.topup_binary, candidate.mean_cost, candidate.mean_latency)
@@ -401,6 +444,35 @@ def test_joint_power_planning_rejects_quality_outside_frozen_support() -> None:
                 "insufficient_evidence_probability": 0.05,
             },
             quality_slack=0.50,
+            dependence_level="low",
+            replicates=1,
+            master_seed=1,
+        )
+
+
+def test_quality_support_is_validated_before_random_evidence_generation(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def unexpected_sampling(*args, **kwargs):
+        raise AssertionError("quality sampling occurred before support validation")
+
+    monkeypatch.setattr(stratified, "_mixed_signs", unexpected_sampling)
+    with pytest.raises(ValueError, match="quality delta exceeds frozen support"):
+        simulate_joint_power(
+            family=_family(),
+            policy=_policy(),
+            core_n=8,
+            group_quotas={"majority": 4, "minority": 4},
+            group_prevalence={"majority": 0.9, "minority": 0.1},
+            safe_policy_ids=("a",),
+            binary_alternatives={
+                "safety_violation_probability": 0.025,
+                "execution_failure_probability": 0.015,
+                "insufficient_evidence_probability": 0.05,
+            },
+            # Group mean 0.22 is inside [-0.25, 0.25], but its configured
+            # +0.05 support endpoint is not. The plan must fail for every seed.
+            quality_slack=0.25,
             dependence_level="low",
             replicates=1,
             master_seed=1,

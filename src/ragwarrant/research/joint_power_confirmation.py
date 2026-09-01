@@ -15,7 +15,12 @@ from dataclasses import dataclass
 from typing import Any, Iterable, Mapping
 
 from .fixed_sample_warrant import FrozenCandidateFamily
-from .stratified_joint_power import simulate_joint_power, stable_hash, wilson_interval
+from .stratified_joint_power import (
+    BINARY_RISKS,
+    simulate_joint_power,
+    stable_hash,
+    wilson_interval,
+)
 from .types import PolicyConfig
 
 
@@ -190,6 +195,42 @@ def aggregate_candidate_diagnostics(
     }
 
 
+def _indicator(value: object, name: str) -> int:
+    if isinstance(value, bool):
+        return int(value)
+    if isinstance(value, (int, float)) and math.isfinite(float(value)):
+        numeric = float(value)
+        if numeric in {0.0, 1.0}:
+            return int(numeric)
+    raise ValueError(f"{name} must be an exact zero-or-one replicate indicator")
+
+
+def _nonnegative_integer(value: object, name: str) -> int:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValueError(f"{name} must be a nonnegative integer")
+    numeric = float(value)
+    if not math.isfinite(numeric) or numeric < 0.0 or not numeric.is_integer():
+        raise ValueError(f"{name} must be a nonnegative integer")
+    return int(numeric)
+
+
+def _mandatory_component_ids(family: FrozenCandidateFamily) -> tuple[str, ...]:
+    component_ids: list[str] = []
+    if "overall_quality" in family.enabled_risks:
+        component_ids.append("overall_quality::__overall__")
+    if "group_quality" in family.enabled_risks:
+        component_ids.extend(f"group_quality::{group_id}" for group_id in family.group_ids)
+    for risk_id in BINARY_RISKS:
+        if risk_id not in family.enabled_risks:
+            continue
+        component_ids.append(f"{risk_id}::__overall__")
+        if risk_id in family.enabled_group_risks:
+            component_ids.extend(f"{risk_id}::{group_id}" for group_id in family.group_ids)
+    if not component_ids:
+        raise ValueError("frozen candidate family has no mandatory components")
+    return tuple(sorted(component_ids))
+
+
 def run_confirmation_cell(
     *,
     design_id: str,
@@ -211,6 +252,7 @@ def run_confirmation_cell(
         raise ValueError("unknown confirmation dependence condition")
     safe_ids = tuple(sorted(safe_policy_ids))
     candidate_counts = _empty_candidate_counts(safe_ids)
+    mandatory_component_ids = _mandatory_component_ids(family)
     any_safe = false_certification = total_certified = 0
     safe_selection = unsafe_selection = no_selection = 0
 
@@ -231,12 +273,21 @@ def run_confirmation_cell(
             replicates=1,
             master_seed=derive_confirmation_seed(identity),
         )
-        any_safe += int(result["at_least_one_safe_certification_probability"])
-        false_certification += int(result["false_certification_probability"])
-        total_certified += int(round(float(result["expected_certified_set_size"])))
-        safe_selection += int(result["safe_selection_probability"])
-        unsafe_selection += int(result["unsafe_selection_probability"])
-        no_selection += int(result["no_selection_probability"])
+        any_safe += _indicator(
+            result["at_least_one_safe_certification_probability"],
+            "at-least-one-safe certification",
+        )
+        false_certification += _indicator(
+            result["false_certification_probability"], "false certification"
+        )
+        total_certified += _nonnegative_integer(
+            result["expected_certified_set_size"], "certified-set size"
+        )
+        safe_selection += _indicator(result["safe_selection_probability"], "safe selection")
+        unsafe_selection += _indicator(
+            result["unsafe_selection_probability"], "unsafe selection"
+        )
+        no_selection += _indicator(result["no_selection_probability"], "no selection")
         candidate_results = result["candidate_results"]
         if not isinstance(candidate_results, list):
             raise ValueError("candidate results must be a list")
@@ -249,18 +300,25 @@ def run_confirmation_cell(
             if policy_id not in candidate_counts:
                 raise ValueError("unexpected candidate result")
             counts = candidate_counts[policy_id]
-            counts["joint"] += int(candidate["monte_carlo_joint_power"])
+            counts["joint"] += _indicator(
+                candidate["monte_carlo_joint_power"], "candidate joint certification"
+            )
             component_powers = candidate["marginal_component_powers"]
             if not isinstance(component_powers, Mapping) or not component_powers:
                 raise ValueError("mandatory component results are required")
             component_ids = tuple(sorted(str(item) for item in component_powers))
+            if component_ids != mandatory_component_ids:
+                raise ValueError(
+                    "mandatory component result set differs from the frozen family"
+                )
             if counts["component_ids"] is None:
                 counts["component_ids"] = component_ids
             elif counts["component_ids"] != component_ids:
                 raise ValueError("mandatory component result set changed across replicates")
             for component, value in component_powers.items():
                 counts["components"][component] = (
-                    counts["components"].get(component, 0) + int(value)
+                    counts["components"].get(component, 0)
+                    + _indicator(value, f"component {component}")
                 )
         if seen_candidate_ids != set(candidate_counts):
             raise ValueError("candidate result set differs from the frozen safe family")

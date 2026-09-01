@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+from types import SimpleNamespace
 
 import pytest
 import yaml
@@ -118,14 +119,38 @@ def _workspace_materialization_root() -> Path:
         pytest.fail(f"{WORKSPACE_MATERIALIZATION_ENV} must be an absolute path")
     if not requested.is_dir():
         pytest.fail(f"{WORKSPACE_MATERIALIZATION_ENV} does not name an existing directory")
-    canonical = DEFAULT_OUTPUT.resolve(strict=True)
     resolved = requested.resolve(strict=True)
-    if requested != canonical or resolved != canonical:
+    if requested != resolved:
         pytest.fail(
-            f"{WORKSPACE_MATERIALIZATION_ENV} must name the exact canonical "
+            f"{WORKSPACE_MATERIALIZATION_ENV} must name a canonical "
             "confirmation materialization root without aliases"
         )
-    return canonical
+    return resolved
+
+
+def _synthetic_confirmation_family():
+    return SimpleNamespace(
+        enabled_risks=("overall_quality", "safety_violation_probability"),
+        enabled_group_risks=(),
+        group_ids=(),
+    )
+
+
+def _run_synthetic_confirmation_cell(
+    safe_policy_ids: tuple[str, ...] = ("safe",),
+):
+    return run_confirmation_cell(
+        design_id="COMPONENT_PLANNING_COMPARATOR",
+        family=_synthetic_confirmation_family(),
+        policy=object(),
+        core_n=1,
+        group_quotas={"majority": 1, "minority": 1},
+        group_prevalence={"majority": 0.9, "minority": 0.1},
+        safe_policy_ids=safe_policy_ids,
+        binary_alternatives={},
+        quality_slack=0.1,
+        dependence_condition="low",
+    )
 
 
 def test_confirmation_config_freezes_exact_two_by_three_by_1000_schedule(tmp_path: Path) -> None:
@@ -262,21 +287,8 @@ def test_confirmation_executor_runs_exactly_1000_unique_identity_seeds(
         }
 
     monkeypatch.setattr(confirmation, "simulate_joint_power", fake_simulate_joint_power)
-    row, candidates = run_confirmation_cell(
-        design_id="COMPONENT_PLANNING_COMPARATOR",
-        family=object(),
-        policy=object(),
-        core_n=1383,
-        group_quotas={"majority": 826, "minority": 826},
-        group_prevalence={"majority": 0.9, "minority": 0.1},
-        safe_policy_ids=("policy_000", "policy_001"),
-        binary_alternatives={
-            "safety_violation_probability": 0.025,
-            "execution_failure_probability": 0.015,
-            "insufficient_evidence_probability": 0.05,
-        },
-        quality_slack=0.10,
-        dependence_condition="low",
+    row, candidates = _run_synthetic_confirmation_cell(
+        ("policy_000", "policy_001")
     )
     assert len(received) == 1000
     assert len(set(received)) == 1000
@@ -366,30 +378,24 @@ def test_confirmation_executor_fails_closed_on_candidate_or_component_scope_chan
 
     monkeypatch.setattr(confirmation, "simulate_joint_power", missing_candidate)
     with pytest.raises(ValueError, match="frozen safe family"):
-        run_confirmation_cell(
-            design_id="COMPONENT_PLANNING_COMPARATOR",
-            family=object(),
-            policy=object(),
-            core_n=1,
-            group_quotas={"majority": 1, "minority": 1},
-            group_prevalence={"majority": 0.9, "minority": 0.1},
-            safe_policy_ids=("safe",),
-            binary_alternatives={},
-            quality_slack=0.1,
-            dependence_condition="low",
-        )
+        _run_synthetic_confirmation_cell()
 
     calls = 0
 
     def changing_components(**kwargs):
         nonlocal calls
         calls += 1
-        component = "quality" if calls == 1 else "safety"
+        powers = {
+            "overall_quality::__overall__": 0,
+            "safety_violation_probability::__overall__": 1,
+        }
+        if calls > 1:
+            powers.pop("safety_violation_probability::__overall__")
         return {
             "candidate_results": [
                 {
                     "policy_id": "safe",
-                    "marginal_component_powers": {component: 0},
+                    "marginal_component_powers": powers,
                     "monte_carlo_joint_power": 0.0,
                 }
             ],
@@ -397,19 +403,56 @@ def test_confirmation_executor_fails_closed_on_candidate_or_component_scope_chan
         }
 
     monkeypatch.setattr(confirmation, "simulate_joint_power", changing_components)
-    with pytest.raises(ValueError, match="component result set changed"):
-        run_confirmation_cell(
-            design_id="COMPONENT_PLANNING_COMPARATOR",
-            family=object(),
-            policy=object(),
-            core_n=1,
-            group_quotas={"majority": 1, "minority": 1},
-            group_prevalence={"majority": 0.9, "minority": 0.1},
-            safe_policy_ids=("safe",),
-            binary_alternatives={},
-            quality_slack=0.1,
-            dependence_condition="low",
-        )
+    with pytest.raises(ValueError, match="mandatory component result set"):
+        _run_synthetic_confirmation_cell()
+
+    def consistently_missing_component(**kwargs):
+        return {
+            "candidate_results": [
+                {
+                    "policy_id": "safe",
+                    "marginal_component_powers": {
+                        "overall_quality::__overall__": 0,
+                    },
+                    "monte_carlo_joint_power": 0.0,
+                }
+            ],
+            **common,
+        }
+
+    monkeypatch.setattr(
+        confirmation, "simulate_joint_power", consistently_missing_component
+    )
+    with pytest.raises(ValueError, match="mandatory component result set"):
+        _run_synthetic_confirmation_cell()
+
+
+def test_confirmation_executor_rejects_nonbinary_replicate_indicators(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def fractional_component(**kwargs):
+        return {
+            "candidate_results": [
+                {
+                    "policy_id": "safe",
+                    "marginal_component_powers": {
+                        "overall_quality::__overall__": 0.5,
+                        "safety_violation_probability::__overall__": 1.0,
+                    },
+                    "monte_carlo_joint_power": 0.0,
+                }
+            ],
+            "at_least_one_safe_certification_probability": 0.0,
+            "false_certification_probability": 0.0,
+            "expected_certified_set_size": 0.0,
+            "safe_selection_probability": 0.0,
+            "unsafe_selection_probability": 0.0,
+            "no_selection_probability": 1.0,
+        }
+
+    monkeypatch.setattr(confirmation, "simulate_joint_power", fractional_component)
+    with pytest.raises(ValueError, match="exact zero-or-one"):
+        _run_synthetic_confirmation_cell()
 
 
 def test_protocol_freeze_hashes_are_enforced_with_synthetic_fixture(tmp_path: Path) -> None:
@@ -478,6 +521,15 @@ def test_protocol_config_prohibits_full_drand_workflows_and_evidence() -> None:
     assert config["drand_round_selected"] is False
 
 
+def test_original_confirmation_protocol_refuses_amended_implementation_bytes() -> None:
+    config = yaml.safe_load(CONFIG.read_text(encoding="utf-8"))
+    parent_path = ROOT / "src/ragwarrant/research/stratified_joint_power.py"
+    assert config["frozen_parent"]["implementation_sha256"] != _sha(parent_path)
+    assert config["frozen_executor"]["implementation_sha256"] != _sha(EXECUTOR)
+    with pytest.raises(ValueError, match="implementation hash"):
+        load_confirmation_config(CONFIG)
+
+
 @pytest.mark.workspace_materialization
 def test_workspace_materialization_preserves_protocol_and_primary_results() -> None:
     materialization_root = _workspace_materialization_root()
@@ -490,8 +542,11 @@ def test_workspace_materialization_preserves_protocol_and_primary_results() -> N
     assert _sha(protocol_json) == freeze["protocol_json_sha256"]
     assert _sha(protocol_md) == freeze["protocol_markdown_sha256"]
     assert _sha(CONFIG) == freeze["tracked_config_sha256"]
-    assert _sha(EXECUTOR) == freeze["executor_sha256"]
-    assert _sha(RUNNER) == freeze["runner_sha256"]
+    frozen_config = yaml.safe_load(CONFIG.read_text(encoding="utf-8"))
+    assert frozen_config["frozen_executor"]["implementation_sha256"] == freeze[
+        "executor_sha256"
+    ]
+    assert frozen_config["frozen_executor"]["runner_sha256"] == freeze["runner_sha256"]
     assert freeze["focused_tests_sha256"] == ORIGINAL_FOCUSED_TEST_SHA256
     assert freeze["frozen_before_execution"] is True
     assert freeze["confirmation_output_existed_at_freeze"] is False
@@ -528,6 +583,7 @@ def test_workspace_materialization_preserves_protocol_and_primary_results() -> N
 def test_workspace_materialization_preserves_focus1_and_v1_manifests() -> None:
     materialization_root = _workspace_materialization_root()
     review_root = materialization_root.parent
+    materialization_repository_root = review_root.parents[1]
     focus1 = json.loads(
         (review_root / "FOCUS1_POST_COMMIT_MANIFEST.json").read_text(encoding="utf-8")
     )
@@ -537,7 +593,13 @@ def test_workspace_materialization_preserves_focus1_and_v1_manifests() -> None:
         (review_root / "FOCUS2_V1_PRESERVATION_MANIFEST.json").read_text(encoding="utf-8")
     )
     assert v1["v1_baseline_commit"] == V1_COMMIT
-    for relative, expected in v1["implementation_sha256"].items():
-        assert _sha(ROOT / relative) == expected
+    # PR A preserves the V1 statistical implementation and configuration.
+    # Complete historical V1 authority (including mutable review adapters,
+    # reporting, docs, and tests) belongs to stacked PR B.
+    for relative in (
+        "configs/research/fixed_sample_multi_risk_warrant_v1.yaml",
+        "src/ragwarrant/research/fixed_sample_warrant.py",
+    ):
+        assert _sha(ROOT / relative) == v1["implementation_sha256"][relative]
     for relative, expected in v1["result_artifact_sha256"].items():
-        assert _sha(ROOT / relative) == expected
+        assert _sha(materialization_repository_root / relative) == expected

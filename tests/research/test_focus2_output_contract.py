@@ -283,3 +283,46 @@ def test_writer_rejects_selected_policy_outside_certified_set(tmp_path: Path) ->
 
     with pytest.raises(ValueError, match="selected policy must be certified"):
         write_focus2_outputs(result, tmp_path / "uncertified")
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        lambda artifact: artifact.__setitem__("selection_objective", "minimize_latency"),
+        lambda artifact: artifact["operational_selection_objective"].__setitem__(
+            "primary", "mean_latency"
+        ),
+        lambda artifact: artifact["operational_selection_objective"].__setitem__(
+            "selected_value", 99.0
+        ),
+        lambda artifact: artifact["diagnostics"]["candidate_summaries"][
+            "policy_0001"
+        ].__setitem__("mean_cost", float("nan")),
+    ],
+)
+def test_writer_rejects_contradictory_operational_selection_metadata(
+    tmp_path: Path, mutation
+) -> None:
+    result = copy.deepcopy(_result())
+    artifact = result["warrant_artifacts"]["holm"]
+    mutation(artifact)
+
+    with pytest.raises(ValueError, match="promotion warrant"):
+        write_focus2_outputs(result, tmp_path / "contradictory-selection")
+
+
+def test_writer_accepts_empty_summaries_for_blocked_invalid_evidence(
+    tmp_path: Path,
+) -> None:
+    result = copy.deepcopy(_result())
+    artifact = result["warrant_artifacts"]["holm"]
+    artifact["decision"] = "BLOCKED_INVALID_EVIDENCE"
+    artifact["decision_reason"] = "malformed evidence"
+    artifact["certified_policy_ids"] = []
+    artifact["selected_policy_id"] = None
+    artifact["operational_selection_objective"]["selected_value"] = None
+    artifact["diagnostics"]["candidate_summaries"] = {}
+    artifact["diagnostics"]["invalid_evidence_reason"] = "malformed evidence"
+
+    paths = write_focus2_outputs(result, tmp_path / "blocked-invalid")
+    assert {path.name for path in paths} == set(OUTPUT_FILENAMES)

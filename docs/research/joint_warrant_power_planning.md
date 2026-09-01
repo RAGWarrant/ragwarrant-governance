@@ -43,6 +43,8 @@ For every core/quota design and dependence level, the study reports:
 
 Secondary analytical diagnostics are derived only after marginal component pass counts have been aggregated across all planning replicates. For aggregate pass rates `q_j`, the independence approximation is `product(q_j)` and the union-bound lower diagnostic is `max(0, sum(q_j) - (k - 1))`. The direct Monte Carlo joint-certification probability remains a separate primary simulation estimate; neither analytical diagnostic replaces it or receives a binomial interval as though it were a directly observed event rate.
 
+The original `STRATIFIED_JOINT_POWER_CONFIRMATION_V1` materialization remains bound to its pre-execution source hashes and is intentionally not rerunnable with this corrected executor. Its preserved direct counts and Wilson intervals remain the authoritative historical outputs. Current developmental code may validate those outputs read-only, but a future execution requires a new protocol version; the corrected source is never relabeled as the historical frozen executor.
+
 The random number of matching core group members is simulated. Each group's test count is `max(core group count, quota)` after the top-up stopping rule. This matters because exact-binomial power is discrete and can be saw-toothed. Monte Carlo Wilson intervals describe planning-simulation uncertainty, not candidate-risk confidence.
 
 ## Prespecified designs and selection rule
