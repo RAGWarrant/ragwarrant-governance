@@ -2,6 +2,8 @@
 
 Status: developmental planning simulation; no confirmatory evidence collected.
 
+Research framing: `ANALYTICAL_COMPONENT_FEASIBILITY_PLUS_SIMULATED_JOINT_OPERATING_BEHAVIOR`. Exact component rejection regions and structural minima come from analytical calculations; this study simulates the complete warrant's joint operating behavior under prespecified alternatives and dependence conditions.
+
 ## Question
 
 For a prespecified representative-core plus conditional-top-up design, what is the probability that the complete preserved warrant certifies at least one truly safe planning candidate? Component-level 50%, 80%, and 90% planning targets do not answer this question because a candidate must pass every enabled component and Holm is applied across the complete frozen candidate family.

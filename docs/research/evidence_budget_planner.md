@@ -4,6 +4,8 @@ Status: research planning protocol, version 1. It does not collect confirmatory 
 
 Planner identifier: `RAGWARRANT_EVIDENCE_BUDGET_PLANNER_V1`.
 
+Research framing: `ANALYTICAL_COMPONENT_FEASIBILITY_PLUS_SIMULATED_JOINT_OPERATING_BEHAVIOR`.
+
 The planner answers a pre-data question: whether a declared sample-acquisition plan can make every mandatory component of a requested multi-risk warrant statistically attainable, and what evidence counts bind that plan. Focus 1 remains frozen at digest `c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e`. Existing Focus 2 v1 and IUT/Holm results are inputs to the research motivation only; this planner does not relabel or overwrite them.
 
 ## Prespecified inputs and isolation
@@ -36,6 +38,8 @@ k_n=\max\{k:\Pr_{\tau}(X\leq k)\leq\alpha_{\mathrm{eff}}\}.
 
 If no such event count exists, the component is `STRUCTURALLY_UNCERTIFIABLE_AT_THIS_N`. The best-case zero-event p-value is \((1-\tau)^n\). Equality at the threshold is retained in the null, so the planning test is conservative relative to the truth rule that treats equality as acceptable.
 
+At unadjusted \(\alpha=0.05\), the first structurally certifiable zero-event sample counts are 59 for threshold 0.05, 99 for threshold 0.03, and 29 for threshold 0.10. Thus the execution-failure component cannot certify at \(n=64\), even with zero failures, and small realized subgroup counts may be structurally incapable of passing an enabled component. These are closed-form, unadjusted component minima—not multiplicity-adjusted budgets, component-power targets, joint-warrant power, or recommended operating points.
+
 For each explicit \(p_{alt}<\tau\), conditional planning power is calculated exactly as
 
 \[
@@ -43,6 +47,8 @@ For each explicit \(p_{alt}<\tau\), conditional planning power is calculated exa
 \]
 
 Minimum sample counts are found by deterministic enumeration. Exact nonrandomized binomial power can fall at an adjacent \(n\) when the discrete rejection count has not yet advanced, so the implementation does not assume stepwise monotonicity in \(n\). These are conditional planning calculations, not guarantees of future power.
+
+Developmental simulation is retained for behavior that the component calculation does not identify: multiple risks acting jointly, candidate-level IUT and Holm step-down behavior, candidate/risk dependence, random subgroup acquisition, false promotion/certification/blocking, joint warrant power, and operational selection. The simulation did not discover the closed-form structural minima, and the analytical calculation does not replace the joint operating study.
 
 ## Bounded paired-quality planner
 

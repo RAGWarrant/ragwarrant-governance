@@ -1,8 +1,14 @@
-# Fixed-Sample Multi-Risk Promotion Warrant V1 — Design Only
+# Fixed-Sample Multi-Risk Promotion Warrant V1 — Historical Design Record
 
-Status: proposal for owner review after the Focus 1 benchmark protocol was frozen and its CI profile validated.
+Status: `SUPERSEDED_BY_IMPLEMENTATION_CANDIDATE`.
 
-This document defines a possible optional research method, `fixed_sample_multi_risk_warrant_v1`. It does not implement the method, add it to a registry or CLI, alter a selector, or modify `promotion_decision.json`.
+This document preserves the design-stage proposal for `fixed_sample_multi_risk_warrant_v1`. The research implementation candidate now exists in `src/ragwarrant/research/fixed_sample_warrant.py`, introduced by commit `6d0e9703473854bd50c4843db899869b9a820d4c`. That implementation is pending repository-owner acceptance and visible statistical review; it is not production-integrated and does not modify `promotion_decision.json`.
+
+Status mapping:
+
+- Design record: `SUPERSEDED_BY_IMPLEMENTATION_CANDIDATE`
+- Implementation: `IMPLEMENTED_PENDING_HUMAN_REVIEW`
+- Merge approval: `NOT_GRANTED`
 
 ## Goal and boundary
 
@@ -26,7 +32,7 @@ Before confirmatory evidence is collected, freeze and hash:
 - operational objective and tie-breaker; and
 - evaluator and evidence schema versions.
 
-Adding a candidate, risk, group, or threshold after evidence is observed creates a new family and requires independent confirmatory evidence or an owner-approved statistical amendment. Development results may choose the family, but cannot certify it.
+Adding a candidate, risk, group, or threshold after evidence is observed creates a new family and requires independent confirmatory evidence or a versioned statistical amendment approved before execution. Development results may choose the family, but cannot certify it.
 
 ## Independent fixed confirmatory evidence
 
@@ -36,7 +42,7 @@ Candidate identity and risk definitions are checked against the frozen family ha
 
 ## Bounded loss definitions
 
-Every tested quantity must have an owner-approved finite support before confirmation.
+Every tested quantity must have a prespecified, documented finite support before confirmation.
 
 ### Paired quality noninferiority
 
@@ -161,8 +167,11 @@ This is a proposed new artifact, not an update to the existing promotion decisio
   "schema_version": "promotion_warrant.v1.proposed",
   "method_id": "fixed_sample_multi_risk_warrant_v1",
   "status": "CERTIFIED_SET_NONEMPTY | NO_CERTIFIED_CANDIDATE | INVALID_EVIDENCE",
-  "deployable": false,
+  "observed_evidence_only": true,
+  "truth_isolated": true,
+  "benchmark_control_only": false,
   "research_only": true,
+  "production_integrated": false,
   "family": {
     "family_hash": "sha256:...",
     "candidate_policy_ids": ["..."],
@@ -222,7 +231,7 @@ Before implementation, the owner and schema reviewer must decide whether raw p-v
 The proposed warrant is separate evidence. It must not overwrite, reinterpret, or silently extend `promotion_decision.json`. Until explicit adoption approval:
 
 - existing promotion decisions remain authoritative for the current product path;
-- the warrant is research-only and `deployable=false`;
+- the warrant is `research_only=true`, `production_integrated=false`, and pending human review;
 - no selector or CLI reads it; and
 - no historical artifact is regenerated.
 
@@ -266,4 +275,4 @@ The warrant must not receive development truth or confirmatory population truth.
 
 Bonferroni, Holm, bounded-loss concentration, paired noninferiority testing, fixed-sample confirmation, certified sets, and operational selection after statistical gating are established ideas. This proposal does not claim their invention, a new error-control theorem, Learn-Then-Test novelty, conformal-risk novelty, or sequential-testing novelty. Any contribution would be an explicitly scoped RAG governance integration evaluated with the frozen known-truth false-promotion benchmark.
 
-WAITING_FOR_OWNER_APPROVAL_FIXED_SAMPLE_WARRANT_IMPLEMENTATION
+IMPLEMENTED_RESEARCH_CANDIDATE_PENDING_OWNER_AND_STATISTICAL_REVIEW

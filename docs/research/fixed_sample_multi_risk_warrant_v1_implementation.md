@@ -1,8 +1,14 @@
 # Fixed-Sample Multi-Risk Warrant V1
 
-Status: owner-approved research implementation under `APPROVE_WITH_LISTED_REVISIONS`.
+Status: `IMPLEMENTED_RESEARCH_CANDIDATE_PENDING_OWNER_AND_STATISTICAL_REVIEW`.
 
-This document records the adopted contract for `fixed_sample_multi_risk_warrant_v1`. It supplements, but does not edit, the frozen Focus 2 design hashed into Focus 1. The warrant is deployable only in the benchmark sense that it consumes confirmatory observations without population truth. It remains research-only, is not production-integrated, and does not modify `promotion_decision.json` or any current selector.
+This document records an implemented research candidate pending repository-owner acceptance and visible statistical review. It supplements, but does not edit, the historical Focus 2 design hashed into Focus 1. The warrant consumes permitted confirmatory observations without population truth, is `research_only=true`, is `production_integrated=false`, and does not modify `promotion_decision.json` or any current selector.
+
+Status mapping:
+
+- Design record: `SUPERSEDED_BY_IMPLEMENTATION_CANDIDATE`
+- Implementation: `IMPLEMENTED_PENDING_HUMAN_REVIEW`
+- Merge approval: `NOT_GRANTED`
 
 ## Frozen dependency
 
@@ -30,7 +36,7 @@ H1: E[D] > -margin
 p_raw = exp(-2 n max(0, mean(D) + margin)^2 / (b-a)^2)
 ```
 
-This is the one-sided Hoeffding p-value frozen by the design and independently reviewed before implementation. V1 uses support `[-0.25,0.25]`, the declared bound shared by every frozen scenario. Bounds are method metadata, never estimated from observed evidence or obtained from population truth. Out-of-support values are invalid; clipping is forbidden. Overall quality uses all paired rows. Protected-group quality uses the prespecified rows for each group.
+This is the one-sided Hoeffding p-value frozen by the design and covered by automated reference-case tests and agent-assisted review passes. Visible human statistical approval remains pending. V1 uses support `[-0.25,0.25]`, the declared bound shared by every frozen scenario. Bounds are method metadata, never estimated from observed evidence or obtained from population truth. Out-of-support values are invalid; clipping is forbidden. Overall quality uses all paired rows. Protected-group quality uses the prespecified rows for each group.
 
 Equality belongs to each null. This is conservative relative to the truth classifier, which treats equality at a promotion boundary as safe.
 
