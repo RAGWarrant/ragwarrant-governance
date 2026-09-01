@@ -180,6 +180,13 @@ def test_artifact_serialization_matches_research_schema() -> None:
     assert set(risk_test) == set(risk_schema["required"]) == set(risk_schema["properties"])
 
 
+def test_schema_requires_a_positive_confirmatory_unit_count() -> None:
+    schema = json.loads(
+        Path("schemas/research/promotion_warrant_v1.schema.json").read_text("utf-8")
+    )
+    assert schema["properties"]["confirmatory_unit_count"]["minimum"] == 1
+
+
 def test_outputs_contain_no_private_paths_or_secret_markers(tmp_path: Path) -> None:
     paths = write_focus2_outputs(_result(), tmp_path / "focus2")
     combined = "\n".join(path.read_text("utf-8") for path in paths)

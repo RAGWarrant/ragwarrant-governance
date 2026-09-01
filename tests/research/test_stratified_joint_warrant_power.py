@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -58,7 +59,11 @@ def _policy() -> PolicyConfig:
     )
 
 
-def _family(core_n: int = 8, candidates: tuple[str, ...] = ("a", "b")):
+def _family(
+    core_n: int = 8,
+    candidates: tuple[str, ...] = ("a", "b"),
+    selection_objective: str = "minimize_cost",
+):
     return freeze_candidate_family(
         candidate_policy_ids=candidates,
         incumbent_policy_id="incumbent",
@@ -67,7 +72,7 @@ def _family(core_n: int = 8, candidates: tuple[str, ...] = ("a", "b")):
         quality_delta_bounds=(-0.25, 0.25),
         familywise_error_level=0.05,
         multiplicity_method=HOLM,
-        selection_objective="minimize_cost",
+        selection_objective=selection_objective,
     )
 
 
@@ -259,6 +264,44 @@ def test_core_only_adapter_is_equivalent_to_preserved_v2_iut_holm() -> None:
     assert scoped.certified_policy_ids == preserved.certified_policy_ids
 
 
+def test_stratified_selection_honors_the_frozen_operational_objective() -> None:
+    core_n = 256
+    first = _candidate("a", core_n=core_n)
+    second_base = _candidate("b", core_n=core_n)
+    second = CandidateSamples(
+        second_base.policy_id,
+        second_base.core_group_ids,
+        second_base.core_quality_delta,
+        second_base.core_binary,
+        second_base.topup_quality_delta,
+        second_base.topup_binary,
+        2.0,
+        0.5,
+    )
+    evidence = StratifiedEvidence(
+        "selection-objective",
+        tuple(f"core-{index}" for index in range(core_n)),
+        (("majority", ()), ("minority", ())),
+        (first, second),
+    )
+    quotas = {"majority": 128, "minority": 128}
+    by_cost = evaluate_stratified_iut_holm(
+        evidence,
+        _family(core_n=core_n, selection_objective="minimize_cost"),
+        _policy(),
+        quotas,
+    )
+    by_latency = evaluate_stratified_iut_holm(
+        evidence,
+        _family(core_n=core_n, selection_objective="minimize_latency"),
+        _policy(),
+        quotas,
+    )
+    assert by_cost.certified_policy_ids == ("a", "b")
+    assert by_cost.selected_policy_id == "a"
+    assert by_latency.selected_policy_id == "b"
+
+
 def test_missing_mandatory_binary_evidence_fails_closed() -> None:
     candidate = _candidate("a")
     bad = CandidateSamples(candidate.policy_id, candidate.core_group_ids, candidate.core_quality_delta, candidate.core_binary[:-1], candidate.topup_quality_delta, candidate.topup_binary, candidate.mean_cost, candidate.mean_latency)
@@ -309,6 +352,59 @@ def test_dependence_namespaces_change_seeds_and_unknown_levels_fail() -> None:
     assert deterministic_seed(1, "low") != deterministic_seed(1, "high")
     with pytest.raises(ValueError, match="unknown dependence"):
         simulate_joint_power(family=_family(), policy=_policy(), core_n=8, group_quotas={"majority": 4, "minority": 4}, group_prevalence={"majority": 0.9, "minority": 0.1}, safe_policy_ids=("a",), binary_alternatives={"safety_violation_probability": 0.025, "execution_failure_probability": 0.015, "insufficient_evidence_probability": 0.05}, quality_slack=0.1, dependence_level="favorable", replicates=1, master_seed=1)
+
+
+def test_joint_power_planning_requires_exactly_two_groups() -> None:
+    policy = replace(_policy(), group_ids=("only",))
+    family = freeze_candidate_family(
+        candidate_policy_ids=("a", "b"),
+        incumbent_policy_id="incumbent",
+        confirmatory_unit_count=8,
+        policy=policy,
+        quality_delta_bounds=(-0.25, 0.25),
+        familywise_error_level=0.05,
+        multiplicity_method=HOLM,
+        selection_objective="minimize_cost",
+    )
+    with pytest.raises(ValueError, match="exactly two"):
+        simulate_joint_power(
+            family=family,
+            policy=policy,
+            core_n=8,
+            group_quotas={"only": 8},
+            group_prevalence={"only": 1.0},
+            safe_policy_ids=("a",),
+            binary_alternatives={
+                "safety_violation_probability": 0.025,
+                "execution_failure_probability": 0.015,
+                "insufficient_evidence_probability": 0.05,
+            },
+            quality_slack=0.1,
+            dependence_level="low",
+            replicates=1,
+            master_seed=1,
+        )
+
+
+def test_joint_power_planning_rejects_quality_outside_frozen_support() -> None:
+    with pytest.raises(ValueError, match="quality delta exceeds frozen support"):
+        simulate_joint_power(
+            family=_family(),
+            policy=_policy(),
+            core_n=8,
+            group_quotas={"majority": 4, "minority": 4},
+            group_prevalence={"majority": 0.9, "minority": 0.1},
+            safe_policy_ids=("a",),
+            binary_alternatives={
+                "safety_violation_probability": 0.025,
+                "execution_failure_probability": 0.015,
+                "insufficient_evidence_probability": 0.05,
+            },
+            quality_slack=0.50,
+            dependence_level="low",
+            replicates=1,
+            master_seed=1,
+        )
 
 
 def test_no_full_or_drand_selection_and_planning_digest_is_stable() -> None:

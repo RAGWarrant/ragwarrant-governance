@@ -3,7 +3,10 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import os
 from pathlib import Path
+import subprocess
+import sys
 
 import pytest
 import yaml
@@ -11,16 +14,11 @@ import yaml
 from ragwarrant.research import focus2_benchmark as focus2_module
 from ragwarrant.research.benchmark import EVENT_FIELDS, run_benchmark
 from ragwarrant.research.fixed_sample_warrant import FOCUS1_FREEZE_DIGEST
-from ragwarrant.research.simulator import load_config
+from ragwarrant.research.simulator import load_config, sha256_json
 
 
 FOCUS1_CONFIG = Path("configs/research/false_promotion_benchmark_v1.yaml")
 FOCUS2_CONFIG = Path("configs/research/fixed_sample_multi_risk_warrant_v1.yaml")
-FREEZE_MANIFEST = Path(
-    ".local_data/research_review/BENCHMARK_FREEZE_MANIFEST.json"
-)
-
-
 def _focus2_config() -> dict:
     loaded = yaml.safe_load(FOCUS2_CONFIG.read_text(encoding="utf-8"))
     assert isinstance(loaded, dict)
@@ -48,16 +46,26 @@ def _permit_tiny_config(
 ) -> None:
     monkeypatch.setattr(
         focus2_module,
-        "_load_frozen_focus1_config",
+        "_load_tracked_focus1_config",
         lambda: copy.deepcopy(config),
+    )
+    monkeypatch.setattr(
+        focus2_module,
+        "FOCUS1_CONFIG_CANONICAL_HASH",
+        sha256_json(config),
     )
 
 
-def _frozen_hashes() -> dict[str, str]:
-    manifest = json.loads(FREEZE_MANIFEST.read_text(encoding="utf-8"))
+def _tracked_hashes() -> dict[str, str]:
+    tracked = subprocess.run(
+        ["git", "ls-files", "-z"], check=True, capture_output=True
+    ).stdout.split(b"\0")
     return {
-        relative_path: hashlib.sha256(Path(relative_path).read_bytes()).hexdigest()
-        for relative_path in manifest["input_hashes"]
+        relative.decode("utf-8"): hashlib.sha256(
+            Path(relative.decode("utf-8")).read_bytes()
+        ).hexdigest()
+        for relative in tracked
+        if relative and Path(relative.decode("utf-8")).is_file()
     }
 
 
@@ -300,7 +308,7 @@ def test_freeze_digest_and_exact_config_guard_run_before_sampling(
         raise AssertionError("freeze guard occurred after evidence generation")
 
     monkeypatch.setattr(focus2_module, "simulate_trial", forbidden_simulation)
-    with pytest.raises(ValueError, match="differs from the frozen on-disk config"):
+    with pytest.raises(ValueError, match="differs from the developmental contract"):
         focus2_module.run_focus2_benchmark(config, _focus2_config(), "CI")
 
     focus2_config = _focus2_config()
@@ -316,13 +324,13 @@ def test_run_preserves_every_frozen_focus1_input_and_selects_no_drand_round(
 ) -> None:
     config = _tiny_config(replicate_count=1)
     _permit_tiny_config(monkeypatch, config)
-    before = _frozen_hashes()
+    before = _tracked_hashes()
 
     result = focus2_module.run_focus2_benchmark(
         config, _focus2_config(), "CI", master_seed=9
     )
 
-    assert _frozen_hashes() == before
+    assert _tracked_hashes() == before
     assert result["manifest"]["focus1_benchmark_freeze_digest"] == FOCUS1_FREEZE_DIGEST
     assert result["manifest"]["full_profile_used"] is False
     assert result["manifest"]["full_evidence_generated"] is False
@@ -405,3 +413,43 @@ def test_focus2_family_failure_contract_is_exact(
     monkeypatch.setattr(focus2_module, "simulate_trial", forbidden_simulation)
     with pytest.raises(ValueError, match=field):
         focus2_module.run_focus2_benchmark(config, focus2_config, "CI")
+
+
+def test_real_v1_cli_runs_from_tracked_inputs_without_local_materialization(
+    tmp_path: Path,
+) -> None:
+    output = tmp_path / "focus2-v1-cli"
+    before = _tracked_hashes()
+    environment = dict(os.environ)
+    environment["PYTHONPATH"] = str(Path("src").resolve())
+    completed = subprocess.run(
+        [
+            sys.executable,
+            "scripts/run_fixed_sample_warrant_benchmark.py",
+            "--profile",
+            "CI",
+            "--output",
+            str(output),
+        ],
+        cwd=Path.cwd(),
+        env=environment,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert completed.returncode == 0, completed.stderr
+    summary = json.loads(completed.stdout)
+    assert summary["status"] == "complete"
+    manifest = json.loads((output / "benchmark_manifest.json").read_text("utf-8"))
+    assert manifest["developmental_contract"]["status"] == (
+        "DEVELOPMENTAL_TRACKED_CONTRACT_VERIFIED"
+    )
+    assert manifest["full_profile_used"] is False
+    assert manifest["target_drand_round_selected"] is False
+    assert all(path.is_relative_to(output) for path in output.iterdir())
+    public_text = "\n".join(
+        path.read_text("utf-8") for path in output.iterdir() if path.is_file()
+    ).lower()
+    assert '"deployable": true' not in public_text
+    assert "deployable," not in public_text
+    assert _tracked_hashes() == before

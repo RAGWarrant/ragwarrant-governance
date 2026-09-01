@@ -5,7 +5,6 @@ from __future__ import annotations
 import hashlib
 import json
 import math
-import subprocess
 from collections import defaultdict
 from collections.abc import Mapping
 from numbers import Real
@@ -47,7 +46,7 @@ from .fixed_sample_warrant_v2 import (
     candidate_iut_p_value,
     v2_contract_digest,
 )
-from .focus2_benchmark import _verify_frozen_focus1
+from .focus2_benchmark import _verify_developmental_focus1_contract
 from .seed_schedule import (
     AMENDMENT_ID,
     CANONICAL_IDENTITY_FORMAT,
@@ -191,20 +190,7 @@ def _verify_v2_config(config: Mapping[str, Any]) -> None:
         raise ValueError("supplied Focus 2 v2 config differs from the frozen specification")
 
 
-def _git(*args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
-        ["git", *args],
-        cwd=REPOSITORY_ROOT,
-        check=check,
-        capture_output=True,
-        text=True,
-    )
-
-
-def _verify_v1_baseline() -> None:
-    tag_commit = _git("rev-list", "-n", "1", V1_BASELINE_TAG).stdout.strip()
-    if tag_commit != V1_BASELINE_COMMIT:
-        raise ValueError("v1 baseline tag does not resolve to the frozen commit")
+def _verify_v1_developmental_contract() -> Mapping[str, str | bool]:
     if (
         hashlib.sha256(
             (REPOSITORY_ROOT / "src/ragwarrant/research/fixed_sample_warrant.py").read_bytes()
@@ -219,11 +205,13 @@ def _verify_v1_baseline() -> None:
         != V1_CONFIG_SHA256
     ):
         raise ValueError("v1 configuration changed")
-    comparison = _git(
-        "diff", "--quiet", V1_BASELINE_COMMIT, "--", *V1_TRACKED_PATHS, check=False
-    )
-    if comparison.returncode != 0:
-        raise ValueError("one or more frozen v1 baseline files changed")
+    return {
+        "status": "DEVELOPMENTAL_TRACKED_CONTRACT_VERIFIED",
+        "v1_source_sha256": V1_SOURCE_SHA256,
+        "v1_config_sha256": V1_CONFIG_SHA256,
+        "remote_tag_required": False,
+        "complete_historical_authority_claimed": False,
+    }
 
 
 def _aggregate_method_rows(
@@ -516,8 +504,8 @@ def run_focus2_v2_benchmark(
         raise ValueError(f"unknown Focus 2 v2 profile: {profile}")
     _validate_v2_config(v2_config)
     _verify_v2_config(v2_config)
-    _verify_v1_baseline()
-    _verify_frozen_focus1(
+    v1_developmental_contract = _verify_v1_developmental_contract()
+    focus1_developmental_contract = _verify_developmental_focus1_contract(
         config,
         {"focus1_benchmark_freeze_digest": FOCUS1_FREEZE_DIGEST},
     )
@@ -756,6 +744,10 @@ def run_focus2_v2_benchmark(
         "seed_schedule_amendment_id": AMENDMENT_ID,
         "profile": profile,
         "evidence_role": "developmental",
+        "developmental_contracts": {
+            "focus1": focus1_developmental_contract,
+            "v1": v1_developmental_contract,
+        },
         "replicate_count_per_scenario_sample_size": replicate_count,
         "development_master_seed": seed_value,
         "full_profile_used": False,

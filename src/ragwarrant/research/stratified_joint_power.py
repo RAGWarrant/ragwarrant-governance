@@ -346,10 +346,27 @@ def evaluate_stratified_iut_holm(
             policy_id for policy_id in family.candidate_policy_ids
             if adjusted.is_rejected(policy_id)
         )
-        summaries = {item.policy_id: (item.mean_cost, item.mean_latency) for item in evidence.candidates}
+        summaries = {
+            item.policy_id: (item.mean_cost, item.mean_latency)
+            for item in evidence.candidates
+        }
+        if family.selection_objective == "minimize_cost":
+            selection_key = lambda policy_id: (
+                summaries[policy_id][0],
+                summaries[policy_id][1],
+                policy_id,
+            )
+        elif family.selection_objective == "minimize_latency":
+            selection_key = lambda policy_id: (
+                summaries[policy_id][1],
+                summaries[policy_id][0],
+                policy_id,
+            )
+        else:  # FrozenCandidateFamily already validates this field.
+            raise ValueError("unsupported frozen selection objective")
         selected = min(
             certified,
-            key=lambda policy_id: (*summaries[policy_id], policy_id),
+            key=selection_key,
             default=None,
         )
         return StratifiedWarrantResult(
@@ -568,6 +585,8 @@ def simulate_joint_power(
     _positive_int(replicates, "replicates")
     if dependence_level not in DEPENDENCE_LEVELS:
         raise ValueError("unknown dependence level")
+    if len(family.group_ids) != 2:
+        raise ValueError("joint-power planning v1 requires exactly two frozen groups")
     if set(group_prevalence) != set(family.group_ids):
         raise ValueError("prevalence must exactly match frozen groups")
     safe_ids = tuple(sorted(safe_policy_ids))
@@ -645,6 +664,9 @@ def simulate_joint_power(
         candidates: list[CandidateSamples] = []
         for candidate_index, policy_id in enumerate(family.candidate_policy_ids):
             safe = policy_id in safe_ids
+            # The configured slack is measured from the group boundary. With
+            # margins 0.03 (group) and 0.02 (overall), quality_slack=0.10
+            # therefore gives group slack 0.10 and overall slack 0.09.
             means_by_group = {group: -family.group_quality_noninferiority_margin + quality_slack for group in groups}
             binary_probabilities = dict(binary_alternatives)
             group_safety = {group: binary_alternatives["safety_violation_probability"] for group in groups}
@@ -670,7 +692,14 @@ def simulate_joint_power(
                 else:
                     group_safety[groups[-1]] = family.binary_threshold("safety_violation_probability") + 0.005
             core_means = np.asarray([means_by_group[label] for label in core_labels])
-            core_quality = np.clip(core_means + 0.05 * quality_core_signs[candidate_index], family.quality_delta_bounds[0], family.quality_delta_bounds[1])
+            core_quality = core_means + 0.05 * quality_core_signs[candidate_index]
+            lower, upper = family.quality_delta_bounds
+            if (
+                not np.all(np.isfinite(core_quality))
+                or np.any(core_quality < lower)
+                or np.any(core_quality > upper)
+            ):
+                raise ValueError("generated core quality delta exceeds frozen support")
             core_binary_items = []
             for risk in BINARY_RISKS:
                 probabilities: float | np.ndarray
@@ -693,7 +722,24 @@ def simulate_joint_power(
                     )
                 )
             core_binary = tuple(core_binary_items)
-            topup_quality = tuple((group, tuple(float(value) for value in (means_by_group[group] + 0.05 * quality_topup_signs[group][candidate_index]))) for group in groups)
+            topup_quality_items = []
+            for group in groups:
+                values = (
+                    means_by_group[group]
+                    + 0.05 * quality_topup_signs[group][candidate_index]
+                )
+                if (
+                    not np.all(np.isfinite(values))
+                    or np.any(values < lower)
+                    or np.any(values > upper)
+                ):
+                    raise ValueError(
+                        "generated group quality delta exceeds frozen support"
+                    )
+                topup_quality_items.append(
+                    (group, tuple(float(value) for value in values))
+                )
+            topup_quality = tuple(topup_quality_items)
             topup_binary = tuple(
                 (
                     group,

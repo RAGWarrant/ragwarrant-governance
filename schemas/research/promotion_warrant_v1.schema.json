@@ -48,7 +48,7 @@
     "candidate_family_frozen": {"const": true},
     "family_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "incumbent_policy_id": {"type": "string", "minLength": 1},
-    "confirmatory_unit_count": {"type": "integer", "minimum": 0},
+    "confirmatory_unit_count": {"type": "integer", "minimum": 1},
     "certified_policy_ids": {
       "type": "array",
       "uniqueItems": true,

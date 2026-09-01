@@ -4,6 +4,9 @@ import csv
 import copy
 import hashlib
 import json
+import os
+import subprocess
+import sys
 from collections import defaultdict
 from pathlib import Path
 
@@ -32,6 +35,22 @@ from ragwarrant.research.simulator import load_config
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+
+
+def _tracked_hashes() -> dict[str, str]:
+    tracked = subprocess.run(
+        ["git", "ls-files", "-z"],
+        cwd=REPOSITORY_ROOT,
+        check=True,
+        capture_output=True,
+    ).stdout.split(b"\0")
+    return {
+        relative.decode("utf-8"): hashlib.sha256(
+            (REPOSITORY_ROOT / relative.decode("utf-8")).read_bytes()
+        ).hexdigest()
+        for relative in tracked
+        if relative and (REPOSITORY_ROOT / relative.decode("utf-8")).is_file()
+    }
 
 
 @pytest.fixture(scope="module")
@@ -240,3 +259,43 @@ def test_output_rejects_mislabeled_warrant_sample(
 def test_v1_baseline_and_historical_outputs_remain_untouched() -> None:
     source = REPOSITORY_ROOT / "src/ragwarrant/research/fixed_sample_warrant.py"
     assert hashlib.sha256(source.read_bytes()).hexdigest() == V1_SOURCE_SHA256
+
+
+def test_real_v2_cli_runs_from_tracked_inputs_without_tags_or_local_materialization(
+    tmp_path: Path,
+) -> None:
+    output = tmp_path / "focus2-v2-cli"
+    before = _tracked_hashes()
+    environment = dict(os.environ)
+    environment["PYTHONPATH"] = str((REPOSITORY_ROOT / "src").resolve())
+    completed = subprocess.run(
+        [
+            sys.executable,
+            "scripts/run_fixed_sample_warrant_v2_benchmark.py",
+            "--profile",
+            "CI",
+            "--output",
+            str(output),
+        ],
+        cwd=REPOSITORY_ROOT,
+        env=environment,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert completed.returncode == 0, completed.stderr
+    summary = json.loads(completed.stdout)
+    assert summary["status"] == "focus2_v2_developmental_benchmark_complete"
+    manifest = json.loads((output / "benchmark_manifest.json").read_text("utf-8"))
+    contracts = manifest["developmental_contracts"]
+    assert contracts["focus1"]["status"] == "DEVELOPMENTAL_TRACKED_CONTRACT_VERIFIED"
+    assert contracts["v1"]["status"] == "DEVELOPMENTAL_TRACKED_CONTRACT_VERIFIED"
+    assert contracts["v1"]["remote_tag_required"] is False
+    assert manifest["full_profile_used"] is False
+    assert manifest["target_drand_round_selected"] is False
+    public_text = "\n".join(
+        path.read_text("utf-8") for path in output.iterdir() if path.is_file()
+    ).lower()
+    assert '"deployable": true' not in public_text
+    assert "deployable," not in public_text
+    assert _tracked_hashes() == before

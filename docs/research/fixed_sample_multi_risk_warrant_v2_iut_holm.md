@@ -18,7 +18,7 @@ This is the multiple-risk construction in Angelopoulos et al., *Learn then Test:
 
 Frozen truth treats equality as safe. The component tests retain the conservative closed nulls from v1 (`mean quality <= boundary` and `event probability >= threshold`), so equality is not certified. This costs boundary power but does not weaken false-certification control.
 
-The comparison is behaviorally identical to the already executed `B_IUT_HOEFFDING` ablation. The explicit method name was added after those developmental results were observed; it is an alias for auditability, not fresh evaluation evidence. It does not justify drawing replacement evidence or rerunning a redundant Monte Carlo matrix.
+The comparison is behaviorally identical to the already executed `B_IUT_HOEFFDING` ablation and uses the historical paired-Hoeffding quality test. The explicit method name was added after those developmental results were observed; it is an alias for auditability, not fresh evaluation evidence. It does not justify drawing replacement evidence or rerunning a redundant Monte Carlo matrix. The separately implemented Hoeffding-Bentkus quality alternative belongs to the v2 ablation module and `fixed_sample_multi_risk_warrant_v2.md`; it is not part of this historical IUT/Hoeffding comparison.
 
 ## Variance-sensitive quality method: design only
 

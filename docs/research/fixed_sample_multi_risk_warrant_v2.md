@@ -85,7 +85,7 @@ Binary-risk tests are the exact v1 lower-binomial-tail implementation without be
 
 ## Assumptions and claim boundary
 
-Component validity assumes independent confirmatory units and prespecified bounded losses/thresholds. Pairing within a unit and arbitrary dependence among candidates or risks within a unit are allowed. A prespecified subgroup test is conditional on its realized count; missing subgroup evidence contributes p-value one. Development evidence is never used for certification, and deployable methods never receive population truth.
+Component validity assumes independent confirmatory units and prespecified bounded losses/thresholds. Pairing within a unit and arbitrary dependence among candidates or risks within a unit are allowed. A prespecified subgroup test is conditional on its realized count; missing subgroup evidence contributes p-value one. Development evidence is never used for certification, and truth-isolated benchmark variants never receive population truth.
 
 The intersection-union principle, Hoeffding-Bentkus inequality, Learn-Then-Test construction, Holm, and Bonferroni are established methods and are not claimed as novel. CI-v2 and LOCAL-v2 are developmental Monte Carlo evidence. Their Wilson intervals quantify Monte Carlo estimation uncertainty, not candidate-risk uncertainty. No empirical result alone proves finite-sample control, universal superiority, production readiness, or human/clinical validity.
 

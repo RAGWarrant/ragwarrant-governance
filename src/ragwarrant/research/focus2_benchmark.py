@@ -1,6 +1,6 @@
-"""Freeze-verified benchmark adapter for the Focus 2 warrant.
+"""Tracked-contract benchmark adapter for the developmental Focus 2 warrant.
 
-This module is intentionally version-locked to the frozen Focus 1 benchmark.
+This module is intentionally version-locked to the tracked Focus 1 benchmark.
 It reuses the frozen simulator, identifier isolation, decision validation,
 truth-side scoring, and estimators without changing their implementations.
 Only the developmental CI and LOCAL profiles are accepted here.
@@ -39,7 +39,6 @@ from .fixed_sample_warrant import (
     freeze_candidate_family,
 )
 from .methods import method_capabilities, method_registry, oracle_safe_objective
-from .public_beacon import verify_benchmark_freeze_manifest
 from .seed_schedule import (
     AMENDMENT_ID,
     CANONICAL_IDENTITY_FORMAT,
@@ -61,11 +60,14 @@ from .types import MethodDecision, ScenarioTruth, public_research_artifact
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
-FREEZE_MANIFEST_PATH = (
-    REPOSITORY_ROOT / ".local_data" / "research_review" / "BENCHMARK_FREEZE_MANIFEST.json"
-)
 FROZEN_FOCUS1_CONFIG_PATH = (
     REPOSITORY_ROOT / "configs" / "research" / "false_promotion_benchmark_v1.yaml"
+)
+FOCUS1_CONFIG_FILE_SHA256 = (
+    "4469bb06123796cb71103c2ec0b105e444167fe2b7e538193288ba22d916920a"
+)
+FOCUS1_CONFIG_CANONICAL_HASH = (
+    "740854290ef88b2704785a58f67b3bb1156a4264307e34a2f31ff07bc4740365"
 )
 FROZEN_FOCUS2_CONFIG_PATH = (
     REPOSITORY_ROOT
@@ -82,6 +84,7 @@ FOCUS2_CONFIG_CANONICAL_HASH = (
 SUPPORTED_PROFILES = ("CI", "LOCAL")
 NOT_APPLICABLE = "not_applicable"
 FOCUS2_BENCHMARK_ID = "fixed_sample_multi_risk_warrant_benchmark_v1"
+DEVELOPMENTAL_CONTRACT_STATUS = "DEVELOPMENTAL_TRACKED_CONTRACT_VERIFIED"
 
 
 def _require_mapping(value: object, name: str) -> Mapping[str, Any]:
@@ -161,36 +164,44 @@ def _verify_frozen_focus2_config(config: Mapping[str, Any]) -> None:
         raise ValueError("supplied Focus 2 config differs from the frozen prespecified v1 contract")
 
 
-def _load_freeze_manifest() -> Mapping[str, Any]:
+def _load_tracked_focus1_config() -> dict[str, Any]:
     try:
-        loaded = json.loads(FREEZE_MANIFEST_PATH.read_text(encoding="utf-8"))
-    except FileNotFoundError as exc:
-        raise ValueError("Focus 1 freeze manifest is required before Focus 2 sampling") from exc
-    except json.JSONDecodeError as exc:
-        raise ValueError("Focus 1 freeze manifest is not valid JSON") from exc
-    return _require_mapping(loaded, "Focus 1 freeze manifest")
+        payload = FROZEN_FOCUS1_CONFIG_PATH.read_bytes()
+    except OSError as exc:
+        raise ValueError("the tracked Focus 1 config is required before sampling") from exc
+    if hashlib.sha256(payload).hexdigest() != FOCUS1_CONFIG_FILE_SHA256:
+        raise ValueError("tracked Focus 1 config bytes differ from the developmental contract")
+    loaded = load_config(FROZEN_FOCUS1_CONFIG_PATH)
+    if sha256_json(loaded) != FOCUS1_CONFIG_CANONICAL_HASH:
+        raise ValueError("tracked Focus 1 config meaning differs from the developmental contract")
+    return loaded
 
 
-def _load_frozen_focus1_config() -> dict[str, Any]:
-    return load_config(FROZEN_FOCUS1_CONFIG_PATH)
+def _verify_developmental_focus1_contract(
+    config: Mapping[str, Any], focus2_config: Mapping[str, Any]
+) -> Mapping[str, Any]:
+    if focus2_config.get("focus1_benchmark_freeze_digest") != FOCUS1_FREEZE_DIGEST:
+        raise ValueError("Focus 2 config does not reference the accepted Focus 1 digest")
+    tracked_config = _load_tracked_focus1_config()
+    if sha256_json(config) != FOCUS1_CONFIG_CANONICAL_HASH:
+        raise ValueError("supplied Focus 1 config differs from the developmental contract")
+    if canonical_json(config) != canonical_json(tracked_config):
+        raise ValueError("supplied Focus 1 config differs from the tracked configuration")
+    return {
+        "status": DEVELOPMENTAL_CONTRACT_STATUS,
+        "focus1_accepted_digest_reference": FOCUS1_FREEZE_DIGEST,
+        "focus1_config_file_sha256": FOCUS1_CONFIG_FILE_SHA256,
+        "focus1_config_canonical_hash": FOCUS1_CONFIG_CANONICAL_HASH,
+        "complete_historical_authority_claimed": False,
+    }
 
 
 def _verify_frozen_focus1(
     config: Mapping[str, Any], focus2_config: Mapping[str, Any]
 ) -> Mapping[str, Any]:
-    manifest = _load_freeze_manifest()
-    actual_digest = verify_benchmark_freeze_manifest(manifest, REPOSITORY_ROOT)
-    if actual_digest != FOCUS1_FREEZE_DIGEST:
-        raise ValueError(
-            "Focus 1 freeze digest mismatch: "
-            f"expected {FOCUS1_FREEZE_DIGEST}, got {actual_digest}"
-        )
-    if focus2_config.get("focus1_benchmark_freeze_digest") != actual_digest:
-        raise ValueError("Focus 2 config does not reference the verified Focus 1 freeze")
-    frozen_config = _load_frozen_focus1_config()
-    if canonical_json(config) != canonical_json(frozen_config):
-        raise ValueError("Focus 1 benchmark config differs from the frozen on-disk config")
-    return manifest
+    """Compatibility name for diagnostics; this makes no authority claim."""
+
+    return _verify_developmental_focus1_contract(config, focus2_config)
 
 
 def _aggregate_focus2_rows(
@@ -304,7 +315,9 @@ def run_focus2_benchmark(
         raise ValueError(f"unknown Focus 2 profile: {profile}")
     _validate_focus2_config(_require_mapping(focus2_config, "Focus 2 config"))
     _verify_frozen_focus2_config(focus2_config)
-    _verify_frozen_focus1(config, focus2_config)
+    developmental_contract = _verify_developmental_focus1_contract(
+        config, focus2_config
+    )
     validate_config(config)
 
     seed_value = config["master_seed"] if master_seed is None else master_seed
@@ -542,6 +555,7 @@ def run_focus2_benchmark(
         "seed_schedule_amendment_id": AMENDMENT_ID,
         "profile": profile,
         "evidence_role": "developmental",
+        "developmental_contract": developmental_contract,
         "replicate_count_per_scenario_sample_size": replicate_count,
         "development_master_seed": seed,
         "full_profile_used": False,
