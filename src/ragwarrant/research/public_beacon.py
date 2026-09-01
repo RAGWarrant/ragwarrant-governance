@@ -2,9 +2,9 @@
 
 PR A needs stable seed-schedule constants and freeze-manifest hashing, but it
 does not contain or authorize beacon retrieval, round selection, OIDC checks,
-or sealed FULL execution. The stacked integrity branch restores the complete
-qualified implementation from the immutable review construction reference
-commit.
+or sealed FULL execution. The stacked integrity branch contains the integrity
+implementation from the immutable review construction reference commit; that
+branch remains subject to separate owner and security review.
 """
 
 from __future__ import annotations

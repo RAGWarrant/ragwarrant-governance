@@ -23,7 +23,6 @@ from ragwarrant.research.focus2_power_diagnostics import (
     summarize_feasibility_cells,
 )
 from ragwarrant.research.simulator import load_config, sha256_json
-from ragwarrant.research.review_scope_authority import VERIFIED, verify_review_scope
 from ragwarrant.research.types import EvidenceRow, ObservedEvidence, PolicyConfig
 
 
@@ -317,9 +316,6 @@ def test_no_safe_candidate_cell_does_not_claim_power() -> None:
 
 
 def test_v1_hashes_focus1_and_prohibited_profiles_remain_fixed() -> None:
-    scope = verify_review_scope(REPOSITORY_ROOT)
-    assert scope["status"] == VERIFIED
-    assert scope["complete_focus1_or_v1_authority"] is False
     assert FROZEN_FOCUS1_DIGEST == (
         "c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e"
     )

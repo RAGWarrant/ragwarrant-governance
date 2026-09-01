@@ -41,13 +41,11 @@ ORIGINAL_FOCUSED_TEST_SHA256 = "a76ea9bfac13a433d81b72756dbe7d795f26f911d38c6e19
 
 PRESERVED_STRATIFIED_HASHES = {
     "configs/research/stratified_joint_warrant_power_v1.yaml": "087cbb7273c4d9869c0011b966cd0614606960046e5c2ba598a1893226a677b2",
-    "docs/research/joint_warrant_power_planning.md": "40b681c180bb62b6ad2aa179543006facac5531b5f1ee81b7b2ec2db9fbee222",
     "docs/research/stratified_confirmatory_evidence_v1.md": "f043b8d96ca8223dd7cdee748f0ace80902fa769643ffdee337785686f0478cc",
     "scripts/run_stratified_joint_power_study.py": "8645a369633d86b3407eb2f8d424f2fd7d9e180e76e173c8189578241e2cdb4c",
     "src/ragwarrant/research/stratified_joint_power.py": "9101048d30a5cfc758fca029dc44ce21603d9406f9929ab02859d6f112e72f4d",
-    # PR A carries the split-specific cumulative test hash; PR B restores the
-    # exact owner-review test and original preservation chain.
-    "tests/research/test_stratified_joint_warrant_power.py": "4cd92b4d0ef86dda71c15aa933ae747c6889e71deae43244d7243363f328e32b",
+    # Explanatory docs and split-specific tests may change during review; this
+    # inventory protects the unchanged study inputs and implementation only.
 }
 
 

@@ -156,9 +156,9 @@ def _verify_frozen_focus2_config(config: Mapping[str, Any]) -> None:
         raise ValueError("the tracked Focus 2 config is required before sampling") from exc
     file_digest = hashlib.sha256(payload).hexdigest()
     if file_digest != FOCUS2_CONFIG_FILE_SHA256:
-        raise ValueError("tracked Focus 2 config hash differs from the approved v1 contract")
+        raise ValueError("tracked Focus 2 config hash differs from the frozen prespecified v1 contract")
     if sha256_json(config) != FOCUS2_CONFIG_CANONICAL_HASH:
-        raise ValueError("supplied Focus 2 config differs from the approved v1 contract")
+        raise ValueError("supplied Focus 2 config differs from the frozen prespecified v1 contract")
 
 
 def _load_freeze_manifest() -> Mapping[str, Any]:

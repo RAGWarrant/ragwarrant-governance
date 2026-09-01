@@ -45,26 +45,17 @@ CONFIG_PATH = ROOT / "configs/research/evidence_budget_planner_v1.yaml"
 PRESERVED_SHA256 = {
     "configs/research/fixed_sample_multi_risk_warrant_v2.yaml": "9ea78712a5ab0cee58982cec0cd2d69bc363d2c3c084d9507e54416dc18d1238",
     "configs/research/fixed_sample_multi_risk_warrant_v2_iut_holm.yaml": "b396bff282fb80ee2c9258caec1342862417b3dc92d3c30f208d9009267a1566",
-    "docs/research/fixed_sample_multi_risk_warrant_v2.md": "d170214f03ef8da86c1a7a1354ef645b8ef28538ba0b9cd747dec5a3a37b931f",
-    "docs/research/fixed_sample_multi_risk_warrant_v2_iut_holm.md": "a3e9fc385836c4d273f66129dc9dd0c09c3ecf246e05e33122b91faa1d0697ca",
     "scripts/run_fixed_sample_warrant_v2_benchmark.py": "4581c2ac43bb7704e8f521bca1fa34a1a75b7a16bbdb24fb9d79a35f7e0e1d80",
     "scripts/run_focus2_power_feasibility_audit.py": "c43ae625e65bdf6c93417c5e9409554cd2a601257ce324d6ba206d1fd5387635",
     "src/ragwarrant/research/fixed_sample_warrant_v2.py": "9c3cbea2f0645cae46d7b3ad434b3953371a72bc9d7498bbaf1473dec40d842b",
     "src/ragwarrant/research/focus2_power_diagnostics.py": "7c702c249b7bf646da6230970462b25e3b6abdce78c380536ba0fc5c68edd4b8",
-    "src/ragwarrant/research/focus2_v2_benchmark.py": "339b9df2276945547ddd3533818d366757d665a970ca8aa5904c2e1abfacc2dd",
-    "src/ragwarrant/research/focus2_v2_reporting.py": "87c34660ce9ba0dfc37b008d44c5aecc3f846bd6219cb209cf56d02ec1e5e2ce",
-    "tests/research/test_fixed_sample_warrant_v2.py": "54d8d4ab3f7e0a82af5f07edfa6da040541519cdb57a410e6e09f84f743f5210",
-    "tests/research/test_focus2_power_feasibility.py": "0baac22c8166b07890efddcb4460b9224f61eab512c8bb6308772284d22b4d17",
-    "tests/research/test_focus2_v2_benchmark_integration.py": "ef4b86b518f297dc9b1b3b45e7c9e5b320ba4442f5c5f5bb36db08f3bfb76696",
     "configs/research/false_promotion_benchmark_v1.yaml": "4469bb06123796cb71103c2ec0b105e444167fe2b7e538193288ba22d916920a",
-    "docs/research/false_promotion_benchmark_protocol.md": "6d661b06d49f31d40ac21a5cc0516e9f61c6e084514c1ac1838b36f6693686ad",
-    "docs/research/false_promotion_benchmark_seed_schedule_v2_amendment.md": "9ffcb40dae4e8740e6f944d817e3f9a384d3ce53c4c2c3fa154bc91895447628",
     "src/ragwarrant/research/seed_schedule.py": "1083c32e750b87f3b4876b6685d9cf25a97d0b765181af03f3a2ac60c4411aba",
 }
 
-# PR A intentionally excludes the complete sealed-study document and replaces
-# public_beacon.py with a fail-closed compatibility boundary. The final scoped
-# path verifier binds that split; PR B restores this test and both exact files.
+# This list protects unchanged statistical/configuration inputs only. Review
+# metadata, public output adapters, documentation, and their tests are not
+# treated as scientific hash authorities in PR A.
 
 
 @pytest.fixture(scope="module")

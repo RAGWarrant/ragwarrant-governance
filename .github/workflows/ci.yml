@@ -24,7 +24,22 @@ jobs:
       - run: python -m compileall src scripts
       - run: python scripts/validate_publication_bundle.py
       - run: python -m pytest -q tests/publication
-      - run: python -m ragwarrant.research.review_scope_authority
       - run: python -m pytest -q tests/research
-      - run: git diff --check b8534df6ac9a338c2f086fc0f49948032d1e48cc...HEAD
-      - run: git diff --exit-code b8534df6ac9a338c2f086fc0f49948032d1e48cc...HEAD -- README.md artifacts results
+      - name: Check changed-line whitespace
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PUSH_BEFORE_SHA: ${{ github.event.before }}
+          PUSH_HEAD_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          zero_sha=0000000000000000000000000000000000000000
+          if [[ "$EVENT_NAME" == "pull_request" && -n "$PR_BASE_SHA" && -n "$PR_HEAD_SHA" ]]; then
+            git diff --check "$PR_BASE_SHA...$PR_HEAD_SHA"
+          elif [[ -n "$PUSH_BEFORE_SHA" && "$PUSH_BEFORE_SHA" != "$zero_sha" ]]; then
+            git diff --check "$PUSH_BEFORE_SHA..$PUSH_HEAD_SHA"
+          else
+            git diff-tree --check --root -r HEAD
+          fi

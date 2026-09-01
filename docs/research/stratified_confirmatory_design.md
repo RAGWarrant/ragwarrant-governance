@@ -58,7 +58,7 @@ The analytical study recommends:
 - conservative no-reuse ceiling: `3035` rows;
 - cost unit: one normalized fully evaluated row across the frozen candidate family and incumbent.
 
-The dominant overall component is execution-failure risk (`n=1383` at the selected alternative). The group quota is set by safety-violation risk (`n=826`), not quality (`n=177`), at the same marginal target. Natural 10% minority acquisition would require total `N=8803` to satisfy the reviewed group-count tail criterion.
+The dominant overall component is execution-failure risk (`n=1383` at the selected alternative). The group quota is set by safety-violation risk (`n=826`), not quality (`n=177`), at the same marginal target. Natural 10% minority acquisition would require total `N=8803` to satisfy the prespecified group-count tail criterion.
 
 These numbers are planning outputs conditional on declared alternatives and assumptions. They do not authorize confirmatory collection and must not be chosen or revised after viewing FULL evidence.
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import copy
+import hashlib
 import json
 from collections import defaultdict
 from pathlib import Path
@@ -18,6 +19,7 @@ from ragwarrant.research.fixed_sample_warrant_v2 import (
 from ragwarrant.research.focus2_v2_benchmark import (
     FROZEN_FOCUS1_CONFIG_PATH,
     FROZEN_V2_CONFIG_PATH,
+    V1_SOURCE_SHA256,
     _diagnostic_retention_reason,
     load_v2_config,
     run_focus2_v2_benchmark,
@@ -27,7 +29,6 @@ from ragwarrant.research.focus2_v2_reporting import (
     write_focus2_v2_outputs,
 )
 from ragwarrant.research.simulator import load_config
-from ragwarrant.research.review_scope_authority import VERIFIED, verify_review_scope
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
@@ -237,6 +238,5 @@ def test_output_rejects_mislabeled_warrant_sample(
 
 
 def test_v1_baseline_and_historical_outputs_remain_untouched() -> None:
-    scope = verify_review_scope(REPOSITORY_ROOT)
-    assert scope["status"] == VERIFIED
-    assert scope["complete_focus1_or_v1_authority"] is False
+    source = REPOSITORY_ROOT / "src/ragwarrant/research/fixed_sample_warrant.py"
+    assert hashlib.sha256(source.read_bytes()).hexdigest() == V1_SOURCE_SHA256

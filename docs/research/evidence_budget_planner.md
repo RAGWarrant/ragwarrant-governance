@@ -18,7 +18,7 @@ The configured protected groups form an explicitly declared mutually exclusive a
 
 ## Multiplicity planning convention
 
-This study does not search for another multiple-testing arrangement. It plans the already reviewed candidate-level IUT/Holm method. With family-wise level \(\alpha\) and \(C\) frozen candidates, the effective pre-data component cutoff is the conservative first Holm step \(\alpha/C\). A flattened comparison can be represented only as a separately configured planning organization with \(M\) mandatory component hypotheses and cutoff \(\alpha/M\).
+This study does not search for another multiple-testing arrangement. It plans the implemented, prespecified candidate-level IUT/Holm method. With family-wise level \(\alpha\) and \(C\) frozen candidates, the effective pre-data component cutoff is the conservative first Holm step \(\alpha/C\). A flattened comparison can be represented only as a separately configured planning organization with \(M\) mandatory component hypotheses and cutoff \(\alpha/M\).
 
 The 50%, 80%, and 90% targets in this study are marginal component planning powers. Component powers are not multiplied, averaged, or presented as joint candidate-certification power. The guarantee under evaluation remains false candidate certification across the frozen candidate family.
 

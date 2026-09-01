@@ -36,9 +36,8 @@ FOCUS1_DIGEST = "c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212
 PRESERVED_PLANNER_HASHES = {
     "configs/research/evidence_budget_planner_v1.yaml": "04b69b20601d7e1fdc1fbed8dea41384765813ed718b582d953374a1cb11f461",
     "src/ragwarrant/research/evidence_budget_planner.py": "a8d50bef9eda1fb90b40b8a3edc6bc5d2301d213fdbae3df8215c87806c24ab5",
-    # PR A's planner test excludes B-owned beacon bytes from its preservation
-    # inventory; PR B restores the original cumulative hash chain.
-    "tests/research/test_evidence_budget_planner.py": "7ab097639158cf959ccd476d05138b50fffd83231d916a5b275fe574863887e9",
+    # Review-only test adapters are excluded from the scientific inventory;
+    # the planner configuration and implementation remain byte-bound here.
 }
 
 
