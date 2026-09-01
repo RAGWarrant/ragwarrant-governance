@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 from dataclasses import dataclass
 from typing import Any, Iterable, Mapping
 
@@ -120,10 +121,72 @@ def _empty_candidate_counts(safe_policy_ids: Iterable[str]) -> dict[str, dict[st
         policy_id: {
             "joint": 0,
             "components": {},
-            "union_bound_sum": 0.0,
-            "independence_sum": 0.0,
+            "component_ids": None,
         }
         for policy_id in sorted(safe_policy_ids)
+    }
+
+
+def aggregate_candidate_diagnostics(
+    *,
+    component_pass_counts: Iterable[tuple[str, int]],
+    total_replicates: int,
+    direct_joint_certification_count: int,
+) -> dict[str, object]:
+    """Derive secondary diagnostics from aggregate marginal pass counts."""
+
+    if (
+        isinstance(total_replicates, bool)
+        or not isinstance(total_replicates, int)
+        or total_replicates <= 0
+    ):
+        raise ValueError("total_replicates must be a positive integer")
+    if (
+        isinstance(direct_joint_certification_count, bool)
+        or not isinstance(direct_joint_certification_count, int)
+        or not 0 <= direct_joint_certification_count <= total_replicates
+    ):
+        raise ValueError("direct joint certification count is invalid")
+
+    counts: dict[str, int] = {}
+    for component_id, pass_count in component_pass_counts:
+        if (
+            not isinstance(component_id, str)
+            or not component_id
+            or component_id.strip() != component_id
+        ):
+            raise ValueError("mandatory component identity is malformed")
+        if component_id in counts:
+            raise ValueError("duplicate mandatory component identity")
+        if (
+            isinstance(pass_count, bool)
+            or not isinstance(pass_count, int)
+            or not 0 <= pass_count <= total_replicates
+        ):
+            raise ValueError("mandatory component pass count is invalid")
+        counts[component_id] = pass_count
+    if not counts:
+        raise ValueError("mandatory component pass counts are required")
+
+    marginal_powers = {
+        component_id: pass_count / total_replicates
+        for component_id, pass_count in sorted(counts.items())
+    }
+    return {
+        "direct_monte_carlo_joint_certification_count": (
+            direct_joint_certification_count
+        ),
+        "direct_monte_carlo_joint_certification_probability": (
+            direct_joint_certification_count / total_replicates
+        ),
+        "aggregate_union_bound_joint_lower_bound": max(
+            0.0,
+            math.fsum(marginal_powers.values()) - (len(marginal_powers) - 1),
+        ),
+        "aggregate_independence_approximation": math.prod(
+            marginal_powers.values()
+        ),
+        "marginal_component_powers": marginal_powers,
     }
 
 
@@ -174,15 +237,33 @@ def run_confirmation_cell(
         safe_selection += int(result["safe_selection_probability"])
         unsafe_selection += int(result["unsafe_selection_probability"])
         no_selection += int(result["no_selection_probability"])
-        for candidate in result["candidate_results"]:
-            counts = candidate_counts[str(candidate["policy_id"])]
+        candidate_results = result["candidate_results"]
+        if not isinstance(candidate_results, list):
+            raise ValueError("candidate results must be a list")
+        seen_candidate_ids: set[str] = set()
+        for candidate in candidate_results:
+            policy_id = str(candidate["policy_id"])
+            if policy_id in seen_candidate_ids:
+                raise ValueError("duplicate candidate result")
+            seen_candidate_ids.add(policy_id)
+            if policy_id not in candidate_counts:
+                raise ValueError("unexpected candidate result")
+            counts = candidate_counts[policy_id]
             counts["joint"] += int(candidate["monte_carlo_joint_power"])
-            counts["union_bound_sum"] += float(candidate["union_bound_joint_lower_bound"])
-            counts["independence_sum"] += float(candidate["independence_approximation"])
-            for component, value in candidate["marginal_component_powers"].items():
+            component_powers = candidate["marginal_component_powers"]
+            if not isinstance(component_powers, Mapping) or not component_powers:
+                raise ValueError("mandatory component results are required")
+            component_ids = tuple(sorted(str(item) for item in component_powers))
+            if counts["component_ids"] is None:
+                counts["component_ids"] = component_ids
+            elif counts["component_ids"] != component_ids:
+                raise ValueError("mandatory component result set changed across replicates")
+            for component, value in component_powers.items():
                 counts["components"][component] = (
                     counts["components"].get(component, 0) + int(value)
                 )
+        if seen_candidate_ids != set(candidate_counts):
+            raise ValueError("candidate result set differs from the frozen safe family")
 
     trials = REPLICATES_PER_CELL
     any_safe_wilson = wilson_interval(any_safe, trials)
@@ -216,6 +297,12 @@ def run_confirmation_cell(
     for policy_id, counts in candidate_counts.items():
         joint = int(counts["joint"])
         joint_wilson = wilson_interval(joint, trials)
+        diagnostics = aggregate_candidate_diagnostics(
+            component_pass_counts=counts["components"].items(),
+            total_replicates=trials,
+            direct_joint_certification_count=joint,
+        )
+        marginal_powers = diagnostics.pop("marginal_component_powers")
         candidate_rows.append(
             {
                 "protocol_id": PROTOCOL_ID,
@@ -225,17 +312,11 @@ def run_confirmation_cell(
                 "dependence_condition": dependence_condition,
                 "safe_policy_id": policy_id,
                 "replicates": trials,
-                "joint_certification_count": joint,
-                "joint_certification_probability": joint / trials,
-                "joint_certification_wilson_low": joint_wilson[0],
-                "joint_certification_wilson_high": joint_wilson[1],
-                "mean_union_bound_lower_bound": counts["union_bound_sum"] / trials,
-                "mean_independence_approximation": counts["independence_sum"] / trials,
+                **diagnostics,
+                "direct_monte_carlo_joint_certification_wilson_low": joint_wilson[0],
+                "direct_monte_carlo_joint_certification_wilson_high": joint_wilson[1],
                 "marginal_component_powers": json.dumps(
-                    {
-                        component: count / trials
-                        for component, count in sorted(counts["components"].items())
-                    },
+                    marginal_powers,
                     sort_keys=True,
                     separators=(",", ":"),
                 ),
@@ -259,4 +340,3 @@ __all__ = [
     "run_confirmation_cell",
     "schedule_fingerprints",
 ]
-

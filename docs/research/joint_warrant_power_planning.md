@@ -14,6 +14,8 @@ The planning adapter changes only evidence routing. It calls the unchanged bound
 
 `p_candidate = max(p_c,overall-quality, p_c,each-group-quality, p_c,each-overall-binary-risk, p_c,each-enabled-group-binary-risk)`.
 
+The prespecified `quality_slack=0.10` is measured from the group-quality boundary with margin `0.03`. It therefore represents group-quality slack `0.10`, while the same planning mean is `0.09` above the overall-quality boundary with margin `0.02`. These effective slacks are inputs to developmental planning, not observed effects or real-world guarantees.
+
 It then calls unchanged Holm across all 24 candidate p-values. No candidate is filtered before Holm, missing mandatory evidence yields p-value one or a blocked decision, and truth is unavailable to the method. Overall components receive core data only. Group components receive matching core plus valid top-up data. Operational cost/latency selection occurs only after certification and uses core evidence.
 
 The maximum-p intersection-union test is valid for the null that at least one required component is unacceptable. Holm controls the probability of falsely certifying at least one unsafe candidate when marginal component p-values are valid. Cross-component and cross-candidate dependence is permitted; independence across sampled units remains an assumption of the preserved component tests.
@@ -38,6 +40,8 @@ For every core/quota design and dependence level, the study reports:
 - probability that at least one unsafe planning candidate is certified;
 - expected certified-set size; and
 - safe, unsafe, and no-selection probabilities.
+
+Secondary analytical diagnostics are derived only after marginal component pass counts have been aggregated across all planning replicates. For aggregate pass rates `q_j`, the independence approximation is `product(q_j)` and the union-bound lower diagnostic is `max(0, sum(q_j) - (k - 1))`. The direct Monte Carlo joint-certification probability remains a separate primary simulation estimate; neither analytical diagnostic replaces it or receives a binomial interval as though it were a directly observed event rate.
 
 The random number of matching core group members is simulated. Each group's test count is `max(core group count, quota)` after the top-up stopping rule. This matters because exact-binomial power is discrete and can be saw-toothed. Monte Carlo Wilson intervals describe planning-simulation uncertainty, not candidate-risk confidence.
 

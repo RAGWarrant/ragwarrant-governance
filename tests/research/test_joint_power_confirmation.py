@@ -20,6 +20,7 @@ from scripts.run_joint_power_confirmation import (
 from ragwarrant.research import joint_power_confirmation as confirmation
 from ragwarrant.research.joint_power_confirmation import (
     ConfirmationIdentity,
+    aggregate_candidate_diagnostics,
     derive_confirmation_seed,
     enumerate_confirmation_schedule,
     planning_label,
@@ -43,9 +44,9 @@ PRESERVED_STRATIFIED_HASHES = {
     "configs/research/stratified_joint_warrant_power_v1.yaml": "087cbb7273c4d9869c0011b966cd0614606960046e5c2ba598a1893226a677b2",
     "docs/research/stratified_confirmatory_evidence_v1.md": "f043b8d96ca8223dd7cdee748f0ace80902fa769643ffdee337785686f0478cc",
     "scripts/run_stratified_joint_power_study.py": "8645a369633d86b3407eb2f8d424f2fd7d9e180e76e173c8189578241e2cdb4c",
-    "src/ragwarrant/research/stratified_joint_power.py": "9101048d30a5cfc758fca029dc44ce21603d9406f9929ab02859d6f112e72f4d",
     # Explanatory docs and split-specific tests may change during review; this
-    # inventory protects the unchanged study inputs and implementation only.
+    # inventory protects the unchanged study inputs. The planning implementation
+    # has an authorized fail-closed review cleanup; original outputs stay immutable.
 }
 
 
@@ -57,6 +58,10 @@ def _portable_config(tmp_path: Path) -> Path:
     """Create a synthetic config rebinding only this portability-test hash."""
 
     loaded = yaml.safe_load(CONFIG.read_text(encoding="utf-8"))
+    loaded["frozen_parent"]["implementation_sha256"] = _sha(
+        ROOT / "src/ragwarrant/research/stratified_joint_power.py"
+    )
+    loaded["frozen_executor"]["implementation_sha256"] = _sha(EXECUTOR)
     loaded["frozen_executor"]["focused_tests_sha256"] = _sha(FOCUSED_TEST)
     path = tmp_path / "confirmation-portable-test.yaml"
     path.write_text(yaml.safe_dump(loaded, sort_keys=False), encoding="utf-8")
@@ -234,13 +239,15 @@ def test_confirmation_executor_runs_exactly_1000_unique_identity_seeds(
         received.append(kwargs["master_seed"])
         hit = int(kwargs["master_seed"] % 2 == 0)
         candidates = []
-        for policy_id in kwargs["safe_policy_ids"]:
+        for candidate_index, policy_id in enumerate(kwargs["safe_policy_ids"]):
+            second_component = hit if candidate_index == 0 else 1
             candidates.append(
                 {
                     "policy_id": policy_id,
-                    "marginal_component_powers": {"overall_quality::__overall__": hit},
-                    "union_bound_joint_lower_bound": float(hit),
-                    "independence_approximation": float(hit),
+                    "marginal_component_powers": {
+                        "overall_quality::__overall__": hit,
+                        "safety_violation_probability::__overall__": second_component,
+                    },
                     "monte_carlo_joint_power": float(hit),
                 }
             )
@@ -262,7 +269,7 @@ def test_confirmation_executor_runs_exactly_1000_unique_identity_seeds(
         core_n=1383,
         group_quotas={"majority": 826, "minority": 826},
         group_prevalence={"majority": 0.9, "minority": 0.1},
-        safe_policy_ids=("policy_000", "policy_001", "policy_002"),
+        safe_policy_ids=("policy_000", "policy_001"),
         binary_alternatives={
             "safety_violation_probability": 0.025,
             "execution_failure_probability": 0.015,
@@ -274,7 +281,7 @@ def test_confirmation_executor_runs_exactly_1000_unique_identity_seeds(
     assert len(received) == 1000
     assert len(set(received)) == 1000
     assert row["replicates"] == 1000
-    assert len(candidates) == 3
+    assert len(candidates) == 2
     expected_hits = sum(seed % 2 == 0 for seed in received)
     expected_rate = expected_hits / 1000
     assert row["at_least_one_safe_certification_count"] == expected_hits
@@ -283,11 +290,126 @@ def test_confirmation_executor_runs_exactly_1000_unique_identity_seeds(
     assert row["operational_selection_probability"] == expected_rate
     assert row["safe_selection_probability"] == expected_rate
     assert row["no_selection_probability"] == 1.0 - expected_rate
-    assert all(candidate["joint_certification_count"] == expected_hits for candidate in candidates)
     assert all(
-        candidate["joint_certification_probability"] == expected_rate
+        candidate["direct_monte_carlo_joint_certification_count"] == expected_hits
         for candidate in candidates
     )
+    assert all(
+        candidate["direct_monte_carlo_joint_certification_probability"]
+        == expected_rate
+        for candidate in candidates
+    )
+    by_policy = {candidate["safe_policy_id"]: candidate for candidate in candidates}
+    assert by_policy["policy_000"]["aggregate_independence_approximation"] == pytest.approx(
+        expected_rate**2
+    )
+    assert by_policy["policy_000"]["aggregate_union_bound_joint_lower_bound"] == pytest.approx(
+        max(0.0, 2.0 * expected_rate - 1.0)
+    )
+    assert by_policy["policy_001"]["aggregate_independence_approximation"] == pytest.approx(
+        expected_rate
+    )
+    assert by_policy["policy_001"]["aggregate_union_bound_joint_lower_bound"] == pytest.approx(
+        expected_rate
+    )
+
+
+def test_aggregate_diagnostics_are_derived_from_marginal_counts() -> None:
+    two = aggregate_candidate_diagnostics(
+        component_pass_counts=(("quality", 50), ("safety", 50)),
+        total_replicates=100,
+        direct_joint_certification_count=50,
+    )
+    assert two["aggregate_independence_approximation"] == 0.25
+    assert two["aggregate_union_bound_joint_lower_bound"] == 0.0
+    assert two["direct_monte_carlo_joint_certification_probability"] == 0.5
+
+    three = aggregate_candidate_diagnostics(
+        component_pass_counts=(("quality", 90), ("safety", 80), ("execution", 70)),
+        total_replicates=100,
+        direct_joint_certification_count=63,
+    )
+    assert three["aggregate_independence_approximation"] == pytest.approx(0.504)
+    assert three["aggregate_union_bound_joint_lower_bound"] == pytest.approx(0.4)
+    assert three["direct_monte_carlo_joint_certification_probability"] == 0.63
+
+
+def test_aggregate_diagnostics_fail_closed_on_missing_or_duplicate_components() -> None:
+    with pytest.raises(ValueError, match="required"):
+        aggregate_candidate_diagnostics(
+            component_pass_counts=(),
+            total_replicates=100,
+            direct_joint_certification_count=0,
+        )
+    with pytest.raises(ValueError, match="duplicate"):
+        aggregate_candidate_diagnostics(
+            component_pass_counts=(("quality", 50), ("quality", 60)),
+            total_replicates=100,
+            direct_joint_certification_count=40,
+        )
+
+
+def test_confirmation_executor_fails_closed_on_candidate_or_component_scope_change(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    common = {
+        "at_least_one_safe_certification_probability": 0.0,
+        "false_certification_probability": 0.0,
+        "expected_certified_set_size": 0.0,
+        "safe_selection_probability": 0.0,
+        "unsafe_selection_probability": 0.0,
+        "no_selection_probability": 1.0,
+    }
+
+    def missing_candidate(**kwargs):
+        return {"candidate_results": [], **common}
+
+    monkeypatch.setattr(confirmation, "simulate_joint_power", missing_candidate)
+    with pytest.raises(ValueError, match="frozen safe family"):
+        run_confirmation_cell(
+            design_id="COMPONENT_PLANNING_COMPARATOR",
+            family=object(),
+            policy=object(),
+            core_n=1,
+            group_quotas={"majority": 1, "minority": 1},
+            group_prevalence={"majority": 0.9, "minority": 0.1},
+            safe_policy_ids=("safe",),
+            binary_alternatives={},
+            quality_slack=0.1,
+            dependence_condition="low",
+        )
+
+    calls = 0
+
+    def changing_components(**kwargs):
+        nonlocal calls
+        calls += 1
+        component = "quality" if calls == 1 else "safety"
+        return {
+            "candidate_results": [
+                {
+                    "policy_id": "safe",
+                    "marginal_component_powers": {component: 0},
+                    "monte_carlo_joint_power": 0.0,
+                }
+            ],
+            **common,
+        }
+
+    monkeypatch.setattr(confirmation, "simulate_joint_power", changing_components)
+    with pytest.raises(ValueError, match="component result set changed"):
+        run_confirmation_cell(
+            design_id="COMPONENT_PLANNING_COMPARATOR",
+            family=object(),
+            policy=object(),
+            core_n=1,
+            group_quotas={"majority": 1, "minority": 1},
+            group_prevalence={"majority": 0.9, "minority": 0.1},
+            safe_policy_ids=("safe",),
+            binary_alternatives={},
+            quality_slack=0.1,
+            dependence_condition="low",
+        )
 
 
 def test_protocol_freeze_hashes_are_enforced_with_synthetic_fixture(tmp_path: Path) -> None:
