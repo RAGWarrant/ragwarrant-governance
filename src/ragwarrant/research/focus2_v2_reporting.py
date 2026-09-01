@@ -182,7 +182,7 @@ def _validate_manifest(manifest: Mapping[str, object]) -> None:
         "target_drand_round_selected": False,
         "focus2_v2_config_hash": V2_CONFIG_CANONICAL_HASH,
         "focus2_v2_config_file_sha256": V2_CONFIG_FILE_SHA256,
-        "deployable_method_accessed_population_truth": False,
+        "truth_isolated_method_accessed_population_truth": False,
         "same_observed_evidence_object_shared_by_all_variants": True,
         "candidate_families_frozen_before_confirmatory_evidence": True,
         "post_hoc_filtered": False,
@@ -194,7 +194,7 @@ def _validate_manifest(manifest: Mapping[str, object]) -> None:
         if manifest.get(field) != expected:
             raise ValueError(f"Focus 2 v2 manifest {field} must equal {expected!r}")
     if manifest.get("truth_access_method_ids") != []:
-        raise ValueError("Focus 2 v2 deployable variants may not access truth")
+        raise ValueError("Focus 2 v2 truth-isolated variants may not access truth")
     variants = manifest.get("executed_method_variants")
     if not isinstance(variants, list) or len(variants) != 5:
         raise ValueError("Focus 2 v2 manifest must contain the five frozen variants")
@@ -215,8 +215,9 @@ def _validate_warrant_samples(samples: object) -> None:
             raise ValueError("warrant sample must be a mapping")
         required = {
             "method_id": expected_method_ids[variant_id],
-            "deployable": True,
-            "uses_population_truth": False,
+            "observed_evidence_only": True,
+            "truth_isolated": True,
+            "benchmark_control_only": False,
             "benchmark_freeze_digest": FOCUS1_FREEZE_DIGEST,
             "seed_schedule_version": SEED_SCHEDULE_VERSION,
             "full_profile_used": False,

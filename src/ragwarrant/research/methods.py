@@ -247,6 +247,7 @@ class NaivePointEstimate:
             ),
             deployable=True,
             uses_population_truth=False,
+            benchmark_control_only=True,
             diagnostics={
                 "evidence_hash": evidence.evidence_hash,
                 "failed_conditions": failed,
@@ -359,6 +360,7 @@ class CorrectedPairedBootstrapGate:
             ),
             deployable=True,
             uses_population_truth=False,
+            benchmark_control_only=True,
             diagnostics={"evidence_hash": evidence.evidence_hash, "candidates": diagnostics},
         )
 
@@ -418,24 +420,27 @@ def method_capabilities() -> tuple[MethodCapability, ...]:
             uses_population_truth=True,
             benchmark_control_only=True,
             status="supported_benchmark_control_only",
-            explanation="Uses confirmatory population truth and is excluded from deployable summaries.",
+            explanation="Uses confirmatory population truth and is excluded from truth-isolated summaries.",
         ),
         MethodCapability(
             method_id="naive_point_estimate",
             supported=True,
             deployable=True,
             uses_population_truth=False,
-            benchmark_control_only=False,
-            status="supported",
-            explanation="Applies configured gates to observed point estimates.",
+            benchmark_control_only=True,
+            status="supported_benchmark_control_only",
+            explanation=(
+                "Applies configured gates to observed point estimates; benchmark comparator "
+                "without a family-wise error-control claim."
+            ),
         ),
         MethodCapability(
             method_id="corrected_paired_bootstrap_gate",
             supported=True,
             deployable=True,
             uses_population_truth=False,
-            benchmark_control_only=False,
-            status="supported",
+            benchmark_control_only=True,
+            status="supported_benchmark_control_only",
             explanation=(
                 "Uses genuine replacement bootstrap lower bounds for paired quality and "
                 "one-sided Wilson upper bounds for binary risks; no family-wise claim."

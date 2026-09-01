@@ -24,8 +24,9 @@
     "enabled_risks",
     "operational_selection_objective",
     "diagnostics",
-    "deployable",
-    "uses_population_truth",
+    "observed_evidence_only",
+    "truth_isolated",
+    "benchmark_control_only",
     "benchmark_freeze_digest",
     "seed_schedule_version",
     "full_profile_used",
@@ -89,8 +90,9 @@
       }
     },
     "diagnostics": {"type": "object"},
-    "deployable": {"const": true},
-    "uses_population_truth": {"const": false},
+    "observed_evidence_only": {"const": true},
+    "truth_isolated": {"const": true},
+    "benchmark_control_only": {"const": false},
     "benchmark_freeze_digest": {
       "const": "c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e"
     },

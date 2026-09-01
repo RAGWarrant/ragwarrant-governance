@@ -64,7 +64,7 @@ from .simulator import (
     simulate_trial,
     validate_config,
 )
-from .types import MethodDecision, ScenarioTruth
+from .types import MethodDecision, ScenarioTruth, public_research_artifact
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
@@ -303,9 +303,7 @@ def _trial_row(
         "family_hash": family_hash,
         "component_hypothesis_count": component_count,
         "candidate_hypothesis_count": candidate_count,
-        "deployable": decision.deployable,
-        "uses_population_truth": decision.uses_population_truth,
-        "benchmark_control_only": decision.benchmark_control_only,
+        **decision.public_research_metadata(),
         "evidence_hash": evidence_hash,
         "development_evidence_hash": development_evidence_hash,
         "selected_policy_id": decision.selected_policy_id,
@@ -642,7 +640,7 @@ def run_focus2_v2_benchmark(
                         None,
                     )
                     if canonical_decision.uses_population_truth:
-                        raise ValueError("deployable v2 variant accessed population truth")
+                        raise ValueError("truth-isolated v2 variant accessed population truth")
 
                     if specification.variant_id == VARIANT_A_ID:
                         candidate_diagnostics, component_diagnostics = _collect_v1_diagnostics(
@@ -678,7 +676,7 @@ def run_focus2_v2_benchmark(
                         sampled_trial_rows.append(dict(row))
                     if specification.variant_id not in warrant_samples:
                         warrant_samples[specification.variant_id] = json.loads(
-                            canonical_json(warrant.as_dict())
+                            canonical_json(public_research_artifact(warrant.as_dict()))
                         )
 
                     diagnostic_retention_reason = _diagnostic_retention_reason(
@@ -782,9 +780,14 @@ def run_focus2_v2_benchmark(
         },
         "executed_method_ids": [item.method_id for item in specifications],
         "executed_method_variants": [item.as_dict() for item in specifications],
-        "deployable_method_ids": [item.method_id for item in specifications],
+        "observed_evidence_only_method_ids": [
+            item.method_id for item in specifications
+        ],
+        "truth_isolated_method_ids": [item.method_id for item in specifications],
+        "research_candidate_method_ids": [item.method_id for item in specifications],
+        "benchmark_control_method_ids": [],
         "truth_access_method_ids": [],
-        "deployable_method_accessed_population_truth": False,
+        "truth_isolated_method_accessed_population_truth": False,
         "same_observed_evidence_object_shared_by_all_variants": True,
         "candidate_families_frozen_before_confirmatory_evidence": True,
         "method_facing_identifiers": (

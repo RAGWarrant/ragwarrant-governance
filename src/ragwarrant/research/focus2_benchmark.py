@@ -57,7 +57,7 @@ from .simulator import (
     stable_seed,
     validate_config,
 )
-from .types import MethodDecision, ScenarioTruth
+from .types import MethodDecision, ScenarioTruth, public_research_artifact
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
@@ -273,9 +273,7 @@ def _trial_row(
             if is_warrant
             else None
         ),
-        "deployable": decision.deployable,
-        "uses_population_truth": decision.uses_population_truth,
-        "benchmark_control_only": decision.benchmark_control_only,
+        **decision.public_research_metadata(),
         "evidence_hash": evidence_hash,
         "development_evidence_hash": development_evidence_hash,
         "selected_policy_id": decision.selected_policy_id,
@@ -295,8 +293,9 @@ def run_focus2_benchmark(
     """Run the frozen benchmark plus both prespecified Focus 2 procedures.
 
     The exact same opaque ``ObservedEvidence`` instance is given to every
-    deployable method in one evidence trial. Population truth is used only by
-    the nondeployable oracle and by the frozen scorer after decisions return.
+    truth-isolated observed-evidence method in one evidence trial. Population
+    truth is used only by the oracle and by the frozen scorer after decisions
+    return.
     """
 
     if profile not in SUPPORTED_PROFILES:
@@ -333,11 +332,16 @@ def run_focus2_benchmark(
         for method_id in configured_methods
         if capabilities[method_id].supported
     )
-    deployable_baseline_ids = tuple(
+    truth_isolated_baseline_ids = tuple(
         method_id
         for method_id in baseline_ids
         if capabilities[method_id].deployable
         and not capabilities[method_id].uses_population_truth
+    )
+    benchmark_control_ids = tuple(
+        method_id
+        for method_id in baseline_ids
+        if capabilities[method_id].benchmark_control_only
     )
     procedures = tuple(str(item) for item in focus2_config["multiplicity_methods"])
     alpha = float(focus2_config["familywise_error_level"])
@@ -354,7 +358,7 @@ def run_focus2_benchmark(
     warrant_artifacts: dict[str, dict[str, object]] = {}
     warrant_artifact_trials: dict[str, str] = {}
     truth_access_decision_ids: set[str] = set()
-    deployable_truth_access_decision_ids: set[str] = set()
+    truth_isolation_violation_decision_ids: set[str] = set()
 
     scenarios = sorted(config["scenarios"], key=lambda item: str(item["scenario_id"]))
     for scenario in scenarios:
@@ -490,7 +494,7 @@ def run_focus2_benchmark(
                     decisions.append((canonical_decision, procedure))
                     if procedure not in warrant_artifacts:
                         warrant_artifacts[procedure] = json.loads(
-                            canonical_json(warrant.as_dict())
+                            canonical_json(public_research_artifact(warrant.as_dict()))
                         )
                         warrant_artifact_trials[procedure] = trial.trial_identity
 
@@ -498,7 +502,7 @@ def run_focus2_benchmark(
                     if decision.uses_population_truth:
                         truth_access_decision_ids.add(decision.method_id)
                     if decision.deployable and decision.uses_population_truth:
-                        deployable_truth_access_decision_ids.add(decision.method_id)
+                        truth_isolation_violation_decision_ids.add(decision.method_id)
                     scored = score_decision(truth, decision, run_policy)
                     row = _trial_row(
                         truth=truth,
@@ -525,7 +529,11 @@ def run_focus2_benchmark(
         {"method_id": WARRANT_METHOD_ID, "multiplicity_method": procedure}
         for procedure in procedures
     ]
-    deployable_ids = sorted(set(deployable_baseline_ids) | {WARRANT_METHOD_ID})
+    truth_isolated_ids = sorted(
+        set(truth_isolated_baseline_ids) | {WARRANT_METHOD_ID}
+    )
+    research_candidate_ids = [WARRANT_METHOD_ID]
+    all_benchmark_control_ids = sorted(set(benchmark_control_ids))
     manifest = {
         "benchmark_id": FOCUS2_BENCHMARK_ID,
         "focus1_benchmark_freeze_digest": FOCUS1_FREEZE_DIGEST,
@@ -564,12 +572,15 @@ def run_focus2_benchmark(
             set(baseline_ids) | {WARRANT_METHOD_ID}
         ),
         "executed_method_variants": method_variants,
-        "deployable_method_ids": deployable_ids,
+        "observed_evidence_only_method_ids": truth_isolated_ids,
+        "truth_isolated_method_ids": truth_isolated_ids,
+        "research_candidate_method_ids": research_candidate_ids,
+        "benchmark_control_method_ids": all_benchmark_control_ids,
         "truth_access_method_ids": sorted(truth_access_decision_ids),
-        "deployable_method_accessed_population_truth": bool(
-            deployable_truth_access_decision_ids
+        "truth_isolated_method_accessed_population_truth": bool(
+            truth_isolation_violation_decision_ids
         ),
-        "same_observed_evidence_object_shared_by_deployable_methods": True,
+        "same_observed_evidence_object_shared_by_truth_isolated_methods": True,
         "candidate_families_frozen_before_confirmatory_evidence": True,
         "method_facing_identifiers": (
             "opaque scenario and candidate IDs; canonical IDs restored only after "

@@ -119,16 +119,20 @@ def _report(
         "",
         "The confidence interval is a two-sided 95% Wilson interval for Monte Carlo trial-event estimation, not a candidate-risk interval.",
         "",
-        "| Scenario | Method | Deployable | Trials | False promotion | 95% MC interval | False certification | False block | Correct promotion |",
+        "| Scenario | Method | Research role | Trials | False promotion | 95% MC interval | False certification | False block | Correct promotion |",
         "|---|---|---:|---:|---:|---|---:|---:|---:|",
     ]
     for row in method_rows:
         interval = json.loads(str(row["false_promotion_rate_confidence_interval"]))
         lines.append(
-            "| {scenario} | {method} | {deployable} | {trials} | {false_promotion:.4f} | [{low:.4f}, {high:.4f}] | {false_certification:.4f} | {false_block:.4f} | {correct_promotion:.4f} |".format(
+            "| {scenario} | {method} | {role} | {trials} | {false_promotion:.4f} | [{low:.4f}, {high:.4f}] | {false_certification:.4f} | {false_block:.4f} | {correct_promotion:.4f} |".format(
                 scenario=row["scenario_id"],
                 method=row["method_id"],
-                deployable=str(bool(row["deployable"])).lower(),
+                role=(
+                    "benchmark_control"
+                    if bool(row["benchmark_control_only"])
+                    else "research_candidate"
+                ),
                 trials=row["trial_count"],
                 false_promotion=float(row["false_promotion_rate"]),
                 low=float(interval[0]),
@@ -143,7 +147,7 @@ def _report(
             "",
             "## Interpretation boundary",
             "",
-            "Negative, mixed, weak, and inconclusive results are retained. The oracle is a nondeployable truth-using control. The always-block method is a trivial control. Unsupported methods have no trial denominators.",
+            "Negative, mixed, weak, and inconclusive results are retained. The oracle is a truth-using benchmark control. The always-block method is a trivial control. Unsupported methods have no trial denominators.",
             "",
         ]
     )
@@ -157,7 +161,7 @@ This local research run measures repeated-trial governance correctness under syn
 
 It does not establish a novel theorem, universal method superiority, production readiness, human or clinical validation, official evaluator-platform performance, Learn-Then-Test novelty, conformal-risk novelty, sequential-testing novelty, or RAG Compass superiority.
 
-The oracle uses population truth, is nondeployable, and is excluded from deployable method IDs. The corrected paired-bootstrap gate is a benchmark baseline without a family-wise error-control claim. Monte Carlo Wilson intervals describe simulation estimation uncertainty, not uncertainty bounds used to certify a candidate.
+The oracle uses population truth and is excluded from truth-isolated method IDs. The naive point-estimate and corrected paired-bootstrap gates are benchmark controls without a family-wise error-control claim. They remain executed in scenario-level false-promotion and false-block comparisons. Monte Carlo Wilson intervals describe simulation estimation uncertainty, not uncertainty bounds used to certify a candidate. `research_only=true` and `production_integrated=false` for every method in this package.
 
 No scenario-specific result is pooled into a headline score, and `post_hoc_filtered` is false.
 """

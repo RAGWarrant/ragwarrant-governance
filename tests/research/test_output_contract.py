@@ -42,7 +42,7 @@ def test_required_local_output_contract(tmp_path: Path) -> None:
     assert all(path.is_file() and path.stat().st_size > 0 for path in paths)
     manifest = json.loads((paths[0]).read_text(encoding="utf-8"))
     assert manifest["post_hoc_filtered"] is False
-    assert manifest["deployable_method_accessed_population_truth"] is False
+    assert manifest["truth_isolated_method_accessed_population_truth"] is False
     assert manifest["complete"] is True
     assert manifest["seed_schedule_version"] == 2
     assert manifest["evidence_role"] == "developmental"
@@ -50,7 +50,11 @@ def test_required_local_output_contract(tmp_path: Path) -> None:
     assert manifest["full_confirmation_status"] == "PENDING_FUTURE_PUBLIC_BEACON_SEAL"
     assert manifest["full_master_seed_persisted"] is False
     assert manifest["full_evidence_generated"] is False
-    assert "oracle_safe_objective" not in manifest["deployable_method_ids"]
+    assert "oracle_safe_objective" not in manifest["truth_isolated_method_ids"]
+    assert "deployable_method_ids" not in manifest
+    assert "deployable" not in (paths[0].parent / "method_summary.csv").read_text(
+        encoding="utf-8"
+    ).splitlines()[0]
     assert set(manifest["output_integrity"]) == set(OUTPUT_FILENAMES[1:])
     for name, integrity in manifest["output_integrity"].items():
         payload = (paths[0].parent / name).read_bytes()

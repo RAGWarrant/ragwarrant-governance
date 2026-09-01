@@ -199,6 +199,22 @@ class MethodDecision:
     benchmark_control_only: bool = False
     diagnostics: Mapping[str, Any] = field(default_factory=dict)
 
+    def public_research_metadata(self) -> dict[str, bool]:
+        """Return public research-role flags without implying production approval.
+
+        ``deployable`` remains an internal compatibility flag for the original
+        method contract. Public artifacts use the explicit fields below.
+        """
+
+        truth_isolated = not self.uses_population_truth
+        return {
+            "observed_evidence_only": self.deployable and truth_isolated,
+            "truth_isolated": truth_isolated,
+            "benchmark_control_only": self.benchmark_control_only,
+            "research_only": True,
+            "production_integrated": False,
+        }
+
 
 @dataclass(frozen=True)
 class MethodCapability:
@@ -211,12 +227,38 @@ class MethodCapability:
     explanation: str
 
     def as_dict(self) -> dict[str, object]:
+        truth_isolated = self.supported and not self.uses_population_truth
         return {
             "method_id": self.method_id,
             "supported": self.supported,
-            "deployable": self.deployable,
-            "uses_population_truth": self.uses_population_truth,
+            "observed_evidence_only": self.deployable and truth_isolated,
+            "truth_isolated": truth_isolated,
             "benchmark_control_only": self.benchmark_control_only,
+            "research_only": True,
+            "production_integrated": False,
             "status": self.status,
             "explanation": self.explanation,
         }
+
+
+def public_research_artifact(
+    artifact: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Translate a legacy internal warrant mapping at the public output boundary."""
+
+    output = dict(artifact)
+    deployable = bool(output.pop("deployable", False))
+    uses_population_truth = bool(output.pop("uses_population_truth", False))
+    truth_isolated = not uses_population_truth
+    output.update(
+        {
+            "observed_evidence_only": deployable and truth_isolated,
+            "truth_isolated": truth_isolated,
+            "benchmark_control_only": bool(
+                output.get("benchmark_control_only", False)
+            ),
+            "research_only": True,
+            "production_integrated": False,
+        }
+    )
+    return output

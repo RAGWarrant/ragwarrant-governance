@@ -74,13 +74,15 @@ def test_all_variants_share_one_evidence_trial_hash(ci_result: dict[str, object]
         }
 
 
-def test_v2_deployable_methods_are_truth_isolated_and_full_drand_are_absent(
+def test_v2_research_candidates_are_truth_isolated_and_full_drand_are_absent(
     ci_result: dict[str, object],
 ) -> None:
     manifest = ci_result["manifest"]
     assert manifest["focus1_benchmark_freeze_digest"] == FOCUS1_FREEZE_DIGEST
     assert manifest["truth_access_method_ids"] == []
-    assert manifest["deployable_method_accessed_population_truth"] is False
+    assert manifest["truth_isolated_method_accessed_population_truth"] is False
+    assert manifest["research_candidate_method_ids"] == manifest["executed_method_ids"]
+    assert manifest["benchmark_control_method_ids"] == []
     assert manifest["same_observed_evidence_object_shared_by_all_variants"] is True
     assert manifest["candidate_families_frozen_before_confirmatory_evidence"] is True
     assert manifest["full_profile_used"] is False
@@ -210,6 +212,7 @@ def test_output_package_is_complete_local_and_contains_no_private_paths(
         text = path.read_text(encoding="utf-8")
         assert "C:\\Users\\" not in text
         assert "FULL_MASTER_SEED" not in text
+        assert '"deployable": true' not in text.lower()
 
 
 def test_output_method_summary_is_not_heterogeneously_aggregated(

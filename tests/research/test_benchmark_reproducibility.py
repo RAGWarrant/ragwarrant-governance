@@ -65,17 +65,39 @@ def test_every_executed_method_in_trial_uses_same_evidence_hash() -> None:
     assert all(len(hashes) == 1 for hashes in by_trial.values())
 
 
-def test_oracle_excluded_from_deployable_and_unsupported_has_no_denominator() -> None:
+def test_public_method_roles_and_unsupported_denominators_are_explicit() -> None:
     result = run_benchmark(_tiny_config(), "CI", master_seed=123)
     manifest = result["manifest"]
-    assert "oracle_safe_objective" not in manifest["deployable_method_ids"]
+    assert "oracle_safe_objective" not in manifest["truth_isolated_method_ids"]
     assert "current_ragwarrant_adapter" not in manifest["executed_method_ids"]
     assert manifest["truth_access_method_ids"] == ["oracle_safe_objective"]
-    assert manifest["deployable_method_accessed_population_truth"] is False
+    assert manifest["truth_isolated_method_accessed_population_truth"] is False
+    assert manifest["research_candidate_method_ids"] == []
+    assert {
+        "always_block",
+        "oracle_safe_objective",
+        "naive_point_estimate",
+        "corrected_paired_bootstrap_gate",
+    } == set(manifest["benchmark_control_method_ids"])
     assert all(
         row["method_id"] != "current_ragwarrant_adapter"
         for row in result["method_summary_rows"]
     )
+
+
+def test_reclassified_comparators_still_execute_and_produce_result_rows() -> None:
+    result = run_benchmark(_tiny_config(), "CI", master_seed=123)
+    comparator_ids = {"naive_point_estimate", "corrected_paired_bootstrap_gate"}
+    assert comparator_ids <= set(result["manifest"]["executed_method_ids"])
+    assert comparator_ids <= set(result["manifest"]["benchmark_control_method_ids"])
+    rows = [
+        row
+        for row in result["method_summary_rows"]
+        if row["method_id"] in comparator_ids
+    ]
+    assert {row["method_id"] for row in rows} == comparator_ids
+    assert all(row["trial_count"] > 0 for row in rows)
+    assert all(row["benchmark_control_only"] is True for row in rows)
 
 
 def test_aggregate_count_rate_identities_hold() -> None:

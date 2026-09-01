@@ -311,9 +311,11 @@ def _aggregate_rows(
             "base_scenario_id": truth.base_scenario_id,
             "family": truth.family,
             "method_id": method_id,
-            "deployable": bool(first["deployable"]),
-            "uses_population_truth": bool(first["uses_population_truth"]),
+            "observed_evidence_only": bool(first["observed_evidence_only"]),
+            "truth_isolated": bool(first["truth_isolated"]),
             "benchmark_control_only": bool(first["benchmark_control_only"]),
+            "research_only": bool(first["research_only"]),
+            "production_integrated": bool(first["production_integrated"]),
             "trial_count": trial_count,
         }
         for event in EVENT_FIELDS:
@@ -397,13 +399,24 @@ def _run_benchmark_core(
     supported_ids = tuple(
         method_id for method_id in configured_methods if capabilities[method_id].supported
     )
-    deployable_ids = tuple(
+    truth_isolated_ids = tuple(
         method_id
         for method_id in supported_ids
-        if capabilities[method_id].deployable and not capabilities[method_id].uses_population_truth
+        if capabilities[method_id].supported
+        and not capabilities[method_id].uses_population_truth
     )
-    if "oracle_safe_objective" in deployable_ids:
-        raise ValueError("oracle cannot be included in deployable method summaries")
+    if "oracle_safe_objective" in truth_isolated_ids:
+        raise ValueError("oracle cannot be included in truth-isolated method summaries")
+    research_candidate_ids = tuple(
+        method_id
+        for method_id in truth_isolated_ids
+        if not capabilities[method_id].benchmark_control_only
+    )
+    benchmark_control_ids = tuple(
+        method_id
+        for method_id in supported_ids
+        if capabilities[method_id].benchmark_control_only
+    )
 
     truth_rows: list[dict[str, object]] = []
     scenario_rows: list[dict[str, object]] = []
@@ -412,7 +425,7 @@ def _run_benchmark_core(
     truth_by_scenario: dict[str, ScenarioTruth] = {}
     evidence_hashes: dict[str, str] = {}
     truth_access_decision_ids: set[str] = set()
-    deployable_truth_access_decision_ids: set[str] = set()
+    truth_isolation_violation_decision_ids: set[str] = set()
 
     scenarios = sorted(config["scenarios"], key=lambda item: str(item["scenario_id"]))
     for scenario in scenarios:
@@ -497,7 +510,7 @@ def _run_benchmark_core(
                     if decision.uses_population_truth:
                         truth_access_decision_ids.add(decision.method_id)
                     if decision.deployable and decision.uses_population_truth:
-                        deployable_truth_access_decision_ids.add(decision.method_id)
+                        truth_isolation_violation_decision_ids.add(decision.method_id)
                     scored = score_decision(truth, decision, run_policy)
                     row: dict[str, object] = {
                         "scenario_id": truth.scenario_id,
@@ -510,9 +523,7 @@ def _run_benchmark_core(
                         "evidence_trial_identity": trial.trial_identity,
                         "seed_fingerprint": trial.seed_fingerprint,
                         "method_id": decision.method_id,
-                        "deployable": decision.deployable,
-                        "uses_population_truth": decision.uses_population_truth,
-                        "benchmark_control_only": decision.benchmark_control_only,
+                        **decision.public_research_metadata(),
                         "evidence_hash": evidence.evidence_hash,
                         "development_evidence_hash": development_evidence.evidence_hash,
                         "selected_policy_id": decision.selected_policy_id,
@@ -568,10 +579,13 @@ def _run_benchmark_core(
         },
         "method_capabilities": capabilities_list,
         "executed_method_ids": list(supported_ids),
-        "deployable_method_ids": list(deployable_ids),
+        "observed_evidence_only_method_ids": list(truth_isolated_ids),
+        "truth_isolated_method_ids": list(truth_isolated_ids),
+        "research_candidate_method_ids": list(research_candidate_ids),
+        "benchmark_control_method_ids": list(benchmark_control_ids),
         "truth_access_method_ids": sorted(truth_access_decision_ids),
-        "deployable_method_accessed_population_truth": bool(
-            deployable_truth_access_decision_ids
+        "truth_isolated_method_accessed_population_truth": bool(
+            truth_isolation_violation_decision_ids
         ),
         "method_facing_identifiers": "opaque scenario and candidate IDs; canonical IDs restored only after decision validation",
         "scenario_ids": list(scenario_ids),

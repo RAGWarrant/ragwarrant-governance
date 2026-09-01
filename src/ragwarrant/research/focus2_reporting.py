@@ -67,8 +67,9 @@ WARRANT_FIELDS = {
     "enabled_risks",
     "operational_selection_objective",
     "diagnostics",
-    "deployable",
-    "uses_population_truth",
+    "observed_evidence_only",
+    "truth_isolated",
+    "benchmark_control_only",
     "benchmark_freeze_digest",
     "seed_schedule_version",
     "full_profile_used",
@@ -215,8 +216,8 @@ def _validate_manifest(manifest: Mapping[str, object]) -> None:
         "full_evidence_generated": False,
         "full_results_inspected": False,
         "target_drand_round_selected": False,
-        "deployable_method_accessed_population_truth": False,
-        "same_observed_evidence_object_shared_by_deployable_methods": True,
+        "truth_isolated_method_accessed_population_truth": False,
+        "same_observed_evidence_object_shared_by_truth_isolated_methods": True,
         "candidate_families_frozen_before_confirmatory_evidence": True,
         "post_hoc_filtered": False,
         "scenario_results_aggregated_into_headline": False,
@@ -230,7 +231,7 @@ def _validate_manifest(manifest: Mapping[str, object]) -> None:
                 f"Focus 2 manifest {field} must equal {expected!r}"
             )
     if manifest.get("truth_access_method_ids") != ["oracle_safe_objective"]:
-        raise ValueError("only the nondeployable oracle may report population-truth access")
+        raise ValueError("only the truth-using oracle may report population-truth access")
 
 
 def _sha256_string(value: object, name: str) -> str:
@@ -264,8 +265,9 @@ def _validate_warrant_artifact(
         "status": "COMPLETED",
         "multiplicity_method": expected_procedure,
         "candidate_family_frozen": True,
-        "deployable": True,
-        "uses_population_truth": False,
+        "observed_evidence_only": True,
+        "truth_isolated": True,
+        "benchmark_control_only": False,
         "benchmark_freeze_digest": FOCUS1_FREEZE_DIGEST,
         "seed_schedule_version": SEED_SCHEDULE_VERSION,
         "full_profile_used": False,
@@ -406,7 +408,7 @@ def _claim_boundaries() -> str:
 
 This developmental research output does not establish a new statistical theorem, universal false-promotion control, production readiness, human or clinical validation, official evaluator-platform performance, RAG Compass superiority, or universal governance superiority.
 
-The fixed-sample warrant uses established exact-binomial, Hoeffding, Holm, and Bonferroni methods under stated bounded and independent-unit assumptions. `deployable=true` means only that the benchmark method is truth-isolated; it does not indicate production adoption. CI-v2 and LOCAL-v2 are developmental. FULL remains unexecuted; no target drand round has been selected, and the FULL seal has not started.
+The fixed-sample warrant uses established exact-binomial, Hoeffding, Holm, and Bonferroni methods under stated bounded and independent-unit assumptions. Public method metadata states `observed_evidence_only=true`, `truth_isolated=true`, `research_only=true`, and `production_integrated=false`; it does not indicate production adoption. CI-v2 and LOCAL-v2 are developmental. FULL remains unexecuted; no target drand round has been selected, and the FULL seal has not started.
 """
 
 

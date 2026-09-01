@@ -201,7 +201,7 @@ def test_simulator_called_once_and_family_frozen_before_sampling(
     ] is True
 
 
-def test_exact_same_opaque_evidence_object_reaches_all_deployable_methods(
+def test_exact_same_opaque_evidence_object_reaches_all_truth_isolated_methods(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     config = _tiny_config(replicate_count=1)
@@ -267,13 +267,13 @@ def test_exact_same_opaque_evidence_object_reaches_all_deployable_methods(
         for policy_id in item[3]
     )
     assert result["manifest"][
-        "same_observed_evidence_object_shared_by_deployable_methods"
+        "same_observed_evidence_object_shared_by_truth_isolated_methods"
     ] is True
     assert result["manifest"]["truth_access_method_ids"] == [
         "oracle_safe_objective"
     ]
     assert result["manifest"][
-        "deployable_method_accessed_population_truth"
+        "truth_isolated_method_accessed_population_truth"
     ] is False
 
 

@@ -17,7 +17,12 @@ from ragwarrant.research.fixed_sample_warrant import (
     freeze_candidate_family,
 )
 from ragwarrant.research.simulator import sha256_json
-from ragwarrant.research.types import EvidenceRow, ObservedEvidence, PolicyConfig
+from ragwarrant.research.types import (
+    EvidenceRow,
+    ObservedEvidence,
+    PolicyConfig,
+    public_research_artifact,
+)
 
 
 ALL_RISKS = (
@@ -337,12 +342,12 @@ def test_frozen_family_rejects_unknown_procedure_or_objective(
         _method(evidence, policy, **{argument: value})  # type: ignore[arg-type]
 
 
-def test_promotion_warrant_artifact_has_the_exact_public_fields() -> None:
+def test_promotion_warrant_public_artifact_has_explicit_research_role_fields() -> None:
     policy = _policy()
     evidence = _evidence({"candidate": 0.20})
     warrant = _method(evidence, policy).evaluate_warrant(evidence, policy)
 
-    artifact = warrant.as_dict()
+    artifact = public_research_artifact(warrant.as_dict())
 
     assert set(artifact) == {
         "schema_version",
@@ -364,8 +369,9 @@ def test_promotion_warrant_artifact_has_the_exact_public_fields() -> None:
         "enabled_risks",
         "operational_selection_objective",
         "diagnostics",
-        "deployable",
-        "uses_population_truth",
+        "observed_evidence_only",
+        "truth_isolated",
+        "benchmark_control_only",
         "benchmark_freeze_digest",
         "seed_schedule_version",
         "full_profile_used",
@@ -378,7 +384,11 @@ def test_promotion_warrant_artifact_has_the_exact_public_fields() -> None:
     assert artifact["seed_schedule_version"] == 2
     assert artifact["full_profile_used"] is False
     assert artifact["population_truth_accessed"] is False
+    assert artifact["observed_evidence_only"] is True
+    assert artifact["truth_isolated"] is True
+    assert artifact["benchmark_control_only"] is False
     assert artifact["production_integrated"] is False
+    assert "deployable" not in artifact
     assert set(artifact["risk_tests"][0]) == {
         "hypothesis_id",
         "policy_id",
@@ -398,7 +408,7 @@ def test_promotion_warrant_artifact_has_the_exact_public_fields() -> None:
     }
 
 
-def test_deployable_method_contract_has_no_population_truth_input() -> None:
+def test_observed_evidence_method_contract_has_no_population_truth_input() -> None:
     policy = _policy()
     evidence = _evidence({"candidate": 0.20})
     method = _method(evidence, policy)

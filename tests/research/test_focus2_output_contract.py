@@ -15,6 +15,7 @@ from ragwarrant.research.fixed_sample_warrant import (
     FrozenCandidateFamily,
 )
 from ragwarrant.research.focus2_reporting import OUTPUT_FILENAMES, write_focus2_outputs
+from ragwarrant.research.types import public_research_artifact
 
 
 def _artifact(procedure: str = HOLM) -> dict[str, object]:
@@ -50,7 +51,7 @@ def _artifact(procedure: str = HOLM) -> dict[str, object]:
         rejected=True,
         failure_reason=None,
     )
-    return PromotionWarrant(
+    return public_research_artifact(PromotionWarrant(
         decision="PROMOTE",
         decision_reason="fixture certification",
         family=family,
@@ -59,7 +60,7 @@ def _artifact(procedure: str = HOLM) -> dict[str, object]:
         selected_policy_id="policy_0001",
         risk_tests=(test,),
         candidate_summaries=(("policy_0001", {"mean_cost": 1.0, "mean_latency": 2.0}),),
-    ).as_dict()
+    ).as_dict())
 
 
 def _method_row(procedure: str = HOLM) -> dict[str, object]:
@@ -69,9 +70,11 @@ def _method_row(procedure: str = HOLM) -> dict[str, object]:
         "family": "FIXTURE",
         "method_id": "fixed_sample_multi_risk_warrant_v1",
         "multiplicity_method": procedure,
-        "deployable": True,
-        "uses_population_truth": False,
+        "observed_evidence_only": True,
+        "truth_isolated": True,
         "benchmark_control_only": False,
+        "research_only": True,
+        "production_integrated": False,
         "trial_count": 1,
         "false_promotion_count": 0,
         "false_promotion_rate": 0.0,
@@ -106,8 +109,8 @@ def _result() -> dict[str, object]:
             "full_evidence_generated": False,
             "full_results_inspected": False,
             "target_drand_round_selected": False,
-            "deployable_method_accessed_population_truth": False,
-            "same_observed_evidence_object_shared_by_deployable_methods": True,
+            "truth_isolated_method_accessed_population_truth": False,
+            "same_observed_evidence_object_shared_by_truth_isolated_methods": True,
             "candidate_families_frozen_before_confirmatory_evidence": True,
             "post_hoc_filtered": False,
             "scenario_results_aggregated_into_headline": False,
@@ -187,6 +190,7 @@ def test_outputs_contain_no_private_paths_or_secret_markers(tmp_path: Path) -> N
     assert "authorization: bearer" not in lowered
     assert "drand_target_round" not in lowered
     assert "full_seed" not in lowered
+    assert '"deployable": true' not in lowered
 
 
 def test_writer_does_not_modify_historical_artifacts_or_results(tmp_path: Path) -> None:
@@ -226,9 +230,9 @@ def test_writer_fails_closed_for_full_or_unrecognized_existing_output(tmp_path: 
         ("full_evidence_generated", True),
         ("full_results_inspected", True),
         ("target_drand_round_selected", True),
-        ("deployable_method_accessed_population_truth", True),
+        ("truth_isolated_method_accessed_population_truth", True),
         ("candidate_families_frozen_before_confirmatory_evidence", False),
-        ("same_observed_evidence_object_shared_by_deployable_methods", False),
+        ("same_observed_evidence_object_shared_by_truth_isolated_methods", False),
         ("post_hoc_filtered", True),
         ("scenario_results_aggregated_into_headline", True),
         ("focus2_config_hash", "0" * 64),
@@ -247,7 +251,8 @@ def test_writer_rejects_contradictory_manifest_provenance(
 @pytest.mark.parametrize(
     ("field", "invalid"),
     [
-        ("uses_population_truth", True),
+        ("truth_isolated", False),
+        ("observed_evidence_only", False),
         ("population_truth_accessed", True),
         ("full_profile_used", True),
         ("benchmark_freeze_digest", "0" * 64),
