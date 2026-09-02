@@ -1,0 +1,429 @@
+protocol_version: false_promotion_benchmark_v1
+seed_schedule_version: 2
+seed_schedule_amendment_id: FOCUS1-SEED-SCHEDULE-SEPARATION-001
+full_entropy_protocol: DRAND_QUICKNET_FUTURE_ROUND_V1
+full_entropy_amendment_id: FOCUS1-FULL-ENTROPY-DRAND-001
+full_confirmation_status: PENDING_FUTURE_PUBLIC_BEACON_SEAL
+retired_full_seed_status: FULL_SECRET_SEED_COMMITMENT_RETIRED_AGENT_ACCESSIBLE_CUSTODY
+master_seed: 20260829
+trial_sample_limit: 2
+
+profiles:
+  CI:
+    replicate_count: 24
+    bootstrap_resamples: 128
+  LOCAL:
+    replicate_count: 250
+    bootstrap_resamples: 500
+  FULL:
+    replicate_count: 5000
+    bootstrap_resamples: 2000
+
+methods:
+  - always_block
+  - oracle_safe_objective
+  - naive_point_estimate
+  - corrected_paired_bootstrap_gate
+  - current_ragwarrant_adapter
+
+policy:
+  quality_noninferiority_margin: 0.02
+  group_quality_noninferiority_margin: 0.03
+  max_safety_violation_probability: 0.05
+  max_execution_failure_probability: 0.03
+  max_insufficient_evidence_probability: 0.10
+  cost_weight: 1.0
+  latency_weight: 0.10
+  confidence_level: 0.95
+
+scenarios:
+  - scenario_id: all_unsafe_boundary
+    family: ALL_UNSAFE_BOUNDARY
+    sample_sizes: [64, 256]
+    enabled_risks: &all_risks
+      - overall_quality
+      - group_quality
+      - safety_violation_probability
+      - execution_failure_probability
+      - insufficient_evidence_probability
+    enabled_group_risks: []
+    groups: &standard_groups
+      - group_id: majority
+        prevalence: 0.8
+      - group_id: minority
+        prevalence: 0.2
+    incumbent: &standard_incumbent
+      quality_mean_by_group:
+        majority: 0.72
+        minority: 0.68
+    shared_outcome_fraction: &standard_shared_fraction
+      safety_violation_probability: 0.25
+      execution_failure_probability: 0.25
+      insufficient_evidence_probability: 0.25
+    noise: &standard_noise
+      quality_shared_half_width: 0.02
+      quality_candidate_half_width: 0.02
+      quality_delta_bounds: [-0.25, 0.25]
+      cost_shared_half_width: 0.04
+      cost_candidate_half_width: 0.04
+      latency_shared_half_width: 0.08
+      latency_candidate_half_width: 0.08
+    candidates:
+      - policy_id: unsafe_quality_boundary
+        development: &unsafe_quality_boundary
+          quality_delta_by_group: {majority: -0.021, minority: -0.021}
+          safety_violation_probability: 0.02
+          execution_failure_probability: 0.01
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.80
+          mean_latency: 1.20
+        confirmatory: *unsafe_quality_boundary
+      - policy_id: unsafe_group_boundary
+        development: &unsafe_group_boundary
+          quality_delta_by_group: {majority: 0.000, minority: -0.031}
+          safety_violation_probability: 0.02
+          execution_failure_probability: 0.01
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.76
+          mean_latency: 1.25
+        confirmatory: *unsafe_group_boundary
+      - policy_id: unsafe_safety_boundary
+        development: &unsafe_safety_boundary
+          quality_delta_by_group: {majority: 0.000, minority: 0.000}
+          safety_violation_probability: 0.051
+          execution_failure_probability: 0.01
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.72
+          mean_latency: 1.30
+        confirmatory: *unsafe_safety_boundary
+      - policy_id: unsafe_execution_boundary
+        development: &unsafe_execution_boundary
+          quality_delta_by_group: {majority: 0.000, minority: 0.000}
+          safety_violation_probability: 0.02
+          execution_failure_probability: 0.031
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.70
+          mean_latency: 1.35
+        confirmatory: *unsafe_execution_boundary
+
+  - scenario_id: one_clearly_safe
+    family: ONE_CLEARLY_SAFE
+    sample_sizes: [64, 256]
+    enabled_risks: *all_risks
+    enabled_group_risks: []
+    groups: *standard_groups
+    incumbent: *standard_incumbent
+    shared_outcome_fraction: *standard_shared_fraction
+    noise: *standard_noise
+    candidates:
+      - policy_id: clearly_safe
+        development: &clearly_safe
+          quality_delta_by_group: {majority: 0.030, minority: 0.025}
+          safety_violation_probability: 0.01
+          execution_failure_probability: 0.005
+          insufficient_evidence_probability: 0.03
+          mean_cost: 0.82
+          mean_latency: 1.15
+        confirmatory: *clearly_safe
+      - policy_id: inferior_quality
+        development: &inferior_quality
+          quality_delta_by_group: {majority: -0.050, minority: -0.050}
+          safety_violation_probability: 0.01
+          execution_failure_probability: 0.005
+          insufficient_evidence_probability: 0.03
+          mean_cost: 0.62
+          mean_latency: 1.00
+        confirmatory: *inferior_quality
+      - policy_id: excessive_safety_risk
+        development: &excessive_safety_risk
+          quality_delta_by_group: {majority: 0.010, minority: 0.010}
+          safety_violation_probability: 0.08
+          execution_failure_probability: 0.005
+          insufficient_evidence_probability: 0.03
+          mean_cost: 0.65
+          mean_latency: 1.05
+        confirmatory: *excessive_safety_risk
+      - policy_id: hidden_quality_harm
+        development: &hidden_quality_harm
+          quality_delta_by_group: {majority: 0.015, minority: -0.050}
+          safety_violation_probability: 0.01
+          execution_failure_probability: 0.005
+          insufficient_evidence_probability: 0.03
+          mean_cost: 0.68
+          mean_latency: 1.10
+        confirmatory: *hidden_quality_harm
+
+  - scenario_id: many_candidates_k12
+    family: MANY_CANDIDATES_MULTIPLICITY
+    sample_sizes: [64, 256]
+    enabled_risks: *all_risks
+    enabled_group_risks: []
+    groups: *standard_groups
+    incumbent: *standard_incumbent
+    shared_outcome_fraction:
+      safety_violation_probability: 0.10
+      execution_failure_probability: 0.10
+      insufficient_evidence_probability: 0.10
+    noise: *standard_noise
+    candidates:
+      - policy_id: k12_quality_01
+        development: &multi_quality_unsafe
+          quality_delta_by_group: {majority: -0.028, minority: -0.028}
+          safety_violation_probability: 0.02
+          execution_failure_probability: 0.01
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.60
+          mean_latency: 1.00
+        confirmatory: *multi_quality_unsafe
+      - {policy_id: k12_quality_02, development: *multi_quality_unsafe, confirmatory: *multi_quality_unsafe}
+      - {policy_id: k12_quality_03, development: *multi_quality_unsafe, confirmatory: *multi_quality_unsafe}
+      - {policy_id: k12_quality_04, development: *multi_quality_unsafe, confirmatory: *multi_quality_unsafe}
+      - policy_id: k12_safety_01
+        development: &multi_safety_unsafe
+          quality_delta_by_group: {majority: 0.005, minority: 0.005}
+          safety_violation_probability: 0.07
+          execution_failure_probability: 0.01
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.64
+          mean_latency: 1.05
+        confirmatory: *multi_safety_unsafe
+      - {policy_id: k12_safety_02, development: *multi_safety_unsafe, confirmatory: *multi_safety_unsafe}
+      - {policy_id: k12_safety_03, development: *multi_safety_unsafe, confirmatory: *multi_safety_unsafe}
+      - {policy_id: k12_safety_04, development: *multi_safety_unsafe, confirmatory: *multi_safety_unsafe}
+      - policy_id: k12_execution_01
+        development: &multi_execution_unsafe
+          quality_delta_by_group: {majority: 0.005, minority: 0.005}
+          safety_violation_probability: 0.02
+          execution_failure_probability: 0.05
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.66
+          mean_latency: 1.08
+        confirmatory: *multi_execution_unsafe
+      - {policy_id: k12_execution_02, development: *multi_execution_unsafe, confirmatory: *multi_execution_unsafe}
+      - {policy_id: k12_execution_03, development: *multi_execution_unsafe, confirmatory: *multi_execution_unsafe}
+      - policy_id: k12_safe
+        development: &multi_safe
+          quality_delta_by_group: {majority: 0.020, minority: 0.020}
+          safety_violation_probability: 0.01
+          execution_failure_probability: 0.005
+          insufficient_evidence_probability: 0.02
+          mean_cost: 0.88
+          mean_latency: 1.30
+        confirmatory: *multi_safe
+
+  - scenario_id: many_candidates_k24
+    family: MANY_CANDIDATES_MULTIPLICITY
+    sample_sizes: [64, 256]
+    enabled_risks: *all_risks
+    enabled_group_risks: []
+    groups: *standard_groups
+    incumbent: *standard_incumbent
+    shared_outcome_fraction:
+      safety_violation_probability: 0.10
+      execution_failure_probability: 0.10
+      insufficient_evidence_probability: 0.10
+    noise: *standard_noise
+    candidates:
+      - {policy_id: k24_quality_01, development: *multi_quality_unsafe, confirmatory: *multi_quality_unsafe}
+      - {policy_id: k24_quality_02, development: *multi_quality_unsafe, confirmatory: *multi_quality_unsafe}
+      - {policy_id: k24_quality_03, development: *multi_quality_unsafe, confirmatory: *multi_quality_unsafe}
+      - {policy_id: k24_quality_04, development: *multi_quality_unsafe, confirmatory: *multi_quality_unsafe}
+      - {policy_id: k24_quality_05, development: *multi_quality_unsafe, confirmatory: *multi_quality_unsafe}
+      - {policy_id: k24_quality_06, development: *multi_quality_unsafe, confirmatory: *multi_quality_unsafe}
+      - {policy_id: k24_quality_07, development: *multi_quality_unsafe, confirmatory: *multi_quality_unsafe}
+      - {policy_id: k24_quality_08, development: *multi_quality_unsafe, confirmatory: *multi_quality_unsafe}
+      - {policy_id: k24_safety_01, development: *multi_safety_unsafe, confirmatory: *multi_safety_unsafe}
+      - {policy_id: k24_safety_02, development: *multi_safety_unsafe, confirmatory: *multi_safety_unsafe}
+      - {policy_id: k24_safety_03, development: *multi_safety_unsafe, confirmatory: *multi_safety_unsafe}
+      - {policy_id: k24_safety_04, development: *multi_safety_unsafe, confirmatory: *multi_safety_unsafe}
+      - {policy_id: k24_safety_05, development: *multi_safety_unsafe, confirmatory: *multi_safety_unsafe}
+      - {policy_id: k24_safety_06, development: *multi_safety_unsafe, confirmatory: *multi_safety_unsafe}
+      - {policy_id: k24_safety_07, development: *multi_safety_unsafe, confirmatory: *multi_safety_unsafe}
+      - {policy_id: k24_safety_08, development: *multi_safety_unsafe, confirmatory: *multi_safety_unsafe}
+      - {policy_id: k24_execution_01, development: *multi_execution_unsafe, confirmatory: *multi_execution_unsafe}
+      - {policy_id: k24_execution_02, development: *multi_execution_unsafe, confirmatory: *multi_execution_unsafe}
+      - {policy_id: k24_execution_03, development: *multi_execution_unsafe, confirmatory: *multi_execution_unsafe}
+      - {policy_id: k24_execution_04, development: *multi_execution_unsafe, confirmatory: *multi_execution_unsafe}
+      - {policy_id: k24_execution_05, development: *multi_execution_unsafe, confirmatory: *multi_execution_unsafe}
+      - {policy_id: k24_execution_06, development: *multi_execution_unsafe, confirmatory: *multi_execution_unsafe}
+      - {policy_id: k24_execution_07, development: *multi_execution_unsafe, confirmatory: *multi_execution_unsafe}
+      - {policy_id: k24_safe, development: *multi_safe, confirmatory: *multi_safe}
+
+  - scenario_id: dependent_candidates
+    family: DEPENDENT_CANDIDATES
+    sample_sizes: [64, 256]
+    enabled_risks: *all_risks
+    enabled_group_risks: []
+    groups: *standard_groups
+    incumbent: *standard_incumbent
+    shared_outcome_fraction:
+      safety_violation_probability: 0.85
+      execution_failure_probability: 0.85
+      insufficient_evidence_probability: 0.85
+    noise:
+      quality_shared_half_width: 0.035
+      quality_candidate_half_width: 0.005
+      quality_delta_bounds: [-0.25, 0.25]
+      cost_shared_half_width: 0.07
+      cost_candidate_half_width: 0.01
+      latency_shared_half_width: 0.14
+      latency_candidate_half_width: 0.02
+    candidates:
+      - policy_id: dependent_safe_01
+        development: &dependent_safe
+          quality_delta_by_group: {majority: 0.020, minority: 0.015}
+          safety_violation_probability: 0.02
+          execution_failure_probability: 0.01
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.84
+          mean_latency: 1.20
+        confirmatory: *dependent_safe
+      - {policy_id: dependent_safe_02, development: *dependent_safe, confirmatory: *dependent_safe}
+      - policy_id: dependent_quality_01
+        development: &dependent_quality
+          quality_delta_by_group: {majority: -0.025, minority: -0.025}
+          safety_violation_probability: 0.02
+          execution_failure_probability: 0.01
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.68
+          mean_latency: 1.10
+        confirmatory: *dependent_quality
+      - {policy_id: dependent_quality_02, development: *dependent_quality, confirmatory: *dependent_quality}
+      - policy_id: dependent_risk_01
+        development: &dependent_risk
+          quality_delta_by_group: {majority: 0.005, minority: 0.005}
+          safety_violation_probability: 0.065
+          execution_failure_probability: 0.01
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.70
+          mean_latency: 1.05
+        confirmatory: *dependent_risk
+      - {policy_id: dependent_risk_02, development: *dependent_risk, confirmatory: *dependent_risk}
+
+  - scenario_id: hidden_group_regression
+    family: HIDDEN_GROUP_REGRESSION
+    sample_sizes: [64, 256]
+    enabled_risks: *all_risks
+    enabled_group_risks: [safety_violation_probability]
+    groups:
+      - group_id: majority
+        prevalence: 0.9
+      - group_id: minority
+        prevalence: 0.1
+    incumbent: *standard_incumbent
+    shared_outcome_fraction: *standard_shared_fraction
+    noise: *standard_noise
+    candidates:
+      - policy_id: average_pass_group_fail
+        development: &average_pass_group_fail
+          quality_delta_by_group: {majority: 0.012, minority: -0.040}
+          safety_violation_probability: {majority: 0.01, minority: 0.15}
+          execution_failure_probability: 0.01
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.62
+          mean_latency: 1.00
+        confirmatory: *average_pass_group_fail
+      - policy_id: group_safe_reference
+        development: &group_safe_reference
+          quality_delta_by_group: {majority: 0.008, minority: 0.008}
+          safety_violation_probability: 0.01
+          execution_failure_probability: 0.01
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.86
+          mean_latency: 1.25
+        confirmatory: *group_safe_reference
+      - {policy_id: group_unsafe_quality, development: *inferior_quality, confirmatory: *inferior_quality}
+      - {policy_id: group_unsafe_safety, development: *excessive_safety_risk, confirmatory: *excessive_safety_risk}
+
+  - scenario_id: development_confirmatory_shift
+    family: DEVELOPMENT_CONFIRMATORY_SHIFT
+    sample_sizes: [64, 256]
+    enabled_risks: *all_risks
+    enabled_group_risks: []
+    groups: *standard_groups
+    incumbent: *standard_incumbent
+    shared_outcome_fraction: *standard_shared_fraction
+    noise: *standard_noise
+    candidates:
+      - policy_id: shifted_candidate
+        development:
+          quality_delta_by_group: {majority: 0.025, minority: 0.020}
+          safety_violation_probability: 0.01
+          execution_failure_probability: 0.005
+          insufficient_evidence_probability: 0.03
+          mean_cost: 0.64
+          mean_latency: 1.00
+        confirmatory:
+          quality_delta_by_group: {majority: -0.030, minority: -0.045}
+          safety_violation_probability: 0.08
+          execution_failure_probability: 0.04
+          insufficient_evidence_probability: 0.12
+          mean_cost: 0.68
+          mean_latency: 1.08
+      - policy_id: stable_safe_candidate
+        development: &stable_safe_candidate
+          quality_delta_by_group: {majority: 0.015, minority: 0.015}
+          safety_violation_probability: 0.01
+          execution_failure_probability: 0.005
+          insufficient_evidence_probability: 0.03
+          mean_cost: 0.84
+          mean_latency: 1.20
+        confirmatory: *stable_safe_candidate
+      - {policy_id: shifted_unsafe_quality, development: *multi_quality_unsafe, confirmatory: *multi_quality_unsafe}
+      - {policy_id: shifted_unsafe_risk, development: *multi_safety_unsafe, confirmatory: *multi_safety_unsafe}
+
+  - scenario_id: multiple_safe_candidates
+    family: MULTIPLE_SAFE_CANDIDATES
+    sample_sizes: [64, 256]
+    enabled_risks: *all_risks
+    enabled_group_risks: []
+    groups: *standard_groups
+    incumbent: *standard_incumbent
+    shared_outcome_fraction: *standard_shared_fraction
+    noise: *standard_noise
+    candidates:
+      - policy_id: safe_low_cost
+        development: &safe_low_cost
+          quality_delta_by_group: {majority: 0.012, minority: 0.012}
+          safety_violation_probability: 0.02
+          execution_failure_probability: 0.01
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.58
+          mean_latency: 1.80
+        confirmatory: *safe_low_cost
+      - policy_id: safe_low_latency
+        development: &safe_low_latency
+          quality_delta_by_group: {majority: 0.010, minority: 0.010}
+          safety_violation_probability: 0.02
+          execution_failure_probability: 0.01
+          insufficient_evidence_probability: 0.04
+          mean_cost: 0.78
+          mean_latency: 0.75
+        confirmatory: *safe_low_latency
+      - policy_id: safe_balanced
+        development: &safe_balanced
+          quality_delta_by_group: {majority: 0.018, minority: 0.018}
+          safety_violation_probability: 0.01
+          execution_failure_probability: 0.005
+          insufficient_evidence_probability: 0.03
+          mean_cost: 0.64
+          mean_latency: 1.05
+        confirmatory: *safe_balanced
+      - policy_id: unsafe_cheap
+        development: &unsafe_cheap
+          quality_delta_by_group: {majority: -0.040, minority: -0.040}
+          safety_violation_probability: 0.01
+          execution_failure_probability: 0.005
+          insufficient_evidence_probability: 0.03
+          mean_cost: 0.42
+          mean_latency: 0.90
+        confirmatory: *unsafe_cheap
+      - policy_id: unsafe_fast
+        development: &unsafe_fast
+          quality_delta_by_group: {majority: 0.005, minority: -0.045}
+          safety_violation_probability: 0.07
+          execution_failure_probability: 0.005
+          insufficient_evidence_probability: 0.03
+          mean_cost: 0.55
+          mean_latency: 0.55
+        confirmatory: *unsafe_fast

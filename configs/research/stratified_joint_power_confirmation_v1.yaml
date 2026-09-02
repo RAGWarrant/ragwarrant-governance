@@ -1,0 +1,90 @@
+schema_version: ragwarrant_stratified_joint_power_confirmation_v1
+protocol_id: STRATIFIED_JOINT_POWER_CONFIRMATION_V1
+focus1_digest: c771afc2428e50f63e29ed29e603c0e3ab3e6355c17e3ba72694b5b8f411212e
+v1_baseline_commit: bf3b3331b623afbdaed295919b3ac945c10692f6
+research_only: true
+planning_only: true
+execution_authorized: false
+evidence_collected: false
+full_executed: false
+drand_round_selected: false
+
+frozen_parent:
+  config: configs/research/stratified_joint_warrant_power_v1.yaml
+  config_sha256: 087cbb7273c4d9869c0011b966cd0614606960046e5c2ba598a1893226a677b2
+  implementation: src/ragwarrant/research/stratified_joint_power.py
+  implementation_sha256: 9101048d30a5cfc758fca029dc44ce21603d9406f9929ab02859d6f112e72f4d
+  frozen_values:
+    candidate_family: parent
+    risks: parent
+    thresholds: parent
+    margins: parent
+    group_structure: parent
+    sampling_contract: parent
+    warrant_implementation: parent
+    planning_alternatives: parent
+    cost_assumptions: parent
+
+designs:
+  - id: COMPONENT_PLANNING_COMPARATOR
+    core_n: 1383
+    group_quota: 826
+  - id: SELECTED_JOINT_PLANNING_CANDIDATE
+    core_n: 1720
+    group_quota: 1028
+
+dependence_conditions:
+  low: 0.0
+  medium: 0.5
+  high: 0.9
+
+replicates_per_design_dependence_cell: 1000
+cell_count: 6
+total_replicates: 6000
+
+seed_schedule:
+  algorithm: two-stage SHA-256; canonical identity to unsigned 64-bit adapter seed, then preserved simulator deterministic seed fold
+  public_master_seed: 1554387201
+  identity_format: STRATIFIED_JOINT_POWER_CONFIRMATION_V1|{design_id}|{dependence_condition}|{replicate_index}
+  authoritative_identity_fields:
+    - protocol_version
+    - design_id
+    - dependence_condition
+    - replicate_index
+  python_builtin_hash_permitted: false
+  namespace_separation: identity prefix is unique from prior CI, prior LOCAL, original FULL, and any future sealed stratified confirmation
+  simulator_call_per_identity: one call with replicates=1
+  simulator_internal_replicate_index: 0
+
+frozen_executor:
+  implementation: src/ragwarrant/research/joint_power_confirmation.py
+  implementation_sha256: d86f10a0d0267a170c40c01d912ca625e906244ef3f7ecfdc4ada82ebf5c8164
+  runner: scripts/run_joint_power_confirmation.py
+  runner_sha256: a33d423771353d7daf69fdda631ee64fbde6c600714335bff726e724ed3696a6
+  focused_tests: tests/research/test_joint_power_confirmation.py
+  focused_tests_sha256: a76ea9bfac13a433d81b72756dbe7d795f26f911d38c6e19e162f5a2e3f39fab
+
+monte_carlo_interval:
+  method: Wilson
+  confidence: 0.95
+  interpretation: planning-simulation uncertainty only
+
+interpretation:
+  targets: [0.80, 0.90]
+  relevant_estimand: probability_at_least_one_safe_candidate_certifies
+  labels:
+    lower_bound_at_least_0_80: PLANNING_SUPPORTS_80_PERCENT
+    lower_bound_at_least_0_90: PLANNING_SUPPORTS_90_PERCENT
+    point_estimate_only: PLANNING_POINT_ESTIMATE_ONLY
+    point_estimate_below_target: PLANNING_TARGET_NOT_SUPPORTED
+  conditional_only: true
+  real_world_power_guarantee: false
+
+outputs:
+  root: .local_data/research_review/joint_power_confirmation_v1
+  files:
+    - confirmation_manifest.json
+    - design_results.csv
+    - candidate_results.csv
+    - cost_results.csv
+    - confirmation_report.md

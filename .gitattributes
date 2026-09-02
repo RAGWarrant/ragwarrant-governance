@@ -4,5 +4,9 @@
 *.zip filter=lfs diff=lfs merge=lfs -text
 *.tar.gz filter=lfs diff=lfs merge=lfs -text
 *.jsonl filter=lfs diff=lfs merge=lfs -text
+configs/research/fixed_sample_multi_risk_warrant_v2.yaml whitespace=-blank-at-eof
+configs/research/fixed_sample_multi_risk_warrant_v2_iut_holm.yaml whitespace=-blank-at-eof
+docs/research/operational_contract_template.md whitespace=-blank-at-eof
+src/ragwarrant/research/joint_power_confirmation.py whitespace=-blank-at-eof
 *.pdf binary
 *.docx binary

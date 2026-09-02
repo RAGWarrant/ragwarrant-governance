@@ -4,15 +4,42 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: false
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install --require-hashes -r requirements-dev.lock
-      - run: pip install -e .
+      - run: python -m pip install --require-hashes -r requirements-dev.lock
+      - run: python -m pip install -e .
+      - run: python -m compileall src scripts
       - run: python scripts/validate_publication_bundle.py
-      - run: pytest -q tests/publication
+      - run: python -m pytest -q tests/publication
+      - run: python -m pytest -q tests/research
+      - name: Check changed-line whitespace
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PUSH_BEFORE_SHA: ${{ github.event.before }}
+          PUSH_HEAD_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          zero_sha=0000000000000000000000000000000000000000
+          if [[ "$EVENT_NAME" == "pull_request" && -n "$PR_BASE_SHA" && -n "$PR_HEAD_SHA" ]]; then
+            git diff --check "$PR_BASE_SHA...$PR_HEAD_SHA"
+          elif [[ -n "$PUSH_BEFORE_SHA" && "$PUSH_BEFORE_SHA" != "$zero_sha" ]]; then
+            git diff --check "$PUSH_BEFORE_SHA..$PUSH_HEAD_SHA"
+          else
+            git diff-tree --check --root -r HEAD
+          fi
