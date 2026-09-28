@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "OWNERSHIP_GATE_BLOCKED_PENDING_HUMAN_IP_REVIEW",
+  "public_repository": "https://github.com/RAGWarrant/ragwarrant-governance",
+  "repository_owner": "RAGWarrant",
+  "default_branch": "main",
+  "visibility": "public",
+  "starting_main_sha": "b0b3ea388f39c007f6760b2943aadd49184fdeeb",
+  "approved_ownership_attestation_present": false,
+  "copyright_owner_asserted": "RAGWarrant contributors",
+  "trademark_owner_asserted": null,
+  "commercial_licensing_authority_asserted": null,
+  "contributors_from_shortlog": [
+    {"commits": 28, "name": "Zach Pocquette", "email": "41841782+zachpocket@users.noreply.github.com"},
+    {"commits": 22, "name": "Legacy-branded predecessor identity A", "email": "redacted_legacy_branded_email"},
+    {"commits": 21, "name": "Advanced Idea Manufacturing", "email": "redacted_legacy_branded_email"},
+    {"commits": 18, "name": "RAGWarrant", "email": "322547233+RAGWarrant@users.noreply.github.com"},
+    {"commits": 7, "name": "AIMIPFactory", "email": "aimipfactory@wikiwoos-Mac-mini.local"},
+    {"commits": 4, "name": "Legacy-branded predecessor identity B", "email": "redacted_legacy_branded_noreply_email"},
+    {"commits": 3, "name": "Advanced Idea Manufacturing", "email": "aimipfactory+ragwarrant@gmail.com"},
+    {"commits": 1, "name": "github-actions[bot]", "email": "41898282+github-actions[bot]@users.noreply.github.com"}
+  ],
+  "blocked_operations": [
+    "company copyright-owner assertion",
+    "trademark-owner assertion",
+    "exclusive commercial-rights assertion",
+    "private proprietary enterprise repository creation",
+    "executed EULA or indemnification representation"
+  ]
+}
