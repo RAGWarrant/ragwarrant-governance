@@ -1,6 +1,3 @@
-# Copyright 2026 RAGWarrant contributors
-# SPDX-License-Identifier: Apache-2.0
-
 """Research-only governance benchmarks.
 
 This namespace is intentionally isolated from the public promotion decision path.

@@ -1,6 +1,3 @@
-# Copyright 2026 RAGWarrant contributors
-# SPDX-License-Identifier: Apache-2.0
-
 """Additive Focus 2 v2 intersection-union fixed-sample warrant.
 
 V1 remains the exact committed baseline.  This module reuses its frozen family,

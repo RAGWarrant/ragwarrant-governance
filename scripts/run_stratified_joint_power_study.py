@@ -1,7 +1,4 @@
 #!/usr/bin/env python3
-# Copyright 2026 RAGWarrant contributors
-# SPDX-License-Identifier: Apache-2.0
-
 """Run the planning-only stratified joint-warrant power study."""
 
 from __future__ import annotations

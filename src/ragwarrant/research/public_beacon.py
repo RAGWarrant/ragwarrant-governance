@@ -1,6 +1,3 @@
-# Copyright 2026 RAGWarrant contributors
-# SPDX-License-Identifier: Apache-2.0
-
 """Fail-closed FULL boundary for the scientific-core review branch.
 
 PR A needs stable seed-schedule constants and freeze-manifest hashing, but it

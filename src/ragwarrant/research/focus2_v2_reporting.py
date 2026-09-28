@@ -1,6 +1,3 @@
-# Copyright 2026 RAGWarrant contributors
-# SPDX-License-Identifier: Apache-2.0
-
 """Atomic research-local reporting for the Focus 2 v2 ablation."""
 
 from __future__ import annotations

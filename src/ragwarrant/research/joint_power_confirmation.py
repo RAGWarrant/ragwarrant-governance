@@ -1,6 +1,3 @@
-# Copyright 2026 RAGWarrant contributors
-# SPDX-License-Identifier: Apache-2.0
-
 """Independent planning confirmation for two frozen stratified designs.
 
 This module is an additive orchestration layer. It derives an immutable seed

@@ -1,6 +1,3 @@
-# Copyright 2026 RAGWarrant contributors
-# SPDX-License-Identifier: Apache-2.0
-
 """Diagnostic-only Focus 2 power audit and named IUT-Holm comparison.
 
 The module is additive.  It reuses the frozen v1 component tests through the

@@ -1,6 +1,3 @@
-# Copyright 2026 RAGWarrant contributors
-# SPDX-License-Identifier: Apache-2.0
-
 """Tracked-contract benchmark adapter for the developmental Focus 2 warrant.
 
 This module is intentionally version-locked to the tracked Focus 1 benchmark.

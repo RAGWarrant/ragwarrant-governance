@@ -26,7 +26,21 @@ SOURCE_PREFIXES = (
     "tests/",
     "deploy/",
 )
-EXCLUDED_PREFIXES = ("scripts/__pycache__/",)
+EXCLUDED_PREFIXES = (
+    "scripts/__pycache__/",
+    "src/ragwarrant/research/",
+    "tests/research/",
+)
+EXCLUDED_FILES = {
+    "scripts/generate_seed_schedule_v2_manifest.py",
+    "scripts/run_evidence_budget_study.py",
+    "scripts/run_false_promotion_benchmark.py",
+    "scripts/run_fixed_sample_warrant_benchmark.py",
+    "scripts/run_fixed_sample_warrant_v2_benchmark.py",
+    "scripts/run_focus2_power_feasibility_audit.py",
+    "scripts/run_joint_power_confirmation.py",
+    "scripts/run_stratified_joint_power_study.py",
+}
 
 
 def tracked_files() -> list[Path]:
@@ -42,6 +56,8 @@ def tracked_files() -> list[Path]:
 
 def is_source(path: Path) -> bool:
     rel = path.relative_to(ROOT).as_posix()
+    if rel in EXCLUDED_FILES:
+        return False
     if any(rel.startswith(prefix) for prefix in EXCLUDED_PREFIXES):
         return False
     if not any(rel.startswith(prefix) for prefix in SOURCE_PREFIXES):
