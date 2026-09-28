@@ -1,4 +1,4 @@
-.PHONY: setup test reproduce-crag reproduce-multihop reproduce-public-mini tables figures validate-brand validate-publication validate-deployment-readiness docker-build docker-validate docker-run-public-mini docker-compose-public-mini docker-run-external-evaluator-demo clean
+.PHONY: setup test reproduce-crag reproduce-multihop reproduce-public-mini tables figures validate-brand validate-open-core validate-publication validate-deployment-readiness docker-build docker-validate docker-run-public-mini docker-compose-public-mini docker-run-external-evaluator-demo clean
 
 setup:
 	pip install --require-hashes -r requirements-dev.lock
@@ -30,9 +30,15 @@ figures:
 validate-brand:
 	python scripts/validate_brand_consistency.py
 
+validate-open-core:
+	python scripts/validate_license_headers.py
+	python scripts/validate_open_core_boundary.py
+
 validate-publication:
 	python scripts/validate_publication_bundle.py
 	python scripts/validate_brand_consistency.py
+	python scripts/validate_license_headers.py
+	python scripts/validate_open_core_boundary.py
 
 validate-deployment-readiness:
 	python scripts/validate_deployment_readiness.py --config configs/experiments/ragwarrant_deployment_readiness_v1.yaml --output-root artifacts/deployment_readiness --force

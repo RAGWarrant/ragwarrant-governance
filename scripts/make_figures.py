@@ -1,3 +1,6 @@
+# Copyright 2026 RAGWarrant contributors
+# SPDX-License-Identifier: Apache-2.0
+
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]

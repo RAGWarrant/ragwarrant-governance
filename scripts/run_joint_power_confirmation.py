@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Copyright 2026 RAGWarrant contributors
+# SPDX-License-Identifier: Apache-2.0
+
 """Run the frozen STRATIFIED_JOINT_POWER_CONFIRMATION_V1 protocol."""
 
 from __future__ import annotations

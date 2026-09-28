@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Copyright 2026 RAGWarrant contributors
+# SPDX-License-Identifier: Apache-2.0
+
 set -euo pipefail
 
 CRAG_RAW_DIR="${CRAG_RAW_DIR:-/data/crag/raw}"

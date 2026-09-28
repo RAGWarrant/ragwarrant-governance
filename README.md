@@ -190,6 +190,10 @@ This repository does not claim:
 
 This repository does not include raw CRAG datasets, raw CRAG question text, raw source documents, or raw API responses. It includes processed metrics, IDs, hashes, configuration files, and sanitized summaries. See `docs/crag_query_text_sanitization.md`.
 
+## Open-Core Model
+
+RAGWarrant Community/Core remains Apache-2.0 and includes the public governance engine, CLI, schemas, generic evaluator contracts, artifact-integrity checks, public-mini reproduction, and vendor-neutral deployment templates. Enterprise software and commercial services, if offered, are separate offerings and do not remove Apache-2.0 rights already granted for the Community/Core code. See `docs/product/OPEN_CORE_ARCHITECTURE.md`, `COMMERCIAL.md`, and `SUPPORT.md`.
+
 ## Testing Status
 
 Latest packaged status from the source repository:
@@ -236,6 +240,19 @@ See `CITATION.cff`.
 
 Code in this repository is released under Apache-2.0 unless otherwise noted. Dataset licenses remain governed by their original providers.
 
+Related governance and policy files:
+
+- `LICENSE`
+- `NOTICE`
+- `TRADEMARKS.md`
+- `GOVERNANCE.md`
+- `COMMERCIAL.md`
+- `SUPPORT.md`
+- `CONTRIBUTING.md`
+- `CLA.md`
+
 ## Maintainer
 
-Maintainer placeholder: RAGWarrant.
+Project steward: pending documented governance approval.
+
+Copyright ownership, trademark ownership, and commercial licensing authority remain pending human/legal review. See `docs/legal/IP_PROVENANCE_REVIEW.md` and `docs/legal/RIGHTSHOLDER_AND_STEWARD.md`.

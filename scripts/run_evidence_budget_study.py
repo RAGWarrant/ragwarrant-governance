@@ -1,3 +1,6 @@
+# Copyright 2026 RAGWarrant contributors
+# SPDX-License-Identifier: Apache-2.0
+
 """Generate the pre-confirmatory RAGWarrant evidence-budget study."""
 
 from __future__ import annotations

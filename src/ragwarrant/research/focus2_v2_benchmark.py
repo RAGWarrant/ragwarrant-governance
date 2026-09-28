@@ -1,3 +1,6 @@
+# Copyright 2026 RAGWarrant contributors
+# SPDX-License-Identifier: Apache-2.0
+
 """Frozen Focus 1 adapter for the prespecified Focus 2 v2 ablation."""
 
 from __future__ import annotations

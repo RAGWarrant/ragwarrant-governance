@@ -1,3 +1,6 @@
+# Copyright 2026 RAGWarrant contributors
+# SPDX-License-Identifier: Apache-2.0
+
 """Pre-confirmatory evidence sufficiency planning for RAGWarrant research.
 
 This module is intentionally independent of the simulator and benchmark runners.

@@ -1,3 +1,6 @@
+# Copyright 2026 RAGWarrant contributors
+# SPDX-License-Identifier: Apache-2.0
+
 """Planning-only stratified evidence and joint-warrant power utilities.
 
 This namespace is additive.  It reuses the frozen v1 component tests and the

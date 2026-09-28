@@ -4,6 +4,7 @@ message: If you use this repository, please cite the repository and associated p
 type: software
 authors:
   - name: RAGWarrant contributors
+publisher: RAGWarrant project
 version: 0.1.0-rc1
 date-released: 2026-08-09
 repository-code: https://github.com/RAGWarrant/ragwarrant-governance
