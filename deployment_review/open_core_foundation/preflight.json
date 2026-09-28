@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-09-28",
+  "public_repository": "https://github.com/RAGWarrant/ragwarrant-governance",
+  "base_branch": "main",
+  "feature_branch": "open-core-commercialization-foundation",
+  "starting_main_sha": "b0b3ea388f39c007f6760b2943aadd49184fdeeb",
+  "origin_main_sha_at_branch_creation": "b0b3ea388f39c007f6760b2943aadd49184fdeeb",
+  "repository_owner": "RAGWarrant",
+  "visibility": "public",
+  "license_before_branch": "Apache-2.0 with neutral RAGWarrant contributors attribution",
+  "notice_before_branch": "absent",
+  "codeowners_before_branch": "absent",
+  "public_release_tags": [
+    "V1_VALID_ZERO_POWER_BASELINE",
+    "ragwarrant-focus1-freeze-v1-c771afc",
+    "v0.1.0-rc1"
+  ],
+  "open_prs": [
+    {
+      "number": 27,
+      "title": "Rename governance project to RAGWarrant",
+      "headRefName": "holistic-ragwarrant-rename",
+      "baseRefName": "main",
+      "isDraft": false,
+      "url": "https://github.com/RAGWarrant/ragwarrant-governance/pull/27"
+    }
+  ],
+  "active_ci_workflows": [
+    "CI",
+    "k8s-kind-validation",
+    "Publication Check",
+    "Publish Container",
+    "Research FULL future-beacon seal",
+    "storage-staging-validation"
+  ],
+  "branch_protection_api": "not_found_or_not_accessible",
+  "repository_rulesets": [],
+  "branch_protection_status": "BRANCH_PROTECTION_SETUP_PENDING_ADMIN_ACTION",
+  "temporary_enterprise_scaffold_path": "/private/tmp/ragwarrant-enterprise-scaffold",
+  "initial_baseline": {
+    "validate_publication_bundle": "passed",
+    "publication_tests": "failed_5_active_former_name_occurrences",
+    "brand_consistency": "failed_5_active_former_name_occurrences",
+    "compileall": "passed",
+    "diff_check": "passed"
+  },
+  "post_repair_baseline": {
+    "publication_tests": "passed_274_passed_6_skipped",
+    "brand_consistency": "passed_zero_active_former_name_occurrences"
+  },
+  "lfs_attribute_note": "paper/RAGWarrant_arXiv_source.zip is committed as a normal binary blob while broad zip LFS attributes exist; this branch adds a narrow override."
+}
