@@ -2,6 +2,7 @@
 *.pkl filter=lfs diff=lfs merge=lfs -text
 *.npz filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
+paper/RAGWarrant_arXiv_source.zip -filter -diff -merge -text
 *.tar.gz filter=lfs diff=lfs merge=lfs -text
 *.jsonl filter=lfs diff=lfs merge=lfs -text
 configs/research/fixed_sample_multi_risk_warrant_v2.yaml whitespace=-blank-at-eof

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "CLA_ASSISTANT_INSTALLATION_PENDING_HUMAN_ACTION",
+  "historical_cla_records_found": false,
+  "contributors": [
+    {"name": "Zach Pocquette", "email": "41841782+zachpocket@users.noreply.github.com", "classification": "outside contribution", "historical_cla_evidence": "none_found"},
+    {"name": "Legacy-branded predecessor identity A", "email": "redacted_legacy_branded_email", "classification": "unknown predecessor-project identity", "historical_cla_evidence": "none_found"},
+    {"name": "Advanced Idea Manufacturing", "email": "redacted_legacy_branded_email", "classification": "possible steward-affiliated identity, not legally verified", "historical_cla_evidence": "none_found"},
+    {"name": "RAGWarrant", "email": "322547233+RAGWarrant@users.noreply.github.com", "classification": "project-account contribution", "historical_cla_evidence": "none_found"},
+    {"name": "AIMIPFactory", "email": "aimipfactory@wikiwoos-Mac-mini.local", "classification": "unknown local-machine identity", "historical_cla_evidence": "none_found"},
+    {"name": "Legacy-branded predecessor identity B", "email": "redacted_legacy_branded_noreply_email", "classification": "predecessor-project account contribution", "historical_cla_evidence": "none_found"},
+    {"name": "Advanced Idea Manufacturing", "email": "aimipfactory+ragwarrant@gmail.com", "classification": "possible steward-affiliated identity, not legally verified", "historical_cla_evidence": "none_found"},
+    {"name": "github-actions[bot]", "email": "41898282+github-actions[bot]@users.noreply.github.com", "classification": "bot contribution", "historical_cla_evidence": "not_applicable"}
+  ],
+  "contributors_lacking_historical_cla_evidence": "all_non_bot_contributors"
+}

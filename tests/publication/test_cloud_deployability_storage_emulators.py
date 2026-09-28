@@ -1,3 +1,6 @@
+# Copyright 2026 RAGWarrant contributors
+# SPDX-License-Identifier: Apache-2.0
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -22,8 +25,8 @@ def test_storage_emulator_extras_are_optional_not_runtime() -> None:
 
 def test_storage_emulator_runner_uses_pinned_images_and_cleanup() -> None:
     text = (ROOT / "scripts" / "run_storage_emulator_tests.sh").read_text(encoding="utf-8")
-    assert "minio/minio@sha256:" in text
-    assert "a1a8bd4ac40ad7881a245bab97323e18f971e4d4cba2c2007ec1bedd21cbaba2" in text
+    assert "localstack/localstack@sha256:" in text
+    assert "fc9a03f14f4668f5d874eadb77e5da5461ce735e2ce86b77b0056606c0677dba" in text
     assert "mcr.microsoft.com/azure-storage/azurite@sha256:" in text
     assert "fsouza/fake-gcs-server@sha256:" in text
     assert "--platform \"$EMULATOR_PLATFORM\"" in text

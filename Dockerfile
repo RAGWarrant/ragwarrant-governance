@@ -1,3 +1,6 @@
+# Copyright 2026 RAGWarrant contributors
+# SPDX-License-Identifier: Apache-2.0
+
 ARG PYTHON_BASE=python:3.11-slim@sha256:a630a63cdb314e2d138a2fca3e375e319e8568346ffafac5b980f888630ac4f1
 
 FROM ${PYTHON_BASE} AS builder

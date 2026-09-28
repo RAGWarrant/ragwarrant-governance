@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Copyright 2026 RAGWarrant contributors
+# SPDX-License-Identifier: Apache-2.0
+
 set -euo pipefail
 : "${RAGWARRANT_GCP_REGION:?set RAGWARRANT_GCP_REGION}"
 image_ref="$(deploy/load-image-reference.sh)"

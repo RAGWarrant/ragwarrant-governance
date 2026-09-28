@@ -9,6 +9,12 @@ description = "Scientific-review bundle for the RAGWarrant governance validation
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "Apache-2.0"}
+authors = [
+  {name = "RAGWarrant contributors"},
+]
+maintainers = [
+  {name = "RAGWarrant contributors"},
+]
 dependencies = [
   "numpy",
   "pandas",
@@ -36,6 +42,12 @@ storage-emulators = [
 
 [project.scripts]
 ragwarrant = "ragwarrant.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/RAGWarrant/ragwarrant-governance"
+Repository = "https://github.com/RAGWarrant/ragwarrant-governance"
+Issues = "https://github.com/RAGWarrant/ragwarrant-governance/issues"
+Governance = "https://github.com/RAGWarrant/ragwarrant-governance/blob/main/GOVERNANCE.md"
 
 [tool.setuptools.packages.find]
 where = ["src"]
