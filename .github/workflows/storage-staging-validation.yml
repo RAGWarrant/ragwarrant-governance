@@ -33,7 +33,7 @@ jobs:
           from pathlib import Path
           report = json.loads(Path("artifacts/storage-emulator-validation/storage_emulator_validation_report.json").read_text(encoding="utf-8"))
           assert report["result_class"] == "STORAGE_EMULATOR_VALIDATION_PASSED", report
-          assert report["emulators"]["minio"] == "protocol_tested"
+          assert report["emulators"]["s3"] == "protocol_tested"
           assert report["emulators"]["azurite"] == "protocol_tested"
           assert report["emulators"]["fake_gcs_server"] == "protocol_tested"
           PY

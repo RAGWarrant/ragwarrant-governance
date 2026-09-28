@@ -6,15 +6,15 @@ set -euo pipefail
 
 ROOT="$(cd "$(/usr/bin/dirname "${BASH_SOURCE[0]}")/.." && /bin/pwd)"
 REPORT_DIR="${RAGWARRANT_STORAGE_EMULATOR_REPORT_DIR:-$ROOT/artifacts/storage-emulator-validation}"
-MINIO_IMAGE="minio/minio@sha256:a1a8bd4ac40ad7881a245bab97323e18f971e4d4cba2c2007ec1bedd21cbaba2"
+S3_EMULATOR_IMAGE="localstack/localstack@sha256:fc9a03f14f4668f5d874eadb77e5da5461ce735e2ce86b77b0056606c0677dba"
 AZURITE_IMAGE="mcr.microsoft.com/azure-storage/azurite@sha256:3ba0e7a70bdcc3ab1004d0d5b2cd25534a81b2785a2d0394e993dc1758512c40"
 FAKE_GCS_IMAGE="fsouza/fake-gcs-server@sha256:dacee68e65c2a52cb8c4244eb2c497e956953f4981bddc5898752963d62cde35"
 EMULATOR_PLATFORM="${RAGWARRANT_STORAGE_EMULATOR_PLATFORM:-linux/amd64}"
 
-MINIO_NAME="ragwarrant-minio-test"
+S3_EMULATOR_NAME="ragwarrant-s3-emulator-test"
 AZURITE_NAME="ragwarrant-azurite-test"
 FAKE_GCS_NAME="ragwarrant-fake-gcs-test"
-MINIO_PORT="${RAGWARRANT_MINIO_PORT:-19000}"
+S3_EMULATOR_PORT="${RAGWARRANT_S3_EMULATOR_PORT:-4566}"
 AZURITE_PORT="${RAGWARRANT_AZURITE_PORT:-10000}"
 FAKE_GCS_PORT="${RAGWARRANT_FAKE_GCS_PORT:-4443}"
 AZURITE_TEST_KEY="ZmFrZUF6dXJpdGVLZXlGb3JUZXN0T25seUZha2VBenVyaXRlS2V5Rm9yVGVzdE9ubHk="
@@ -22,10 +22,10 @@ AZURITE_TEST_KEY="ZmFrZUF6dXJpdGVLZXlGb3JUZXN0T25seUZha2VBenVyaXRlS2V5Rm9yVGVzdE
 mkdir -p "$REPORT_DIR/logs"
 
 cleanup() {
-  docker logs "$MINIO_NAME" > "$REPORT_DIR/logs/minio.log" 2>&1 || true
+  docker logs "$S3_EMULATOR_NAME" > "$REPORT_DIR/logs/localstack-s3.log" 2>&1 || true
   docker logs "$AZURITE_NAME" > "$REPORT_DIR/logs/azurite.log" 2>&1 || true
   docker logs "$FAKE_GCS_NAME" > "$REPORT_DIR/logs/fake-gcs-server.log" 2>&1 || true
-  docker rm -f "$MINIO_NAME" "$AZURITE_NAME" "$FAKE_GCS_NAME" >/dev/null 2>&1 || true
+  docker rm -f "$S3_EMULATOR_NAME" "$AZURITE_NAME" "$FAKE_GCS_NAME" >/dev/null 2>&1 || true
 }
 trap cleanup EXIT INT TERM
 
@@ -38,13 +38,13 @@ if ! docker info >/dev/null 2>&1; then
   exit 2
 fi
 
-docker rm -f "$MINIO_NAME" "$AZURITE_NAME" "$FAKE_GCS_NAME" >/dev/null 2>&1 || true
+docker rm -f "$S3_EMULATOR_NAME" "$AZURITE_NAME" "$FAKE_GCS_NAME" >/dev/null 2>&1 || true
 
-docker run -d --platform "$EMULATOR_PLATFORM" --name "$MINIO_NAME" \
-  -e MINIO_ROOT_USER=emulator-access-key \
-  -e MINIO_ROOT_PASSWORD=emulator-secret-key \
-  -p "127.0.0.1:${MINIO_PORT}:9000" \
-  "$MINIO_IMAGE" server /data >/dev/null
+docker run -d --platform "$EMULATOR_PLATFORM" --name "$S3_EMULATOR_NAME" \
+  -e SERVICES=s3 \
+  -e DEBUG=0 \
+  -p "127.0.0.1:${S3_EMULATOR_PORT}:4566" \
+  "$S3_EMULATOR_IMAGE" >/dev/null
 
 docker run -d --platform "$EMULATOR_PLATFORM" --name "$AZURITE_NAME" \
   -e "AZURITE_ACCOUNTS=devstoreaccount1:${AZURITE_TEST_KEY}" \
@@ -68,7 +68,7 @@ wait_for() {
   return 1
 }
 
-wait_for "MinIO" "http://127.0.0.1:${MINIO_PORT}/minio/health/ready"
+wait_for "LocalStack S3" "http://127.0.0.1:${S3_EMULATOR_PORT}/_localstack/health"
 wait_for "fake-gcs-server" "http://127.0.0.1:${FAKE_GCS_PORT}/storage/v1/b"
 for _ in $(seq 1 60); do
   if curl -sS "http://127.0.0.1:${AZURITE_PORT}/devstoreaccount1?comp=list" >/dev/null 2>&1; then
@@ -78,7 +78,7 @@ for _ in $(seq 1 60); do
 done
 
 export RAGWARRANT_RUN_STORAGE_EMULATOR_TESTS=1
-export RAGWARRANT_S3_ENDPOINT_URL="http://127.0.0.1:${MINIO_PORT}"
+export RAGWARRANT_S3_ENDPOINT_URL="http://127.0.0.1:${S3_EMULATOR_PORT}"
 export RAGWARRANT_S3_BUCKET="ragwarrant-publication-test"
 export RAGWARRANT_S3_PREFIX="public-mini"
 export AWS_ACCESS_KEY_ID="emulator-access-key"
@@ -108,7 +108,7 @@ payload = {
     "result_class": "STORAGE_EMULATOR_VALIDATION_PASSED" if status == 0 else "STORAGE_EMULATOR_VALIDATION_FAILED",
     "pytest_exit_code": status,
     "emulators": {
-        "minio": "protocol_tested",
+        "s3": "protocol_tested",
         "azurite": "protocol_tested",
         "fake_gcs_server": "protocol_tested",
     },
@@ -120,7 +120,7 @@ payload = {
 (report_dir / "storage_emulator_validation_report.md").write_text(
     "# Storage Emulator Validation\n\n"
     f"Result: `{payload['result_class']}`.\n\n"
-    "MinIO, Azurite, and fake-gcs-server use pinned image digests and protocol-compatible SDK paths.\n",
+    "LocalStack S3, Azurite, and fake-gcs-server use pinned image digests and protocol-compatible SDK paths.\n",
     encoding="utf-8",
 )
 PY
